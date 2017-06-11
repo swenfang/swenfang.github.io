@@ -1677,7 +1677,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b13938;
+  background: #592420;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2827,6 +2827,33 @@ hr {
 }
 .back-to-top {
   background: #649ab6;
+}
+.site-author-name {
+  margin: 48px 0 0;
+  color: #090909;
+  font-family: 'Comic Sans MS', sans-serif;
+}
+.sidebar a {
+  color: #649ab6;
+  border-bottom-color: #649ab6;
+  border-bottom: none;
+}
+.site-description {
+  color: #090909;
+  font-family: 'Comic Sans MS', sans-serif;
+}
+.site-author-image {
+  border-radius: 15px;
+  border: 2px solid #87daff;
+}
+.footer {
+  background: none;
+  font-size: 16px;
+}
+.footer-inner {
+  font-family: 'Comic Sans MS', sans-serif;
+  text-align: center;
+  color: #4c618f;
 }
 .logo-line-before,
 .logo-line-after {
