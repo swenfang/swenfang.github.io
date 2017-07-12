@@ -115,7 +115,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -141,10 +141,6 @@
 
 
   <title>Spring Boot启动流程详解 | Another</title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
   
 
 
@@ -160,6 +156,9 @@
 
 
 
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -364,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,393
+                  1,393 字
                 </span>
               
 
@@ -380,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  7
+                  7 分钟
                 </span>
               
             </div>
@@ -517,6 +516,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
     <div class="sidebar-inner">
 
       
@@ -751,12 +751,6 @@
 
 
 
-  
-
-
-
-
-
 
   
 
@@ -767,8 +761,8 @@
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("oaAuJ9LoOYdapiiXgOKphb9M-gzGzoHsz", "FEGbas9HnhWCFHNV3g0PQc5x");</script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("oaAuJ9LoOYdapiiXgOKphb9M-gzGzoHsz", "FEGbas9HnhWCFHNV3g0PQc5x");AV.useAVCloudUS();</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
