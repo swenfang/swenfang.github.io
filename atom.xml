@@ -1,406 +1,28 @@
-<!doctype html>
-
-
-
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Another</title>
   
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <link href="/atom.xml" rel="self"/>
   
+  <link href="http://yoursite.com/"/>
+  <updated>2017-07-10T13:19:31.161Z</updated>
+  <id>http://yoursite.com/</id>
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
+  <author>
+    <name>Another</name>
     
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Maven仓库理解和优先级</title>
+    <link href="http://yoursite.com/2017/07/10/MavenPriority/"/>
+    <id>http://yoursite.com/2017/07/10/MavenPriority/</id>
+    <published>2017-07-10T12:45:13.310Z</published>
+    <updated>2017-07-10T13:19:31.161Z</updated>
     
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=MathJax_Math-italic:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Maven," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Another" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
-
-
-
-
-
-
-<meta name="description" content="5 Seven 2017 前言使用 maven 也有一段时间了，有时候在配置 repository,mirror,profile的时候，总会导致 jar 拉取不到。所以认真的分析了 maven 获取 jar 包时候的优先级。">
-<meta name="keywords" content="Maven">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Maven仓库理解和优先级">
-<meta property="og:url" content="http://yoursite.com/2017/07/10/MavenPriority/index.html">
-<meta property="og:site_name" content="Another">
-<meta property="og:description" content="5 Seven 2017 前言使用 maven 也有一段时间了，有时候在配置 repository,mirror,profile的时候，总会导致 jar 拉取不到。所以认真的分析了 maven 获取 jar 包时候的优先级。">
-<meta property="og:image" content="http://yoursite.com/images/maven-logo.png">
-<meta property="og:image" content="http://yoursite.com/images/example.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/20170710163449.png">
-<meta property="og:updated_time" content="2017-07-10T13:19:31.161Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maven仓库理解和优先级">
-<meta name="twitter:description" content="5 Seven 2017 前言使用 maven 也有一段时间了，有时候在配置 repository,mirror,profile的时候，总会导致 jar 拉取不到。所以认真的分析了 maven 获取 jar 包时候的优先级。">
-<meta name="twitter:image" content="http://yoursite.com/images/maven-logo.png">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2017/07/10/MavenPriority/"/>
-
-
-
-
-
-  <title>Maven仓库理解和优先级 | Another</title>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Another</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/10/MavenPriority/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Another">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Another">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Maven仓库理解和优先级</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-10T20:45:13+08:00">
-                2017-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Maven/" itemprop="url" rel="index">
-                    <span itemprop="name">Maven</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/07/10/MavenPriority/" class="leancloud_visitors" data-flag-title="Maven仓库理解和优先级">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  4,716 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  22 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p><img src="/images/maven-logo.png" alt="此处输入图片的描述"></p>
+    <content type="html"><![CDATA[<p><img src="/images/maven-logo.png" alt="此处输入图片的描述"></p>
 <p><strong>5 Seven 2017</strong></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用 maven 也有一段时间了，有时候在配置 repository,mirror,profile的时候，总会导致 jar 拉取不到。所以认真的分析了 maven 获取 jar 包时候的优先级。<br><a id="more"></a></p>
 <h2 id="Maven-仓库的分类"><a href="#Maven-仓库的分类" class="headerlink" title="Maven 仓库的分类"></a>Maven 仓库的分类</h2><p>仓库分类：本地仓库和远程仓库。Maven根据坐标寻找构件的时候，它先会查看本地仓库，如果本地仓库存在构件，则直接使用；如果没有，则从远程仓库查找，找到后，下载到本地。</p>
@@ -475,478 +97,72 @@ maven-metadata- &lt;repo-id&gt;.xml在本地存储库中，用于具有repo-id�
 <p>我们验证下 Maven deploy 例子<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[INFO] --- maven-deploy-plugin:<span class="number">2.8</span>.2:deploy (<span class="keyword">default</span>-deploy) @ Chapter1 ---</div><div class="line"><span class="comment">// 先从远程下载快照 maven-metadata.xml</span></div><div class="line">Downloading: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/maven-metadata.xml</span></div><div class="line">Downloaded: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/maven-metadata.xml (768 B at 3.3 KB/sec)</span></div><div class="line"><span class="comment">// 将项目的 jar 和 pom 文件更新到远程仓库</span></div><div class="line">Uploading: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/Chapter1-0.0.1-20170710.121310-15.jar</span></div><div class="line">Uploaded: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/Chapter1-0.0.1-20170710.121310-15.jar (8 KB at 14.1 KB/sec)</span></div><div class="line">Uploading: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/Chapter1-0.0.1-20170710.121310-15.pom</span></div><div class="line">Uploaded: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/Chapter1-0.0.1-20170710.121310-15.pom (2 KB at 2.0 KB/sec)</span></div><div class="line">Downloading: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/maven-metadata.xml</span></div><div class="line">Downloaded: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/maven-metadata.xml (275 B at 1.6 KB/sec)</span></div><div class="line"><span class="comment">// 上传  maven-metadata.xml 到远程仓库</span></div><div class="line">Uploading: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/maven-metadata.xml</span></div><div class="line">Uploaded: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/maven-metadata.xml (768 B at 1.0 KB/sec)</span></div><div class="line">Uploading: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/maven-metadata.xml</span></div><div class="line">Uploaded: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/maven-metadata.xml (275 B at 0.4 KB/sec)</span></div><div class="line">[INFO] ------------------------------------------------------------------------</div><div class="line">[INFO] BUILD SUCCESS</div><div class="line">[INFO] ------------------------------------------------------------------------</div><div class="line">[INFO] Total time: <span class="number">5.231</span> s</div><div class="line">[INFO] Finished at: <span class="number">2017</span>-<span class="number">07</span>-<span class="number">10</span>T20:<span class="number">13</span>:<span class="number">13</span>+<span class="number">08</span>:<span class="number">00</span></div><div class="line">[INFO] Final Memory: <span class="number">19</span>M/<span class="number">226</span>M</div><div class="line">[INFO] ------------------------------------------------------------------------</div></pre></td></tr></table></figure></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>原本以为两天就写好这篇文章，在自己理清思路的时候总是被自己绕晕了。比如在 Nexus 的 Central 配置的中央仓库获取，和 maven-metadata.xml 是如何比较的。</p>
 <p>如果以上文章有误，等博客的评论系统搭建起来后欢迎大家指认出来。</p>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Maven/" rel="tag"># Maven</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/06/18/环境/" rel="next" title="Spring Boot启动流程详解">
-                <i class="fa fa-chevron-left"></i> Spring Boot启动流程详解
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
+]]></content>
     
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4My82MDUx"></div>
+    <summary type="html">
     
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div id="sidebar-dimmer"></div>
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="Another" />
-          <p class="site-author-name" itemprop="name">Another</p>
-           
-              <p class="site-description motion-element" itemprop="description">天下没有免费的午餐，所以要想得到，就必须 Strive !!!</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven-仓库的分类"><span class="nav-number">2.</span> <span class="nav-text">Maven 仓库的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven-镜像"><span class="nav-number">2.1.</span> <span class="nav-text">Maven 镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mirrorOf-标签"><span class="nav-number">2.1.1.</span> <span class="nav-text">mirrorOf 标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#私服"><span class="nav-number">2.2.</span> <span class="nav-text">私服</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven-仓库优先级"><span class="nav-number">3.</span> <span class="nav-text">Maven 仓库优先级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地仓库优先级"><span class="nav-number">3.1.</span> <span class="nav-text">本地仓库优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程仓库优先级"><span class="nav-number">3.2.</span> <span class="nav-text">远程仓库优先级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-metadata-xml-文件"><span class="nav-number">4.</span> <span class="nav-text">maven-metadata.xml 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">4.1.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Another</span>
-</div>
-
-
-
-
-        
-
-        
-      </div>
-    </footer>
-
+      &lt;p&gt;&lt;img src=&quot;/images/maven-logo.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5 Seven 2017&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;使用 maven 也有一段时间了，有时候在配置 repository,mirror,profile的时候，总会导致 jar 拉取不到。所以认真的分析了 maven 获取 jar 包时候的优先级。&lt;br&gt;
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
+    </summary>
     
-
-  </div>
-
+      <category term="Maven" scheme="http://yoursite.com/categories/Maven/"/>
+    
+    
+      <category term="Maven" scheme="http://yoursite.com/tags/Maven/"/>
+    
+  </entry>
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
+  <entry>
+    <title>Spring Boot启动流程详解</title>
+    <link href="http://yoursite.com/2017/06/18/%E7%8E%AF%E5%A2%83/"/>
+    <id>http://yoursite.com/2017/06/18/环境/</id>
+    <published>2017-06-18T09:09:39.454Z</published>
+    <updated>2017-07-10T13:07:48.096Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/springImage.jpg" alt=""></p>
+<p><strong>22 June 2017</strong></p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>本文基于Spring Boot版本1.5.3, 使用了spring-boot-starter-web。<br>配置完成后，编写了代码如下：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@SpringBootApplication</div><div class="line">public class Application &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		SpringApplication.run(Application.class, args);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@RestController</div><div class="line">public class RootController &#123;</div><div class="line"></div><div class="line">    @GetMapping(&quot;/&quot;)</div><div class="line">    public String welcome() &#123;</div><div class="line">        return &quot;Welcome!&quot;;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>虽然只有几行代码，但是这已经是一个完整的Web程序，当访问url的path部分为”/”时，返回字符串”Welcome!”。</p>
+<h2 id="SpringApplication类的静态run方法"><a href="#SpringApplication类的静态run方法" class="headerlink" title="SpringApplication类的静态run方法"></a>SpringApplication类的静态run方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">以下代码摘自：org.springframework.boot.SpringApplication</div><div class="line"></div><div class="line">public static ConfigurableApplicationContext run(Object source, String... args) &#123;</div><div class="line">	return run(new Object[] &#123; source &#125;, args);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public static ConfigurableApplicationContext run(Object[] sources, String[] args) &#123;</div><div class="line">	return new SpringApplication(sources).run(args);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这个静态方法中，创建SpringApplication对象，并调用该对象的run方法。</p>
+<h2 id="构造SpringApplication对象"><a href="#构造SpringApplication对象" class="headerlink" title="构造SpringApplication对象"></a>构造SpringApplication对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">以下代码摘自：org.springframework.boot.SpringApplication</div><div class="line"></div><div class="line">public SpringApplication(Object... sources) &#123;</div><div class="line">	initialize(sources);</div><div class="line">&#125;</div><div class="line"></div><div class="line">private void initialize(Object[] sources) &#123;</div><div class="line">	// 为成员变量sources赋值</div><div class="line">	if (sources != null &amp;&amp; sources.length &gt; 0) &#123;</div><div class="line">		this.sources.addAll(Arrays.asList(sources));</div><div class="line">	&#125;</div><div class="line">	this.webEnvironment = deduceWebEnvironment();</div><div class="line">	setInitializers((Collection) getSpringFactoriesInstances(</div><div class="line">			ApplicationContextInitializer.class));</div><div class="line">	setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));</div><div class="line">	this.mainApplicationClass = deduceMainApplicationClass();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>构造函数中调用initialize方法，初始化SpringApplication对象的成员变量<strong>sources，webEnvironment，initializers，listeners，mainApplicationClass</strong>。sources的赋值比较简单，就是我们传给SpringApplication.run方法的参数。剩下的几个，我们依次来看看是怎么做的。</p>
+<h2 id="首先是webEnvironment"><a href="#首先是webEnvironment" class="headerlink" title="首先是webEnvironment:"></a>首先是webEnvironment:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">以下代码摘自：org.springframework.boot.SpringApplication</div><div class="line"></div><div class="line">private boolean webEnvironment; </div><div class="line"></div><div class="line">private static final String[] WEB_ENVIRONMENT_CLASSES = &#123; &quot;javax.servlet.Servlet&quot;,</div><div class="line">			&quot;org.springframework.web.context.ConfigurableWebApplicationContext&quot; &#125;;</div><div class="line"></div><div class="line">private void initialize(Object[] sources) &#123;</div><div class="line">	...</div><div class="line">        // 为成员变量webEnvironment赋值</div><div class="line">        this.webEnvironment = deduceWebEnvironment();</div><div class="line">	...</div><div class="line">&#125;</div><div class="line"></div><div class="line">private boolean deduceWebEnvironment() &#123;</div><div class="line">	for (String className : WEB_ENVIRONMENT_CLASSES) &#123;</div><div class="line">		if (!ClassUtils.isPresent(className, null)) &#123;</div><div class="line">			return false;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public static boolean isPresent(String className, ClassLoader classLoader) &#123;</div><div class="line">	try &#123;</div><div class="line">	    // 从当前线程获取一个 上下文 ClassLoader，并尝试初始化该类</div><div class="line">		forName(className, classLoader);</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line">	catch (Throwable ex) &#123;</div><div class="line">		// 加载类不存在时</div><div class="line">		return false;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到webEnvironment是一个boolean，该成员变量用来表示当前应用程序是不是一个Web应用程序。那么怎么决定当前应用程序是否Web应用程序呢，是通过在classpath中查看是否存在WEB_ENVIRONMENT_CLASSES这个数组中所包含的类，如果存在那么当前程序即是一个Web应用程序，反之则不然。在本文的例子中webEnvironment的值为true。</p>
+<h2 id="然后是initializers"><a href="#然后是initializers" class="headerlink" title="然后是initializers:"></a>然后是initializers:</h2><p>initializers成员变量，是一个ApplicationContextInitializer类型对象的集合。 顾名思义，ApplicationContextInitializer是一个可以用来初始化ApplicationContext的接口。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">以下代码摘自：org.springframework.boot.SpringApplication</div><div class="line"></div><div class="line">private List&lt;ApplicationContextInitializer&lt;?&gt;&gt; initializers;</div><div class="line"></div><div class="line">private void initialize(Object[] sources) &#123;</div><div class="line">	...</div><div class="line">	// 为成员变量initializers赋值</div><div class="line">	setInitializers((Collection) getSpringFactoriesInstances(</div><div class="line">			ApplicationContextInitializer.class));</div><div class="line">	...</div><div class="line">&#125;</div><div class="line"></div><div class="line">public void setInitializers(</div><div class="line">		Collection&lt;? extends ApplicationContextInitializer&lt;?&gt;&gt; initializers) &#123;</div><div class="line">	this.initializers = new ArrayList&lt;ApplicationContextInitializer&lt;?&gt;&gt;();</div><div class="line">	this.initializers.addAll(initializers);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，关键是调用<strong>getSpringFactoriesInstances(ApplicationContextInitializer.class)</strong>，来获取ApplicationContextInitializer类型对象的列表。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">以下代码摘自：org.springframework.boot.SpringApplication</div><div class="line"></div><div class="line">private &lt;T&gt; Collection&lt;? extends T&gt; getSpringFactoriesInstances(Class&lt;T&gt; type) &#123;</div><div class="line">	return getSpringFactoriesInstances(type, new Class&lt;?&gt;[] &#123;&#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">private &lt;T&gt; Collection&lt;? extends T&gt; getSpringFactoriesInstances(Class&lt;T&gt; type,</div><div class="line">		Class&lt;?&gt;[] parameterTypes, Object... args) &#123;</div><div class="line">	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();</div><div class="line">	// Use names and ensure unique to protect against duplicates</div><div class="line">	Set&lt;String&gt; names = new LinkedHashSet&lt;String&gt;(</div><div class="line">			SpringFactoriesLoader.loadFactoryNames(type, classLoader));</div><div class="line">	List&lt;T&gt; instances = createSpringFactoriesInstances(type, parameterTypes,</div><div class="line">			classLoader, args, names);</div><div class="line">	AnnotationAwareOrderComparator.sort(instances);</div><div class="line">	return instances;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在该方法中，首先通过调用SpringFactoriesLoader.loadFactoryNames(type, classLoader)来获取所有Spring Factories的名字，然后调用createSpringFactoriesInstances方法根据读取到的名字创建对象。最后会将创建好的对象列表排序并返回。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">以下代码摘自：org.springframework.core.io.support.SpringFactoriesLoader</div><div class="line"></div><div class="line">public static final String FACTORIES_RESOURCE_LOCATION = &quot;META-INF/spring.factories&quot;;</div><div class="line"></div><div class="line">public static List&lt;String&gt; loadFactoryNames(Class&lt;?&gt; factoryClass, ClassLoader classLoader) &#123;</div><div class="line">		String factoryClassName = factoryClass.getName();</div><div class="line">		try &#123;</div><div class="line">		    // 从当前程序或从系统获取  META-INF/spring.factories</div><div class="line">			Enumeration&lt;URL&gt; urls = (classLoader != null ? </div><div class="line">			        classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :</div><div class="line">					ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));</div><div class="line">					</div><div class="line">			List&lt;String&gt; result = new ArrayList&lt;String&gt;();</div><div class="line">			while (urls.hasMoreElements()) &#123;</div><div class="line">				URL url = urls.nextElement();</div><div class="line">				Properties properties = PropertiesLoaderUtils.loadProperties(new UrlResource(url));</div><div class="line">				String factoryClassNames = properties.getProperty(factoryClassName);</div><div class="line">				result.addAll(Arrays.asList(StringUtils.commaDelimitedListToStringArray(factoryClassNames)));</div><div class="line">			&#125;</div><div class="line">		</div><div class="line">			return result;</div><div class="line">		&#125;</div><div class="line">		catch (IOException ex) &#123;</div><div class="line">			throw new IllegalArgumentException(&quot;Unable to load [&quot; + factoryClass.getName() +</div><div class="line">					&quot;] factories from location [&quot; + FACTORIES_RESOURCE_LOCATION + &quot;]&quot;, ex);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，是从一个名字叫spring.factories的资源文件中，读取key为org.springframework.context.ApplicationContextInitializer的value。而spring.factories的部分内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">以下内容摘自spring-boot-1.5.3.RELEASE.jar中的资源文件META-INF/spring.factories</div><div class="line"></div><div class="line"># Application Context Initializers</div><div class="line">org.springframework.context.ApplicationContextInitializer=\</div><div class="line">org.springframework.boot.context.ConfigurationWarningsApplicationContextInitializer,\</div><div class="line">org.springframework.boot.context.ContextIdApplicationContextInitializer,\</div><div class="line">org.springframework.boot.context.config.DelegatingApplicationContextInitializer,\</div><div class="line">org.springframework.boot.context.web.ServerPortInfoApplicationContextInitializer</div><div class="line"></div><div class="line">以下内容摘自spring-boot-autoconfigure-1.5.3.RELEASE.jar中的资源文件META-INF/spring.factories</div><div class="line">org.springframework.context.ApplicationContextInitializer=\</div><div class="line">org.springframework.boot.autoconfigure.SharedMetadataReaderFactoryContextInitializer,\</div><div class="line">org.springframework.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer</div></pre></td></tr></table></figure></p>
+<p>可以看到，最近的得到的，是ConfigurationWarningsApplicationContextInitializer，ContextIdApplicationContextInitializer，DelegatingApplicationContextInitializer，ServerPortInfoApplicationContextInitializer这四个类的名字。<br>接下来会调用createSpringFactoriesInstances来创建ApplicationContextInitializer实例。</p>
+<p>还有就是基于 autoconfigure 下的两个 SharedMetadataReaderFactoryContextInitializer 共享元数据的一系列操作，AutoConfigurationReportLoggingInitializer监听到系统事件时，比如上下文刷新ContextRefreshedEvent或应用程序启动故障ApplicationFailedEvent之类的事件。</p>
+<p>如果添加其他 jar 包，包下带有 spring.factories 也会初始化对应的配置类，例如添加 spring-boot-devtools-1.5.3.RELEASE.jar 启动的时候会初始化<br>org.springframework.boot.devtools.restart.RestartScopeInitializer</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">以下代码摘自：org.springframework.boot.SpringApplication</div><div class="line"></div><div class="line"><span class="keyword">private</span> &lt;T&gt; <span class="function">List&lt;T&gt; <span class="title">createSpringFactoriesInstances</span><span class="params">(Class&lt;T&gt; type,</span></span></div><div class="line">		Class&lt;?&gt;[] parameterTypes, ClassLoader classLoader, Object[] args,</div><div class="line">		Set&lt;String&gt; names) &#123;</div><div class="line">	List&lt;T&gt; instances = <span class="keyword">new</span> ArrayList&lt;T&gt;(names.size());</div><div class="line">	<span class="keyword">for</span> (String name : names) &#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			Class&lt;?&gt; instanceClass = ClassUtils.forName(name, classLoader);</div><div class="line">			Assert.isAssignable(type, instanceClass);</div><div class="line">			Constructor&lt;?&gt; constructor = instanceClass</div><div class="line">					.getDeclaredConstructor(parameterTypes);</div><div class="line">			T instance = (T) BeanUtils.instantiateClass(constructor, args);</div><div class="line">			instances.add(instance);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">catch</span> (Throwable ex) &#123;</div><div class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</div><div class="line">					<span class="string">"Cannot instantiate "</span> + type + <span class="string">" : "</span> + name, ex);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> instances;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以在我们的例子中，SpringApplication对象的成员变量initalizers就被初始化为，ConfigurationWarningsApplicationContextInitializer，ContextIdApplicationContextInitializer，DelegatingApplicationContextInitializer，ServerPortInfoApplicationContextInitializer这四个类的对象组成的list。<br>下图画出了加载的ApplicationContextInitializer，并说明了他们的作用。至于何时应用他们，且听后面慢慢分解。</p>
+<h3 id="4-高效绘制-流程图"><a href="#4-高效绘制-流程图" class="headerlink" title="4. 高效绘制 流程图"></a>4. 高效绘制 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#7-流程图" target="_blank" rel="external">流程图</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">st=&gt;start: Start</div><div class="line">op=&gt;operation: Your Operation</div><div class="line">cond=&gt;condition: Yes or No?</div><div class="line">e=&gt;end</div><div class="line"></div><div class="line">st-&gt;op-&gt;cond</div><div class="line">cond(yes)-&gt;e</div><div class="line">cond(no)-&gt;op</div></pre></td></tr></table></figure>
+<h3 id="5-高效绘制-序列图"><a href="#5-高效绘制-序列图" class="headerlink" title="5. 高效绘制 序列图"></a>5. 高效绘制 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#8-序列图" target="_blank" rel="external">序列图</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Alice-&gt;Bob: Hello Bob, how are you?</div><div class="line">Note right of Bob: Bob thinks</div><div class="line">Bob--&gt;Alice: I am good thanks!</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sequenceDiagram</div><div class="line">A-&gt;&gt;B: How are you?</div><div class="line">B-&gt;&gt;A: Great!</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">graph LR</div><div class="line">A--&gt;B</div></pre></td></tr></table></figure>
+<p><img src="https://proglib.io/wp-content/uploads/2017/02/image4144.png" alt="http://orbs83j4x.bkt.clouddn.com/SpringBootApplicationContextInitializer.png"></p>
+<p>jar:file:/E:/OperSource/org/springframework/boot/spring-boot/1.5.3.RELEASE/spring-boot-1.5.3.RELEASE.jar!/META-INF/spring.factories<br>jar:file:/E:/OperSource/org/springframework/boot/spring-boot-autoconfigure/1.5.3.RELEASE/spring-boot-autoconfigure-1.5.3.RELEASE.jar!/META-INF/spring.factories</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/springImage.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;22 June 2017&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;p&gt;本文基于Spring Boot版本1.5.3, 使用了spring-boot-starter-web。&lt;br&gt;配置完成后，编写了代码如下：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Spring Boot" scheme="http://yoursite.com/categories/Spring-Boot/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+    
+  </entry>
   
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("OtBsX9p1Sn2C646WsPX9BTVq-gzGzoHsz", "T5y5NYkXD7FuipBXouTVD4kj");AV.useAVCloudUS();</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
+</feed>
