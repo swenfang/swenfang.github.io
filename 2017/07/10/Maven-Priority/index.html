@@ -97,13 +97,13 @@
 <meta name="keywords" content="Maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maven仓库理解和优先级">
-<meta property="og:url" content="http://yoursite.com/2017/07/10/MavenPriority/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/07/10/Maven-Priority/index.html">
 <meta property="og:site_name" content="Another">
 <meta property="og:description" content="5 Seven 2017 前言使用 maven 也有一段时间了，有时候在配置 repository,mirror,profile的时候，总会导致 jar 拉取不到。所以认真的分析了 maven 获取 jar 包时候的优先级。">
 <meta property="og:image" content="http://yoursite.com/images/maven-logo.png">
 <meta property="og:image" content="http://yoursite.com/images/example.png">
 <meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/20170710163449.png">
-<meta property="og:updated_time" content="2017-07-20T09:50:30.524Z">
+<meta property="og:updated_time" content="2017-07-26T08:22:18.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maven仓库理解和优先级">
 <meta name="twitter:description" content="5 Seven 2017 前言使用 maven 也有一段时间了，有时候在配置 repository,mirror,profile的时候，总会导致 jar 拉取不到。所以认真的分析了 maven 获取 jar 包时候的优先级。">
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/10/MavenPriority/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/10/Maven-Priority/"/>
 
 
 
@@ -304,7 +304,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/10/MavenPriority/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/10/Maven-Priority/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Another">
@@ -373,7 +373,7 @@
 
           
           
-             <span id="/2017/07/10/MavenPriority/" class="leancloud_visitors" data-flag-title="Maven仓库理解和优先级">
+             <span id="/2017/07/10/Maven-Priority/" class="leancloud_visitors" data-flag-title="Maven仓库理解和优先级">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  4,716 字
+                  4,758 字
                 </span>
               
 
@@ -480,7 +480,7 @@ repo,repo1 = 远程仓库 repo 和 repo1 从该镜像获取
 <blockquote>
 <p>本地仓库 &gt; 私服 （profile）&gt; 远程仓库（repository）和 镜像 （mirror） &gt; 中央仓库 （central）</p>
 </blockquote>
-<p>2.镜像是一个特殊的配置，其实镜像等同与远程仓库，没有匹配远程仓库的镜像就毫无作用（如 foo2）。<br>3.总和上面所说的，Maven 仓库的优先级就是 <strong>私服和远程仓库</strong> 的对比，没有其它的仓库类型。为什么这么说是因为，镜像等同远程，而中央其实也是 maven super xml 配置的一个repository 的一个而且。所以 maven 仓库真正的优先级为 </p>
+<p>2.镜像是一个特殊的配置，其实镜像等同与远程仓库，没有匹配远程仓库的镜像就毫无作用（如 foo2）。<br>3.总结上面所说的，Maven 仓库的优先级就是 <strong>私服和远程仓库</strong> 的对比，没有其它的仓库类型。为什么这么说是因为，镜像等同远程，而中央其实也是 maven super xml 配置的一个repository 的一个而且。所以 maven 仓库真正的优先级为 </p>
 <blockquote>
 <p>本地仓库 &gt; 私服（profile）&gt; 远程仓库（repository）</p>
 </blockquote>
@@ -504,6 +504,7 @@ maven-metadata- &lt;repo-id&gt;.xml在本地存储库中，用于具有repo-id�
 <li>例如 maven-metadata-snapshots 就是 Maven deploy 先从远程仓库对应包的 maven-metadata.xml 下载下来，然后修改快照信息后在上传到远程仓库上。</li>
 <li>例如 maven-metadata-localhost 的作用是在 Maven 在拉取包的时候，会先跟本地 maven-metadata-local 比较下 lastUpdated 时间戳值，值大用哪个。如果是 Mavne <strong>强制更新</strong> 的时候(没有强制更新是不会) 会下载远程的 maven-metadata.xml 比较<strong>远程，本地，和之前远程保存下来的 maven-metadata 文件</strong>。</li>
 </ol>
+<p>所以有时候 maven 库上的 jar 包已经更新，而我们总是拉取不到 maven 的包原因就是本地的 maven-metadata-local 的 lastUpdated 比较大。</p>
 <p>我们验证下 Maven deploy 例子<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[INFO] --- maven-deploy-plugin:<span class="number">2.8</span>.2:deploy (<span class="keyword">default</span>-deploy) @ Chapter1 ---</div><div class="line"><span class="comment">// 先从远程下载快照 maven-metadata.xml</span></div><div class="line">Downloading: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/maven-metadata.xml</span></div><div class="line">Downloaded: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/maven-metadata.xml (768 B at 3.3 KB/sec)</span></div><div class="line"><span class="comment">// 将项目的 jar 和 pom 文件更新到远程仓库</span></div><div class="line">Uploading: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/Chapter1-0.0.1-20170710.121310-15.jar</span></div><div class="line">Uploaded: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/Chapter1-0.0.1-20170710.121310-15.jar (8 KB at 14.1 KB/sec)</span></div><div class="line">Uploading: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/Chapter1-0.0.1-20170710.121310-15.pom</span></div><div class="line">Uploaded: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/Chapter1-0.0.1-20170710.121310-15.pom (2 KB at 2.0 KB/sec)</span></div><div class="line">Downloading: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/maven-metadata.xml</span></div><div class="line">Downloaded: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/maven-metadata.xml (275 B at 1.6 KB/sec)</span></div><div class="line"><span class="comment">// 上传  maven-metadata.xml 到远程仓库</span></div><div class="line">Uploading: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/maven-metadata.xml</span></div><div class="line">Uploaded: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/0.0.1-SNAPSHOT/maven-metadata.xml (768 B at 1.0 KB/sec)</span></div><div class="line">Uploading: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/maven-metadata.xml</span></div><div class="line">Uploaded: http:<span class="comment">//localhost:8081/repository/maven-snapshots/com/cjf/Chapter1/maven-metadata.xml (275 B at 0.4 KB/sec)</span></div><div class="line">[INFO] ------------------------------------------------------------------------</div><div class="line">[INFO] BUILD SUCCESS</div><div class="line">[INFO] ------------------------------------------------------------------------</div><div class="line">[INFO] Total time: <span class="number">5.231</span> s</div><div class="line">[INFO] Finished at: <span class="number">2017</span>-<span class="number">07</span>-<span class="number">10</span>T20:<span class="number">13</span>:<span class="number">13</span>+<span class="number">08</span>:<span class="number">00</span></div><div class="line">[INFO] Final Memory: <span class="number">19</span>M/<span class="number">226</span>M</div><div class="line">[INFO] ------------------------------------------------------------------------</div></pre></td></tr></table></figure></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>原本以为两天就写好这篇文章，在自己理清思路的时候总是被自己绕晕了。比如在 Nexus 的 Central 配置的中央仓库获取，和 maven-metadata.xml 是如何比较的。</p>
 <p>如果以上文章有误，等博客的评论系统搭建起来后欢迎大家指认出来。</p>
@@ -549,15 +550,15 @@ maven-metadata- &lt;repo-id&gt;.xml在本地存储库中，用于具有repo-id�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/18/环境/" rel="next" title="Spring Boot启动流程详解">
-                <i class="fa fa-chevron-left"></i> Spring Boot启动流程详解
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/30/Logback/" rel="prev" title="LogBack 使用">
+                LogBack 使用 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -624,7 +625,7 @@ maven-metadata- &lt;repo-id&gt;.xml在本地存储库中，用于具有repo-id�
                alt="Another" />
           <p class="site-author-name" itemprop="name">Another</p>
            
-              <p class="site-description motion-element" itemprop="description">天下没有免费的午餐，所以要想得到，就必须 Strive !!!</p>
+              <p class="site-description motion-element" itemprop="description">每一个你不满意的现在，都有一个你没有努力的曾经。</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -654,7 +655,7 @@ maven-metadata- &lt;repo-id&gt;.xml在本地存储库中，用于具有repo-id�
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
