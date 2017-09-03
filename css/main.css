@@ -1677,7 +1677,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6e2278;
+  background: #46ffa2;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2546,10 +2546,6 @@ embed {
 }
 .post-button a:hover {
   color: #7784ba;
-}
-.main-inner {
-  margin: 0 auto;
-  width: 900px;
 }
 .sidebar {
   position: fixed;
