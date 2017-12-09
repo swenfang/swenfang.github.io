@@ -94,9 +94,9 @@
 
 
 <meta name="description" content="HashMap 的详细分析前言这次我和大家一起学习HashMap，HashMap我们在工作中经常会使用，而且面试中也很频繁会问到，因为它里面蕴含着很多知识点，可以很好的考察个人基础。但一个这么重要的东西，我为什么没有在一开始就去学习它呢，因为它是由多种基础的数据结构和一些代码设计思想组成的。我们要学习了这些基础，再学习HashMap，这样我们才能更好的去理解它。古人云：无欲速，无见小利。欲速则不达">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ShenWenFang">
-<meta property="og:url" content="http://yoursite.com/HashMap 的详细分析.html">
+<meta property="og:url" content="http://yoursite.com/2017/12/09/HashMap 的详细分析/index.html">
 <meta property="og:site_name" content="ShenWenFang">
 <meta property="og:description" content="HashMap 的详细分析前言这次我和大家一起学习HashMap，HashMap我们在工作中经常会使用，而且面试中也很频繁会问到，因为它里面蕴含着很多知识点，可以很好的考察个人基础。但一个这么重要的东西，我为什么没有在一开始就去学习它呢，因为它是由多种基础的数据结构和一些代码设计思想组成的。我们要学习了这些基础，再学习HashMap，这样我们才能更好的去理解它。古人云：无欲速，无见小利。欲速则不达">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/10/19/db63a0bc793f06e3d80ba8885e91c798?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/HashMap 的详细分析.html"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/09/HashMap 的详细分析/"/>
 
 
 
@@ -295,17 +295,122 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline"></h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/09/HashMap 的详细分析/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShenWenFang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShenWenFang">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-09T11:59:48+08:00">
+                2017-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/09/HashMap 的详细分析/" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  9,567 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  37 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
     
-      <h1 id="HashMap-的详细分析"><a href="#HashMap-的详细分析" class="headerlink" title="HashMap 的详细分析"></a>HashMap 的详细分析</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这次我和大家一起学习<code>HashMap</code>，<code>HashMap</code>我们在工作中经常会使用，而且面试中也很频繁会问到，因为它里面蕴含着很多知识点，可以很好的考察个人基础。但一个这么重要的东西，我为什么没有在一开始就去学习它呢，因为它是由多种基础的数据结构和一些代码设计思想组成的。我们要学习了这些基础，再学习<code>HashMap</code>，这样我们才能更好的去理解它。古人云：无欲速，无见小利。欲速则不达，见小利则大事不成。</p>
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HashMap-的详细分析"><a href="#HashMap-的详细分析" class="headerlink" title="HashMap 的详细分析"></a>HashMap 的详细分析</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这次我和大家一起学习<code>HashMap</code>，<code>HashMap</code>我们在工作中经常会使用，而且面试中也很频繁会问到，因为它里面蕴含着很多知识点，可以很好的考察个人基础。但一个这么重要的东西，我为什么没有在一开始就去学习它呢，因为它是由多种基础的数据结构和一些代码设计思想组成的。我们要学习了这些基础，再学习<code>HashMap</code>，这样我们才能更好的去理解它。古人云：无欲速，无见小利。欲速则不达，见小利则大事不成。</p>
 <p><code>HashMap</code>其实就是<code>ArrayList</code>和<code>LinkedList</code>的数据结构加上<code>hashCode</code>和<code>equals</code>方法的思想设计出来的。没有理解上述说的知识点的同学可以翻开我过往的文章记录。</p>
 <p>下面我就以面试问答的形式学习我们的——<code>HashMap</code>（源码分析基于JDK8，辅以JDK7），问答内容只是对<code>HashMap</code>的一个总结归纳，因为现时已经有大牛把<code>HashMap</code>通俗易懂的剖析了一遍，我学习<code>HashMap</code>也是主要通过这篇文章学习的，强烈推荐：美团点评技术团队的<a href="https://link.juejin.im/?target=https%3A%2F%2Ftech.meituan.com%2Fjava-hashmap.html" target="_blank" rel="external">Java 8系列之重新认识HashMap</a></p>
 <p>本文同步发布于简书：<a href="https://link.juejin.im/?target=http%3A%2F%2Fwww.jianshu.com%2Fp%2F32f67f9e71b5" target="_blank" rel="external">www.jianshu.com/p/32f67f9e7…</a></p>
@@ -502,7 +607,69 @@
 </ul>
 <h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://link.juejin.im/?target=https%3A%2F%2Ftech.meituan.com%2Fjava-hashmap.html" target="_blank" rel="external">Java 8系列之重新认识HashMap</a><br><a href="https://link.juejin.im/?target=https%3A%2F%2Fwww.zhihu.com%2Fquestion%2F20733617" target="_blank" rel="external">JDK 源码中 HashMap 的 hash 方法原理是什么？</a><br><a href="https://link.juejin.im/?target=http%3A%2F%2Fannegu.iteye.com%2Fblog%2F539465" target="_blank" rel="external">深入理解HashMap</a><br><a href="https://link.juejin.im/?target=http%3A%2F%2Fwww.cnblogs.com%2Fyesiamhere%2Fp%2F6653135.html" target="_blank" rel="external">HashMap负载因子</a><br><a href="https://link.juejin.im/?target=http%3A%2F%2Fblog.csdn.net%2Fchdjj%2Farticle%2Fdetails%2F38581035" target="_blank" rel="external">Hashtable源码剖析</a><br><a href="https://link.juejin.im/?target=http%3A%2F%2Fwww.importnew.com%2F13384.html" target="_blank" rel="external">危险！在HashMap中将可变对象用作Key</a><br><a href="https://link.juejin.im/?target=http%3A%2F%2Fwww.importnew.com%2F22011.html" target="_blank" rel="external">谈谈HashMap线程不安全的体现</a></p>
 
-    
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/09/ArrayList 源码分析/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/09/LinkedList 源码分析/" rel="prev" title="LinkedList 源码分析">
+                LinkedList 源码分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -562,7 +729,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -733,10 +900,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 

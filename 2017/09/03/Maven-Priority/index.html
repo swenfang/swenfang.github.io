@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://yoursite.com/images/maven-logo.png">
 <meta property="og:image" content="http://yoursite.com/images/example.png">
 <meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/20170710163449.png">
-<meta property="og:updated_time" content="2017-07-26T08:22:20.000Z">
+<meta property="og:updated_time" content="2017-12-09T07:21:07.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maven仓库理解和优先级">
 <meta name="twitter:description" content="5 Seven 2017 前言使用 maven 也有一段时间了，有时候在配置 repository,mirror,profile的时候，总会导致 jar 拉取不到。所以认真的分析了 maven 获取 jar 包时候的优先级。">
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  4,758 字
+                  4,759 字
                 </span>
               
 
@@ -437,7 +437,7 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用 maven 也有一段时间了，有时候在配置 repository,mirror,profile的时候，总会导致 jar 拉取不到。所以认真的分析了 maven 获取 jar 包时候的优先级。<br><a id="more"></a></p>
 <h2 id="Maven-仓库的分类"><a href="#Maven-仓库的分类" class="headerlink" title="Maven 仓库的分类"></a>Maven 仓库的分类</h2><p>仓库分类：本地仓库和远程仓库。Maven根据坐标寻找构件的时候，它先会查看本地仓库，如果本地仓库存在构件，则直接使用；如果没有，则从远程仓库查找，找到后，下载到本地。</p>
 <p>1）本地仓库<br>默认情况下，每个用户在自己的用户目录下都有一个路径名为.m2/repository/的仓库目录。我们也可以在 settings.xml 文件配置本地仓库的地址</p>
-<p>2）远程仓库<br>本地仓库好比书房，而远程仓库就像是书店。对于Maven来说，每个用户只有一个本地仓库，但是可以配置多个远程仓库。</p>
+<p>2）远程仓库<br>本地仓库好比书房，而远程仓库就像是书店。对于Maven来说，每个用户只有一个本地仓库，但是可以配置多个远程仓库。<br>下·</p>
 <blockquote>
 <p>我们可以在 pom 文件配置多个 repository，但是随着项目越来也多我们每次都要在 pom 文件配置比较麻烦，所以我们可以在<br>settings 文件配置 profile （私服）。这样我们每次创建新项目的时候就可以不用配置 repository。</p>
 </blockquote>
@@ -560,8 +560,8 @@ maven-metadata- &lt;repo-id&gt;.xml在本地存储库中，用于具有repo-id�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/03/AAAAA/" rel="prev" title="AAAAAA">
-                AAAAAA <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/09/ArrayList 源码分析/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -637,7 +637,7 @@ maven-metadata- &lt;repo-id&gt;.xml在本地存储库中，用于具有repo-id�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
