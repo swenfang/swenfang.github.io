@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/10/(两到三年)Java 面试精髓/index.html">
 <meta property="og:site_name" content="ShenWenFang">
 <meta property="og:description" content="(两到三年)Java 面试精髓Struts2框架的执行流程 ?从客户端发送请求过来,先经过前端控制器（核心过滤器）过滤器中,执行一组拦截器（一组拦截器 就会完成部分功能代码）执行目标Action, 在Action中返回一个结果视图,根据Result的配置进行页面的跳转. Struts2和Struts1没有任何联系.Struts2内核是webwork的内核. hibernate框架的理解?定义: H">
-<meta property="og:updated_time" content="2017-12-10T13:15:27.716Z">
+<meta property="og:updated_time" content="2017-12-10T13:24:21.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(两到三年)Java 面试精髓">
 <meta name="twitter:description" content="(两到三年)Java 面试精髓Struts2框架的执行流程 ?从客户端发送请求过来,先经过前端控制器（核心过滤器）过滤器中,执行一组拦截器（一组拦截器 就会完成部分功能代码）执行目标Action, 在Action中返回一个结果视图,根据Result的配置进行页面的跳转. Struts2和Struts1没有任何联系.Struts2内核是webwork的内核. hibernate框架的理解?定义: H">
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  5,552 字
+                  6,415 字
                 </span>
               
 
@@ -410,7 +410,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  20 分钟
+                  23 分钟
                 </span>
               
             </div>
@@ -661,6 +661,40 @@
 <p>1.1.2.Service层</p>
 <p>参数：OrderInfo</p>
 <h2 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h2><p>单点登录就是我们是做了分布式，tomcat集群之后会有session复制的问题，影响利群数量。所以把注册登录拿出来单独做了一个单点登录系统。做的时候是用的redis，key是用uuid生成的一个token,类似于session id,是用户的唯一标识，value是用户的信息。设置了有效期是7天。然后把redis放到了cookie中，实现了cookie的二级跨域。当我们进行操作时，首先要从cookie里面取出token如果取不到，就跳到单点登录系统进行登录操作如果取到了，再看看token有没有过期，如果过期了，也是跳到单点登录系统登录一下，没过期就继续用户的操作。密码进行了加密，用Md5</p>
+<h2 id="HashMap-和-HashTable-的区别"><a href="#HashMap-和-HashTable-的区别" class="headerlink" title="HashMap 和 HashTable 的区别"></a>HashMap 和 HashTable 的区别</h2><p>1）容器整体结构：</p>
+<ul>
+<li><code>HashMap</code>的<code>key</code>和<code>value</code>都允许为<code>null</code>，<code>HashMap</code>遇到<code>key</code>为<code>null</code>的时候，调用<code>putForNullKey</code>方法进行处理，而对<code>value</code>没有处理。</li>
+<li><code>Hashtable</code>的<code>key</code>和<code>value</code>都不允许为<code>null</code>。<code>Hashtable</code>遇到<code>null</code>，直接返回<code>NullPointerException</code>。</li>
+</ul>
+<p>2） 容量设定与扩容机制：</p>
+<ul>
+<li><code>HashMap</code>默认初始化容量为 16，并且容器容量一定是2的n次方，扩容时，是以原容量 2倍 的方式 进行扩容。</li>
+<li><code>Hashtable</code>默认初始化容量为 11，扩容时，是以原容量 2倍 再加 1的方式进行扩容。即<code>int newCapacity = (oldCapacity &lt;&lt; 1) + 1;</code>。</li>
+</ul>
+<p>3） 散列分布方式（计算存储位置）：</p>
+<ul>
+<li><code>HashMap</code>是先将<code>key</code>键的<code>hashCode</code>经过扰动函数扰动后得到<code>hash</code>值，然后再利用 <code>hash &amp; (length - 1)</code>的方式代替取模，得到元素的存储位置。</li>
+<li><code>Hashtable</code>则是除留余数法进行计算存储位置的（因为其默认容量也不是2的n次方。所以也无法用位运算替代模运算），<code>int index = (hash &amp; 0x7FFFFFFF) % tab.length;</code>。</li>
+<li>由于<code>HashMap</code>的容器容量一定是2的n次方，所以能使用<code>hash &amp; (length - 1)</code>的方式代替取模的方式计算元素的位置提高运算效率，但<code>Hashtable</code>的容器容量不一定是2的n次方，所以不能使用此运算方式代替。</li>
+</ul>
+<p>4）线程安全（最重要）：</p>
+<ul>
+<li><code>HashMap</code> 不是线程安全，如果想线程安全，可以通过调用<code>synchronizedMap(Map&lt;K,V&gt; m)</code>使其线程安全。但是使用时的运行效率会下降，所以建议使用<code>ConcurrentHashMap</code>容器以此达到线程安全。</li>
+<li><code>Hashtable</code>则是线程安全的，每个操作方法前都有<code>synchronized</code>修饰使其同步，但运行效率也不高，所以还是建议使用<code>ConcurrentHashMap</code>容器以此达到线程安全。</li>
+</ul>
+<p>因此，<code>Hashtable</code>是一个遗留容器，如果我们不需要线程同步，则建议使用<code>HashMap</code>，如果需要线程同步，则建议使用<code>ConcurrentHashMap</code>。</p>
+<h2 id="ArrayList和LinkedList-的区别"><a href="#ArrayList和LinkedList-的区别" class="headerlink" title="ArrayList和LinkedList 的区别"></a>ArrayList和LinkedList 的区别</h2><ol>
+<li>LinkedList内部存储的是<code>Node&lt;E&gt;</code>，不仅要维护数据域，还要维护<code>prev</code>和<code>next</code>，如果LinkedList中的结点特别多，则LinkedList比ArrayList更占内存。</li>
+<li>插入删除操作效率：<br>LinkedList在做插入和删除操作时，插入或删除头部或尾部时是高效的，操作越靠近中间位置的元素时，需要遍历查找，速度相对慢一些，如果在数据量较大时，每次插入或删除时遍历查找比较费时。所以LinkedList插入与删除，慢在遍历查找，快在只需要更改相关结点的引用地址。<br>ArrayList在做插入和删除操作时，插入或删除尾部时也一样是高效的，操作其他位置，则需要批量移动元素，所以ArrayList插入与删除，快在遍历查找，慢在需要批量移动元素。</li>
+<li>循环遍历效率：</li>
+</ol>
+<ul>
+<li>由于ArrayList实现了<code>RandomAccess</code>随机访问接口，所以使用for(int i = 0; i &lt; size; i++)遍历会比使用Iterator迭代器来遍历快</li>
+</ul>
+<ul>
+<li>而由于LinkedList未实现<code>RandomAccess</code>接口，所以推荐使用Iterator迭代器来遍历数据。</li>
+<li>因此，如果我们需要频繁在列表的中部改变插入或删除元素时，建议使用LinkedList，否则，建议使用ArrayList，因为ArrayList遍历查找元素较快，并且只需存储元素的数据域，不需要额外记录其他数据的位置信息，可以节省内存空间。</li>
+</ul>
 
       
     </div>
@@ -848,7 +882,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#两到三年-Java-面试精髓"><span class="nav-number">1.</span> <span class="nav-text">(两到三年)Java 面试精髓</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Struts2框架的执行流程"><span class="nav-number">1.1.</span> <span class="nav-text">Struts2框架的执行流程 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hibernate框架的理解"><span class="nav-number">1.2.</span> <span class="nav-text">hibernate框架的理解?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring框架的理解"><span class="nav-number">1.3.</span> <span class="nav-text">Spring框架的理解?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringMVC的理解"><span class="nav-number">1.4.</span> <span class="nav-text">SpringMVC的理解?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis的理解"><span class="nav-number">1.5.</span> <span class="nav-text">Mybatis的理解?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet的理解"><span class="nav-number">1.6.</span> <span class="nav-text">Servlet的理解?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Struts2与SpringMVC的区别"><span class="nav-number">1.7.</span> <span class="nav-text">Struts2与SpringMVC的区别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp的核心及核心标签"><span class="nav-number">1.8.</span> <span class="nav-text">Jsp的核心及核心标签?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis什么情况下使用，redis持久化方案"><span class="nav-number">1.9.</span> <span class="nav-text">Redis什么情况下使用，redis持久化方案?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hibernate和Mybatis的区别和优劣"><span class="nav-number">1.10.</span> <span class="nav-text">Hibernate和Mybatis的区别和优劣?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StringBuffer、StringBuilder的区别"><span class="nav-number">1.11.</span> <span class="nav-text">StringBuffer、StringBuilder的区别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说一下SOLR"><span class="nav-number">1.12.</span> <span class="nav-text">说一下SOLR?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solr与Lucene的区别"><span class="nav-number">1.13.</span> <span class="nav-text">Solr与Lucene的区别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Redis"><span class="nav-number">1.14.</span> <span class="nav-text">什么是Redis?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谈下DUBBO"><span class="nav-number">1.15.</span> <span class="nav-text">谈下DUBBO?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决跨域问题"><span class="nav-number">1.16.</span> <span class="nav-text">解决跨域问题?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#秒杀方案："><span class="nav-number">1.17.</span> <span class="nav-text">秒杀方案：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZOOKeeper"><span class="nav-number">1.18.</span> <span class="nav-text">ZOOKeeper?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ActiveMQ的消息形式"><span class="nav-number">1.19.</span> <span class="nav-text">ActiveMQ的消息形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单点登录"><span class="nav-number">1.20.</span> <span class="nav-text">单点登录</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#两到三年-Java-面试精髓"><span class="nav-number">1.</span> <span class="nav-text">(两到三年)Java 面试精髓</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Struts2框架的执行流程"><span class="nav-number">1.1.</span> <span class="nav-text">Struts2框架的执行流程 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hibernate框架的理解"><span class="nav-number">1.2.</span> <span class="nav-text">hibernate框架的理解?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring框架的理解"><span class="nav-number">1.3.</span> <span class="nav-text">Spring框架的理解?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringMVC的理解"><span class="nav-number">1.4.</span> <span class="nav-text">SpringMVC的理解?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis的理解"><span class="nav-number">1.5.</span> <span class="nav-text">Mybatis的理解?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet的理解"><span class="nav-number">1.6.</span> <span class="nav-text">Servlet的理解?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Struts2与SpringMVC的区别"><span class="nav-number">1.7.</span> <span class="nav-text">Struts2与SpringMVC的区别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp的核心及核心标签"><span class="nav-number">1.8.</span> <span class="nav-text">Jsp的核心及核心标签?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis什么情况下使用，redis持久化方案"><span class="nav-number">1.9.</span> <span class="nav-text">Redis什么情况下使用，redis持久化方案?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hibernate和Mybatis的区别和优劣"><span class="nav-number">1.10.</span> <span class="nav-text">Hibernate和Mybatis的区别和优劣?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StringBuffer、StringBuilder的区别"><span class="nav-number">1.11.</span> <span class="nav-text">StringBuffer、StringBuilder的区别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说一下SOLR"><span class="nav-number">1.12.</span> <span class="nav-text">说一下SOLR?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solr与Lucene的区别"><span class="nav-number">1.13.</span> <span class="nav-text">Solr与Lucene的区别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Redis"><span class="nav-number">1.14.</span> <span class="nav-text">什么是Redis?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谈下DUBBO"><span class="nav-number">1.15.</span> <span class="nav-text">谈下DUBBO?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决跨域问题"><span class="nav-number">1.16.</span> <span class="nav-text">解决跨域问题?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#秒杀方案："><span class="nav-number">1.17.</span> <span class="nav-text">秒杀方案：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZOOKeeper"><span class="nav-number">1.18.</span> <span class="nav-text">ZOOKeeper?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ActiveMQ的消息形式"><span class="nav-number">1.19.</span> <span class="nav-text">ActiveMQ的消息形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单点登录"><span class="nav-number">1.20.</span> <span class="nav-text">单点登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-和-HashTable-的区别"><span class="nav-number">1.21.</span> <span class="nav-text">HashMap 和 HashTable 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList和LinkedList-的区别"><span class="nav-number">1.22.</span> <span class="nav-text">ArrayList和LinkedList 的区别</span></a></li></ol></li></ol></div>
             
 
           </div>
