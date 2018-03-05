@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="ArrayList 源码分析 前言以面试问答的形式学习我们的最常用的装载容器——ArrayList（源码分析基于JDK8） 问答内容ArrayList是什么，可以用来干嘛？问：ArrayList有用过吗？它是一个什么东西？可以用来干嘛？ 答：有用过，ArrayList就是数组列表，主要用来装载数据，当我们装载的是基本类型的数据int,long,boolean,short,byte...的时候我们只">
+<meta name="description" content="ArrayList 源码分析 前言以面试问答的形式学习我们的最常用的装载容器——ArrayList（源码分析基于JDK8）">
 <meta name="keywords" content="基础数据类型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ArrayList 源码分析">
 <meta property="og:url" content="http://yoursite.com/2017/12/09/ArrayList 源码分析/index.html">
 <meta property="og:site_name" content="ShenWenFang">
-<meta property="og:description" content="ArrayList 源码分析 前言以面试问答的形式学习我们的最常用的装载容器——ArrayList（源码分析基于JDK8） 问答内容ArrayList是什么，可以用来干嘛？问：ArrayList有用过吗？它是一个什么东西？可以用来干嘛？ 答：有用过，ArrayList就是数组列表，主要用来装载数据，当我们装载的是基本类型的数据int,long,boolean,short,byte...的时候我们只">
+<meta property="og:description" content="ArrayList 源码分析 前言以面试问答的形式学习我们的最常用的装载容器——ArrayList（源码分析基于JDK8）">
 <meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/171208/C88BKj3C76.png">
-<meta property="og:updated_time" content="2017-12-09T09:12:40.621Z">
+<meta property="og:updated_time" content="2018-01-22T15:14:09.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArrayList 源码分析">
-<meta name="twitter:description" content="ArrayList 源码分析 前言以面试问答的形式学习我们的最常用的装载容器——ArrayList（源码分析基于JDK8） 问答内容ArrayList是什么，可以用来干嘛？问：ArrayList有用过吗？它是一个什么东西？可以用来干嘛？ 答：有用过，ArrayList就是数组列表，主要用来装载数据，当我们装载的是基本类型的数据int,long,boolean,short,byte...的时候我们只">
+<meta name="twitter:description" content="ArrayList 源码分析 前言以面试问答的形式学习我们的最常用的装载容器——ArrayList（源码分析基于JDK8）">
 <meta name="twitter:image" content="http://orbs83j4x.bkt.clouddn.com/blog/171208/C88BKj3C76.png">
 
 
@@ -421,6 +421,7 @@
       
         <h1 id="ArrayList-源码分析"><a href="#ArrayList-源码分析" class="headerlink" title="ArrayList 源码分析"></a>ArrayList 源码分析</h1><p><img src="http://orbs83j4x.bkt.clouddn.com/blog/171208/C88BKj3C76.png" alt="mark"></p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>以面试问答的形式学习我们的最常用的装载容器——<code>ArrayList</code>（源码分析基于JDK8）</p>
+<a id="more"></a>
 <h1 id="问答内容"><a href="#问答内容" class="headerlink" title="问答内容"></a>问答内容</h1><h2 id="ArrayList是什么，可以用来干嘛？"><a href="#ArrayList是什么，可以用来干嘛？" class="headerlink" title="ArrayList是什么，可以用来干嘛？"></a>ArrayList是什么，可以用来干嘛？</h2><p>问：ArrayList有用过吗？它是一个什么东西？可以用来干嘛？</p>
 <p>答：有用过，ArrayList就是数组列表，主要用来装载数据，当我们装载的是基本类型的数据<code>int,long,boolean,short,byte...</code>的时候我们只能存储他们对应的包装类，它的主要底层实现是数组<code>Object[] elementData</code>。与它类似的是LinkedList，和LinkedList相比，它的查找和访问元素的速度较快，但新增，删除的速度较慢。</p>
 <p>示例代码：</p>
@@ -473,6 +474,35 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="ShenWenFang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ShenWenFang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -592,7 +622,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

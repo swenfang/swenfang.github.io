@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="数据迭代的基本用法：for 循环的使用12345&amp;gt;&amp;gt;&amp;gt;fav_movies = [&quot;The Holy Crail&quot;,&quot;The Life of Brian&quot;]&amp;gt;&amp;gt;&amp;gt;for each_flick in fav_movies:print(each_flick)The Holy CrailThe Life of Brian while 循环的使用1234567&amp;gt;&amp;">
+<meta name="description" content="数据迭代的基本用法：for 循环的使用12345&amp;gt;&amp;gt;&amp;gt;fav_movies = [&quot;The Holy Crail&quot;,&quot;The Life of Brian&quot;]&amp;gt;&amp;gt;&amp;gt;for each_flick in fav_movies:print(each_flick)The Holy CrailThe Life of Brian">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据迭代的基本用法">
 <meta property="og:url" content="http://yoursite.com/2017/12/20/python列表迭代/index.html">
 <meta property="og:site_name" content="ShenWenFang">
-<meta property="og:description" content="数据迭代的基本用法：for 循环的使用12345&amp;gt;&amp;gt;&amp;gt;fav_movies = [&quot;The Holy Crail&quot;,&quot;The Life of Brian&quot;]&amp;gt;&amp;gt;&amp;gt;for each_flick in fav_movies:print(each_flick)The Holy CrailThe Life of Brian while 循环的使用1234567&amp;gt;&amp;">
-<meta property="og:updated_time" content="2017-12-20T15:46:09.077Z">
+<meta property="og:description" content="数据迭代的基本用法：for 循环的使用12345&amp;gt;&amp;gt;&amp;gt;fav_movies = [&quot;The Holy Crail&quot;,&quot;The Life of Brian&quot;]&amp;gt;&amp;gt;&amp;gt;for each_flick in fav_movies:print(each_flick)The Holy CrailThe Life of Brian">
+<meta property="og:updated_time" content="2018-01-22T15:14:09.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据迭代的基本用法">
-<meta name="twitter:description" content="数据迭代的基本用法：for 循环的使用12345&amp;gt;&amp;gt;&amp;gt;fav_movies = [&quot;The Holy Crail&quot;,&quot;The Life of Brian&quot;]&amp;gt;&amp;gt;&amp;gt;for each_flick in fav_movies:print(each_flick)The Holy CrailThe Life of Brian while 循环的使用1234567&amp;gt;&amp;">
+<meta name="twitter:description" content="数据迭代的基本用法：for 循环的使用12345&amp;gt;&amp;gt;&amp;gt;fav_movies = [&quot;The Holy Crail&quot;,&quot;The Life of Brian&quot;]&amp;gt;&amp;gt;&amp;gt;for each_flick in fav_movies:print(each_flick)The Holy CrailThe Life of Brian">
 
 
 
@@ -418,6 +418,7 @@
 
       
         <h1 id="数据迭代的基本用法："><a href="#数据迭代的基本用法：" class="headerlink" title="数据迭代的基本用法："></a>数据迭代的基本用法：</h1><h2 id="for-循环的使用"><a href="#for-循环的使用" class="headerlink" title="for 循环的使用"></a>for 循环的使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;fav_movies = [<span class="string">"The Holy Crail"</span>,<span class="string">"The Life of Brian"</span>]</div><div class="line">&gt;&gt;&gt;<span class="keyword">for</span> each_flick <span class="keyword">in</span> fav_movies:print(each_flick)</div><div class="line"></div><div class="line">The Holy Crail</div><div class="line">The Life of Brian</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="while-循环的使用"><a href="#while-循环的使用" class="headerlink" title="while 循环的使用"></a>while 循环的使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;count=<span class="number">2</span></div><div class="line">&gt;&gt;&gt;<span class="keyword">while</span> count&gt;<span class="number">0</span>: 【注意加冒号了再回车】</div><div class="line">		print(<span class="string">"aaaa"</span>) 【如果正确会自动缩进】</div><div class="line">		count = count<span class="number">-1</span></div><div class="line">		</div><div class="line">aaaa 【输出结果】</div><div class="line">aaaa</div></pre></td></tr></table></figure>
 <h2 id="enumerate，dict，zip-使用"><a href="#enumerate，dict，zip-使用" class="headerlink" title="enumerate，dict，zip  使用"></a>enumerate，dict，zip  使用</h2><p>通过一个练习，看看这三个函数怎么用的哈。小丽，你也跟着敲一下代码，看看运行效果</p>
 <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>现有:</p>
@@ -462,6 +463,35 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="ShenWenFang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ShenWenFang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
@@ -482,7 +512,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/20/如何安装/" rel="next" title="Python3 安装">
+              <a href="/2017/12/20/Python3 安装/" rel="next" title="Python3 安装">
                 <i class="fa fa-chevron-left"></i> Python3 安装
               </a>
             
@@ -580,7 +610,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
