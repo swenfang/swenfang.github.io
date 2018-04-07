@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/26/ConcurrentHashMap的使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/26/Java 8 ConcurrentHashMap 源码解读/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -304,7 +304,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/26/ConcurrentHashMap的使用/" itemprop="url">ConcurrentHashMap的使用</a></h1>
+                <a class="post-title-link" href="/2017/12/26/Java 8 ConcurrentHashMap 源码解读/" itemprop="url">ConcurrentHashMap 源码解读</a></h1>
         
 
         <div class="post-meta">
@@ -356,7 +356,7 @@
 
           
           
-             <span id="/2017/12/26/ConcurrentHashMap的使用/" class="leancloud_visitors" data-flag-title="ConcurrentHashMap的使用">
+             <span id="/2017/12/26/Java 8 ConcurrentHashMap 源码解读/" class="leancloud_visitors" data-flag-title="ConcurrentHashMap 源码解读">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -381,7 +381,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  809 字
+                  14,185 字
                 </span>
               
 
@@ -397,7 +397,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  61 分钟
                 </span>
               
             </div>
@@ -419,15 +419,16 @@
 
       
         
-          <h1 id="ConcurrentHashMap的使用"><a href="#ConcurrentHashMap的使用" class="headerlink" title="ConcurrentHashMap的使用"></a>ConcurrentHashMap的使用</h1><p>缓存的使用</p>
-<ul>
-<li>高性能本地缓存：对系统中常用到的业务数据放到缓存中以提高系统性能，限制是单服务器模式</li>
-<li>分布式缓存：常用分布式缓存技术memcached、redis等</li>
-</ul>
-<p>ConcurrentHashMap就是常用的高并发下的缓存对象。<br>
+          
+          Java 8 ConcurrentHashMap 源码解读 ConcurrentHashMap 当之无愧是支持并发最好的键值对（Map）集合。在日常编码中，出场率也相当之高。在jdk8中，集合类 ConcurrentHashMap 经 Doug Lea 大师之手，借助volatile语义以及CAS操作进行优化，使得该集合类更好地发挥出了并发的优势。与jdk7中相比，在原有段锁（Segment）的基础上，引入了数组＋链表＋红黑树的存储模型，在查询效率上花费了不少心思。
+
+基础数据结构ConcurrentHashMap内存存储结构图大致如下：
+
+概述1、设计首要目的：维护并发可读性（get、迭代相
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/26/ConcurrentHashMap的使用/#more" rel="contents">
+            <a class="btn" href="/2017/12/26/Java 8 ConcurrentHashMap 源码解读/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
