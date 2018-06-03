@@ -387,7 +387,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,505 字
+                  1,554 字
                 </span>
               
 
@@ -457,7 +457,7 @@
 <p>(3) HashMap是线程不安全的，不要在并发的环境中同时操作HashMap，建议使用ConcurrentHashMap。</p>
 <p>(4) JDK1.8引入红黑树大程度优化了HashMap的性能。</p>
 <p>(5) 还没升级JDK1.8的，现在开始升级吧。HashMap的性能提升仅仅是JDK1.8的冰山一角。</p>
-
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="http://yoursite.com/2018/06/03/ArrayList 源码分析/">ArrayList 源码分析</a></li><li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的使用/">ConcurrentHashMap的使用</a></li><li><a href="http://yoursite.com/2018/06/03/HashMap 的详细分析/">HashMap 的详细分析</a></li><li><a href="http://yoursite.com/2018/06/03/HashMap源码分析/">HashMap 的源码分析</a></li><li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的锁分离技术/">ConcurrentHashMap 的锁定分离技术</a></li><li><a href="http://yoursite.com/2018/06/03/HashMap1.7 和 1.8 扩容机制的比较/">HashMap 的扩容机制</a></li></ul></div>
       
     </div>
     
@@ -527,19 +527,17 @@
     <strong>推荐文章 </strong>
     <ul>
         
-            <li><a href="http://yoursite.com/2018/06/03/Java 8 ConcurrentHashMap 源码解读/">ConcurrentHashMap 源码解读</a></li>
+            <li><a href="http://yoursite.com/2018/06/03/ArrayList 源码分析/">ArrayList 源码分析</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/IntelliJ IDEA  调试教程/">IntelliJ IDEA  调试教程</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/IDEA 版本控制/">IntelliJ IDEA  版本控制的使用</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/HashMap源码分析/">HashMap 的源码分析</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/HashMap1.7 和 1.8 扩容机制的比较/">HashMap 的扩容机制</a></li>
+            <li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的使用/">ConcurrentHashMap的使用</a></li>
         
             <li><a href="http://yoursite.com/2018/06/03/HashMap 的详细分析/">HashMap 的详细分析</a></li>
         
+            <li><a href="http://yoursite.com/2018/06/03/HashMap源码分析/">HashMap 的源码分析</a></li>
+        
             <li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的锁分离技术/">ConcurrentHashMap 的锁定分离技术</a></li>
+        
+            <li><a href="http://yoursite.com/2018/06/03/HashMap1.7 和 1.8 扩容机制的比较/">HashMap 的扩容机制</a></li>
         
     </ul>
     
@@ -722,7 +720,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程安全性"><span class="nav-number">1.</span> <span class="nav-text">线程安全性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDK1-8与JDK1-7的性能对比"><span class="nav-number">2.</span> <span class="nav-text">JDK1.8与JDK1.7的性能对比</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash较均匀的情况"><span class="nav-number">2.1.</span> <span class="nav-text">Hash较均匀的情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash极不均匀的情况"><span class="nav-number">2.2.</span> <span class="nav-text">Hash极不均匀的情况</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程安全性"><span class="nav-number">1.</span> <span class="nav-text">线程安全性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDK1-8与JDK1-7的性能对比"><span class="nav-number">2.</span> <span class="nav-text">JDK1.8与JDK1.7的性能对比</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash较均匀的情况"><span class="nav-number">2.1.</span> <span class="nav-text">Hash较均匀的情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash极不均匀的情况"><span class="nav-number">2.2.</span> <span class="nav-text">Hash极不均匀的情况</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">推荐文章（由hexo文章推荐插件驱动）</span></a></li></ol></div>
             
 
           </div>
