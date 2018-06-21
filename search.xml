@@ -3,6 +3,277 @@
   
     
     <entry>
+      <title><![CDATA[你的面试题]]></title>
+      <url>/2018/06/21/%E4%BD%A0%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+      <content type="html"><![CDATA[<h1 id="你的面试题"><a href="#你的面试题" class="headerlink" title="你的面试题"></a>你的面试题</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>找工作对于每个人来说对都都意味着你将接受企业对你的考验。在接受考验之前我们应该做好准备，才能提高自己的信心进而坦然的迎接每一次考验。不断的积累经验，不气馁、不抱怨、不放弃直到找到属于自己的岗位，并为之努力。</p>
+<h2 id="java中有哪些集合，主要方法有哪些"><a href="#java中有哪些集合，主要方法有哪些" class="headerlink" title="java中有哪些集合，主要方法有哪些"></a>java中有哪些集合，主要方法有哪些</h2><p>主要有LinkedList，ArrayList，Vector等。下面是详细：<br>Collection<br>├List<br>│├LinkedList<br>│├ArrayList<br>│└Vector<br>│ └Stack<br>└Set<br>Map<br>├Hashtable<br>├HashMap<br>└WeakHashMap<br>List 的具体实现包括 ArrayList 和 Vector，它们是可变大小的列表，比较适合构建、存储和操作任何类型对象的元素列表。 List 适用于按数值索引访问元素的情形。</p>
+<p> Map 提供了一个更通用的元素存储方法。 Map 集合类用于存储元素对（称作“键”和“值”）其中每个键映射到一个值。</p>
+<h2 id="List、Set、Map是否继承自Collection接口"><a href="#List、Set、Map是否继承自Collection接口" class="headerlink" title="List、Set、Map是否继承自Collection接口"></a>List、Set、Map是否继承自Collection接口</h2><p>List、Set 是，Map 不是。Map是键值对映射容器，与List和Set有明显的区别，而Set存储的零散的元素且不允许有重复元素，List是线性结构的容器，适用于按数值索引访问元素的情形。</p>
+<h2 id="List、Map、Set接口，存取元素时各自特点"><a href="#List、Map、Set接口，存取元素时各自特点" class="headerlink" title="List、Map、Set接口，存取元素时各自特点"></a>List、Map、Set接口，存取元素时各自特点</h2><p>List 以特定次序来持有元素，可有重复元素。Set 无法拥有重复元素,内部排序。Map 保存key-value值，value可多值。<br>  List的遍历： List接口有size()和get()方法，用这两个方法可以实现对List的遍历。size()方法得到List中的元素个数。get()方法取得某个位置上的元素</p>
+<h2 id="List-和-set"><a href="#List-和-set" class="headerlink" title="List 和 set"></a>List 和 set</h2><p>List：元素是有序的，元素可以重复，因为该集合体系有索引<br>Set：元素是无序的，元素不可以重复（存入和取出的顺序不一定一致）</p>
+<h2 id="List中常见的三个子类"><a href="#List中常见的三个子类" class="headerlink" title="List中常见的三个子类"></a>List中常见的三个子类</h2><ol>
+<li>ArrayList ：底层的数据使用的是数组结构。 特点：查询速度很快，但是增删稍慢。线程不同步，效率高 。可变长度数组，默认容量为10的空列表，如果超过了，则50%的增加</li>
+<li>LinkedList ：底层的数据使用的是链表数据结构。 特点：增删数度很快，但是查询稍慢。</li>
+<li>Vector：底层使用的是数组结构。枚举是Vector特有的取出方式是同步的，效率较低，被ArrayList替代。最早出现的。默认容量为10的空列表，如果超过了，则100%的增加.</li>
+</ol>
+<h2 id="ArrayList-与-LinkedList-的区别"><a href="#ArrayList-与-LinkedList-的区别" class="headerlink" title="ArrayList 与 LinkedList 的区别"></a>ArrayList 与 LinkedList 的区别</h2><p>最明显的区别是 ArrrayList 底层的数据结构是数组，支持随机访问，而 LinkedList 的底层数据结构是链表，不支持随机访问。使用下标访问一个元素，ArrayList 的时间复杂度是 O(1)，而 LinkedList 是 O(n)。<br>1.LinkedList内部存储的是Node<e>，不仅要维护数据域，还要维护prev和next，如果LinkedList中的结点特别多，则LinkedList比ArrayList更占内存。<br>插入删除操作效率：<br>2.LinkedList在做插入和删除操作时，插入或删除头部或尾部时是高效的，操作越靠近中间位置的元素时，需要遍历查找，速度相对慢一些，如果在数据量较大时，每次插入或删除时遍历查找比较费时。所以LinkedList插入与删除，慢在遍历查找，快在只需要更改相关结点的引用地址。<br>ArrayList在做插入和删除操作时，插入或删除尾部时也一样是高效的，操作其他位置，则需要批量移动元素，所以ArrayList插入与删除，快在遍历查找，慢在需要批量移动元素。<br>3.循环遍历效率：<br>由于ArrayList实现了RandomAccess随机访问接口，所以使用for(int i = 0; i &lt; size; i++)遍历会比使用Iterator迭代器来遍历快<br>而由于LinkedList未实现RandomAccess接口，所以推荐使用Iterator迭代器来遍历数据。<br>因此，如果我们需要频繁在列表的中部改变插入或删除元素时，建议使用LinkedList，否则，建议使用ArrayList，因为ArrayList遍历查找元素较快，并且只需存储元素的数据域，不需要额外记录其他数据的位置信息，可以节省内存空间。</e></p>
+<h2 id="Java-中的-LinkedList-是单向链表还是双向链表"><a href="#Java-中的-LinkedList-是单向链表还是双向链表" class="headerlink" title="Java 中的 LinkedList 是单向链表还是双向链表"></a>Java 中的 LinkedList 是单向链表还是双向链表</h2><p>是双向链表。</p>
+<h2 id="Vector和ArrayList的区别"><a href="#Vector和ArrayList的区别" class="headerlink" title="Vector和ArrayList的区别"></a>Vector和ArrayList的区别</h2><p>  首先看这两类都实现List接口，而List接口一共有三个实现类，分别是 ArrayList、Vector 和 LinkedList 。List 用于存放多个元素，能够维护元素的次序，并且允许元素的重复。3个具体实现类的相关区别如下：</p>
+<p>1.ArrayList是最常用的List实现类，内部是通过数组实现的，它允许对元素进行快速随机访问。数组的缺点是每个元素之间不能有间隔，当数组大小不满足时需要增加存储能力，就要将已经有数组的数据复制到新的存储空间中。当从 ArrayList 的中间位置插入或者删除元素时，需要对数组进行复制、移动、代价比较高。因此，它适合随机查找和遍历，不适合插入和删除。<br>2.Vector与ArrayList一样，也是通过数组实现的，不同的是它支持线程的同步，即某一时刻只有一个线程能够写Vector，避免多线程同时写而引起的不一致性，但实现同步需要很高的花费，因此，访问它比访问ArrayList慢。<br>3.LinkedList是用链表结构存储数据的，很适合数据的动态插入和删除，随机访问和遍历速度比较慢。另外，他还提供了List接口中没有定义的方法，专门用于操作表头和表尾元素，可以当作堆栈、队列和双向队列使用。</p>
+<h2 id="HashMap与HashTable的区别"><a href="#HashMap与HashTable的区别" class="headerlink" title="HashMap与HashTable的区别"></a>HashMap与HashTable的区别</h2><p>1、HashMap 是非线程安全的，HashTable 是线程安全的。</p>
+<p>2、HashMap 的键和值都允许有 null 值存在，而 HashTable 则不行。</p>
+<p>3、因为线程安全的问题，HashMap 效率比 HashTable 的要高。<br>HashMap 的实现机制：<br>维护一个每个元素是一个链表的数组，而且链表中的每个节点是一个 Entry[] 键值对的数据结构。<br>实现了 数组+链表 的特性，查找快，插入删除也快。<br>对于每个 key , 他对应的数组索引下标是 int i = hash(key.hashcode)&amp;(len-1);<br>每个新加入的节点放在链表首，然后该新加入的节点指向原链表首</p>
+<h2 id="HashMap，ConcurrentHashMap与LinkedHashMap的区别"><a href="#HashMap，ConcurrentHashMap与LinkedHashMap的区别" class="headerlink" title="HashMap，ConcurrentHashMap与LinkedHashMap的区别"></a>HashMap，ConcurrentHashMap与LinkedHashMap的区别</h2><p>ConcurrentHashMap是使用了锁分段技术技术来保证线程安全的，锁分段技术：首先将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程访问<br>ConcurrentHashMap 是在每个段（segment）中线程安全的<br>LinkedHashMap维护一个双链表，可以将里面的数据按写入的顺序读出</p>
+<p>ConcurrentHashMap应用场景<br>1：ConcurrentHashMap 的应用场景是高并发，但是并不能保证线程安全，而同步的 HashMap 和 HashMap 的是锁住整个容器，而加锁之后 ConcurrentHashMap 不需要锁住整个容器，只需要锁住对应的 Segment 就好了，所以可以保证高并发同步访问，提升了效率。<br>2：可以多线程写。<br>ConcurrentHashMap把HashMap分成若干个Segmenet<br>1.get时，不加锁，先定位到segment然后在找到头结点进行读取操作。而value是volatile变量，所以可以保证在竞争条件时保证读取最新的值，如果读到的value是null，则可能正在修改，那么久调用ReadValueUnderLock函数，加锁保证读到的数据是正确的。</p>
+<p>2.Put时会加锁，一律添加到hash链的头部。</p>
+<p>3.Remove时也会加锁，由于next是final类型不可改变，所以必须把删除的节点之前的节点都复制一遍。</p>
+<p>4.ConcurrentHashMap允许多个修改操作并发进行，其关键在于使用了锁分离技术。它使用了多个锁来控制对Hash表的不同Segment进行的修改。<br>ConcurrentHashMap的应用场景是高并发，但是并不能保证线程安全，而同步的HashMap和HashTable的是锁住整个容器，而加锁之后ConcurrentHashMap不需要锁住整个容器，只需要锁住对应的segment就好了，所以可以保证高并发同步访问，提升了效率。</p>
+<h2 id="HashSet-和-HashMap-区别"><a href="#HashSet-和-HashMap-区别" class="headerlink" title="HashSet 和 HashMap 区别"></a>HashSet 和 HashMap 区别</h2><p> <strong>HashSet：</strong></p>
+<p>HashSet实现了Set接口，它不允许集合中出现重复元素。当我们提到HashSet时，第一件事就是在将对象存储在</p>
+<p>HashSet之前，要确保重写hashCode（）方法和equals（）方法，这样才能比较对象的值是否相等，确保集合中没有储存相同的对象。如果不重写上述两个方法，那么将使用下面方法默认实现：</p>
+<p>public boolean add(Object obj)方法用在Set添加元素时，如果元素值重复时返回 “false”，如果添加成功则返回”true”</p>
+<p><strong>HashMap：</strong></p>
+<p>HashMap实现了Map接口，Map接口对键值对进行映射。Map中不允许出现重复的键（Key）。Map接口有两个基本的实现TreeMap和HashMap。TreeMap保存了对象的排列次序，而HashMap不能。HashMap可以有空的键值对（Key（null）-Value（null））HashMap是非线程安全的（非Synchronize），要想实现线程安全，那么需要调用collections类的静态方法synchronizeMap（）实现。</p>
+<p>public Object put(Object Key,Object value)方法用来将元素添加到map中。</p>
+<p>总结：</p>
+<p>HashMap 实现了 Map 接口；存储键值对；调用put（）向map中添加元素；HashMap使用键（Key）计算Hashcode；HashMap相对于HashSet较快，因为它是使用唯一的键获取对象。</p>
+<p>HashSet 实现了 Set 接口；仅存储对象；调用add（）方法向Set中添加元素；HashSet使用成员对象来计算hashcode值，对于两个对象来说hashcode可能相同，所以equals()方法用来判断对象的相等性，如果两个对象不同的话，那么返回false；HashSet较HashMap来说比较慢。</p>
+<h2 id="重载和重写的区别"><a href="#重载和重写的区别" class="headerlink" title="重载和重写的区别"></a>重载和重写的区别</h2><ul>
+<li>重载：允许存在一个以上的同名函数，只要它们的参数类型不同即可。</li>
+<li>重写：当子类继承父类，沿袭了父类的功能到子类中，子类虽具备该功能，但功能内容不一致，这是使用覆盖特性，保留父类的功能定义，并重写功能内容。</li>
+</ul>
+<h2 id="forward-和redirect的区别"><a href="#forward-和redirect的区别" class="headerlink" title="forward 和redirect的区别"></a>forward 和redirect的区别</h2><p>forward是服务器请求资源，服务器直接访问目标地址的URL，把那个URL的响应内容读取过来，然后把这些内容再发给浏览器，浏览器根本不知道服务器发送的内容是从哪儿来的，所以它的地址栏中还是原来的地址。</p>
+<p>redirect就是服务端根据逻辑,发送一个状态码,告诉浏览器重新去请求那个地址，一般来说浏览器会用刚才请求的所有参数重新请求，所以session,request参数都可以获取。</p>
+<h2 id="int-和-Integer-有什么区别"><a href="#int-和-Integer-有什么区别" class="headerlink" title="int 和 Integer 有什么区别"></a>int 和 Integer 有什么区别</h2><p>Java 提供两种不同的类型：引用类型和原始类型（或内置类型）。Int 是 java 的原始数据类型，Integer 是 java为int提供的封装类。Java为每个原始类型提供了封装类。<br>原始类型封装类，booleanBoolean,charCharacter,byteByte,shortShort,intInteger,longLong,floatFloat,doubleDouble<br>引用类型和原始类型的行为完全不同，并且它们具有不同的语义。引用类型和原始类型具有不同的特征和用法，它们包括：大小和速度问题，这种类型以哪种类型的数据结构存储，当引用类型和原始类型用作某个类的实例数据时所指定的缺省值。对象引用实例变量的缺省值为 null，而原始类型实例变量的缺省值与它们的类型有关</p>
+<h2 id="error和exception有什么区别"><a href="#error和exception有什么区别" class="headerlink" title="error和exception有什么区别"></a>error和exception有什么区别</h2><p>Error和Exception都是java错误处理机制的一部分，都继承了Throwable类。</p>
+<p>Exception表示的异常，异常可以通过程序来捕捉，或者优化程序来避免。</p>
+<p>Error表示的是系统错误，不能通过程序来进行错误处理</p>
+<h2 id="throw-和-throws-的区别"><a href="#throw-和-throws-的区别" class="headerlink" title="throw 和 throws 的区别"></a>throw 和 throws 的区别</h2><p>Throw写在代码块内，throw后面跟的是一个具体的异常实例<br>Throw写在方法前面后面，throws后面跟的是异常类，异常类可以出现多个</p>
+<h2 id="常见Runtime异常"><a href="#常见Runtime异常" class="headerlink" title="常见Runtime异常"></a>常见Runtime异常</h2><ul>
+<li>ArithmeticException：算术异常</li>
+<li>InstantiationException：对象初始化异常</li>
+<li>IllegalArgumentException：参数不匹配异常</li>
+<li>ArrayIndexOutOfBoundsException：数组下标越界</li>
+<li>NullPointerException：空指针异常</li>
+<li>NumberFormatException：数字转换异常</li>
+</ul>
+<h2 id="java-属性的可见性有那些"><a href="#java-属性的可见性有那些" class="headerlink" title="java 属性的可见性有那些"></a>java 属性的可见性有那些</h2><p>属性的可见性有：公有的（public） 保护的（protected） 默认的（default）私有的（private）</p>
+<h2 id="属性的访问权限"><a href="#属性的访问权限" class="headerlink" title="属性的访问权限"></a>属性的访问权限</h2><table>
+<thead>
+<tr>
+<th>权限</th>
+<th>public</th>
+<th>protected</th>
+<th>defalut</th>
+<th>private</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同一个类中</td>
+<td>OK</td>
+<td>OK</td>
+<td>OK</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>同一个包中</td>
+<td>OK</td>
+<td>OK</td>
+<td>OK</td>
+<td></td>
+</tr>
+<tr>
+<td>子类（不同包）</td>
+<td>OK</td>
+<td>OK</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>不同包中</td>
+<td>OK</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="线程与进程的区别"><a href="#线程与进程的区别" class="headerlink" title="线程与进程的区别"></a>线程与进程的区别</h2><p>进程是系统进行资源分配和调度的一个独立单位，线程是CPU调度和分派的基本单位</p>
+<p>进程和线程的关系：</p>
+<ol>
+<li>一个线程只能属于一个进程，而一个进程可以有多个线程，但至少有一个线程。</li>
+<li>资源分配给进程，同一进程的所有线程共享该进程的所有资源。</li>
+<li>线程在执行过程中，需要协作同步。不同进程的线程间要利用消息通信的办法实现同步。</li>
+<li>线程是指进程内的一个执行单元，也是进程内的可调度实体。</li>
+</ol>
+<p>线程与进程的区别：</p>
+<ol>
+<li>调度：线程作为调度和分配的基本单位，进程作为拥有资源的基本单位。</li>
+<li>并发性：不仅进程之间可以并发执行，同一个进程的多个线程之间也可以并发执行。</li>
+<li>拥有资源：进程是拥有资源的一个独立单位，线程不拥有系统资源，但可以访问隶属于进程的资源。</li>
+<li>系统开销：在创建或撤销进程的时候，由于系统都要为之分配和回收资源，导致系统的明显大于创建或撤销线程时的开销。但进程有独立的地址空间，进程崩溃后，在保护模式下不会对其他的进程产生影响，而线程只是一个进程中的不同的执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序健壮，但是在进程切换时，耗费的资源较大，效率要差些。</li>
+</ol>
+<h2 id="创建线程的两种方式"><a href="#创建线程的两种方式" class="headerlink" title="创建线程的两种方式"></a>创建线程的两种方式</h2><ol>
+<li>继承Thread类。<ul>
+<li>定义类继承Thread；</li>
+<li>复写父类中的方法；目的：将自定义代码存储在run方法中，让线程运行。</li>
+<li>调用线程的start方法，该方法有两个作用：启动线程，调用run方法</li>
+</ul>
+</li>
+<li>实现Runnable接口<ol>
+<li>定义类实现Runnable接口。</li>
+<li>覆盖Runnable接口中的run方法。</li>
+<li>通过Thread类建立线程对象。</li>
+<li>将Runnable接口的子类对象作为实际参数传递给Thread类的构造函数。</li>
+<li>调用Thread类的start方法开启线程并调用Runnable接口子类的run方法。</li>
+</ol>
+</li>
+</ol>
+<h2 id="创建线程的实现方式和继承方式有什么区别"><a href="#创建线程的实现方式和继承方式有什么区别" class="headerlink" title="创建线程的实现方式和继承方式有什么区别"></a>创建线程的实现方式和继承方式有什么区别</h2><ol>
+<li>实现方式相比继承方式的好处： 避免了单继承的局限性（单继承只能继承一个父类）。在定义线程时，建议使用实现方式。</li>
+<li>存放代码的位置不一样：<ul>
+<li>继承Thread：线程代码存放Thread子类的run方法中</li>
+<li>实现Runnable，线程代码存在接口的子类的run方法。</li>
+</ul>
+</li>
+</ol>
+<h2 id="实现Runnable接口的好处"><a href="#实现Runnable接口的好处" class="headerlink" title="实现Runnable接口的好处"></a>实现Runnable接口的好处</h2><ol>
+<li>将线程的任务从线程的子类中分离出来，进行了单独的封装。 按照面向对象的思想将任务的封装成对象。</li>
+<li>避免了java单继承的局限性。</li>
+</ol>
+<h2 id="线程同步的方法"><a href="#线程同步的方法" class="headerlink" title="线程同步的方法"></a>线程同步的方法</h2><ol>
+<li>wait():让线程等待。将线程存储到一个线程池中。</li>
+<li>notify()：唤醒被等待的线程。通常都唤醒线程池中的第一个。让被唤醒的线程处于临时阻塞状态。</li>
+<li>notifyAll(): 唤醒所有的等待线程。将线程池中的所有线程都唤醒。</li>
+</ol>
+<h2 id="启动一个线程是用run-还是start"><a href="#启动一个线程是用run-还是start" class="headerlink" title="启动一个线程是用run()还是start()"></a>启动一个线程是用run()还是start()</h2><p>启动一个线程是调用start()方法，使线程所代表的虚拟处理机处于可运行状态，这意味着它可以由JVM调度并执行。这并不意味着线程就会立即运行。run()方法可以产生必须退出的标志来停止一个线程。</p>
+<h2 id="Java的数据结构有那些"><a href="#Java的数据结构有那些" class="headerlink" title="Java的数据结构有那些"></a>Java的数据结构有那些</h2><ul>
+<li>线性表（ArrayList）</li>
+<li>链表（LinkedList）</li>
+<li>栈（Stack）</li>
+<li>队列（Queue）</li>
+<li>图（Map）</li>
+<li>树（Tree）</li>
+</ul>
+<h2 id="Java中有几种数据类型"><a href="#Java中有几种数据类型" class="headerlink" title="Java中有几种数据类型"></a>Java中有几种数据类型</h2><ol>
+<li>整型：byte,short,int,long</li>
+<li>浮点型：float,double</li>
+<li>字符型：char</li>
+<li>布尔型：boolean</li>
+</ol>
+<h2 id="Java中的包装类都是那些"><a href="#Java中的包装类都是那些" class="headerlink" title="Java中的包装类都是那些"></a>Java中的包装类都是那些</h2><ol>
+<li>byte：<strong>Byte</strong></li>
+<li>short：<strong>Short</strong></li>
+<li>int：<strong>Integer</strong></li>
+<li>long：<strong>Long</strong></li>
+<li>float：<strong>Float</strong></li>
+<li>double：<strong>Double</strong></li>
+<li>char：<strong>Character</strong></li>
+<li>boolean：<strong>Boolean</strong></li>
+</ol>
+<h2 id="Java最顶级的父类是哪个"><a href="#Java最顶级的父类是哪个" class="headerlink" title="Java最顶级的父类是哪个"></a>Java最顶级的父类是哪个</h2><p>Object</p>
+<h2 id="Object-的常用方有哪些"><a href="#Object-的常用方有哪些" class="headerlink" title="Object 的常用方有哪些"></a>Object 的常用方有哪些</h2><p>clone()、equals()、hashCode()、notify()、notifyAll()、toString()、wait()、finalize()</p>
+<h2 id="数组实例化有几种方式"><a href="#数组实例化有几种方式" class="headerlink" title="数组实例化有几种方式"></a>数组实例化有几种方式</h2><p>静态实例化：创建数组的时候已经指定数组中的元素,int[] a=new int[]{1,3,3}</p>
+<p>动态实例化：实例化数组的时候，只指定了数组程度，数组中所有元素都是数组类型的默认值</p>
+<h2 id="实例化数组后，能不能改变数组长度呢"><a href="#实例化数组后，能不能改变数组长度呢" class="headerlink" title="实例化数组后，能不能改变数组长度呢"></a>实例化数组后，能不能改变数组长度呢</h2><p>不能，数组一旦实例化，它的长度就是固定的</p>
+<h2 id="String是最基本的数据类型吗"><a href="#String是最基本的数据类型吗" class="headerlink" title="String是最基本的数据类型吗"></a>String是最基本的数据类型吗</h2><p>java.lang.String类是final类型的，因此不可以继承这个类、不能修改这个类。为了提高效率节省空间，我们应该用StringBuffer类。</p>
+<h2 id="是否可以继承String类"><a href="#是否可以继承String类" class="headerlink" title="是否可以继承String类"></a>是否可以继承String类</h2><p>String 类是final类，不可以被继承。</p>
+<p><strong>补充：</strong>继承String本身就是一个错误的行为，对String类型最好的重用方式是关联关系（Has-A）和依赖关系（Use-A）而不是继承关系（Is-A）</p>
+<h2 id="String类的常用方法有那些"><a href="#String类的常用方法有那些" class="headerlink" title="String类的常用方法有那些"></a>String类的常用方法有那些</h2><p>charAt：返回指定索引处的字符<br>indexOf()：返回指定字符的索引<br>replace()：字符串替换<br>trim()：去除字符串两端空白<br>split()：分割字符串，返回一个分割后的字符串数组<br>getBytes()：返回字符串的byte类型数组<br>length()：返回字符串长度<br>toLowerCase()：将字符串转成小写字母<br>toUpperCase()：将字符串转成大写字符<br>substring()：截取字符串<br>format()：格式化字符串<br>equals()：字符串比较</p>
+<h2 id="与equlas有什么区别"><a href="#与equlas有什么区别" class="headerlink" title="==与equlas有什么区别"></a>==与equlas有什么区别</h2><p>==可以判断基本数据类型值是否相等，也可以判断两个对象指向的内存地址是否相同，也就是说判断两个对象是否是同一个对象，Equlas通常用来做字符串比较。</p>
+<h2 id="final关键字的作用"><a href="#final关键字的作用" class="headerlink" title="final关键字的作用"></a>final关键字的作用</h2><ol>
+<li>可以修饰类、函数、变量；</li>
+<li>被final修饰的类不可以被继承。为了避免被继承，被子类复写。final class Demo { }</li>
+<li>被final修饰的方法不可以被复写。final void show () { }</li>
+<li>被final 修饰的变量是一个常量，只能赋值一次。</li>
+<li>内部类定义在类中的局部位置上时，只能访问该局部被final修饰的局部变量。</li>
+</ol>
+<h2 id="static关键字有哪些作用"><a href="#static关键字有哪些作用" class="headerlink" title="static关键字有哪些作用"></a>static关键字有哪些作用</h2><p>static 修饰变量、修饰方法;静态块;静态内部类;静态导包;</p>
+<h2 id="abstract-class和interface有什么区别"><a href="#abstract-class和interface有什么区别" class="headerlink" title="abstract class和interface有什么区别"></a>abstract class和interface有什么区别</h2><p>抽象类与接口的区别：<br>1.接口可以多重继承 ，抽象类不可以<br>2.接口定义方法，不给实现；而抽象类可以实现部分方法<br>3.接口中基本数据类型的数据成员，都默认为static和final，抽象类则不是<br>如果事先知道某种东西会成为基础类，那么第一个选择就是把它变成一个接口。<br>只有在必须使用方法定义或者成员变量的时候，才应考虑采用抽象类。</p>
+<h2 id="final-finally-finalize的区别"><a href="#final-finally-finalize的区别" class="headerlink" title="final,finally,finalize的区别"></a>final,finally,finalize的区别</h2><p>final—修饰符（关键字）如果一个类被声明为final，意味着它不能再派生出新的子类，不能作为父类被继承。因此一个类不能既被声明为 abstract的，又被声明为final的。将变量或方法声明为final，可以保证它们在使用中不被改变。被声明为final的变量必须在声明时给定初值，而在以后的引用中只能读取，不可修改。被声明为final的方法也同样只能使用，不能重载。<br>　　finally—再异常处理时提供 finally 块来执行任何清除操作。如果抛出一个异常，那么相匹配的 catch 子句就会执行，然后控制就会进入 finally 块（如果有的话）。<br>　　finalize—方法名。Java 技术允许使用 finalize() 方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。这个方法是由垃圾收集器在确定这个对象没有被引用时对这个对象调用的。它是在 Object 类中定义的，因此所有的类都继承了它。子类覆盖 finalize() 方法以整理系统资源或者执行其他清理工作。finalize() 方法是在垃圾收集器删除对象之前对这个对象调用的。 </p>
+<h2 id="HTTP请求方法get和post有什么区别"><a href="#HTTP请求方法get和post有什么区别" class="headerlink" title="HTTP请求方法get和post有什么区别"></a>HTTP请求方法get和post有什么区别</h2><ol>
+<li>Post传输数据时，不需要在URL中显示出来，而Get方法要在URL中显示。</li>
+<li>Post传输的数据量大，可以达到2M，而Get方法由于受到URL长度限制,只能传递大约1024字节.</li>
+<li>Post就是为了将数据传送到服务器段,Get就是为了从服务器段取得数据.而Get之所以也能传送数据,只是用来设计告诉服务器,你到底需要什么样的数据.Post的信息作为http请求的内容，而Get是在Http头部传输的。</li>
+<li>其他 HTTP 请求方法</li>
+</ol>
+<ul>
+<li>HEAD 与 GET 相同，但只返回 HTTP 报头，不返回文档主体。</li>
+<li>PUT上传指定的 URI 表示。<br>DELETE    删除指定资源。</li>
+<li>OPTIONS 返回服务器支持的 HTTP 方法</li>
+<li>CONNECT 把请求连接转换到透明的 TCP/IP 通道。</li>
+</ul>
+<h2 id="session-与-cookie-区别"><a href="#session-与-cookie-区别" class="headerlink" title="session 与 cookie 区别"></a>session 与 cookie 区别</h2><ol>
+<li>cookie数据存放在客户的浏览器上，session数据放在服务器上。</li>
+<li>cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗考虑到安全应当使用session。</li>
+<li>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能考虑到减轻服务器性能方面，应当使用COOKIE。</li>
+<li>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</li>
+<li>所以个人建议： 将登陆信息等重要信息存放为SESSION 其他信息如果需要保留，可以放在COOKIE中</li>
+</ol>
+<h2 id="Mysql-的分页-SQL-语句"><a href="#Mysql-的分页-SQL-语句" class="headerlink" title="Mysql 的分页 SQL 语句"></a>Mysql 的分页 SQL 语句</h2><p>select * from tablename limit m,n(n是指从第m+1条开始，取n条)</p>
+<h2 id="Mysql-优化"><a href="#Mysql-优化" class="headerlink" title="Mysql 优化"></a>Mysql 优化</h2><p>1.如果明确知道只有一条结果返回，limit1能够提高效率</p>
+<p>2.把计算放在业务层而不是数据库层，除了节省数据的 CPU ,还有意想不到的查询缓存优化效果。</p>
+<p>3.强制类型转换会全表扫描</p>
+<p>4.在属性上进行计算不能命中索引 </p>
+<p>5.使用 ENUM 而不是字符串</p>
+<p>6.数据分区度不大的字段不宜使用索引</p>
+<p>7.负向查询和前导模糊查询不能使用索引</p>
+<p>8.用TRUNCATE替代DELETE</p>
+<p>9.删除重复记录</p>
+<p>10.用Where子句替换HAVING子句</p>
+<p>11.用EXISTS替代IN、用NOT EXISTS替代NOT IN</p>
+<p>12.用索引提高效率</p>
+<p>13.用EXISTS替换DISTINCT</p>
+<p>14.用&gt;=替代&gt;</p>
+<p>15.用IN来替换OR</p>
+<h2 id="String-s-new-String-“xyz”-创建了几个字符串对象"><a href="#String-s-new-String-“xyz”-创建了几个字符串对象" class="headerlink" title="String s = new String(“xyz”);创建了几个字符串对象"></a>String s = new String(“xyz”);创建了几个字符串对象</h2><p>两个对象，一个是静态区的”xyz”，一个是用new创建在堆上的对象。</p>
+<h2 id="用Java写一个单例类"><a href="#用Java写一个单例类" class="headerlink" title="用Java写一个单例类"></a>用Java写一个单例类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">饿汉式单例:</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">懒汉式单例（线程安全）:</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) instance ＝ <span class="keyword">new</span> Singleton();</div><div class="line"></div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="用Java写一个冒泡排序"><a href="#用Java写一个冒泡排序" class="headerlink" title="用Java写一个冒泡排序"></a>用Java写一个冒泡排序</h2><p>冒泡排序几乎是个程序员都写得出来，但是面试的时候如何写一个逼格高的冒泡排序却不是每个人都能做到</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Comparator;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 排序器接口(策略模式: 将算法封装到具有共同接口的独立的类中使得它们可以相互替换)</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Sorter</span> </span>&#123;</div><div class="line"></div><div class="line">   <span class="comment">/**</span></div><div class="line">    * 排序</div><div class="line">    * <span class="doctag">@param</span> list 待排序的数组</div><div class="line">    */</div><div class="line">   <span class="keyword">public</span> &lt;T extends Comparable&lt;T&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(T[] list)</span></span>;</div><div class="line"></div><div class="line">   <span class="comment">/**</span></div><div class="line">    * 排序</div><div class="line">    * <span class="doctag">@param</span> list 待排序的数组</div><div class="line">    * <span class="doctag">@param</span> comp 比较两个对象的比较器</div><div class="line">    */</div><div class="line">   <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(T[] list, Comparator&lt;T&gt; comp)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Comparator;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 冒泡排序</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleSorter</span> <span class="keyword">implements</span> <span class="title">Sorter</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> &lt;T extends Comparable&lt;T&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(T[] list)</span> </span>&#123;</div><div class="line">        <span class="keyword">boolean</span> swapped = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, len = list.length; i &lt; len &amp;&amp; swapped; ++i) &#123;</div><div class="line">            swapped = <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len - i; ++j) &#123;</div><div class="line">                <span class="keyword">if</span> (list[j].compareTo(list[j + <span class="number">1</span>]) &gt; <span class="number">0</span>) &#123;</div><div class="line">                    T temp = list[j];</div><div class="line">                    list[j] = list[j + <span class="number">1</span>];</div><div class="line">                    list[j + <span class="number">1</span>] = temp;</div><div class="line">                    swapped = <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(T[] list, Comparator&lt;T&gt; comp)</span> </span>&#123;</div><div class="line">        <span class="keyword">boolean</span> swapped = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, len = list.length; i &lt; len &amp;&amp; swapped; ++i) &#123;</div><div class="line">            swapped = <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len - i; ++j) &#123;</div><div class="line">                <span class="keyword">if</span> (comp.compare(list[j], list[j + <span class="number">1</span>]) &gt; <span class="number">0</span>) &#123;</div><div class="line">                    T temp = list[j];</div><div class="line">                    list[j] = list[j + <span class="number">1</span>];</div><div class="line">                    list[j + <span class="number">1</span>] = temp;</div><div class="line">                    swapped = <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Java解析XML的四种方法"><a href="#Java解析XML的四种方法" class="headerlink" title="Java解析XML的四种方法"></a>Java解析XML的四种方法</h2><ol>
+<li>DOM4J生成和解析XML文档</li>
+<li>DOM生成和解析XML文档</li>
+<li>SAX生成和解析XML文档</li>
+<li>JDOM生成和解析XML</li>
+</ol>
+<h2 id="Maven有哪些优点"><a href="#Maven有哪些优点" class="headerlink" title="Maven有哪些优点"></a>Maven有哪些优点</h2><p>优点如下：<br>简化了项目依赖管理：<br>易于上手，对于新手可能一个”mvn clean package”命令就可能满足他的工作<br>便于与持续集成工具（jenkins）整合<br>便于项目升级，无论是项目本身升级还是项目使用的依赖升级。<br>有助于多模块项目的开发，一个模块开发好后，发布到仓库，依赖该模块时可以直接从仓库更新，而不用自己去编译。<br>maven有很多插件，便于功能扩展，比如生产站点，自动发布版本等</p>
+<h2 id="Spring有哪些优点"><a href="#Spring有哪些优点" class="headerlink" title="Spring有哪些优点"></a>Spring有哪些优点</h2><p>1.轻量级：Spring在大小和透明性方面绝对属于轻量级的，基础版本的Spring框架大约只有2MB。<br>2.控制反转(IOC)：Spring使用控制反转技术实现了松耦合。依赖被注入到对象，而不是创建或寻找依赖对象。<br>3.面向切面编程(AOP)： Spring支持面向切面编程，同时把应用的业务逻辑与系统的服务分离开来。<br>4.容器：Spring包含并管理应用程序对象的配置及生命周期。<br>5.MVC框架：Spring的web框架是一个设计优良的web MVC框架，很好的取代了一些web框架。<br>6.事务管理：Spring对下至本地业务上至全局业务(JAT)提供了统一的事务管理接口。<br>7.异常处理：Spring提供一个方便的API将特定技术的异常(由JDBC, Hibernate, 或JDO抛出)转化为一致的、Unchecked异常。</p>
+<h2 id="spring-主要使用了哪些-，IOC和AOP实现原理是什么"><a href="#spring-主要使用了哪些-，IOC和AOP实现原理是什么" class="headerlink" title="spring 主要使用了哪些 ，IOC和AOP实现原理是什么"></a>spring 主要使用了哪些 ，IOC和AOP实现原理是什么</h2><p>spring主要功能有IOC，AOP，MVC等，IOC实现原理：先反射生成实例，然后调用时主动注入。AOP原理：主要使用java动态代理。</p>
+<h2 id="什么是IOC容器其优点"><a href="#什么是IOC容器其优点" class="headerlink" title="什么是IOC容器其优点"></a>什么是IOC容器其优点</h2><p>Spring IOC负责创建对象、管理对象(通过依赖注入)、整合对象、配置对象以及管理这些对象的生命周期。<br>优点:<br>IOC或依赖注入减少了应用程序的代码量。它使得应用程序的测试很简单，因为在单元测试中不再需要单例或JNDI查找机制。简单的实现以及较少的干扰机制使得松耦合得以实现。IOC容器支持勤性单例及延迟加载服务。</p>
+<h2 id="什么是-AOP"><a href="#什么是-AOP" class="headerlink" title="什么是 AOP"></a>什么是 AOP</h2><p><strong>Spring 面向切面编程（AOP）,利用AOP可以对业务逻辑的各个部分隔离，从而使的业务逻辑各部分的耦合性降低，提高程序的可重用性，踢开开发效率，主要功能：日志记录，性能统计，安全控制，事务处理，异常处理等。</strong>AOP实现原理是java动态代理，但是jdk的动态代理必须实现接口，所以 Spring 的 AOP 是用 cglib 这个库实现的，cglis 使用里 asm 这个直接操纵字节码的框架，所以可以做到不使用接口的情况下实现动态代理。</p>
+<h2 id="AOP与OOP的区别"><a href="#AOP与OOP的区别" class="headerlink" title="AOP与OOP的区别"></a>AOP与OOP的区别</h2><p>OOP 面向对象编程，针对业务处理过程的实体及其属性和行为进行抽象封装，以获得更加清晰高效的逻辑单元划分。而AOP则是针对业务处理过程中的切面进行提取，它所面对的是处理过程的某个步骤或阶段，以获得逻辑过程的中各部分之间低耦合的隔离效果。这两种设计思想在目标上有着本质的差异。</p>
+<p>举例：</p>
+<p>对于“雇员”这样一个业务实体进行封装，自然是OOP的任务，我们可以建立一个“Employee”类，并将“雇员”相关的属性和行为封装其中。而用AOP 设计思想对“雇员”进行封装则无从谈起。</p>
+<p>同样，对于“权限检查”这一动作片段进行划分，则是AOP的目标领域。</p>
+<p>OOP面向名次领域，AOP面向动词领域。</p>
+<p>总之AOP可以通过预编译方式和运行期动态代理实现在不修改源码的情况下，给程序动态同意添加功能的一项技术。</p>
+<h2 id="Spring-的依赖注入方式有哪一些"><a href="#Spring-的依赖注入方式有哪一些" class="headerlink" title="Spring 的依赖注入方式有哪一些"></a>Spring 的依赖注入方式有哪一些</h2><p>Spring 的依赖注入可以有两种方式来完成:setter 方法注入和构造方法注入。<br>构造器依赖注入：构造器依赖注入在容器触发构造器的时候完成，该构造器有一系列的参数，每个参数代表注入的对象。<br>Setter方法依赖注入：首先容器会触发一个无参构造函数或无参静态工厂方法实例化对象，之后容器调用bean中的setter方法完成Setter方法依赖注入。</p>
+<h2 id="SpringMVC运行原理"><a href="#SpringMVC运行原理" class="headerlink" title="SpringMVC运行原理"></a>SpringMVC运行原理</h2><ol>
+<li>客户端请求提交到DispatcherServlet</li>
+<li>由DispatcherServlet控制器查询HandlerMapping，找到并分发到指定的Controller中。</li>
+<li>Controller调用业务逻辑处理后，返回ModelAndView</li>
+<li>DispatcherServlet查询一个或多个ViewResoler视图解析器，找到ModelAndView指定的视图</li>
+<li>视图负责将结果显示到客户端</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 基础面试题 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 基础面试题 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[面试感悟：工作经验java程序员应有的技能]]></title>
       <url>/2018/06/03/%E9%9D%A2%E8%AF%95%E6%84%9F%E6%82%9F%EF%BC%9A%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8Cjava%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E6%9C%89%E7%9A%84%E6%8A%80%E8%83%BD/</url>
       <content type="html"><![CDATA[<h1 id="面试感悟：工作经验java程序员应有的技能"><a href="#面试感悟：工作经验java程序员应有的技能" class="headerlink" title="面试感悟：工作经验java程序员应有的技能"></a>面试感悟：工作经验java程序员应有的技能</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为和同事有约定再加上LZ自己也喜欢做完一件事之后进行总结，因此有了这篇文章。这篇文章大部分内容都是面向整个<a href="http://www.codeceo.com/" target="_blank" rel="external">程序员</a>群体的，当然因为LZ本身是做Java开发的，因此有一部分内容也是专门面向咱们Java程序员的。</p>
