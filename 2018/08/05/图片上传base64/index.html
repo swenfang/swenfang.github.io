@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java 高级," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="图片上传base64选择图片并转换html 页面12345&amp;lt;div id=&quot;divPreview&quot;&amp;gt;&amp;lt;input id=&quot;iconPic1&quot; name=&quot;iconPic&quot; type=&quot;hidden&quot;/&amp;gt;&amp;lt;img id=&quot;imgHeadPhoto&quot; src=&quot;&quot; style=&quot;width: 120px; height: 130px; border: solid 1px">
+<meta name="keywords" content="Java 高级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片上传base64">
+<meta property="og:url" content="http://yoursite.com/2018/08/05/图片上传base64/index.html">
+<meta property="og:site_name" content="ShenWenFang">
+<meta property="og:description" content="图片上传base64选择图片并转换html 页面12345&amp;lt;div id=&quot;divPreview&quot;&amp;gt;&amp;lt;input id=&quot;iconPic1&quot; name=&quot;iconPic&quot; type=&quot;hidden&quot;/&amp;gt;&amp;lt;img id=&quot;imgHeadPhoto&quot; src=&quot;&quot; style=&quot;width: 120px; height: 130px; border: solid 1px">
+<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/180805/I570HKG3je.png">
+<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/180805/LLdfLE2H1E.png">
+<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/180805/EKFEGhjL1C.png">
+<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/180805/14kH2K4I7J.png">
+<meta property="og:updated_time" content="2018-08-05T13:36:27.523Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图片上传base64">
+<meta name="twitter:description" content="图片上传base64选择图片并转换html 页面12345&amp;lt;div id=&quot;divPreview&quot;&amp;gt;&amp;lt;input id=&quot;iconPic1&quot; name=&quot;iconPic&quot; type=&quot;hidden&quot;/&amp;gt;&amp;lt;img id=&quot;imgHeadPhoto&quot; src=&quot;&quot; style=&quot;width: 120px; height: 130px; border: solid 1px">
+<meta name="twitter:image" content="http://orbs83j4x.bkt.clouddn.com/blog/180805/I570HKG3je.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/05/图片上传base64/"/>
+
+
+
+
+
+  <title>图片上传base64 | ShenWenFang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/another"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ShenWenFang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/图片上传base64/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShenWenFang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShenWenFang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">图片上传base64</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T21:39:07+08:00">
+                2018-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-高级/" itemprop="url" rel="index">
+                    <span itemprop="name">Java 高级</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/05/图片上传base64/" class="leancloud_visitors" data-flag-title="图片上传base64">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,835 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="图片上传base64"><a href="#图片上传base64" class="headerlink" title="图片上传base64"></a>图片上传base64</h1><h2 id="选择图片并转换"><a href="#选择图片并转换" class="headerlink" title="选择图片并转换"></a>选择图片并转换</h2><h3 id="html-页面"><a href="#html-页面" class="headerlink" title="html 页面"></a>html 页面</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"divPreview"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"iconPic1"</span> <span class="attr">name</span>=<span class="string">"iconPic"</span> <span class="attr">type</span>=<span class="string">"hidden"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"imgHeadPhoto"</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">style</span>=<span class="string">"width: 120px; height: 130px; border: solid 1px #d2e2e2;"</span> <span class="attr">alt</span>=<span class="string">""</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">onchange</span>=<span class="string">"PreviewImage(this,'imgHeadPhoto','divPreview');"</span> <span class="attr">size</span>=<span class="string">"20"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="js"><a href="#js" class="headerlink" title="js"></a>js</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">//js本地图片预览，兼容ie[6-9]、火狐、Chrome17+、Opera11+、Maxthon3</div><div class="line">function PreviewImage(fileObj, imgPreviewId, divPreviewId) &#123;</div><div class="line">    //允许上传文件的后缀名</div><div class="line">    var allowExtention = ".jpg,.bmp,.gif,.png"; </div><div class="line">    var extention = fileObj.value.substring(fileObj.value.lastIndexOf(".") + 1).toLowerCase();</div><div class="line">    var browserVersion = window.navigator.userAgent.toUpperCase();</div><div class="line">    if (allowExtention.indexOf(extention) &gt; -1) &#123;</div><div class="line">        //HTML5实现预览，兼容chrome、火狐7+等</div><div class="line">        if (fileObj.files) &#123;</div><div class="line">            if (window.FileReader) &#123;</div><div class="line">                var reader = new FileReader();</div><div class="line">                reader.onload = function (e) &#123;</div><div class="line">                    /*var pcBase64Text = e.target.result;</div><div class="line">                    var blob = dataURLtoBlob(pcBase64Text);</div><div class="line">                    console.log(e.target.result);*/</div><div class="line">                    $("#iconPic1").val(e.target.result);</div><div class="line">                    document.getElementById(imgPreviewId).setAttribute("src",e.target.result);</div><div class="line">                &#125;</div><div class="line">                //读取文件把问价转换成 Base64 格式</div><div class="line">                reader.readAsDataURL(fileObj.files[0]);</div><div class="line">            &#125;else if (browserVersion.indexOf("SAFARI") &gt; -1) &#123;</div><div class="line">                alert("不支持Safari6.0以下浏览器的图片预览!");</div><div class="line">            &#125;</div><div class="line">        &#125;else if (browserVersion.indexOf("MSIE") &gt; -1) &#123;</div><div class="line">            // 兼容 IE6 浏览器</div><div class="line">            if (browserVersion.indexOf("MSIE 6") &gt; -1) &#123;</div><div class="line">                document.getElementById(imgPreviewId).setAttribute("src", fileObj.value);</div><div class="line">            &#125;else&#123; // 兼容 IE[7-9] 浏览器</div><div class="line">                fileObj.select();</div><div class="line">                if(browserVersion.indexOf("MSIE 9") &gt; -1)&#123;</div><div class="line">                    //不加上document.selection.createRange().text在ie9会拒绝访问</div><div class="line">                    fileObj.blur();</div><div class="line">                &#125;</div><div class="line">                var newPreview = document.getElementById(divPreviewId + "New");</div><div class="line">                if(newPreview == null)&#123;</div><div class="line">                    newPreview = document.createElement("div");</div><div class="line">                    newPreview.setAttribute("id", divPreviewId + "New");</div><div class="line">                    newPreview.style.width = document.getElementById(imgPreviewId).width + "px";</div><div class="line">                    newPreview.style.height = </div><div class="line">                        document.getElementById(imgPreviewId).height + "px";</div><div class="line">                    newPreview.style.height = </div><div class="line">                        document.getElementById(imgPreviewId).height + "px";</div><div class="line">                   &#125;</div><div class="line">                newPreview.style.filter =</div><div class="line">                    "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',</div><div class="line">                    src='" + document.selection.createRange().text + "')";</div><div class="line">                var tempDivPreview = document.getElementById(divPreviewId);</div><div class="line">                tempDivPreview.parentNode.insertBefore(newPreview, tempDivPreview);</div><div class="line">                tempDivPreview.style.display = "none";</div><div class="line">            &#125;</div><div class="line">        &#125;else if (browserVersion.indexOf("FIREFOX") &gt; -1) &#123;</div><div class="line">            var firefoxVersion =</div><div class="line">                parseFloat(browserVersion.toLowerCase().match(/firefox\/([\d.]+)/)[1]);</div><div class="line">            //firefox7以下版本</div><div class="line">            if (firefoxVersion &lt; 7) &#123;</div><div class="line">                document.getElementById(imgPreviewId).</div><div class="line">                setAttribute("src", fileObj.files[0].getAsDataURL());</div><div class="line">            &#125;else &#123;//firefox7.0+</div><div class="line">                document.getElementById(imgPreviewId).</div><div class="line">                setAttribute("src", window.URL.createObjectURL(fileObj.files[0]));</div><div class="line">            &#125;</div><div class="line">        &#125;else &#123;</div><div class="line">            document.getElementById(imgPreviewId).setAttribute("src", fileObj.value);</div><div class="line">        &#125;</div><div class="line">    &#125;else &#123;</div><div class="line">        alert("仅支持" + allowExtention + "为后缀名的文件!");</div><div class="line">        fileObj.value = ""; //清空选中文件</div><div class="line">        if (browserVersion.indexOf("MSIE") &gt; -1) &#123;</div><div class="line">            fileObj.select();</div><div class="line">            document.selection.clear();</div><div class="line">        &#125;</div><div class="line">        fileObj.outerHTML = fileObj.outerHTML;</div><div class="line">    &#125;</div><div class="line">    return fileObj.value;    //返回路径</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码里面我只用到 第一个判断 兼容chrome、火狐7+ ，使用文件内容改变事件。</p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="http://orbs83j4x.bkt.clouddn.com/blog/180805/I570HKG3je.png" alt="mark"></p>
+<h2 id="关于-FileReader-的几种转化"><a href="#关于-FileReader-的几种转化" class="headerlink" title="关于 FileReader 的几种转化"></a>关于 FileReader 的几种转化</h2><p>因为我保存到数据的类型是 Clob ,所以我把 FileReader 解析的 Base64 内容直接以文本的形式保存到数据库。这样的好处是，在显示图片的时候直接给 img 标签的 src 赋值就好了，不用转。</p>
+<p>假如你的图片要保存在类型是 Blob 的话，那就需要把图片转成二进制（原因，reader.readAsDataURL转化的是十六进制Blob 只能保存二进制内容）。下面的两个方法可以实现，Base64  转 二进制，二进制 转 Base64 。</p>
+<p>js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dataURLtoBlob</span>(<span class="params">dataurl</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> arr = dataurl.split(<span class="string">','</span>), mime = arr[<span class="number">0</span>].match(<span class="regexp">/:(.*?);/</span>)[<span class="number">1</span>],</div><div class="line">        bstr = atob(arr[<span class="number">1</span>]), n = bstr.length, u8arr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(n);</div><div class="line">    <span class="keyword">while</span>(n--)&#123;</div><div class="line">        u8arr[n] = bstr.charCodeAt(n);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Blob([u8arr], &#123;<span class="attr">type</span>:mime&#125;);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">readBlobAsDataURL</span>(<span class="params">blob, callback</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="keyword">new</span> FileReader();</div><div class="line">    a.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;callback(e.target.result);&#125;;</div><div class="line">    a.readAsDataURL(blob);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 测试</span></div><div class="line">readBlobAsDataURL(blob, <span class="function"><span class="keyword">function</span> (<span class="params">dataurl</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(dataurl);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="存储图片到数据库"><a href="#存储图片到数据库" class="headerlink" title="存储图片到数据库"></a>存储图片到数据库</h2><h3 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.eyuninfo.bean.uomp.keeperManager;</div><div class="line"><span class="keyword">import</span> javax.persistence.Basic;</div><div class="line"><span class="keyword">import</span> javax.persistence.Column;</div><div class="line"><span class="keyword">import</span> javax.persistence.FetchType;</div><div class="line"><span class="keyword">import</span> javax.persistence.Lob;</div><div class="line"><span class="keyword">import</span> com.eyuninfo.bean.EntityBean;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@author</span>:  shenwenfang</div><div class="line"> * <span class="doctag">@CreateDate</span>: 2018-06-25</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KeeperManage</span> <span class="keyword">extends</span> <span class="title">EntityBean</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">7125755338853860747L</span>;</div><div class="line">    </div><div class="line">    <span class="comment">// 我想办code</span></div><div class="line">    <span class="keyword">private</span> String code;</div><div class="line"></div><div class="line">    <span class="comment">// 功能名称</span></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line"></div><div class="line">    <span class="comment">// 页面跳转路径</span></div><div class="line">    <span class="keyword">private</span> String url;</div><div class="line"></div><div class="line">    <span class="comment">// 渠道：1表示移动银行 2表示直销银行</span></div><div class="line">    <span class="keyword">private</span> String channel;</div><div class="line"></div><div class="line">	<span class="comment">// 状态：0：正常 1表示删除</span></div><div class="line">    <span class="keyword">private</span> String status;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 存放图片base64</div><div class="line">     */</div><div class="line">    <span class="meta">@Lob</span></div><div class="line">    <span class="keyword">private</span> String iconPic;</div><div class="line">    </div><div class="line">    <span class="comment">// 省略了 set 和 get 方法</span></div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意：在保存 base64 的字段加上  JPA 的 @Lob 注解。假如在查询字段报转换错误的话。</p>
+<h3 id="service-层"><a href="#service-层" class="headerlink" title="service 层"></a>service 层</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.eyuninfo.uomp.web.keepermanager.service;</div><div class="line"><span class="keyword">import</span> com.eyuninfo.bean.uomp.keeperManager.KeeperManage;</div><div class="line"><span class="keyword">import</span> com.github.pagehelper.PageInfo;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IKeperDealManageService</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 添加</div><div class="line">     * <span class="doctag">@param</span> bean</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">addKeperDealManage</span><span class="params">(KeeperManage bean)</span> <span class="keyword">throws</span> Exception</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.eyuninfo.uomp.web.keepermanager.service;</div><div class="line"><span class="keyword">import</span> com.github.pagehelper.PageInfo;</div><div class="line"><span class="keyword">import</span> com.eyuninfo.bean.uomp.keeperManager.KeeperManage;</div><div class="line"><span class="keyword">import</span> com.eyuninfo.framework.base.service.impl.BaseService;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</div><div class="line"></div><div class="line"><span class="meta">@Service</span>(<span class="string">"keperDealManageService"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KeperDealManageService</span> <span class="keyword">extends</span> <span class="title">BaseService</span> <span class="keyword">implements</span> <span class="title">IKeperDealManageService</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">addKeperDealManage</span><span class="params">(KeeperManage bean)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.insert(<span class="string">"addKeperDealManage"</span>, bean);</div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="controller-层"><a href="#controller-层" class="headerlink" title="controller 层"></a>controller 层</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.eyuninfo.uomp.web.keepermanager.controller;</div><div class="line"><span class="keyword">import</span> com.eyuninfo.bean.ResultBean;</div><div class="line"><span class="keyword">import</span> com.eyuninfo.bean.uomp.keeperManager.KeeperManage;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</div><div class="line"><span class="keyword">import</span> javax.annotation.Resource;</div><div class="line"></div><div class="line"><span class="meta">@Controller</span></div><div class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/keperDealManage"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KeperDealManageController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</div><div class="line">    <span class="meta">@Resource</span></div><div class="line">    <span class="keyword">private</span> IKeperDealManageService keperDealManageService;</div><div class="line">    </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 添加</div><div class="line">     * <span class="doctag">@param</span> locale</div><div class="line">     * <span class="doctag">@param</span> bean</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/addKeperDealManage"</span>, method = &#123; RequestMethod.POST &#125;)</div><div class="line">    <span class="meta">@ResponseBody</span></div><div class="line">    <span class="function"><span class="keyword">public</span> ResultBean&lt;KeeperManage&gt; <span class="title">addKeperDealManage</span><span class="params">(Locale locale, @ModelAttribute(<span class="string">"KeperDealManage"</span>)</span> KeeperManage bean) </span>&#123;</div><div class="line">        ResultBean&lt;KeeperManage&gt;  rb = <span class="keyword">new</span> ResultBean&lt;KeeperManage&gt;();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">        	<span class="comment">// 生成主键</span></div><div class="line">        	bean.setCode(DateUtil.getCurDataFormat(<span class="string">"yyyyMMddHHmmssSSS"</span>));</div><div class="line">        	String date = DateUtil.getCurDataFormat(<span class="string">"yyyyMMddHHmmss"</span>);</div><div class="line">        	bean.setCreatetime(date);</div><div class="line">        	bean.setUpdateTime(date);</div><div class="line">            <span class="keyword">int</span> newKey = keperDealManageService.addKeperDealManage(bean);</div><div class="line">            <span class="keyword">if</span>(newKey &gt; <span class="number">0</span>)&#123;</div><div class="line">                rb.setReturnCode(SysConstant.SYS_RETURN_SUCCESS_CODE);</div><div class="line">                rb.setReturnMessage(SysConstant.SYS_RETURN_SUCCESS_MESSAGE);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                rb.setReturnCode(SysConstant.SYS_RETURN_FAILED_CODE);</div><div class="line">                rb.setReturnMessage(SysConstant.SYS_RETURN_FAILED_MESSAGE);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">            log.error(<span class="string">"异常："</span>+e.getMessage());</div><div class="line">            rb.setReturnCode(SysConstant.SYS_RETURN_EXCEPTION_CODE);</div><div class="line">            rb.setReturnMessage(<span class="string">"异常："</span>+e.getMessage());</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> rb;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.eyuninfo.uomp.web.keepermanager.service.IKeperDealManageService"</span>&gt;</span></div><div class="line">    insert into </div><div class="line">      keeper_deal_manage (</div><div class="line">      code, </div><div class="line">      name, </div><div class="line">      url, </div><div class="line">      channel, </div><div class="line">      creator, </div><div class="line">      createtime,</div><div class="line">      operator, </div><div class="line">      update_time, </div><div class="line">      sort, </div><div class="line">      icon_pic,</div><div class="line">      funtype</div><div class="line">      )</div><div class="line">    values (</div><div class="line">      #&#123;code,jdbcType=VARCHAR&#125;, </div><div class="line">      #&#123;name,jdbcType=VARCHAR&#125;, </div><div class="line">      #&#123;url,jdbcType=VARCHAR&#125;, </div><div class="line">      #&#123;channel,jdbcType=VARCHAR&#125;, </div><div class="line">      #&#123;creator,jdbcType=VARCHAR&#125;, </div><div class="line">      #&#123;createtime,jdbcType=VARCHAR&#125;, </div><div class="line">      #&#123;operator,jdbcType=VARCHAR&#125;,</div><div class="line">      #&#123;updateTime,jdbcType=VARCHAR&#125;, </div><div class="line">      #&#123;sort,jdbcType=DECIMAL&#125;, </div><div class="line">      #&#123;iconPic,jdbcType=CLOB&#125;,</div><div class="line">      #&#123;funType,jdbcType=VARCHAR&#125;</div><div class="line">      )</div><div class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><p><img src="http://orbs83j4x.bkt.clouddn.com/blog/180805/LLdfLE2H1E.png" alt="mark"></p>
+<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/180805/EKFEGhjL1C.png" alt="mark"></p>
+<p>保存的是一段很长得字符串（十六进制），把它放到浏览器的访问就是一张图片。</p>
+<h2 id="关联知识点"><a href="#关联知识点" class="headerlink" title="关联知识点"></a>关联知识点</h2><h3 id="FileList-对象和-file-对象"><a href="#FileList-对象和-file-对象" class="headerlink" title="FileList 对象和 file 对象"></a>FileList 对象和 file 对象</h3><p>HTML 中的 input[type=”file”] 标签有个 multiple 属性，允许用户选择多个文件，FileList对象则就是表示用户选择的文件列表。这个列表中的每一个文件，就是一个 file 对象。</p>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;input type=<span class="string">"file"</span> id=<span class="string">"files"</span> multiple&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></div><div class="line">    <span class="keyword">var</span> elem = <span class="built_in">document</span>.getElementById(<span class="string">'files'</span>);</div><div class="line">    elem.onchange = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> files = event.target.files;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; files.length; i++) &#123;</div><div class="line">            <span class="comment">// 文件类型为 image 并且文件大小小于 200kb</span></div><div class="line">            <span class="keyword">if</span>(files[i].type.indexOf(<span class="string">'image/'</span>) !== <span class="number">-1</span> &amp;&amp; files[i].size &lt; <span class="number">204800</span>)&#123;</div><div class="line">                <span class="built_in">console</span>.log(files[i].name);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/180805/14kH2K4I7J.png" alt="mark"></p>
+<p>input 中有个 accept 属性，可以用来规定能够通过文件上传进行提交的文件类型。</p>
+<p>accept=”image/*” 可以用来限制只允许上传图像格式。但是在 Webkit 浏览器下却出现了响应滞慢的问题，要等上好几秒才弹出文件选择框。</p>
+<p>解决方法就是将 * 通配符改为指定的 MIME 类型。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/gif,image/jpeg,image/jpg,image/png"</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Blob-对象"><a href="#Blob-对象" class="headerlink" title="Blob 对象"></a>Blob 对象</h3><p>Blob 对象相当于一个容器，可以用于存放二进制数据。它有两个属性，size 属性表示字节长度，type 属性表示 MIME 类型。</p>
+<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([<span class="string">'hello'</span>], &#123;<span class="attr">type</span>:<span class="string">"text/plain"</span>&#125;);</div></pre></td></tr></table></figure>
+<p>Blob 构造函数中的第一个参数是一个数组，可以存放 ArrayBuffer对象、ArrayBufferView 对象、Blob对象和字符串。</p>
+<p>Blob 对象可以通过 slice() 方法来返回一个新的 Blob 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newblob = blob.slice(<span class="number">0</span>,<span class="number">5</span>, &#123;<span class="attr">type</span>:<span class="string">"text/plain"</span>&#125;);</div></pre></td></tr></table></figure>
+<p>slice() 方法使用三个参数，均为可选。第一个参数代表要从Blob对象中的二进制数据的起始位置开始复制，第二个参数代表复制的结束位置，第三个参数为 Blob 对象的 MIME 类型。</p>
+<p>canvas.toBlob() 也可以创建 Blob 对象。toBlob() 使用三个参数，第一个为回调函数，第二个为图片类型，默认为 image/png，第三个为图片质量，值在0到1之间。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</div><div class="line">canvas.toBlob(<span class="function"><span class="keyword">function</span>(<span class="params">blob</span>)</span>&#123; <span class="built_in">console</span>.log(blob); &#125;, <span class="string">"image/jpeg"</span>, <span class="number">0.5</span>);</div></pre></td></tr></table></figure>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>Blod 对象可以通过 window.URL 对象生成一个网络地址，结合 a 标签的 download 属性来实现下载文件功能。</p>
+<p>比如把 canvas 下载为一个图片文件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</div><div class="line">canvas.toBlob(<span class="function"><span class="keyword">function</span>(<span class="params">blob</span>)</span>&#123;</div><div class="line">    <span class="comment">// 使用 createObjectURL 生成地址，格式为 blob:null/fd95b806-db11-4f98-b2ce-5eb16b38ba36</span></div><div class="line">    <span class="keyword">var</span> url = URL.createObjectURL(blob);</div><div class="line">    <span class="keyword">var</span> a = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</div><div class="line">    a.download = <span class="string">'canvas'</span>;</div><div class="line">    a.href = url;</div><div class="line">    <span class="comment">// 模拟a标签点击进行下载</span></div><div class="line">    a.click();</div><div class="line">    <span class="comment">// 下载后告诉浏览器不再需要保持这个文件的引用了</span></div><div class="line">    URL.revokeObjectURL(url);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="ShenWenFang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ShenWenFang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    ShenWenFang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/08/05/图片上传base64/" title="图片上传base64">http://yoursite.com/2018/08/05/图片上传base64/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    	
+          <div>
+            <div class="recommended_posts">
+    
+    
+    <strong>推荐文章 </strong>
+    <ul>
+        
+            <li><a href="http://yoursite.com/2018/08/05/文件上传和下载/">文件的上传和下载</a></li>
+        
+            <li><a href="http://yoursite.com/2018/08/05/数据导入/">实现 xls 数据的导入</a></li>
+        
+            <li><a href="http://yoursite.com/2018/08/05/webstorm配置Apache服务器/">webstorm 配置 Apache 服务器</a></li>
+        
+            <li><a href="http://yoursite.com/2018/06/21/你的面试题/">你的面试题</a></li>
+        
+            <li><a href="http://yoursite.com/2018/06/03/面试感悟：工作经验java程序员应有的技能/">面试感悟：工作经验java程序员应有的技能</a></li>
+        
+            <li><a href="http://yoursite.com/2018/06/03/节点操作/">节点操作</a></li>
+        
+            <li><a href="http://yoursite.com/2018/06/03/搭建 vue 框架的使用环境/">搭建 vue 框架的使用环境</a></li>
+        
+    </ul>
+    
+</div>
+
+          </div>
+        
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-高级/" rel="tag"># Java 高级</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/05/数据导入/" rel="next" title="实现 xls 数据的导入">
+                <i class="fa fa-chevron-left"></i> 实现 xls 数据的导入
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/05/文件上传和下载/" rel="prev" title="文件的上传和下载">
+                文件的上传和下载 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4My82MDUx"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="ShenWenFang" />
+            
+              <p class="site-author-name" itemprop="name">ShenWenFang</p>
+              <p class="site-description motion-element" itemprop="description">每一个你不满意的现在，都有一个你没有努力的曾经。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+         <div id="music163player">
+             <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=31861269&auto=0&height=66"></iframe>
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图片上传base64"><span class="nav-number">1.</span> <span class="nav-text">图片上传base64</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#选择图片并转换"><span class="nav-number">1.1.</span> <span class="nav-text">选择图片并转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#html-页面"><span class="nav-number">1.1.1.</span> <span class="nav-text">html 页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js"><span class="nav-number">1.1.2.</span> <span class="nav-text">js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">1.1.3.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于-FileReader-的几种转化"><span class="nav-number">1.2.</span> <span class="nav-text">关于 FileReader 的几种转化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储图片到数据库"><span class="nav-number">1.3.</span> <span class="nav-text">存储图片到数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实体类"><span class="nav-number">1.3.1.</span> <span class="nav-text">实体类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#service-层"><span class="nav-number">1.3.2.</span> <span class="nav-text">service 层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#controller-层"><span class="nav-number">1.3.3.</span> <span class="nav-text">controller 层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XML"><span class="nav-number">1.3.4.</span> <span class="nav-text">XML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果-1"><span class="nav-number">1.3.5.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联知识点"><span class="nav-number">1.4.</span> <span class="nav-text">关联知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FileList-对象和-file-对象"><span class="nav-number">1.4.1.</span> <span class="nav-text">FileList 对象和 file 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Blob-对象"><span class="nav-number">1.4.2.</span> <span class="nav-text">Blob 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下载"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">下载</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ShenWenFang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("9lk8dNt56FULANV18qHRXIff-gzGzoHsz", "lSea2qzYEcPELI1zQN1wWQGt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
