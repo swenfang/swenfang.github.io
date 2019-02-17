@@ -83,13 +83,13 @@
 <meta name="keywords" content="基础数据类型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LinkedList 源码分析">
-<meta property="og:url" content="http://yoursite.com/2018/06/03/LinkedList 源码分析/index.html">
+<meta property="og:url" content="http://swenfang.github.io/2018/06/03/LinkedList 源码分析/index.html">
 <meta property="og:site_name" content="ShenWenFang">
 <meta property="og:description" content="LinkedList 源码分析前言有了ArrayList，自然少不了LinkedList了。 下面我就以面试问答的形式学习我们的常用的装载容器——LinkedList（源码分析基于JDK8） 问答内容LinkedList 用来做什么，怎么使用？问：请简单介绍一下您所了解的LinkedList，它可以用来做什么，怎么使用？ 答：  LinkedList底层是双向链表，同时实现了List接口和Dequ">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/8/28/8cfa61381cb1e233627e865c8cd33955?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/8/28/373537715b40c9830bbc6f5de35dc6d3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/8/28/f85573ac41422b664bdd69d0b9e25a66?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2017-12-09T08:33:39.381Z">
+<meta property="og:updated_time" content="2019-02-17T09:06:34.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LinkedList 源码分析">
 <meta name="twitter:description" content="LinkedList 源码分析前言有了ArrayList，自然少不了LinkedList了。 下面我就以面试问答的形式学习我们的常用的装载容器——LinkedList（源码分析基于JDK8） 问答内容LinkedList 用来做什么，怎么使用？问：请简单介绍一下您所了解的LinkedList，它可以用来做什么，怎么使用？ 答：  LinkedList底层是双向链表，同时实现了List接口和Dequ">
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/03/LinkedList 源码分析/"/>
+  <link rel="canonical" href="http://swenfang.github.io/2018/06/03/LinkedList 源码分析/"/>
 
 
 
@@ -290,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/LinkedList 源码分析/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2018/06/03/LinkedList 源码分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -384,7 +384,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5,407 字
+                  5,358 字
                 </span>
               
 
@@ -400,7 +400,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  22 分钟
+                  21 分钟
                 </span>
               
             </div>
@@ -513,7 +513,7 @@
 <p>示例代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line">private class ListItr implements ListIterator&lt;E&gt; &#123;</div><div class="line">    private Node&lt;E&gt; lastReturned;</div><div class="line">    private Node&lt;E&gt; next;</div><div class="line">    private int nextIndex;</div><div class="line">    private int expectedModCount = modCount;</div><div class="line"></div><div class="line">    ListItr(int index) &#123;</div><div class="line">        // assert isPositionIndex(index);</div><div class="line">        next = (index == size) ? null : node(index);</div><div class="line">        nextIndex = index;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public boolean hasNext() &#123;</div><div class="line">        return nextIndex &lt; size;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public E next() &#123;</div><div class="line">        checkForComodification();</div><div class="line">        if (!hasNext())</div><div class="line">            throw new NoSuchElementException();</div><div class="line"></div><div class="line">        lastReturned = next;</div><div class="line">        next = next.next;</div><div class="line">        nextIndex++;</div><div class="line">        return lastReturned.item;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public boolean hasPrevious() &#123;</div><div class="line">        return nextIndex &gt; 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public E previous() &#123;</div><div class="line">        checkForComodification();</div><div class="line">        if (!hasPrevious())</div><div class="line">            throw new NoSuchElementException();</div><div class="line"></div><div class="line">        lastReturned = next = (next == null) ? last : next.prev;</div><div class="line">        nextIndex--;</div><div class="line">        return lastReturned.item;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int nextIndex() &#123;</div><div class="line">        return nextIndex;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int previousIndex() &#123;</div><div class="line">        return nextIndex - 1;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void remove() &#123;</div><div class="line">        checkForComodification();</div><div class="line">        if (lastReturned == null)</div><div class="line">            throw new IllegalStateException();</div><div class="line"></div><div class="line">        Node&lt;E&gt; lastNext = lastReturned.next;</div><div class="line">        unlink(lastReturned);</div><div class="line">        if (next == lastReturned)</div><div class="line">            next = lastNext;</div><div class="line">        else</div><div class="line">            nextIndex--;</div><div class="line">        lastReturned = null;</div><div class="line">        expectedModCount++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void set(E e) &#123;</div><div class="line">        if (lastReturned == null)</div><div class="line">            throw new IllegalStateException();</div><div class="line">        checkForComodification();</div><div class="line">        lastReturned.item = e;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void add(E e) &#123;</div><div class="line">        checkForComodification();</div><div class="line">        lastReturned = null;</div><div class="line">        if (next == null)</div><div class="line">            linkLast(e);</div><div class="line">        else</div><div class="line">            linkBefore(e, next);</div><div class="line">        nextIndex++;</div><div class="line">        expectedModCount++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void forEachRemaining(Consumer&lt;? super E&gt; action) &#123;</div><div class="line">        Objects.requireNonNull(action);</div><div class="line">        while (modCount == expectedModCount &amp;&amp; nextIndex &lt; size) &#123;</div><div class="line">            action.accept(next.item);</div><div class="line">            lastReturned = next;</div><div class="line">            next = next.next;</div><div class="line">            nextIndex++;</div><div class="line">        &#125;</div><div class="line">        checkForComodification();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    final void checkForComodification() &#123;</div><div class="line">        if (modCount != expectedModCount)</div><div class="line">            throw new ConcurrentModificationException();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>LinkedList的结论已在第三个问题中展现了一部分了，所以不再重复说明了，我以面试问答的形式和大家一同学习了LinkedList，由于没有时间画图，可能此次没有ArrayList说的那么清楚，如果大家有看不懂的地方，请自行看一下关于链表的数据结构吧。如果此文对你有帮助，麻烦点个喜欢，谢谢各位。</p>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="http://yoursite.com/2018/06/03/ArrayList 源码分析/">ArrayList 源码分析</a></li><li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的使用/">ConcurrentHashMap的使用</a></li><li><a href="http://yoursite.com/2018/06/03/HashMap 的详细分析/">HashMap 的详细分析</a></li><li><a href="http://yoursite.com/2018/06/03/HashMap源码分析/">HashMap 的源码分析</a></li><li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的锁分离技术/">ConcurrentHashMap 的锁定分离技术</a></li><li><a href="http://yoursite.com/2018/06/03/HashMap1.7 和 1.8 扩容机制的比较/">HashMap 的扩容机制</a></li></ul></div>
+
       
     </div>
     
@@ -564,7 +564,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/06/03/LinkedList 源码分析/" title="LinkedList 源码分析">http://yoursite.com/2018/06/03/LinkedList 源码分析/</a>
+    <a href="http://swenfang.github.io/2018/06/03/LinkedList 源码分析/" title="LinkedList 源码分析">http://swenfang.github.io/2018/06/03/LinkedList 源码分析/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -583,17 +583,13 @@
     <strong>推荐文章 </strong>
     <ul>
         
-            <li><a href="http://yoursite.com/2018/06/03/ArrayList 源码分析/">ArrayList 源码分析</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/Maven-Priority/">Maven仓库理解和优先级</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的使用/">ConcurrentHashMap的使用</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/Logback/">LogBack 使用</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/HashMap 的详细分析/">HashMap 的详细分析</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/jQuery概述/">jQuery 概述</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/HashMap源码分析/">HashMap 的源码分析</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的锁分离技术/">ConcurrentHashMap 的锁定分离技术</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/HashMap1.7 和 1.8 扩容机制的比较/">HashMap 的扩容机制</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/Java选择题【1~60】/">Java选择题【1~60】</a></li>
         
     </ul>
     
@@ -717,7 +713,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -728,7 +724,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -739,7 +735,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -776,7 +772,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LinkedList-源码分析"><span class="nav-number">1.</span> <span class="nav-text">LinkedList 源码分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问答内容"><span class="nav-number">3.</span> <span class="nav-text">问答内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedList-用来做什么，怎么使用？"><span class="nav-number">3.1.</span> <span class="nav-text">LinkedList 用来做什么，怎么使用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedList-的操作和对应的时间复杂度。"><span class="nav-number">3.2.</span> <span class="nav-text">LinkedList 的操作和对应的时间复杂度。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList和LinkedList-的区别"><span class="nav-number">3.3.</span> <span class="nav-text">ArrayList和LinkedList 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedList是线程安全的吗？"><span class="nav-number">3.4.</span> <span class="nav-text">LinkedList是线程安全的吗？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">推荐文章（由hexo文章推荐插件驱动）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LinkedList-源码分析"><span class="nav-number">1.</span> <span class="nav-text">LinkedList 源码分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问答内容"><span class="nav-number">3.</span> <span class="nav-text">问答内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedList-用来做什么，怎么使用？"><span class="nav-number">3.1.</span> <span class="nav-text">LinkedList 用来做什么，怎么使用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedList-的操作和对应的时间复杂度。"><span class="nav-number">3.2.</span> <span class="nav-text">LinkedList 的操作和对应的时间复杂度。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList和LinkedList-的区别"><span class="nav-number">3.3.</span> <span class="nav-text">ArrayList和LinkedList 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedList是线程安全的吗？"><span class="nav-number">3.4.</span> <span class="nav-text">LinkedList是线程安全的吗？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

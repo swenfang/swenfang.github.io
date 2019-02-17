@@ -83,14 +83,14 @@
 <meta name="keywords" content="基础数据类型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap 的详细分析">
-<meta property="og:url" content="http://yoursite.com/2018/06/03/HashMap 的详细分析/index.html">
+<meta property="og:url" content="http://swenfang.github.io/2018/06/03/HashMap 的详细分析/index.html">
 <meta property="og:site_name" content="ShenWenFang">
 <meta property="og:description" content="HashMap 的详细分析前言这次我和大家一起学习HashMap，HashMap我们在工作中经常会使用，而且面试中也很频繁会问到，因为它里面蕴含着很多知识点，可以很好的考察个人基础。但一个这么重要的东西，我为什么没有在一开始就去学习它呢，因为它是由多种基础的数据结构和一些代码设计思想组成的。我们要学习了这些基础，再学习HashMap，这样我们才能更好的去理解它。古人云：无欲速，无见小利。欲速则不达">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/10/19/db63a0bc793f06e3d80ba8885e91c798?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/10/19/eb270f06461f7a70314b33b7a9cfe6ba?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/10/19/acf1abecfd91bdd0d465c6707dc57bfc?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/10/19/c61e51c7084d9506e8a3fd4d402022d8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2018-01-22T15:14:09.691Z">
+<meta property="og:updated_time" content="2019-02-17T09:06:32.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap 的详细分析">
 <meta name="twitter:description" content="HashMap 的详细分析前言这次我和大家一起学习HashMap，HashMap我们在工作中经常会使用，而且面试中也很频繁会问到，因为它里面蕴含着很多知识点，可以很好的考察个人基础。但一个这么重要的东西，我为什么没有在一开始就去学习它呢，因为它是由多种基础的数据结构和一些代码设计思想组成的。我们要学习了这些基础，再学习HashMap，这样我们才能更好的去理解它。古人云：无欲速，无见小利。欲速则不达">
@@ -124,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/03/HashMap 的详细分析/"/>
+  <link rel="canonical" href="http://swenfang.github.io/2018/06/03/HashMap 的详细分析/"/>
 
 
 
@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/HashMap 的详细分析/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2018/06/03/HashMap 的详细分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  9,704 字
+                  9,655 字
                 </span>
               
 
@@ -618,7 +618,7 @@
 <li>由于最近工作较忙，也有拖延症发作的问题，所以文章迟迟未能完成发布，现时完成的文章其实对我而言，也不算太好，但还是打算先发出来让大家看看，一起学习学习，看有什么不好的地方，我再慢慢改进，如果此文对你有帮助，请给个赞，谢谢大家。</li>
 </ul>
 <h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://link.juejin.im/?target=https%3A%2F%2Ftech.meituan.com%2Fjava-hashmap.html" target="_blank" rel="external">Java 8系列之重新认识HashMap</a><br><a href="https://link.juejin.im/?target=https%3A%2F%2Fwww.zhihu.com%2Fquestion%2F20733617" target="_blank" rel="external">JDK 源码中 HashMap 的 hash 方法原理是什么？</a><br><a href="https://link.juejin.im/?target=http%3A%2F%2Fannegu.iteye.com%2Fblog%2F539465" target="_blank" rel="external">深入理解HashMap</a><br><a href="https://link.juejin.im/?target=http%3A%2F%2Fwww.cnblogs.com%2Fyesiamhere%2Fp%2F6653135.html" target="_blank" rel="external">HashMap负载因子</a><br><a href="https://link.juejin.im/?target=http%3A%2F%2Fblog.csdn.net%2Fchdjj%2Farticle%2Fdetails%2F38581035" target="_blank" rel="external">Hashtable源码剖析</a><br><a href="https://link.juejin.im/?target=http%3A%2F%2Fwww.importnew.com%2F13384.html" target="_blank" rel="external">危险！在HashMap中将可变对象用作Key</a><br><a href="https://link.juejin.im/?target=http%3A%2F%2Fwww.importnew.com%2F22011.html" target="_blank" rel="external">谈谈HashMap线程不安全的体现</a></p>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="http://yoursite.com/2018/06/03/ArrayList 源码分析/">ArrayList 源码分析</a></li><li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的使用/">ConcurrentHashMap的使用</a></li><li><a href="http://yoursite.com/2018/06/03/HashMap源码分析/">HashMap 的源码分析</a></li><li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的锁分离技术/">ConcurrentHashMap 的锁定分离技术</a></li><li><a href="http://yoursite.com/2018/06/03/HashMap1.7 和 1.8 扩容机制的比较/">HashMap 的扩容机制</a></li><li><a href="http://yoursite.com/2018/06/03/HashMap的线程安全性/">HashMap 的线程安全</a></li></ul></div>
+
       
     </div>
     
@@ -669,7 +669,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/06/03/HashMap 的详细分析/" title="HashMap 的详细分析">http://yoursite.com/2018/06/03/HashMap 的详细分析/</a>
+    <a href="http://swenfang.github.io/2018/06/03/HashMap 的详细分析/" title="HashMap 的详细分析">http://swenfang.github.io/2018/06/03/HashMap 的详细分析/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -688,17 +688,13 @@
     <strong>推荐文章 </strong>
     <ul>
         
-            <li><a href="http://yoursite.com/2018/06/03/ArrayList 源码分析/">ArrayList 源码分析</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/HashMap源码分析/">HashMap 的源码分析</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的使用/">ConcurrentHashMap的使用</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/HashMap1.7 和 1.8 扩容机制的比较/">HashMap 的扩容机制</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/HashMap源码分析/">HashMap 的源码分析</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/ConcurrentHashMap的锁分离技术/">ConcurrentHashMap 的锁定分离技术</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的锁分离技术/">ConcurrentHashMap 的锁定分离技术</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/HashMap1.7 和 1.8 扩容机制的比较/">HashMap 的扩容机制</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/HashMap的线程安全性/">HashMap 的线程安全</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/ConcurrentHashMap的使用/">ConcurrentHashMap的使用</a></li>
         
     </ul>
     
@@ -822,7 +818,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -833,7 +829,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -844,7 +840,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -881,7 +877,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HashMap-的详细分析"><span class="nav-number">1.</span> <span class="nav-text">HashMap 的详细分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问答内容"><span class="nav-number">3.</span> <span class="nav-text">问答内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-的主要用途"><span class="nav-number">3.1.</span> <span class="nav-text">HashMap 的主要用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-常用操作的底层实现原理"><span class="nav-number">3.2.</span> <span class="nav-text">HashMap 常用操作的底层实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-若要新增的这个元素存在了或hash冲突了怎么办"><span class="nav-number">3.3.</span> <span class="nav-text">HashMap 若要新增的这个元素存在了或hash冲突了怎么办</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-的容量为什么一定要是2的n次方"><span class="nav-number">3.4.</span> <span class="nav-text">HashMap 的容量为什么一定要是2的n次方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-的负载因子是什么，有什么作用"><span class="nav-number">3.5.</span> <span class="nav-text">HashMap 的负载因子是什么，有什么作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-和-HashTable-的区别"><span class="nav-number">3.6.</span> <span class="nav-text">HashMap 和 HashTable 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-在多线程下如何处理，啥时会发生线程不安全"><span class="nav-number">3.7.</span> <span class="nav-text">HashMap 在多线程下如何处理，啥时会发生线程不安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-HashMap-，选取什么对象作为-key-键比较好"><span class="nav-number">3.8.</span> <span class="nav-text">使用 HashMap ，选取什么对象作为 key 键比较好</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">5.</span> <span class="nav-text">参考文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">推荐文章（由hexo文章推荐插件驱动）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HashMap-的详细分析"><span class="nav-number">1.</span> <span class="nav-text">HashMap 的详细分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问答内容"><span class="nav-number">3.</span> <span class="nav-text">问答内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-的主要用途"><span class="nav-number">3.1.</span> <span class="nav-text">HashMap 的主要用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-常用操作的底层实现原理"><span class="nav-number">3.2.</span> <span class="nav-text">HashMap 常用操作的底层实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-若要新增的这个元素存在了或hash冲突了怎么办"><span class="nav-number">3.3.</span> <span class="nav-text">HashMap 若要新增的这个元素存在了或hash冲突了怎么办</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-的容量为什么一定要是2的n次方"><span class="nav-number">3.4.</span> <span class="nav-text">HashMap 的容量为什么一定要是2的n次方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-的负载因子是什么，有什么作用"><span class="nav-number">3.5.</span> <span class="nav-text">HashMap 的负载因子是什么，有什么作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-和-HashTable-的区别"><span class="nav-number">3.6.</span> <span class="nav-text">HashMap 和 HashTable 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-在多线程下如何处理，啥时会发生线程不安全"><span class="nav-number">3.7.</span> <span class="nav-text">HashMap 在多线程下如何处理，啥时会发生线程不安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-HashMap-，选取什么对象作为-key-键比较好"><span class="nav-number">3.8.</span> <span class="nav-text">使用 HashMap ，选取什么对象作为 key 键比较好</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">5.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
             
 
           </div>

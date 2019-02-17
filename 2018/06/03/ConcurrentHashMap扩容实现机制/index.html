@@ -82,23 +82,23 @@
 <meta name="description" content="ConcurrentHashMap扩容实现机制jdk8中，采用多线程扩容。整个扩容过程，通过CAS设置sizeCtl，transferIndex等变量协调多个线程进行并发扩容。 扩容相关的属性nextTable扩容期间，将table数组中的元素 迁移到 nextTable。 12345/** * The next table to use; non-null only while resizing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ShenWenFang">
-<meta property="og:url" content="http://yoursite.com/2018/06/03/ConcurrentHashMap扩容实现机制/index.html">
+<meta property="og:url" content="http://swenfang.github.io/2018/06/03/ConcurrentHashMap扩容实现机制/index.html">
 <meta property="og:site_name" content="ShenWenFang">
 <meta property="og:description" content="ConcurrentHashMap扩容实现机制jdk8中，采用多线程扩容。整个扩容过程，通过CAS设置sizeCtl，transferIndex等变量协调多个线程进行并发扩容。 扩容相关的属性nextTable扩容期间，将table数组中的元素 迁移到 nextTable。 12345/** * The next table to use; non-null only while resizing">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/171214/2ifidi9IcG.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/171214/8bdb3048Bk.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/171214/kjgeEBH1Cj.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/171214/1j5jEjjfGC.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/171214/bECFGcgkKg.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/171214/8I0gCE52kl.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/171214/k7aDHb1JCc.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/171214/29j61FCbIA.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/171214/B6ch1929bL.png">
-<meta property="og:updated_time" content="2018-01-01T12:52:35.680Z">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/171214/2ifidi9IcG.png">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/171214/8bdb3048Bk.png">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/171214/kjgeEBH1Cj.png">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/171214/1j5jEjjfGC.png">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/171214/bECFGcgkKg.png">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/171214/8I0gCE52kl.png">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/171214/k7aDHb1JCc.png">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/171214/29j61FCbIA.png">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/171214/B6ch1929bL.png">
+<meta property="og:updated_time" content="2019-02-17T09:06:31.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ShenWenFang">
 <meta name="twitter:description" content="ConcurrentHashMap扩容实现机制jdk8中，采用多线程扩容。整个扩容过程，通过CAS设置sizeCtl，transferIndex等变量协调多个线程进行并发扩容。 扩容相关的属性nextTable扩容期间，将table数组中的元素 迁移到 nextTable。 12345/** * The next table to use; non-null only while resizing">
-<meta name="twitter:image" content="http://orbs83j4x.bkt.clouddn.com/blog/171214/2ifidi9IcG.png">
+<meta name="twitter:image" content="https://blogimg.nos-eastchina1.126.net/171214/2ifidi9IcG.png">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/03/ConcurrentHashMap扩容实现机制/"/>
+  <link rel="canonical" href="http://swenfang.github.io/2018/06/03/ConcurrentHashMap扩容实现机制/"/>
 
 
 
@@ -295,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/ConcurrentHashMap扩容实现机制/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2018/06/03/ConcurrentHashMap扩容实现机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -433,13 +433,13 @@
 </li>
 </ul>
 <p>ConcurrentHashMap的状态图如下：</p>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/171214/2ifidi9IcG.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/171214/2ifidi9IcG.png" alt="mark"></p>
 <h2 id="transferIndex属性"><a href="#transferIndex属性" class="headerlink" title="transferIndex属性"></a>transferIndex属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private transient volatile int transferIndex;</div><div class="line"></div><div class="line"></div><div class="line"> /**</div><div class="line">  扩容线程每次最少要迁移16个hash桶</div><div class="line"> */</div><div class="line">private static final int MIN_TRANSFER_STRIDE = 16;</div></pre></td></tr></table></figure>
 <p><strong>扩容索引，表示已经分配给扩容线程的table数组索引位置。主要用来协调多个线程，并发安全地获取迁移任务（hash桶）。</strong></p>
 <p>1 在扩容之前，transferIndex 在数组的最右边 。此时有一个线程发现已经到达扩容阈值，准备开始扩容。</p>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/171214/8bdb3048Bk.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/171214/8bdb3048Bk.png" alt="mark"></p>
 <p>2 扩容线程，在迁移数据之前，首先要将transferIndex右移（以cas的方式修改 <strong>transferIndex=transferIndex-stride(要迁移hash桶的个数)</strong>），获取迁移任务。每个扩容线程都会通过for循环+CAS的方式设置transferIndex，因此可以确保多线程扩容的并发安全。</p>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/171214/kjgeEBH1Cj.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/171214/kjgeEBH1Cj.png" alt="mark"></p>
 <p>换个角度，我们可以将待迁移的table数组，看成一个任务队列，transferIndex看成任务队列的头指针。而扩容线程，就是这个队列的消费者。扩容线程通过CAS设置transferIndex索引的过程，就是消费者从任务队列中获取任务的过程。为了性能考虑，我们当然不会每次只获取一个任务（hash桶），因此ConcurrentHashMap规定，每次至少要获取16个迁移任务（迁移16个hash桶，MIN_TRANSFER_STRIDE = 16）</p>
 <p>cas设置transferIndex的源码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">private final void transfer(Node&lt;K,V&gt;[] tab, Node&lt;K,V&gt;[] nextTab) &#123;</div><div class="line">      //计算每次迁移的node个数</div><div class="line">      if ((stride = (NCPU &gt; 1) ? (n &gt;&gt;&gt; 3) / NCPU : n) &lt; MIN_TRANSFER_STRIDE)</div><div class="line">          stride = MIN_TRANSFER_STRIDE; // 确保每次迁移的node个数不少于16个</div><div class="line">      ...</div><div class="line">      for (int i = 0, bound = 0;;) &#123;</div><div class="line">          ...</div><div class="line">          //cas无锁算法设置 transferIndex = transferIndex - stride</div><div class="line">          if (U.compareAndSwapInt</div><div class="line">                       (this, TRANSFERINDEX, nextIndex,</div><div class="line">                        nextBound = (nextIndex &gt; stride ?</div><div class="line">                                     nextIndex - stride : 0))) &#123;</div><div class="line">                ...</div><div class="line">                ...</div><div class="line">          &#125;</div><div class="line">          ...//省略迁移逻辑</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
@@ -456,25 +456,25 @@
 <h1 id="扩容过程分析"><a href="#扩容过程分析" class="headerlink" title="扩容过程分析"></a>扩容过程分析</h1><ol>
 <li>线程执行put操作，发现容量已经达到扩容阈值，需要进行扩容操作，此时transferindex=tab.length=32</li>
 </ol>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/171214/1j5jEjjfGC.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/171214/1j5jEjjfGC.png" alt="mark"></p>
 <ol>
 <li>扩容线程A 以cas的方式修改transferindex=32-16=16 ,然后按照降序迁移table[32]–table[16]这个区间的hash桶</li>
 </ol>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/171214/bECFGcgkKg.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/171214/bECFGcgkKg.png" alt="mark"></p>
 <ol>
 <li>迁移hash桶时，会将桶内的链表或者红黑树，按照一定算法，拆分成2份，将其插入nextTable[i]和nextTable[i+n]（n是table数组的长度）。 迁移完毕的hash桶,会被设置成ForwardingNode节点，以此告知访问此桶的其他线程，此节点已经迁移完毕。</li>
 </ol>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/171214/8I0gCE52kl.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/171214/8I0gCE52kl.png" alt="mark"></p>
 <p>相关代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">private final void transfer(Node&lt;K,V&gt;[] tab, Node&lt;K,V&gt;[] nextTab) &#123;</div><div class="line">            ...//省略无关代码</div><div class="line">            synchronized (f) &#123;</div><div class="line">                    //将node链表，分成2个新的node链表</div><div class="line">                    for (Node&lt;K,V&gt; p = f; p != lastRun; p = p.next) &#123;</div><div class="line">                        int ph = p.hash; K pk = p.key; V pv = p.val;</div><div class="line">                        if ((ph &amp; n) == 0)</div><div class="line">                            ln = new Node&lt;K,V&gt;(ph, pk, pv, ln);</div><div class="line">                        else</div><div class="line">                            hn = new Node&lt;K,V&gt;(ph, pk, pv, hn);</div><div class="line">                    &#125;</div><div class="line">                    //将新node链表赋给nextTab</div><div class="line">                    setTabAt(nextTab, i, ln);</div><div class="line">                    setTabAt(nextTab, i + n, hn);</div><div class="line">                    setTabAt(tab, i, fwd);</div><div class="line">            &#125;</div><div class="line">            ...//省略无关代码</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ol>
 <li>此时线程2访问到了ForwardingNode节点，如果线程2执行的put或remove等写操作，那么就会先帮其扩容。如果线程2执行的是get等读方法，则会调用ForwardingNode的find方法，去nextTable里面查找相关元素。</li>
 </ol>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/171214/k7aDHb1JCc.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/171214/k7aDHb1JCc.png" alt="mark"></p>
 <ol>
 <li>线程2加入扩容操作</li>
 </ol>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/171214/29j61FCbIA.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/171214/29j61FCbIA.png" alt="mark"></p>
 <ol>
 <li>如果准备加入扩容的线程，发现以下情况，放弃扩容，直接返回。</li>
 </ol>
@@ -482,7 +482,7 @@
 <li>发现transferIndex=0,即<strong>所有node均已分配</strong></li>
 <li>发现扩容线程已经达到<strong>最大扩容线程数</strong></li>
 </ul>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/171214/B6ch1929bL.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/171214/B6ch1929bL.png" alt="mark"></p>
 <h1 id="部分源码分析"><a href="#部分源码分析" class="headerlink" title="部分源码分析"></a>部分源码分析</h1><h2 id="tryPresize方法"><a href="#tryPresize方法" class="headerlink" title="tryPresize方法"></a>tryPresize方法</h2><p>协调多个线程如何调用transfer方法进行hash桶的迁移（addCount，helpTransfer 方法中也有类似的逻辑）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">tryPresize</span><span class="params">(<span class="keyword">int</span> size)</span> </span>&#123;</div><div class="line">    <span class="comment">//计算扩容的目标size</span></div><div class="line">    <span class="keyword">int</span> c = (size &gt;= (MAXIMUM_CAPACITY &gt;&gt;&gt; <span class="number">1</span>)) ? MAXIMUM_CAPACITY :</div><div class="line">        tableSizeFor(size + (size &gt;&gt;&gt; <span class="number">1</span>) + <span class="number">1</span>);</div><div class="line">    <span class="keyword">int</span> sc;</div><div class="line">    <span class="keyword">while</span> ((sc = sizeCtl) &gt;= <span class="number">0</span>) &#123;</div><div class="line">        Node&lt;K,V&gt;[] tab = table; <span class="keyword">int</span> n;</div><div class="line">        <span class="comment">//tab没有初始化</span></div><div class="line">        <span class="keyword">if</span> (tab == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>) &#123;</div><div class="line">            n = (sc &gt; c) ? sc : c;</div><div class="line">            <span class="comment">//初始化之前，CAS设置sizeCtl=-1 </span></div><div class="line">            <span class="keyword">if</span> (U.compareAndSwapInt(<span class="keyword">this</span>, SIZECTL, sc, -<span class="number">1</span>)) &#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    <span class="keyword">if</span> (table == tab) &#123;</div><div class="line">                        <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</div><div class="line">                        Node&lt;K,V&gt;[] nt = (Node&lt;K,V&gt;[])<span class="keyword">new</span> Node&lt;?,?&gt;[n];</div><div class="line">                        table = nt;</div><div class="line">                        <span class="comment">//sc=0.75n,相当于扩容阈值</span></div><div class="line">                        sc = n - (n &gt;&gt;&gt; <span class="number">2</span>);</div><div class="line">                    &#125;</div><div class="line">                &#125; <span class="keyword">finally</span> &#123;</div><div class="line">                    <span class="comment">// 此时并没有通过CAS赋值，因为其他想要执行初始化的线程，</span></div><div class="line">                    <span class="comment">// 发现sizeCtl=-1，就直接返回，从而确保任何情况，</span></div><div class="line">                    <span class="comment">// 只会有一个线程执行初始化操作。</span></div><div class="line">                    sizeCtl = sc;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//目标扩容size小于扩容阈值，或者容量超过最大限制时，不需要扩容</span></div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (c &lt;= sc || n &gt;= MAXIMUM_CAPACITY)</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="comment">//扩容</span></div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (tab == table) &#123;</div><div class="line">            <span class="keyword">int</span> rs = resizeStamp(n);</div><div class="line">            <span class="comment">//sc&lt;0表示，已经有其他线程正在扩容</span></div><div class="line">            <span class="keyword">if</span> (sc &lt; <span class="number">0</span>) &#123;</div><div class="line">                Node&lt;K,V&gt;[] nt;</div><div class="line">            <span class="comment">//1 (sc &gt;&gt;&gt; RESIZE_STAMP_SHIFT) != rs ：扩容线程数 &gt; MAX_RESIZERS-1</span></div><div class="line">            <span class="comment">//2 sc == rs + 1 和 sc == rs + MAX_RESIZERS ：表示什么？？？       </span></div><div class="line">            <span class="comment">//3 (nt = nextTable) == null ：表示nextTable正在初始化</span></div><div class="line">            <span class="comment">//4 transferIndex &lt;= 0 ：表示所有hash桶均分配出去</span></div><div class="line">                 </div><div class="line">                <span class="comment">//如果不需要帮其扩容，直接返回</span></div><div class="line">                <span class="keyword">if</span> ((sc &gt;&gt;&gt; RESIZE_STAMP_SHIFT) != rs || sc == rs + <span class="number">1</span> ||</div><div class="line">                    sc == rs + MAX_RESIZERS || (nt = nextTable) == <span class="keyword">null</span> ||</div><div class="line">                    transferIndex &lt;= <span class="number">0</span>)</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="comment">//CAS设置sizeCtl=sizeCtl+1</span></div><div class="line">                <span class="keyword">if</span> (U.compareAndSwapInt(<span class="keyword">this</span>, SIZECTL, sc, sc + <span class="number">1</span>))</div><div class="line">                    <span class="comment">//帮其扩容</span></div><div class="line">                    transfer(tab, nt);</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// 第一个执行扩容操作的线程，将sizeCtl设置为：</span></div><div class="line">            <span class="comment">// (resizeStamp(n) &lt;&lt; RESIZE_STAMP_SHIFT) + 2)</span></div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (U.compareAndSwapInt(<span class="keyword">this</span>, SIZECTL, sc,</div><div class="line">                                         (rs &lt;&lt; RESIZE_STAMP_SHIFT) + <span class="number">2</span>))</div><div class="line">                transfer(tab, <span class="keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="transfer方法"><a href="#transfer方法" class="headerlink" title="transfer方法"></a>transfer方法</h2><p>负责迁移node节点</p>
@@ -540,7 +540,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/06/03/ConcurrentHashMap扩容实现机制/" title="">http://yoursite.com/2018/06/03/ConcurrentHashMap扩容实现机制/</a>
+    <a href="http://swenfang.github.io/2018/06/03/ConcurrentHashMap扩容实现机制/" title="">http://swenfang.github.io/2018/06/03/ConcurrentHashMap扩容实现机制/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -559,19 +559,13 @@
     <strong>推荐文章 </strong>
     <ul>
         
-            <li><a href="http://yoursite.com/2018/06/03/HashMap 的详细分析/">HashMap 的详细分析</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/ConcurrentHashMap的锁分离技术/">ConcurrentHashMap 的锁定分离技术</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的锁分离技术/">ConcurrentHashMap 的锁定分离技术</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/ConcurrentHashMap的使用/">ConcurrentHashMap的使用</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/ConcurrentHashMap的使用/">ConcurrentHashMap的使用</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/ArrayList 源码分析/">ArrayList 源码分析</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/ArrayList 源码分析/">ArrayList 源码分析</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/ajax 请求/">ajax 请求</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/10款最好的Python IDE/">10 款最好的 Python IDE</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/(两到三年)Java 面试精髓/">(两到三年)Java 面试精髓</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/ajax 请求/">ajax 请求</a></li>
         
     </ul>
     
@@ -689,7 +683,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -700,7 +694,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -711,7 +705,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

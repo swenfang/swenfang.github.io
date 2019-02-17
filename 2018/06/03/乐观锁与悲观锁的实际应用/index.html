@@ -83,19 +83,19 @@
 <meta name="keywords" content="Java 高级应用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="乐观锁与悲观锁的应用">
-<meta property="og:url" content="http://yoursite.com/2018/06/03/乐观锁与悲观锁的实际应用/index.html">
+<meta property="og:url" content="http://swenfang.github.io/2018/06/03/乐观锁与悲观锁的实际应用/index.html">
 <meta property="og:site_name" content="ShenWenFang">
 <meta property="og:description" content="乐观锁与悲观锁的应用概念悲观锁(Pessimistic Lock)每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。 悲观并发控制主要用于数据争用激烈的环境，以及发生并发冲突时使用锁保护数据的成本要低于回滚事务的成本的环境中。 乐观">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/180308/KI48lACLcF.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/180308/8JjL8h3ICG.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/180308/hBB6B3cG2J.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/180308/13Al0Kkab7.png">
-<meta property="og:image" content="http://orbs83j4x.bkt.clouddn.com/blog/180308/43187E0lH3.png">
-<meta property="og:updated_time" content="2018-03-11T16:02:10.017Z">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/180308/KI48lACLcF.png">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/180308/8JjL8h3ICG.png">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/180308/hBB6B3cG2J.png">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/180308/13Al0Kkab7.png">
+<meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/180308/43187E0lH3.png">
+<meta property="og:updated_time" content="2019-02-17T09:06:37.265Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="乐观锁与悲观锁的应用">
 <meta name="twitter:description" content="乐观锁与悲观锁的应用概念悲观锁(Pessimistic Lock)每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。 悲观并发控制主要用于数据争用激烈的环境，以及发生并发冲突时使用锁保护数据的成本要低于回滚事务的成本的环境中。 乐观">
-<meta name="twitter:image" content="http://orbs83j4x.bkt.clouddn.com/blog/180308/KI48lACLcF.png">
+<meta name="twitter:image" content="https://blogimg.nos-eastchina1.126.net/180308/KI48lACLcF.png">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/03/乐观锁与悲观锁的实际应用/"/>
+  <link rel="canonical" href="http://swenfang.github.io/2018/06/03/乐观锁与悲观锁的实际应用/"/>
 
 
 
@@ -292,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/乐观锁与悲观锁的实际应用/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2018/06/03/乐观锁与悲观锁的实际应用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -433,9 +433,9 @@
 <p>我这里写了一个单测：就一个主线程，循环100次，每次把 front 的值减去10，再写入一次流水记录，正常情况是写入的每条记录都会每次减去10。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">/**</span></div><div class="line">   * 单线程消费</div><div class="line">   */</div><div class="line">  <span class="meta">@Test</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">singleCounsumerTest1</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="comment">// 使用 Mybaits </span></div><div class="line">      <span class="comment">/*  for (int i=0 ;i&lt;100 ;i++)&#123;</span></div><div class="line">          Price price = priceMapper.selectByPrimaryKey(1);</div><div class="line">          int ron = 10 ;</div><div class="line">          price.setFront(price.getFront().subtract(new BigDecimal(ron)));</div><div class="line">          price.setEnd(price.getEnd().add(new BigDecimal(ron)));</div><div class="line">          price.setTotal(price.getFront().add(price.getEnd()));</div><div class="line"></div><div class="line">          priceMapper.updateByPrimaryKey(price) ;</div><div class="line"></div><div class="line">          price.setId(null);</div><div class="line">          priceMapper.insertSelective(price) ;</div><div class="line">      &#125;*/</div><div class="line">      </div><div class="line">      <span class="comment">// 使用 hibernate</span></div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span> ;i&lt;<span class="number">100</span> ;i++)&#123;</div><div class="line">          Price price = priceDao.selectByPrimaryKey(<span class="string">"1"</span>);</div><div class="line"></div><div class="line">          <span class="keyword">int</span> ron = <span class="number">10</span> ;</div><div class="line">          price.setFront(price.getFront().subtract(<span class="keyword">new</span> BigDecimal(ron)));</div><div class="line">          price.setEnd(price.getEnd().add(<span class="keyword">new</span> BigDecimal(ron)));</div><div class="line">          price.setTotal(price.getFront().add(price.getEnd()));</div><div class="line"></div><div class="line">          priceDao.updateByPrimaryKey(price) ;</div><div class="line"></div><div class="line">         <span class="comment">// price.setId(null);</span></div><div class="line">          priceDao.insertSelective(price) ;</div><div class="line">      &#125;</div><div class="line">      </div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p>初始化数据库中的值：</p>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/180308/KI48lACLcF.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/180308/KI48lACLcF.png" alt="mark"></p>
 <p>执行结果如下：</p>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/180308/8JjL8h3ICG.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/180308/8JjL8h3ICG.png" alt="mark"></p>
 <p>但是如果是多线程的情况下会是如何呢：</p>
 <blockquote>
 <p>我这里新建了一个 PriceController</p>
@@ -444,7 +444,7 @@
 <p>其中为了节省资源使用了一个线程池:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">  * <span class="doctag">@Author</span> shenwenfang</div><div class="line">  * <span class="doctag">@Date</span> 2018/3/8 10:40</div><div class="line">  * <span class="doctag">@Description</span>: 为了节省资源使用一个线程池</div><div class="line">  */</div><div class="line"><span class="meta">@Service</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadPoolConfig</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_SIZE = <span class="number">10</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CORE_SIZE = <span class="number">5</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SECOND = <span class="number">1000</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> ThreadPoolExecutor executor;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolConfig</span><span class="params">()</span></span>&#123;</div><div class="line">        executor = <span class="keyword">new</span> ThreadPoolExecutor(CORE_SIZE,MAX_SIZE,SECOND,TimeUnit.MICROSECONDS,</div><div class="line">                <span class="keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">submit</span><span class="params">(Thread thread)</span></span>&#123;</div><div class="line">        executor.submit(thread);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>关于线程池的使用今后会仔细探讨。这里就简单理解为有10个线程并发去处理上面单线程的逻辑，来看看结果怎么样：</p>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/180308/hBB6B3cG2J.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/180308/hBB6B3cG2J.png" alt="mark"></p>
 <p>会看到明显的数据错误，导致错误的原因自然就是有线程读取到了中间状态进行了错误的更新。</p>
 <p>进而有了以下两种解决方案：悲观锁和乐观锁。</p>
 <h2 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h2><p>简单理解下悲观锁：当一个事务锁定了一些数据之后，只有当当前锁提交了事务，释放了锁，其他事务才能获得锁并执行操作。</p>
@@ -467,10 +467,10 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 线程池，乐观锁</div><div class="line"> * <span class="doctag">@param</span> redisContentReq</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/threadPriceVersion.do"</span>)</div><div class="line"><span class="meta">@ApiOperation</span>(value = <span class="string">"乐观锁的应用"</span>,httpMethod = <span class="string">"POST"</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">threadPriceVersion</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">3</span>;i++)&#123;</div><div class="line">        Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                PriceVersion priceVersion = goodStoreDao.vselectByPrimaryKey(<span class="string">"1"</span>);</div><div class="line">                <span class="keyword">int</span> ron = <span class="keyword">new</span> Random().nextInt(<span class="number">20</span>);</div><div class="line">                System.out.println(<span class="string">"本次消费="</span>+ron);</div><div class="line">                priceVersion.setFront(<span class="keyword">new</span> BigDecimal(ron));</div><div class="line">                <span class="keyword">int</span> count = goodStoreDao.vupdateByPrimaryKey(priceVersion);</div><div class="line">                <span class="keyword">if</span>(count == <span class="number">0</span>)</div><div class="line">                    System.out.println(<span class="string">"更新失败！"</span>);</div><div class="line">                <span class="keyword">else</span></div><div class="line">                    System.out.println(<span class="string">"更新成功！"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        config.submit(t);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>处理逻辑：开了三个线程生成了20以内的随机数更新到 front 字段。</p>
 <p>当调用该接口时日志如下：</p>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/180308/13Al0Kkab7.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/180308/13Al0Kkab7.png" alt="mark"></p>
 <p>可以看到线程1、4、5分别生成了15，2，11三个随机数。最后线程4、5都更新失败了，只有线程1更新成功了。</p>
 <p>查看数据库：</p>
-<p><img src="http://orbs83j4x.bkt.clouddn.com/blog/180308/43187E0lH3.png" alt="mark"></p>
+<p><img src="https://blogimg.nos-eastchina1.126.net/180308/43187E0lH3.png" alt="mark"></p>
 <p>发现也确实是更新的6。</p>
 <p>乐观锁在实际应用相对较多，它可以提供更好的并发访问，并且数据库开销较少，但是有可能存在脏读的情况。</p>
 <p><strong>优点与不足</strong></p>
@@ -530,7 +530,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/06/03/乐观锁与悲观锁的实际应用/" title="乐观锁与悲观锁的应用">http://yoursite.com/2018/06/03/乐观锁与悲观锁的实际应用/</a>
+    <a href="http://swenfang.github.io/2018/06/03/乐观锁与悲观锁的实际应用/" title="乐观锁与悲观锁的应用">http://swenfang.github.io/2018/06/03/乐观锁与悲观锁的实际应用/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -549,19 +549,13 @@
     <strong>推荐文章 </strong>
     <ul>
         
-            <li><a href="http://yoursite.com/2018/06/03/基础线程面试题/">基础线程面试题</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/函数/">函数</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/函数/">函数</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/事件监听/">事件监听</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/事件监听/">事件监听</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/ThreadLocal 源码解析和使用场景/">ThreadLocal 源码解析和使用场景</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/ThreadLocal 源码解析和使用场景/">ThreadLocal 源码解析和使用场景</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/Sublime Text新建.vue模板并高亮/">Sublime Text新建.vue模板并高亮</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/Sublime Text 3 搭建Python开发环境/">Sublime Text 3 搭建Python开发环境</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/python发布包到pypi/">python发布包到pypi</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/Sublime Text新建.vue模板并高亮/">Sublime Text新建.vue模板并高亮</a></li>
         
     </ul>
     
@@ -685,7 +679,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -696,7 +690,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -707,7 +701,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

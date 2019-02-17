@@ -83,10 +83,10 @@
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据迭代的基本用法">
-<meta property="og:url" content="http://yoursite.com/2018/06/03/python列表迭代/index.html">
+<meta property="og:url" content="http://swenfang.github.io/2018/06/03/python列表迭代/index.html">
 <meta property="og:site_name" content="ShenWenFang">
 <meta property="og:description" content="数据迭代的基本用法：for 循环的使用12345&amp;gt;&amp;gt;&amp;gt;fav_movies = [&quot;The Holy Crail&quot;,&quot;The Life of Brian&quot;]&amp;gt;&amp;gt;&amp;gt;for each_flick in fav_movies:print(each_flick)The Holy CrailThe Life of Brian">
-<meta property="og:updated_time" content="2018-01-22T15:14:09.691Z">
+<meta property="og:updated_time" content="2019-02-17T09:06:35.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据迭代的基本用法">
 <meta name="twitter:description" content="数据迭代的基本用法：for 循环的使用12345&amp;gt;&amp;gt;&amp;gt;fav_movies = [&quot;The Holy Crail&quot;,&quot;The Life of Brian&quot;]&amp;gt;&amp;gt;&amp;gt;for each_flick in fav_movies:print(each_flick)The Holy CrailThe Life of Brian">
@@ -119,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/03/python列表迭代/"/>
+  <link rel="canonical" href="http://swenfang.github.io/2018/06/03/python列表迭代/"/>
 
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/python列表迭代/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2018/06/03/python列表迭代/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,212 字
+                  1,153 字
                 </span>
               
 
@@ -453,7 +453,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 例3：</span></div><div class="line"><span class="comment"># coding=gb2312</span></div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">testpara</span><span class="params">(p1,p2)</span>:</span></div><div class="line">  p1 = <span class="number">10</span></div><div class="line">  p2.append(<span class="string">'hello'</span>)</div><div class="line"> </div><div class="line">l = []   <span class="comment"># 定义一数组对像</span></div><div class="line">a = <span class="number">20</span>   <span class="comment"># 给变量a赋值</span></div><div class="line">testpara(a,l) <span class="comment"># 变量a与对象数组l作为参数传入</span></div><div class="line"><span class="keyword">print</span> a   <span class="comment"># 打印运行参数后的值</span></div><div class="line"><span class="keyword">for</span> v <span class="keyword">in</span> l: <span class="comment"># 打印数组对象的成员</span></div><div class="line">  <span class="keyword">print</span> v</div><div class="line">     </div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">20</span>    <span class="comment"># 调用函数后a变量并未被复值</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>hello  <span class="comment"># 而对象l数组则增加成员hello</span></div></pre></td></tr></table></figure>
 <p>方法2: 使用 dict 和 zip  函数来实现**</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">【按题目定义<span class="number">3</span>个列表】</div><div class="line">&gt;&gt;&gt;list1 = [<span class="string">'neil'</span>,<span class="string">'mike'</span>,<span class="string">'lucy'</span>]</div><div class="line">&gt;&gt;&gt;list2 = [<span class="string">'123456'</span>,<span class="string">'xuiasj=='</span>,<span class="string">'passWD123'</span>]</div><div class="line">&gt;&gt;&gt;list3 = [<span class="string">'www.abc.com'</span>,<span class="string">'www.mike.org'</span>,<span class="string">'www.lucy.gov'</span>]</div><div class="line">&gt;&gt;&gt;fin_list = []</div><div class="line">&gt;&gt;&gt;style = [<span class="string">'name'</span>,<span class="string">'passwd'</span>,<span class="string">'url'</span>]</div><div class="line">&gt;&gt;&gt;fin_list.append(dict(zip(style,list1)))</div><div class="line">&gt;&gt;&gt;fin_list.append(dict(zip(style,list2)))</div><div class="line">&gt;&gt;&gt;fin_list.append(dict(zip(style,list3)))</div><div class="line">&gt;&gt;&gt;</div><div class="line">&gt;&gt;&gt;</div><div class="line">&gt;&gt;&gt;print(fin_list)</div><div class="line">【这是输出的结果】</div><div class="line">[&#123;<span class="string">'name'</span>: <span class="string">'neil'</span>, <span class="string">'password'</span>: <span class="string">'123456'</span>, <span class="string">'url'</span>: <span class="string">'www.abc.com'</span>&#125;, &#123;<span class="string">'name'</span>: <span class="string">'mike'</span>, <span class="string">'password'</span>: <span class="string">'xuiasj=='</span>, <span class="string">'url'</span>: <span class="string">'www.mike.org'</span>&#125;, &#123;<span class="string">'name'</span>: <span class="string">'lucy'</span>, <span class="string">'password'</span>: <span class="string">'passWD123'</span>, <span class="string">'url'</span>: <span class="string">'www.lucy.gov'</span>&#125;]</div></pre></td></tr></table></figure>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="http://yoursite.com/2018/06/03/10款最好的Python IDE/">10 款最好的 Python IDE</a></li><li><a href="http://yoursite.com/2018/06/03/Python3 安装/">Python3 安装</a></li><li><a href="http://yoursite.com/2018/06/03/Sublime Text 3 搭建Python开发环境/">Sublime Text 3 搭建Python开发环境</a></li><li><a href="http://yoursite.com/2018/06/03/Python 的基本要素/">Python 的基本要素</a></li><li><a href="http://yoursite.com/2018/06/03/python发布包到pypi/">python发布包到pypi</a></li><li><a href="http://yoursite.com/2018/06/03/常用的内置函数/">Python 常用的内置（BIF）函数</a></li><li><a href="http://www.davidfnck.com/python/python-tutorial-01-install.html/">Python 安装指南</a></li></ul></div>
+
       
     </div>
     
@@ -504,7 +504,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2018/06/03/python列表迭代/" title="数据迭代的基本用法">http://yoursite.com/2018/06/03/python列表迭代/</a>
+    <a href="http://swenfang.github.io/2018/06/03/python列表迭代/" title="数据迭代的基本用法">http://swenfang.github.io/2018/06/03/python列表迭代/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -523,19 +523,13 @@
     <strong>推荐文章 </strong>
     <ul>
         
-            <li><a href="http://yoursite.com/2018/06/03/10款最好的Python IDE/">10 款最好的 Python IDE</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/Sublime Text 3 搭建Python开发环境/">Sublime Text 3 搭建Python开发环境</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/Python3 安装/">Python3 安装</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/python发布包到pypi/">python发布包到pypi</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/Sublime Text 3 搭建Python开发环境/">Sublime Text 3 搭建Python开发环境</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/Python3 安装/">Python3 安装</a></li>
         
-            <li><a href="http://yoursite.com/2018/06/03/Python 的基本要素/">Python 的基本要素</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/python发布包到pypi/">python发布包到pypi</a></li>
-        
-            <li><a href="http://yoursite.com/2018/06/03/常用的内置函数/">Python 常用的内置（BIF）函数</a></li>
-        
-            <li><a href="http://www.davidfnck.com/python/python-tutorial-01-install.html/">Python 安装指南</a></li>
+            <li><a href="http://swenfang.github.io/2018/06/03/Python 的基本要素/">Python 的基本要素</a></li>
         
     </ul>
     
@@ -659,7 +653,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -670,7 +664,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -681,7 +675,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -718,7 +712,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据迭代的基本用法："><span class="nav-number">1.</span> <span class="nav-text">数据迭代的基本用法：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for-循环的使用"><span class="nav-number">1.1.</span> <span class="nav-text">for 循环的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#while-循环的使用"><span class="nav-number">1.2.</span> <span class="nav-text">while 循环的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enumerate，dict，zip-使用"><span class="nav-number">1.3.</span> <span class="nav-text">enumerate，dict，zip  使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目："><span class="nav-number">1.3.1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#enumerate-函数"><span class="nav-number">1.3.2.</span> <span class="nav-text">enumerate 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#def-函数"><span class="nav-number">1.3.3.</span> <span class="nav-text">def 函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">推荐文章（由hexo文章推荐插件驱动）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据迭代的基本用法："><span class="nav-number">1.</span> <span class="nav-text">数据迭代的基本用法：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for-循环的使用"><span class="nav-number">1.1.</span> <span class="nav-text">for 循环的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#while-循环的使用"><span class="nav-number">1.2.</span> <span class="nav-text">while 循环的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enumerate，dict，zip-使用"><span class="nav-number">1.3.</span> <span class="nav-text">enumerate，dict，zip  使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目："><span class="nav-number">1.3.1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#enumerate-函数"><span class="nav-number">1.3.2.</span> <span class="nav-text">enumerate 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#def-函数"><span class="nav-number">1.3.3.</span> <span class="nav-text">def 函数</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
