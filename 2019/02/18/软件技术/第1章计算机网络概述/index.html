@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="软件技术," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第1章计算机网络概述计算机系统基础知识计算机系统硬件基本组成计算机系统是由硬件和软件组成的。基本硬件系统由 运算器 控制器  存储器 输入设备 输出设备。">
+<meta name="keywords" content="软件技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第1章计算机网络概述">
+<meta property="og:url" content="http://swenfang.github.io/2019/02/18/软件技术/第1章计算机网络概述/index.html">
+<meta property="og:site_name" content="ShenWenFang">
+<meta property="og:description" content="第1章计算机网络概述计算机系统基础知识计算机系统硬件基本组成计算机系统是由硬件和软件组成的。基本硬件系统由 运算器 控制器  存储器 输入设备 输出设备。">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310091545-303485.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310091506-127376.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310091616-543866.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310091649-920567.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310092006-651821.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310092203-375413.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310093206-38356.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310093240-213346.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310093302-106776.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310093323-644702.jpg">
+<meta property="og:image" content="c:/Users/shenwenfang/AppData/Roaming/Typora/typora-user-images/1550984468615.png">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310093353-850138.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310093436-392776.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310093508-644025.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310093550-361073.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310093630-732446.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310093703-412311.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310093721-85438.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310093745-219866.jpg">
+<meta property="og:updated_time" content="2019-03-10T13:40:21.711Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第1章计算机网络概述">
+<meta name="twitter:description" content="第1章计算机网络概述计算机系统基础知识计算机系统硬件基本组成计算机系统是由硬件和软件组成的。基本硬件系统由 运算器 控制器  存储器 输入设备 输出设备。">
+<meta name="twitter:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190310091545-303485.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://swenfang.github.io/2019/02/18/软件技术/第1章计算机网络概述/"/>
+
+
+
+
+
+  <title>第1章计算机网络概述 | ShenWenFang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/another"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ShenWenFang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/02/18/软件技术/第1章计算机网络概述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShenWenFang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShenWenFang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第1章计算机网络概述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-18T13:13:32+08:00">
+                2019-02-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件技术/" itemprop="url" rel="index">
+                    <span itemprop="name">软件技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/02/18/软件技术/第1章计算机网络概述/" class="leancloud_visitors" data-flag-title="第1章计算机网络概述">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  10,430 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  37 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第1章计算机网络概述"><a href="#第1章计算机网络概述" class="headerlink" title="第1章计算机网络概述"></a>第1章计算机网络概述</h1><h2 id="计算机系统基础知识"><a href="#计算机系统基础知识" class="headerlink" title="计算机系统基础知识"></a>计算机系统基础知识</h2><h3 id="计算机系统硬件基本组成"><a href="#计算机系统硬件基本组成" class="headerlink" title="计算机系统硬件基本组成"></a>计算机系统硬件基本组成</h3><p>计算机系统是由硬件和软件组成的。基本硬件系统由 <code>运算器</code> <code>控制器</code>  <code>存储器</code> <code>输入设备</code> <code>输出设备</code>。<br><a id="more"></a></p>
+<p>1、中央处理单元</p>
+<p>运算器、控制器 等部件被集成在一起统称为<code>中央处理单元（CPU）</code>（硬件系统的核心）。CPU 用于数据加工处理，完成各种算术、逻辑运算及控制能力。</p>
+<p>2、存储器</p>
+<p><code>存储器</code> 是计算机系统中的记忆设备，分为<code>内部存储器</code>和<code>外部存储器</code> 。内部存储器速度高、容量小。一般用于临时存放程序，数据及中间结果。；外部存储器容量大、速度慢。可以长期保存程序和数据。</p>
+<p>3、外部设备</p>
+<p>输入和输出设备合称为 <code>外部设备</code></p>
+<h3 id="中央处理单元"><a href="#中央处理单元" class="headerlink" title="中央处理单元"></a>中央处理单元</h3><p>CPU 是计算机系统的核心，负责获<code>取程序指令</code>、对指令进行<code>译码</code>并加以<code>执行</code>。</p>
+<h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><ul>
+<li>程序控制（重要功能）：通过执行指令来控制程序的顺序。</li>
+<li>操作控制：生产指令操作信号–&gt;把操作信号送往对应的部件–&gt;控制相应的部件按指令的功能要求进行操作。</li>
+<li>时间控制：指令执行过程中操作信号的出现时间、持续时间以及出现的时间顺序都需要进行严格控制。</li>
+<li>数据处理（根本任务）：对数据进行算术运算及逻辑运算等方式对数据进行加工处理。</li>
+</ul>
+<h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4><p>运算器、控制器、寄存器和内部总线等部件组成。</p>
+<h5 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h5><p>由<code>算术逻辑单元</code>、<code>累加寄存器</code>、<code>数据缓冲寄存器</code>、<code>状态条件寄存器</code>组成。是数据加工处理部件。</p>
+<p>注意：运算器所进行的全部操作都是由控制器发出的控制信号来指挥的，so 它是执行部件。</p>
+<p>1、算术逻辑单元（ALU）：负责数据处理，实现对数据的算术运算和逻辑运算。</p>
+<p>2、累加寄存器（AC）:  为 ALU 提供一个工作区。例如：在执行一个减法运算前，先将被减数取出暂存在 AC 中，再从内存存储器中取出减数，然后同 AC 的内容相减，<code>将所得的结果送回 AC 中</code>。</p>
+<p>注意：运算器中至少要有一个累加器寄存器。</p>
+<p>3、数据缓冲寄存器（DR）：作为 CPU 和内存、外部设备之间数据传送的中转站。作为 CPU 和内存、外围设备之间在操作速度上的缓冲。</p>
+<p>注意：在单累加器结构的运算器中，数据缓冲寄存器还可兼作为操作数寄存器。</p>
+<p>4、状态条件寄存器（PSW）：状态条件寄存器保存由算术指令和逻辑指令运行或测试或测试的结果建立的各种条件码内容，主要分为状态标志和控制标志。</p>
+<h6 id="功能-1"><a href="#功能-1" class="headerlink" title="功能"></a>功能</h6><p>1、执行所有的算术运算</p>
+<p>2、执行所有的逻辑运算并进行逻辑测试</p>
+<h5 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h5><p>用于控制整个 CPU 的工作，它决定了计算机运行过程的自动化。控制器一般包括<code>指令控制逻辑</code>、<code>时序控制逻辑</code>、<code>总线控制逻辑</code>和<code>中断控制逻辑</code>等几个部分。</p>
+<p>指令控制逻辑过程：取指令–&gt;指令译码–&gt;按指令操作执行–&gt;形成下一条指令地址。</p>
+<p>1、指令寄存器（IR）：当 CPU 执行一条指令时，先把它从内存储器取到缓冲寄存器中，再送入 IR 暂存，指令译码器根据 IR 的内容产生各种微操作指令，控制其他的组成部件工作，完成所有的功能。</p>
+<p>2、程序计数器（PC）：具有<code>寄存信息</code>和<code>计数</code>功能，即又称<code>指令计数器</code>。程序的执行一般分为两种，一种是顺序执行，一种是转移执行。由于大多数指令都是按顺序来执行的，所以修改的过程通常只是简单地对 PC 加 1。当遇到转移指令时，后继指令的地址根据当前指令的地址加上一个向前或向后的位移的位移得到，或者根据转移指令给出直接转移的地址得到。</p>
+<p>3、地址寄存器（AR）： 保存当前 CPU 所访问的内存单元的地址。</p>
+<p>4、指令译码器（ID）：指令包含操作码和地址码。指令译码器是对指令中的操作码字段进行分析解析，识别该指令规定的操作，向操作控制器发出具体的控制信号，控制各部件工作，完成所需的功能。</p>
+<p>时序控制逻辑–&gt;为每条指令按时间顺序提供有应有的控制信号。</p>
+<p>总线逻辑–&gt;为多个功能部件服务的信息通路的控制电路。</p>
+<p>中断控制逻辑–&gt;用于控制各种中断请求，并根据优先级的高低对中断请求进行排队，逐个交给 CPU 处理。</p>
+<h5 id="寄存器组"><a href="#寄存器组" class="headerlink" title="寄存器组"></a>寄存器组</h5><p>分为<code>专用寄存器</code>和<code>通用寄存器</code>。运算器和控制器中的寄存器是专用寄存器，其作用是固定的。</p>
+<h4 id="多核-CPU"><a href="#多核-CPU" class="headerlink" title="多核 CPU"></a>多核 CPU</h4><p>核心又称为内核，是 CPU 最重要的组成部分。CPU 所有的计算、接受/存储命令、处理数据都由核心执行。各种 CPU 核心都是具有固定的逻辑结构，一级缓存、二级缓存、执行单元、指令级单元和总线接口等逻辑单元都会有合理的布局。</p>
+<p>多核即在一个单芯片上面集成两个甚至更多个处理器内核，其中每一个内核都有自己的逻辑单元、控制单元、中断处理器、运算单元，一级缓存、二级 Cache 共享独有，其中部件的完整性和单核处理器内核相比完全一样。</p>
+<p>多核 CPU 最大的优点是可以满足用户同时进行多任务处理的要求。</p>
+<p>要发挥 CPU 的多核性能，就需要操作系统能够及时、合理得给各个核分配任务和资源（如：缓存、总线、内存等），也需要应用软件在运行时可以把并行的线程同时交付给多个核心分别处理。</p>
+<h3 id="数据表示"><a href="#数据表示" class="headerlink" title="数据表示"></a>数据表示</h3><p>各种数值在计算机中表示的形式称为<code>机器数</code>。</p>
+<p>机器数分为：<code>无符号数</code>和 <code>带符号数</code>    </p>
+<h4 id="无符号数"><a href="#无符号数" class="headerlink" title="无符号数"></a>无符号数</h4><p>表示正数，在机器数中没有符号位。</p>
+<h4 id="带符号数"><a href="#带符号数" class="headerlink" title="带符号数"></a>带符号数</h4><p>机器数的最高位是表示正、负的符号位，其余位则表示数值。为了便于运算，带符号的机器数采用原码、反码、补码等不同的编码方法，机器数的这些编码方法称为<code>码制</code>。</p>
+<h5 id="原码、反码、补码和移码"><a href="#原码、反码、补码和移码" class="headerlink" title="原码、反码、补码和移码"></a>原码、反码、补码和移码</h5><h6 id="原码表示法"><a href="#原码表示法" class="headerlink" title="原码表示法"></a>原码表示法</h6><p>n为机器字长</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310091545-303485.jpg" alt=""></p>
+<p>最高位是符号位，<code>0表示正数，1表示负数</code>，<code>其余的 n-1 位表示数值的绝对值</code>。</p>
+<p>例子：若机器字长为8位</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310091506-127376.jpg" alt=""></p>
+<h6 id="反码表示法"><a href="#反码表示法" class="headerlink" title="反码表示法"></a>反码表示法</h6><p>n为机器字长</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310091616-543866.jpg" alt=""></p>
+<p>正数的反码和<code>原码相同</code>，负数的反码则是其<code>绝对值按位求反</code>。</p>
+<p>例子：若机器字长为8位</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310091649-920567.jpg" alt=""></p>
+<h6 id="补码表示法"><a href="#补码表示法" class="headerlink" title="补码表示法"></a>补码表示法</h6><p>n为机器字长</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310092006-651821.jpg" alt=""></p>
+<p>正数的补码与其原码和反码相同，负数的补码等于其反码的末尾加1。</p>
+<p>例子：若机器字长为8位</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310092203-375413.jpg" alt=""></p>
+<h6 id="移码表示法"><a href="#移码表示法" class="headerlink" title="移码表示法"></a>移码表示法</h6><p>只有将补码的符号位取反。</p>
+<h5 id="定点数和浮点数"><a href="#定点数和浮点数" class="headerlink" title="定点数和浮点数"></a>定点数和浮点数</h5><h6 id="定点数"><a href="#定点数" class="headerlink" title="定点数"></a>定点数</h6><p>小数点的位置固定不变的数。小数点的位置通常有两种约定方式：<code>定点正数</code>、<code>定点小数</code></p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093206-38356.jpg" alt=""></p>
+<h6 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h6><p>小数点的位置不确定</p>
+<p>一个二进制  N 可以表示为更一般的形式 $$N=2^{E}\times F​$$ ，其中 E 称为阶码，F称为尾数。用阶码和尾数表示的数称为浮点数，表示方法称为<code>浮点表示法</code>。</p>
+<p>在浮点表示法中，阶码为带符号的纯正数，尾码为带符号的纯小数。</p>
+<p>浮点数的表示格式：</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093240-213346.jpg" alt=""></p>
+<p>浮点数所能表示的<code>数值范围</code>有由<code>阶码</code>决定，<code>精度</code>由于<code>尾数</code>决定</p>
+<p>规范化就是将位数的绝对值限定在区间[0.5,1]。</p>
+<p>当尾数用补码表示时，要注意：</p>
+<p>若为数 $$M\geq 0​$$ ，规格化的尾数形式为 M=0.1XXX…X ,X 可为0，也可为1，即将尾数限定在区间[0.5,1]。</p>
+<p>若为数 $$M &lt;0$$，………..即将尾数限定在区间[-1,-0.5]。</p>
+<p>当浮点数的阶码用 R 位的移码表示，尾数用 M 位的补码表示，浮点数表示的数值范围：</p>
+<p>最大：$$+\left( 1-2^{-m+1}\right) \times 2^\left( 2^{r-1}-1\right)$$</p>
+<p>最小：$$ -1 \times 2^\left( 2^{r-1}-1\right)​$$</p>
+<h6 id="工业标准-IEEE754"><a href="#工业标准-IEEE754" class="headerlink" title="工业标准 IEEE754"></a>工业标准 IEEE754</h6><p>标准的表示形式为： $$\left( -1\right) ^{S}2^{E}\left( b<em>{0}b</em>{1}b<em>{3}\ldots b</em>{p-1}\right)​$$</p>
+<p>其中，$$\left( -1\right) ^{S}$$ 浮点数的数符，当 S 为 0 时表示正数，S 为 1 时表示负数；E 为指数（阶码），用移码表示；</p>
+<p>$$\left( b<em>{0}b</em>{1}b<em>{3}\ldots b</em>{p-1}\right)$$为尾数，长度为 p 位，用原码表示。</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093302-106776.jpg" alt=""></p>
+<p>根据 IEEE754 标准，被编码的值分为 3 种不同的情况：<code>规范化的值</code>、<code>非规范化的值</code>和<code>特殊值</code>。</p>
+<p>【1】、规范化的值：当阶码部分的二进制值不全为0，也不全为1时。</p>
+<p>例子：利用 IEEE754 标准将数 176.0625 表示为单精度浮点数。</p>
+<p>1、十进制数–&gt;转成二进制 （转换过程访问：<a href="https://www.cnblogs.com/xkfz007/articles/2590472.html）" target="_blank" rel="external">https://www.cnblogs.com/xkfz007/articles/2590472.html）</a></p>
+<p>$$\left( 176.065\right) <em>{10}=\left( 10110000.001\right) </em>{2}​$$</p>
+<p>2、规格化处理</p>
+<p>$$10110000.001​$$ = $$1\langle \rangle 01100000001\times 2^{7}​$$</p>
+<p>将 $$b_{0}​$$ 去掉并扩展为单浮点数所规定的 23 位尾数。</p>
+<p>01100000010000000000000</p>
+<p>3、求阶码</p>
+<p>$$1\langle \rangle 01100000001\times 2^{7}$$ 的指数为 7 ，<code>单精度浮点数规定指数的偏移量为 127</code>。</p>
+<p>所有 E = 7 + 127 = 134 ,求得移码为 10000110。 </p>
+<p>0 10000110 01100000010000000000000</p>
+<p>【2】、非规范化的值</p>
+<p>阶码的二进制全为 0 。指数的真值为1–偏移量（对于单精度浮点数为-126，双精度浮点数为-1022），尾数的值就是二进制形式对应的小数，不包含隐含的1。</p>
+<p>用途：①表示数值0；②表示哪些非常接近于0的数。</p>
+<p>【3】、特殊值</p>
+<p>阶码的二进制全为1。</p>
+<p>尾数部分全为0：无穷大；符号为为0：$$+\infty$$，1：$$-\infty$$;</p>
+<p>尾数部分不全为0：NaN;</p>
+<h6 id="浮点数的运算"><a href="#浮点数的运算" class="headerlink" title="浮点数的运算"></a>浮点数的运算</h6><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093323-644702.jpg" alt=""></p>
+<p><img src="C:\Users\shenwenfang\AppData\Roaming\Typora\typora-user-images\1550984468615.png" alt="1550984468615"></p>
+<h3 id="校验码"><a href="#校验码" class="headerlink" title="校验码"></a>校验码</h3><p>使用校验码的方法来检测传送的数据是否出错。</p>
+<p><code>码距</code>指一个编码系统中任意两个合法编码之间至少有多少个二进制位不同。例如：4 位 8421 码的码距为1 ，在传输过程中，该代码的一位或多位发生错误，都将变成另一个合法的编码，因此这样编码无检错能力。</p>
+<h4 id="奇偶校验码"><a href="#奇偶校验码" class="headerlink" title="奇偶校验码"></a>奇偶校验码</h4><p>在编码中增加一位校验位来使编码中 1 的个数为奇数（奇校验）或者为偶数（偶校验），从而时码距变为2。奇校验，可以检测代码中奇数位出错的编码，但不能发现偶数位出错的情况，即当合法编码中的奇数位发生了变化，即当编码中的0变成了1或1变成了0，则该编码中1 的个数的奇偶性就发生了变化。</p>
+<p>常用的奇偶检验码有：<code>水平奇偶检验码</code>、<code>垂直奇偶校验码</code>、<code>水平垂直奇偶校验</code></p>
+<h4 id="海明码"><a href="#海明码" class="headerlink" title="海明码"></a>海明码</h4><p>构成方法是在数据位之间的特定位置上插入 k 个校验位，通过扩大码距来实现检错和纠错。</p>
+<p>设数据位是 n 位， 校验位是 k 位，则 n 与 k 必须满足以下关系： $$2^{k}-1\geq n+k$$</p>
+<h2 id="计算机体系结构"><a href="#计算机体系结构" class="headerlink" title="计算机体系结构"></a>计算机体系结构</h2><h3 id="计算机体系结构的发展"><a href="#计算机体系结构的发展" class="headerlink" title="计算机体系结构的发展"></a>计算机体系结构的发展</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p><code>计算机体系结构</code>、<code>计算机组织</code>和<code>计算机实现</code>的关系：</p>
+<p>体系结构：计算机的概念性结构和功能属性。</p>
+<p>组织：计算机组成原理（计算机体系结构的逻辑实现，包括计算机内的数据流和控制流的组成以及逻辑设计等）。</p>
+<p>实现：计算机组织的物理实现。</p>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><p>1、（宏观）按处理机的数量分：<code>单处理系统</code>、<code>并行处理与多处理系统</code>、<code>分布式处理系统</code></p>
+<p>2、（微观）按并行程度分：<code>Flynn 分类法</code>、<code>冯泽云分类法</code>、<code>Handler 分类法</code>、<code>Kuck分类法</code></p>
+<p>指令流：机器执行的指令序列；</p>
+<p>数据流：指令调用的数据序列；</p>
+<p>并行度：计算机系统在单位时间内能够处理的最大二进制位数。</p>
+<p>Flynn ：按指令流和数据流的多少分类（单/多指令：单/多数据流，4种）</p>
+<p>冯泽云：按并行度分类（字串/并行：位串/并行，4种）</p>
+<p>Handler：提出一个基于硬件并行程度计算并行度的方法。</p>
+<p>Kuck：按指令流和执行流及其多重性分（单/多指令：单/多执行流，4钟）</p>
+<h4 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h4><p>指令集体系结构：一个处理器的指令和指令的字节级编码；不同的处理器族支持不同的指令集体系结构。</p>
+<h5 id="指令集体系结构的分类"><a href="#指令集体系结构的分类" class="headerlink" title="指令集体系结构的分类"></a>指令集体系结构的分类</h5><h6 id="从体系结构的观点分"><a href="#从体系结构的观点分" class="headerlink" title="从体系结构的观点分"></a>从体系结构的观点分</h6><p>1、操作数在 CPU 中的存储方式</p>
+<p>2、显式操作数的数量</p>
+<p>3、操作数的位置</p>
+<p>4、指令的操作</p>
+<p>5、操作数的类型与大小</p>
+<h6 id="按暂存机制分"><a href="#按暂存机制分" class="headerlink" title="按暂存机制分"></a>按暂存机制分</h6><p>堆栈（Stack）、累加器（Accumulator）、寄存器组</p>
+<h5 id="CISC-和-RISC"><a href="#CISC-和-RISC" class="headerlink" title="CISC 和 RISC"></a>CISC 和 RISC</h5><p>CISC（复杂 指令集）和 RISC（精简指令集）是指令集发展的两种途径。</p>
+<p>CISC：用更为复杂的新指令取代原先由软件子程序完成的功能，实现软件的硬件化，导致机器的指令系统越来月庞大、复杂。</p>
+<p>RISC：通过减少指令总数和简化指令功能降低硬件设计的复杂度，使用指令能够单周期执行，并通过优化编译提高指令的执行速度。采用硬布线控制逻辑优化编译程序。</p>
+<p>优化：</p>
+<p>提高目标程序的实现效率：对动态和静态使用频率进行优化，既可以减少程序所需的存储空间，又可以提高程序的执行速度。</p>
+<p>面向高级程序语言：缩小高级语言与机器语言之间的语义差距。</p>
+<p>面向操作系统：缩小操作系统与体系结构之间的语义差异。</p>
+<h5 id="指令的流水处理"><a href="#指令的流水处理" class="headerlink" title="指令的流水处理"></a>指令的流水处理</h5><h6 id="指令控制方式"><a href="#指令控制方式" class="headerlink" title="指令控制方式"></a>指令控制方式</h6><p>①<code>顺序执行</code>：指各条机器指令之间顺序的执行。优点是控制简单；缺点是速度慢，各部件的利用率低。</p>
+<p>②<code>重叠方式</code>：指在解释第K条指令的操作完成之间就可以开始第K+1条指令。优点是速度提高，控制简单；缺点是出现冲突、转移和相关等问题。</p>
+<p>③<code>流水方式</code>：把并行性和并发性嵌入到计算机系统的一种形式，把重复的顺序处理过程分解为若干个子过程，每个子过程能在独立的模块上有效地并发工作。</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093353-850138.jpg" alt=""></p>
+<h6 id="流水线的种类"><a href="#流水线的种类" class="headerlink" title="流水线的种类"></a>流水线的种类</h6><p>①级别：部件级、处理级、系统级</p>
+<p>②功能：单功能、多功能</p>
+<p>③连接：静态、动态</p>
+<p>④是否有反馈回路：线性流水、非线性流水</p>
+<p>⑤流动顺序：同步流水、异步流水</p>
+<p>⑥数据表示：标准、向量</p>
+<h6 id="流水的相关处理"><a href="#流水的相关处理" class="headerlink" title="流水的相关处理"></a>流水的相关处理</h6><p>1、流水线时同时处理多条指令，会出现相关。相关带来的影响是局部性的，所以称为局部性相关。解决方式：<code>推后法</code>和<code>通路法</code>。推后法：推后相关单元的读，直到写入完成。通路法：设置相关专用通路直接使用运算结果，以加快速度。</p>
+<p>2、转移指令与后面的指令之间存在关联，使之不能同时解释。执行转移指令时，可能会改动指令缓冲器中预取到的指令内容，造成流水线吞吐率和效率下降，称全局性相关。解决：<code>猜测转移分支</code>、<code>加快和提前形成条形码</code>、<code>加快断循环程序的处理</code>。</p>
+<p>3、RISC 采用的流水技术：</p>
+<p>①<code>超流水线</code>：在所有的功能单元都采用流水，并有更高的时钟频率和更深的流水深度。</p>
+<p>②<code>超标量</code>：</p>
+<p>③<code>超长指令字</code>：</p>
+<h6 id="吞吐率和流水建立的时间"><a href="#吞吐率和流水建立的时间" class="headerlink" title="吞吐率和流水建立的时间"></a>吞吐率和流水建立的时间</h6><p>单位时间内流水线处理机流出的结果数（对指令，单位时间内执行的指令数）。</p>
+<p>当流水线的子过程所用的时间不一样，吞吐率 $$p=1/\max \left{ \Delta t<em>{1},\Delta t</em>{2},\ldots ,\Delta t_{m}\right}$$</p>
+<p>若m个子过程所用的时间一样，均为 $$\Delta t<em>{0}$$ ,则建立时间  $$T</em>{0}=m\Delta t_{0}$$</p>
+<h4 id="阵列、并行、多处理机"><a href="#阵列、并行、多处理机" class="headerlink" title="阵列、并行、多处理机"></a>阵列、并行、多处理机</h4><p><code>并行性</code>：同一时刻发生；<code>并发性</code>：同一时间间隔内连续发生。</p>
+<p>1、阵列处理机：将重复处理的多个单元（PU）按一定方式连成阵列。是一中单指令多数据流计算机，通过资源重复实现并行。</p>
+<p>2、并行处理机：SIMD（共享存储器和分布式存取器形式） 和 MIMD 是典型的并行计算机。</p>
+<p>3、多处理机：由多台处理及组成的。各自独立，共享一个主存器和所有的外部设备。多指令多数据流计算机。</p>
+<p>4、其他计算机：集群计算机是一种并行或分布式处理系统。主要用来解决大型计算问题。这种系统可以提供一种价格合理的且可获得所需性能和快速而可靠的服务的解决方案。</p>
+<h3 id="存储系统"><a href="#存储系统" class="headerlink" title="存储系统"></a>存储系统</h3><h4 id="存储器的层次结构"><a href="#存储器的层次结构" class="headerlink" title="存储器的层次结构"></a>存储器的层次结构</h4><p>例子：CPU 内部的通用寄存器组、CPU 内的 Cache(高速缓存)、CPU 外的 Cache、主板上的主存储器等。</p>
+<p>注意：Cache 和主存之间的交互功能全部由硬件实现，主存和辅存由硬件和软件结合起来实现。</p>
+<h4 id="存储器的分类"><a href="#存储器的分类" class="headerlink" title="存储器的分类"></a>存储器的分类</h4><p>1、按位置：</p>
+<table>
+<thead>
+<tr>
+<th>内存（主存）</th>
+<th>外存（辅存）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主机内和主机板上</td>
+<td>磁盘、磁带和光盘</td>
+</tr>
+<tr>
+<td>容量小速度快（相对于外存）</td>
+<td></td>
+</tr>
+<tr>
+<td>存放当前运行的程序和数据，向CPU提供信息</td>
+<td>存放不参与运行的信息，需要是才调入</td>
+</tr>
+</tbody>
+</table>
+<p>2、按构成材料：</p>
+<p>磁存储器、半导体存储器、光存储器</p>
+<p>3、按工作方式：</p>
+<p>读/写存储器、只读存储器</p>
+<p>4、按访问方式：</p>
+<p>按地址访问存储器、按内容访问存储器</p>
+<p>5、按寻址方式：</p>
+<p>随机存储器、顺序存储器、直接存储器</p>
+<h4 id="相连存储器"><a href="#相连存储器" class="headerlink" title="相连存储器"></a>相连存储器</h4><p>是一种按内容访问的存储器。按关键字顺序存储和读取。适合于信息的检索和更新。相连存储器可用在高速缓存存储器中，在虚拟存储器中用来作为段表、页表和快表存储器，用在数据库和知识库中。</p>
+<h4 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h4><p>用来存放当前最活跃和程序和数据。<code>特点</code>：位于 CPU 与主存之间；容量 几千~~几兆字节；速度比主存快 5~10 倍，由快速半导体存储器构成；其内容是主存局部域和副本，对程序员来说是透明的。</p>
+<h5 id="组成-1"><a href="#组成-1" class="headerlink" title="组成"></a>组成</h5><p>高速缓存（Cache）、主存（Main Memory）与 CPU。关系如下：</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093436-392776.jpg" alt=""></p>
+<p>现代 CPU 的缓存分为多层，关系如下：</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093508-644025.jpg" alt=""></p>
+<h5 id="地址映像方法"><a href="#地址映像方法" class="headerlink" title="地址映像方法"></a>地址映像方法</h5><p>CPU 工作时，送出去的是主存单元地址，而应从 Cache 存储器中读/写信息。需要将主存地址转化成 Cache 存储器地址，这种地址转换称为<code>地址映像</code>。</p>
+<p>①<code>直接映像</code>：主存块与Cache 的对应关系是固定。</p>
+<p>②<code>全相联映像</code>：主存的任一块可以调入Cache 存储器的任何一个块的空间。</p>
+<p>③<code>组相联映像</code>：将 Cache 中的块再分成组。</p>
+<table>
+<thead>
+<tr>
+<th>映射名称</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直接映像</td>
+<td>地址变换很简单</td>
+<td>灵活性差</td>
+</tr>
+<tr>
+<td>全相联映像</td>
+<td>主存的块调入Cache 的位置不限制，灵活</td>
+<td>无法从主存块号中直接获得 Cache 的块号，变换复杂，速度比较慢</td>
+</tr>
+<tr>
+<td>组相联映像</td>
+<td>前两种方式的折中</td>
+</tr>
+</tbody>
+</table>
+<h5 id="替换算法"><a href="#替换算法" class="headerlink" title="替换算法"></a>替换算法</h5><p>目的：使 Cache 获得尽可能高的命中率。</p>
+<p>①随机替换：随机产生一个要替换的块号，将该块替换出去。</p>
+<p>②先进先出：将最先进入Cache的块替换出去。</p>
+<p>③近期最少使用：</p>
+<p>④优化替换：必须先执行一次程序，统计 Cache 的替换情况。在第二次执行该程序便可以使用做有效的方式来替换。</p>
+<h5 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h5><p>设 $$H<em>{c}​$$ 是Cache 的命中率， $$t</em>{c}​$$ 是Cache 的存取时间， $$t<em>{m}​$$ 是主存的访问时间，则 Cache 存储器的等效加权平均访问时间 $$t</em>{a}​$$ 为：$$t<em>{a}=H</em>{c}t<em>{c}+\left( 1-H</em>{c}\right) t<em>{m}=t</em>{c}+\left( 1-H<em>{c}\right) \left( t</em>{m}-t_{c}\right)​$$</p>
+<p>假设 Cache 访问和主存的访问是同时启动的， $$t<em>{c}$$ 是Cache 的存取时间，$$\left( t</em>{m}-t<em>{c}\right)$$ 为失效访问时间。如果在 Cache 不命中时才启动主内存，则 ：$$t</em>{a}=t<em>{c}+\left( 1-H</em>{c}\right) t_{m}$$</p>
+<p>总结：降低 Cache 的失效率是提高 Cache 性能的一项重要措施。主要方法是：<code>选择恰当的块容量、提高 Cache 的容量和提高 Cache 的相联度</code>。</p>
+<p>Cache 容量越大（增加 Cache 的成本和Cache 的命中时间），命中率越高，随着 Cache 容量的增加，失效率接近0%。</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093550-361073.jpg" alt=""></p>
+<h5 id="多级-Cache"><a href="#多级-Cache" class="headerlink" title="多级 Cache"></a>多级 Cache</h5><p>多级，一般分为：一级（L1 Cache），二级（L2 Cache），三级（L3 Cache）等。CPU 访问首先查找 一级，若命不中就访问 二级，直到所有级别的 Cache 都命不中才访问主存。</p>
+<h4 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h4><p>是一种对主存的抽象。使用虚拟地址（Virtual Address ，由 CPU 生成）的概念来访问主存，使用专门的 MMU 将虚拟地址转为物理地址后访问主存。<code>它实际上是一种逻辑存储器，实质是对物理存储设备进行逻辑化的处理</code>。</p>
+<p>访问主存中的数据：CPU 给出<code>存储单元地址</code>–&gt;主存的读写控制部件定位对应的存储单元–&gt;进行读（写）操作完成访问。</p>
+<h4 id="外存储器"><a href="#外存储器" class="headerlink" title="外存储器"></a>外存储器</h4><p>存放暂时不用的程序和数据，以文件的形式存储。<code>CPU 不能直接访问外存中的程序和数据，只有将其以文件为单位调入主存才可访问</code>。</p>
+<h5 id="磁表面存储器"><a href="#磁表面存储器" class="headerlink" title="磁表面存储器"></a>磁表面存储器</h5><p>由<code>盘片</code>（控制数据写入和读出）、<code>驱动器</code>（寻找目标磁道位置）、<code>控制器</code>（控制驱动器的读/写操作）和<code>接口</code>（主机和磁盘存储器之间的连接逻辑）组成。</p>
+<p>注意：控制器接收主机发来的命令，转化成控制命令，实现主机和驱动器之间数据格式的转换及数据传送，以控制驱动器的读/写操作。</p>
+<p><code>硬盘</code>是常见的外部存储器。</p>
+<p>硬盘的寻址信息由<code>硬盘驱动号</code>、<code>圆柱面号</code>、<code>磁头号</code>（记录面）、<code>数据块号</code>（或扇区号）、<code>交换量</code>组成。 </p>
+<p>磁盘容量的两中指标：</p>
+<p>①非格式化容量（总位数）：面数 X（磁道数/面）X 内圆周长 X 最大位密度</p>
+<p>②格式化容量（各扇区中数据区容量的总和）：面数 X（磁道数/面）X（扇区数/道）X（字节数/扇区）</p>
+<h5 id="光盘存储器"><a href="#光盘存储器" class="headerlink" title="光盘存储器"></a>光盘存储器</h5><p>采用聚焦激光束在盘式介质上非接触地记录高密度信息的新型存储装置。由光学、电学和机器部件组成。</p>
+<p>特点是：记录密度高、存储容量大、采用非接触式读/写信息，信息可长期保存、数据传送率可超过200Mb/s、制造成本低、对机械结构的精度要求不高、存取时间较长。</p>
+<p>分为：只读型光盘、只写型光盘、可擦除型光盘</p>
+<h5 id="固态硬盘"><a href="#固态硬盘" class="headerlink" title="固态硬盘"></a>固态硬盘</h5><p>具有传统机械硬盘不具备的读写快速、质量轻、能耗低以及体积小等特定。但其价格昂贵、容量较低、一旦硬件损坏，数据较难恢复。</p>
+<p>存储介质分为两种：采用<code>闪存（FLASH 芯片）</code>、采用<code>DRAM</code> 作为介质。</p>
+<h4 id="磁盘阵列"><a href="#磁盘阵列" class="headerlink" title="磁盘阵列"></a>磁盘阵列</h4><p>由多台磁盘存储器组成的一个快速、大容量、高可靠的外存子系统。常见的<code>磁盘阵列称为廉价冗余磁盘阵列（RAID）</code>。</p>
+<p>级别：从 RAID-0 到 RAID-6，各种类型的 RAID 可以组合起来，构成复合型的 RAID。    </p>
+<h4 id="存储域网络（SAN）"><a href="#存储域网络（SAN）" class="headerlink" title="存储域网络（SAN）"></a>存储域网络（SAN）</h4><p>把一个或多个服务器与多个存储设备连接起来，每个存储设备可以是 RAID 、磁带备份系统、磁带库和 CD-ROM 库等。</p>
+<p>解决了①服务器对存储容量的要求；②多个服务器之间共享文件系统和辅助存储空间；③实现分布式存储系统的集中管理，降低管理成本，提高管理效率；</p>
+<p>SAN 的结构：存储域网络是连接服务器与存储设备的网络，它将多个分布在不同地点的 RAID 组织成一个逻辑存储设备，供多个服务器共同访问。</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093630-732446.jpg" alt=""></p>
+<h3 id="输入-输出技术"><a href="#输入-输出技术" class="headerlink" title="输入/输出技术"></a>输入/输出技术</h3><h4 id="微型计算机中最常用的内存与接口的编址方法"><a href="#微型计算机中最常用的内存与接口的编址方法" class="headerlink" title="微型计算机中最常用的内存与接口的编址方法"></a>微型计算机中最常用的内存与接口的编址方法</h4><p>常见的两种：<code>内存与接口独立编制</code>和<code>内存与接口地址统一编址</code></p>
+<table>
+<thead>
+<tr>
+<th>说明</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内存地址和接口地址是完全独立的两个地址空间</td>
+<td>在编程序或读程序很易使用和辨认</td>
+<td>接口的指令太少，功能太弱。</td>
+</tr>
+<tr>
+<td>内存单元和接口共用地址空间</td>
+<td>指令上不再区分内存指令和接口指令，增强了对接口的操作功能</td>
+<td>内存地址不连续，需要参数定义表辨别</td>
+</tr>
+</tbody>
+</table>
+<h4 id="直接程序控制"><a href="#直接程序控制" class="headerlink" title="直接程序控制"></a>直接程序控制</h4><p>指外设数据的输入/输出过程是在 CPU 执行程序的控制下完成的。</p>
+<p>分为：<code>无条件传送</code>(可随时向 CPU 接收或发送数据)、<code>有条件传送</code>（需要CPU查询外设状态；降低 CPU 的效率、无法实时的响应外部事件）</p>
+<h4 id="中断方式"><a href="#中断方式" class="headerlink" title="中断方式"></a>中断方式</h4><p>程序控制 I/O 的方法。</p>
+<p>缺点：CPU 需要定期查询 I/O 的状态，来确认传输是否完成，降低了系统的性能。</p>
+<p>与程序控制方式相比，中断方式因为CPU无需等待而提高了效率。</p>
+<h5 id="处理方法"><a href="#处理方法" class="headerlink" title="处理方法"></a>处理方法</h5><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多中断信号线</td>
+<td>中断请求信号线向 CPU 提出中断请求</td>
+</tr>
+<tr>
+<td>中断软件查询</td>
+<td>轮询每个中断源确定发出请求中断者</td>
+</tr>
+<tr>
+<td>菊花链（硬件查询）</td>
+<td>中断确认信号在 I/O 模块间传递，直达发出请求的模块，该模块把它的ID送往数据线由  CPU 读取</td>
+</tr>
+<tr>
+<td>总线仲裁</td>
+<td>在发中断前需要获取总线控制权，总线可决定谁可以发出中断请求</td>
+</tr>
+<tr>
+<td>中断向量表</td>
+<td>中断向量表保存各个中断源的中断服务程序入口地址。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="优先级控制"><a href="#优先级控制" class="headerlink" title="优先级控制"></a>优先级控制</h5><p>给最紧迫的中断源分配高的优先级，给相对不紧迫的中断源分配低一些的优先级。</p>
+<p>优先级控制可以解决以下情况：</p>
+<p>1、当多个优先级不同的中断请求提出时，CPU 优先响应优先级最高的中断源。</p>
+<p>2、执行中断嵌套。</p>
+<h4 id="直接存储器存取方式"><a href="#直接存储器存取方式" class="headerlink" title="直接存储器存取方式"></a>直接存储器存取方式</h4><p>直接存储器简称 <code>DMA</code>。指在内存与I/O设备传送一个数据块的过程，不需要 CPU 的干涉（只需要在过程开启和结束）。在 DMA 传送过程中，整个系统都交给了 DMA 控制器（DMAC），由它控制系统总线完成数据传送。在 DMA 传送数据期间，CPU 不能使用总线。</p>
+<h4 id="输入输出处理机"><a href="#输入输出处理机" class="headerlink" title="输入输出处理机"></a>输入输出处理机</h4><p>简称 <code>IOP</code>。IOP 也被成为通道，它分担了 CPU 的一部分功能，实现对外围设备的统一管理，完成外围设备与主存之间的数据传送，提高 CPU 的工作效率，但是它需要增加更多的硬件作为代价。</p>
+<p>几步发展产品：外围处理机（PPU）、专用处理机（PPU）</p>
+<h3 id="总线结构"><a href="#总线结构" class="headerlink" title="总线结构"></a>总线结构</h3><p>总线简称 <code>Bus</code>。指计算机设备和设备之间传输信息的公共数据通道。它的特征是由总线上的所有设备共享，可将计算机系统内的多种设备连接到总线上。</p>
+<h4 id="总线的分类"><a href="#总线的分类" class="headerlink" title="总线的分类"></a>总线的分类</h4><p><code>数据总线</code>、<code>地址总线</code>、<code>控制总线</code>，不同型号的CPU芯片，它们也不同。</p>
+<p>1、数据总线（DB）：双向、CPU通过DB从内存或输入输出设备读入数据也可以传送数据、<code>宽度决定了CPU和计算机其他设备之间每次交换数据的位数</code>。</p>
+<p>2、地址总线（AB）：用于传送 CPU 发出的地址信息、单向、<code>宽度决定了 CPU 的最大寻址能力</code>。</p>
+<p>3、控制总线（CB）：用来传送信号（例如：控制信号、时序信号、状态信号）、作为整体是双向的。</p>
+<p>总结：总线的性能直接影响到整体系统的性能；任何系统研制和外围模块的开发都必须依从所采用的总线规范。</p>
+<h4 id="常见总线"><a href="#常见总线" class="headerlink" title="常见总线"></a>常见总线</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ISA 总线（AT标准）</td>
+<td>工业标准；支持16位I/O;传速16Mb/s</td>
+</tr>
+<tr>
+<td>EISE总线</td>
+<td>基于ISA起来的；32位；传输 33Mb/s</td>
+</tr>
+<tr>
+<td>PCI总线</td>
+<td>使用较广的内总线，采用并发传输方式；32/64位；PCI上的设备是即插即用；在传输时会进奇偶校验</td>
+</tr>
+<tr>
+<td>PCI Express 总线</td>
+<td>简称 <code>PCI-E</code>;采用点对点串行连接，无需向总线请求宽带，提高传输频率；PCI-E支持热拔插；双向传输，可运行全双工和双单连接工模式，连接的每个装置都可使用到做大宽度。</td>
+</tr>
+<tr>
+<td>前端总线</td>
+<td>简称 <code>FSB</code>;将CPU 连接到北桥芯片。系统需要主板和CPU都支持某个总线，才能工作；数据传输能力决定对计算机整体性能影响大；</td>
+</tr>
+<tr>
+<td>RS-232C</td>
+<td>串行外总线；至少需要三条；传输距离远；具有较好的抗干扰性</td>
+</tr>
+<tr>
+<td>SCSI总线</td>
+<td>并行外总线；广用于连接硬磁盘、光盘、扫描仪；传输距离20m（差分传送）</td>
+</tr>
+<tr>
+<td>SATA</td>
+<td>串行；主要用在主板和大量存储（硬盘、光盘）之间传输；能对传输指令进行校验并自动校正；接口优点：结构简单、支持热拔插</td>
+</tr>
+<tr>
+<td>USB</td>
+<td>串行；由四条信号线组成（两条数据传送，两条传送电源）；优点：支持热插拔、即插即用</td>
+</tr>
+<tr>
+<td>IEEE-1394</td>
+<td>最高速串行外总线；支持热拔插，可提供电源；支持同步和异步数据传输；由6条信号线组成（两条传送数据两条传送控制信号；两条传送电源）；传输可达3.2Gb/s</td>
+</tr>
+<tr>
+<td>IEEE-488 总线</td>
+<td>并行总线接口标准；总线连接方式；仪器设备（微计算机、数字电压表、数码显示器等）不需中介单元直接并行、字节串行双向异步方式传输信号；最多可连接15台设备；</td>
+</tr>
+</tbody>
+</table>
+<h2 id="安全性、可靠性与系统性能评测基础知识"><a href="#安全性、可靠性与系统性能评测基础知识" class="headerlink" title="安全性、可靠性与系统性能评测基础知识"></a>安全性、可靠性与系统性能评测基础知识</h2><h3 id="计算机安全概述"><a href="#计算机安全概述" class="headerlink" title="计算机安全概述"></a>计算机安全概述</h3><p>计算机安全包括：安全管理、通信与网络安全、密码学、安全体系及模型、容错与容灾。</p>
+<h4 id="计算机的安全等级"><a href="#计算机的安全等级" class="headerlink" title="计算机的安全等级"></a>计算机的安全等级</h4><p>4组7个等级</p>
+<table>
+<thead>
+<tr>
+<th>组</th>
+<th>安全级别</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>可验证安全设计。提供B3级保护，给出形式化隐秘通道分析，非形式化代码一致性验证</td>
+</tr>
+<tr>
+<td>2</td>
+<td>B3</td>
+<td>安全域。TCB必须满足访问监控的要求，提供系统恢复过程</td>
+</tr>
+<tr>
+<td></td>
+<td>B2</td>
+<td>结构化安全保护。建立安全策略模型，对所有的主体和客体实施自主访问和强制访问</td>
+</tr>
+<tr>
+<td></td>
+<td>B1</td>
+<td>标记安全保护。对数据进行标记，对标记的主体和客体实施强制存取控制</td>
+</tr>
+<tr>
+<td>3</td>
+<td>C2</td>
+<td>受控访问控制。存取控制以用户为单位</td>
+</tr>
+<tr>
+<td></td>
+<td>C1</td>
+<td>c初级的自主安全保护，实现用户和数据的分离，进行自主存取控制，以用户组为单位</td>
+</tr>
+<tr>
+<td>4</td>
+<td>D</td>
+<td>最低级、保护措施很小、没有安全功能</td>
+</tr>
+</tbody>
+</table>
+<h4 id="安全威胁"><a href="#安全威胁" class="headerlink" title="安全威胁"></a>安全威胁</h4><p>分两类：<code>故意</code>（黑客渗透）和 <code>偶然</code>（信息法网错误的地址）</p>
+<p>典型的安全威胁</p>
+<table>
+<thead>
+<tr>
+<th>威胁</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>授权侵犯</td>
+<td></td>
+</tr>
+<tr>
+<td>拒绝服务</td>
+<td></td>
+</tr>
+<tr>
+<td>窃听</td>
+<td></td>
+</tr>
+<tr>
+<td>信息泄露</td>
+<td></td>
+</tr>
+<tr>
+<td>截获/修改</td>
+<td></td>
+</tr>
+<tr>
+<td>假冒</td>
+<td></td>
+</tr>
+<tr>
+<td>否认</td>
+<td></td>
+</tr>
+<tr>
+<td>非法使用</td>
+<td></td>
+</tr>
+<tr>
+<td>人员疏忽</td>
+<td></td>
+</tr>
+<tr>
+<td>完整性破坏</td>
+<td></td>
+</tr>
+<tr>
+<td>媒体清理</td>
+<td></td>
+</tr>
+<tr>
+<td>物理入侵</td>
+<td></td>
+</tr>
+<tr>
+<td>资源耗尽</td>
+</tr>
+</tbody>
+</table>
+<h4 id="影响数据安全因素"><a href="#影响数据安全因素" class="headerlink" title="影响数据安全因素"></a>影响数据安全因素</h4><p>1、内部因素：数据加密；安全规划 ；安全存储等</p>
+<p>2、外部因素：设置权限；设置身份、密码、口令等多种认证；设置防火墙；</p>
+<h3 id="加密认证技术和认证技术"><a href="#加密认证技术和认证技术" class="headerlink" title="加密认证技术和认证技术"></a>加密认证技术和认证技术</h3><h4 id="加密技术"><a href="#加密技术" class="headerlink" title="加密技术"></a>加密技术</h4><p>密钥加密技术的密码体制分为<code>对称密钥体制</code>和<code>非对称密钥体制</code>。</p>
+<p>数据加密的技术分为两类，即<code>对称加密</code>（私人密钥加密）和<code>非对称加密</code>（公开密钥加密）。</p>
+<h5 id="对称机密技术"><a href="#对称机密技术" class="headerlink" title="对称机密技术"></a>对称机密技术</h5><p>文件加密和解密使用相同的密钥。</p>
+<p>常用的对称加密算法：</p>
+<p>（1）、数据加密标准算法简称<code>DES</code>：运算速度块、密钥产生容易；适合在当前大多数计算机上用软件方法实现；适合于在专用芯片上实现。</p>
+<p>（2）、三重DES（3DES或TDEA）：在 DES 的基础上采用三重DES，密钥长度加倍；发送方式，K1加密–&gt;k2解密–&gt;K1加密；接收方式，K1解密–&gt;k2加密–&gt;K1解密</p>
+<p>（3）、RC-5：是在RCF2040中定义的</p>
+<p>（4）、国际数据加密算法（IDEA）：密钥为 128位置；是一种据库块加密算法</p>
+<p>（5）、高级加密标准（AES）算法：基于排列（对数据进行重新安排）和置换（将一个数据单元替换为另一个）运算。AES 是一个迭代的、对称密钥分组的密码，可使用 128、192和256位密钥。</p>
+<h5 id="非对称加密技术"><a href="#非对称加密技术" class="headerlink" title="非对称加密技术"></a>非对称加密技术</h5><p>因为加密和解密使用的是两个不同的密钥。非对称加密算法需要两个密钥：<code>公开密钥</code>和<code>私有密钥</code>。若使用公开密钥进行加密则私有密钥才能解密；反之；</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093703-412311.jpg" alt=""></p>
+<p><code>优缺点</code>：保密性好；加密和解密花费的事件长、速度慢，不适合对文件加密，适合少量数据加密。</p>
+<p><code>RSA算法</code>是一种公钥加密算法；安全性是基于大素数分解的困难性能。</p>
+<h5 id="密钥管理"><a href="#密钥管理" class="headerlink" title="密钥管理"></a>密钥管理</h5><p>包括<code>密钥生产</code>、<code>密钥备份和恢复</code>、<code>密钥更新</code>等</p>
+<p><strong>密钥生产</strong>：密钥对的产生是证书申请中的一步，产生的私密由用户保留，公密由和其他信息交给CA中心进行签证，从而产生证书。普通/测试证书由浏览器或固定的终端应用产生。重要（商家证书、服务器证书）的证书，一般由专用应用或CA中心直接产生。</p>
+<p><strong>密钥备份和恢复</strong>：在 PKI（公开密钥体系） 系统中，即使密钥丢失，使用 PKI 的企业和组织必须仍能得到确认，受密钥保护的重要信息也必须能够恢复。</p>
+<p><strong>密钥更新</strong>：对没和由CA颁发的证书都会有有效期，密钥对生命周期的长短由签发证书的CA中心来确定，各证书的有效期都不同。</p>
+<p><strong>多密钥的管理</strong>：Kerberos 建立了一个安全的、可信任的密钥中心（KDC），每个用户只要知道一个和KDC进行会话的密钥就可以了。</p>
+<h4 id="认证技术"><a href="#认证技术" class="headerlink" title="认证技术"></a>认证技术</h4><p>主要解决网络通信过程中通信双方的身份认可。涉及加密（对称加密、不对称加密、两种混合）和密钥交换。认证一般有<code>账户名/口令认证</code>、<code>使用摘要算法认证</code>和<code>基于PKI认证</code>。</p>
+<p>认证机构：数字证书的申请及签发机关（CA）；</p>
+<p>PKI 的主要目的通过自动管理密钥和证书为用户建立一个安全的网络运行环境，是用户可以在多种环境下方便的使用加密和数字签名技术，保证网上数据的机密性、完整性和有效性。</p>
+<p>KPI标准化主要有两方面：1、RSA 公司的公钥加密标准；2、一组具有互操作性的公钥基础设施协议</p>
+<h5 id="Hash-函数与信息摘要"><a href="#Hash-函数与信息摘要" class="headerlink" title="Hash 函数与信息摘要"></a>Hash 函数与信息摘要</h5><p>信息摘要：简要地描述一份较长的信息或文件。用于创建数字签名（是唯一的）。</p>
+<p>例子：</p>
+<p>MD5（MD表示信息摘要），是被广泛应用的 Hash 函数。特点：压缩性（长度固定）、容易计算、抗修改性、强抗碰撞。</p>
+<h5 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h5><p>数字签名过程：信息发送者对信息生成信息摘要–&gt;信息发送者使用私钥签名信息摘要–&gt;把信息本身和已签名的信息摘要一起发送出去–&gt;（使用同一个散列函数）接收者对信息本身生成新的信息摘要，并使用公钥对信息摘要进行验证</p>
+<p>总结：数字签名是一对多的关系；可以验证数字签名的正确性；</p>
+<p>数字加密过程：</p>
+<p>1、信息发送者需要生成一个对称密钥，用该密钥加密要发送的报文。</p>
+<p>2、信息发送者用接收者的公钥加密对称密钥。</p>
+<p>3、数字信封：步骤1和步骤2结合在一起的结果。</p>
+<p>4、接收者使用私钥解密被解密的对称密钥，再用对称密钥解密被加密的密文，得到原文。</p>
+<p>总结：数字加密是多对一的关系；任何知道公钥的人都可向接收方发送加密信息；采用对称加密算法和非对称加密算法，保证发送信息的保密性。</p>
+<h5 id="SSL-协议"><a href="#SSL-协议" class="headerlink" title="SSL 协议"></a>SSL 协议</h5><p>SSL 是安全套接层，主要用于提高应用程序之间数据的安全系数。是一个保证计算机通信安全的协议。</p>
+<p>提供以下3方面的服务：    </p>
+<p>1、用户和服务器的合法性认证。是它们确信数据被送到正确的客户端和服务器上。验证用户的合法性，安全套层协议要求在握交换数据时，进行数字认证。</p>
+<p>2、加密数据易隐藏被发送的数据。在客户端与服务器进行数据交换之前，交换SSL初始握手信息，在 SSL 握手信息中采用了各种加密技术对其加密，保证其机密性和数据完整性，并用数字证书进行鉴别，防止破译。</p>
+<p>3、保护数据的完整性。安全套接层协议采用 Hash 函数和机密共享的方法来提供信息的完整性服务，建立客户端与服务器之间的安全通道。</p>
+<p>主要经过的阶段：</p>
+<p>接通（服务响应）–&gt;密码交换–&gt;会谈密码–&gt;检验–&gt;结束</p>
+<p>发送时，信息用对称密钥加密，对称密钥用非对称算法加密，再把两个包捆绑在一起送过去。</p>
+<h5 id="数字事件戳技术"><a href="#数字事件戳技术" class="headerlink" title="数字事件戳技术"></a>数字事件戳技术</h5><p>是数字签名技术的一种变种应用。</p>
+<p>数字时间戳服务（DTS）是网上电子商务安全服务项目之一，提供电子文件的日期和时间信息的安全保护。是一个经加密后形成的凭证文档。</p>
+<p>包括如下3步骤：</p>
+<p>文件的摘要–&gt;DTS收到文件的日期和时间–&gt;DTS的数字签名</p>
+<h3 id="计算机可靠性"><a href="#计算机可靠性" class="headerlink" title="计算机可靠性"></a>计算机可靠性</h3><h4 id="计算机可靠性概述"><a href="#计算机可靠性概述" class="headerlink" title="计算机可靠性概述"></a>计算机可靠性概述</h4><p>其中，$$R\left( t\right)​$$ 是正常运行的概率；$$\lambda​$$ 指单位时间内失效的元件数与元件总数的比例，当它为常量时，可靠性与失效性的关系为：$$R\left( t\right) =e^{-\lambda t}​$$</p>
+<p>失效率特征如下图</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093721-85438.jpg" alt=""></p>
+<p>平均无故障时间：$$MTBF=\dfrac {1}{\lambda }$$</p>
+<p>计算机的维修效率（MTRF）。计算机的可用性是指计算机的使用效率。它以系统在执行任务的任意时刻能正常工作的概率A表示，即：$$A=\dfrac {ETBF}{MTBF+MTRT}$$</p>
+<p>计算机的 RAS 是指用可靠性 R 、可用性 A 和可维修性S这3个指衡量一个计算机系统。</p>
+<h4 id="计算机可靠性模型"><a href="#计算机可靠性模型" class="headerlink" title="计算机可靠性模型"></a>计算机可靠性模型</h4><p>常见的系统可靠性数学模型有一下3种：</p>
+<h5 id="串联系统"><a href="#串联系统" class="headerlink" title="串联系统"></a>串联系统</h5><p>且仅当所欲的子系统都能正常工作时。系统才正常工作。</p>
+<p>可靠性公式：$$R=R<em>{1}R</em>{2}\ldots R<em>{N}​$$（$$R</em>{1}​$$ $$R_{2}​$$ 表示子系统）</p>
+<p>失效公式：$$\lambda =\lambda <em>{1}+\lambda </em>{2}+\ldots +\lambda <em>{N}​$$（$$\lambda </em>{1}​$$ $$\lambda _{2}​$$ 表示子系统的失效率）</p>
+<h5 id="并联系统"><a href="#并联系统" class="headerlink" title="并联系统"></a>并联系统</h5><p>只要有一个子系统正常工作，系统就能正常运行</p>
+<p>可靠性公式：$$R=1-\left( 1-R<em>{1}\right) \left( 1-R</em>{2}\right) \ldots \left( 1-R_{N}\right)​$$</p>
+<p>失效率：$$\mu =\dfrac {1}{\dfrac {1}{\lambda }\sum ^{N}_{j=1}\dfrac {1}{j}}​$$</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093745-219866.jpg" alt=""></p>
+<h5 id="N-模冗余系统"><a href="#N-模冗余系统" class="headerlink" title="N 模冗余系统"></a>N 模冗余系统</h5>
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="ShenWenFang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ShenWenFang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    ShenWenFang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://swenfang.github.io/2019/02/18/软件技术/第1章计算机网络概述/" title="第1章计算机网络概述">http://swenfang.github.io/2019/02/18/软件技术/第1章计算机网络概述/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    	
+          <div>
+            <div class="recommended_posts">
+    
+    
+    <strong>推荐文章 </strong>
+    <ul>
+        
+            <li><a href="http://swenfang.github.io/2019/03/02/客服中心培训第一天/">阿里智能客服中心培训-1</a></li>
+        
+            <li><a href="http://swenfang.github.io/2018/08/05/文件上传和下载/">文件的上传和下载</a></li>
+        
+            <li><a href="http://swenfang.github.io/2018/08/05/图片上传base64/">图片上传base64</a></li>
+        
+            <li><a href="http://swenfang.github.io/2018/08/05/数据导入/">实现 xls 数据的导入</a></li>
+        
+    </ul>
+    
+</div>
+
+          </div>
+        
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/软件技术/" rel="tag"># 软件技术</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/05/文件上传和下载/" rel="next" title="文件的上传和下载">
+                <i class="fa fa-chevron-left"></i> 文件的上传和下载
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/02/客服中心培训第一天/" rel="prev" title="阿里智能客服中心培训-1">
+                阿里智能客服中心培训-1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4My82MDUx"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="ShenWenFang" />
+            
+              <p class="site-author-name" itemprop="name">ShenWenFang</p>
+              <p class="site-description motion-element" itemprop="description">每一个你不满意的现在，都有一个你没有努力的曾经。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+         <div id="music163player">
+             <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=31861269&auto=0&height=66"></iframe>
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第1章计算机网络概述"><span class="nav-number">1.</span> <span class="nav-text">第1章计算机网络概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机系统基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">计算机系统基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机系统硬件基本组成"><span class="nav-number">1.1.1.</span> <span class="nav-text">计算机系统硬件基本组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中央处理单元"><span class="nav-number">1.1.2.</span> <span class="nav-text">中央处理单元</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#功能"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组成"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">组成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#运算器"><span class="nav-number">1.1.2.2.1.</span> <span class="nav-text">运算器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#功能-1"><span class="nav-number">1.1.2.2.1.1.</span> <span class="nav-text">功能</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制器"><span class="nav-number">1.1.2.2.2.</span> <span class="nav-text">控制器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寄存器组"><span class="nav-number">1.1.2.2.3.</span> <span class="nav-text">寄存器组</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多核-CPU"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">多核 CPU</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据表示"><span class="nav-number">1.1.3.</span> <span class="nav-text">数据表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#无符号数"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">无符号数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#带符号数"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">带符号数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#原码、反码、补码和移码"><span class="nav-number">1.1.3.2.1.</span> <span class="nav-text">原码、反码、补码和移码</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#原码表示法"><span class="nav-number">1.1.3.2.1.1.</span> <span class="nav-text">原码表示法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#反码表示法"><span class="nav-number">1.1.3.2.1.2.</span> <span class="nav-text">反码表示法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#补码表示法"><span class="nav-number">1.1.3.2.1.3.</span> <span class="nav-text">补码表示法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#移码表示法"><span class="nav-number">1.1.3.2.1.4.</span> <span class="nav-text">移码表示法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定点数和浮点数"><span class="nav-number">1.1.3.2.2.</span> <span class="nav-text">定点数和浮点数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#定点数"><span class="nav-number">1.1.3.2.2.1.</span> <span class="nav-text">定点数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#浮点数"><span class="nav-number">1.1.3.2.2.2.</span> <span class="nav-text">浮点数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#工业标准-IEEE754"><span class="nav-number">1.1.3.2.2.3.</span> <span class="nav-text">工业标准 IEEE754</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#浮点数的运算"><span class="nav-number">1.1.3.2.2.4.</span> <span class="nav-text">浮点数的运算</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#校验码"><span class="nav-number">1.1.4.</span> <span class="nav-text">校验码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#奇偶校验码"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">奇偶校验码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#海明码"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">海明码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机体系结构"><span class="nav-number">1.2.</span> <span class="nav-text">计算机体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机体系结构的发展"><span class="nav-number">1.2.1.</span> <span class="nav-text">计算机体系结构的发展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令系统"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#指令集体系结构的分类"><span class="nav-number">1.2.1.3.1.</span> <span class="nav-text">指令集体系结构的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#从体系结构的观点分"><span class="nav-number">1.2.1.3.1.1.</span> <span class="nav-text">从体系结构的观点分</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#按暂存机制分"><span class="nav-number">1.2.1.3.1.2.</span> <span class="nav-text">按暂存机制分</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC-和-RISC"><span class="nav-number">1.2.1.3.2.</span> <span class="nav-text">CISC 和 RISC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指令的流水处理"><span class="nav-number">1.2.1.3.3.</span> <span class="nav-text">指令的流水处理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#指令控制方式"><span class="nav-number">1.2.1.3.3.1.</span> <span class="nav-text">指令控制方式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#流水线的种类"><span class="nav-number">1.2.1.3.3.2.</span> <span class="nav-text">流水线的种类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#流水的相关处理"><span class="nav-number">1.2.1.3.3.3.</span> <span class="nav-text">流水的相关处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#吞吐率和流水建立的时间"><span class="nav-number">1.2.1.3.3.4.</span> <span class="nav-text">吞吐率和流水建立的时间</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阵列、并行、多处理机"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">阵列、并行、多处理机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储系统"><span class="nav-number">1.2.2.</span> <span class="nav-text">存储系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储器的层次结构"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">存储器的层次结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储器的分类"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">存储器的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相连存储器"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">相连存储器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高速缓存"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">高速缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#组成-1"><span class="nav-number">1.2.2.4.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#地址映像方法"><span class="nav-number">1.2.2.4.2.</span> <span class="nav-text">地址映像方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#替换算法"><span class="nav-number">1.2.2.4.3.</span> <span class="nav-text">替换算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能分析"><span class="nav-number">1.2.2.4.4.</span> <span class="nav-text">性能分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多级-Cache"><span class="nav-number">1.2.2.4.5.</span> <span class="nav-text">多级 Cache</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟存储器"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">虚拟存储器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外存储器"><span class="nav-number">1.2.2.6.</span> <span class="nav-text">外存储器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#磁表面存储器"><span class="nav-number">1.2.2.6.1.</span> <span class="nav-text">磁表面存储器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#光盘存储器"><span class="nav-number">1.2.2.6.2.</span> <span class="nav-text">光盘存储器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#固态硬盘"><span class="nav-number">1.2.2.6.3.</span> <span class="nav-text">固态硬盘</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#磁盘阵列"><span class="nav-number">1.2.2.7.</span> <span class="nav-text">磁盘阵列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储域网络（SAN）"><span class="nav-number">1.2.2.8.</span> <span class="nav-text">存储域网络（SAN）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入-输出技术"><span class="nav-number">1.2.3.</span> <span class="nav-text">输入/输出技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#微型计算机中最常用的内存与接口的编址方法"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">微型计算机中最常用的内存与接口的编址方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直接程序控制"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">直接程序控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中断方式"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">中断方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#处理方法"><span class="nav-number">1.2.3.3.1.</span> <span class="nav-text">处理方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优先级控制"><span class="nav-number">1.2.3.3.2.</span> <span class="nav-text">优先级控制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直接存储器存取方式"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">直接存储器存取方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入输出处理机"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">输入输出处理机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总线结构"><span class="nav-number">1.2.4.</span> <span class="nav-text">总线结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总线的分类"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">总线的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见总线"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">常见总线</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全性、可靠性与系统性能评测基础知识"><span class="nav-number">1.3.</span> <span class="nav-text">安全性、可靠性与系统性能评测基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机安全概述"><span class="nav-number">1.3.1.</span> <span class="nav-text">计算机安全概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机的安全等级"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">计算机的安全等级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安全威胁"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">安全威胁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#影响数据安全因素"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">影响数据安全因素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密认证技术和认证技术"><span class="nav-number">1.3.2.</span> <span class="nav-text">加密认证技术和认证技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加密技术"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">加密技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#对称机密技术"><span class="nav-number">1.3.2.1.1.</span> <span class="nav-text">对称机密技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非对称加密技术"><span class="nav-number">1.3.2.1.2.</span> <span class="nav-text">非对称加密技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#密钥管理"><span class="nav-number">1.3.2.1.3.</span> <span class="nav-text">密钥管理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#认证技术"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">认证技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Hash-函数与信息摘要"><span class="nav-number">1.3.2.2.1.</span> <span class="nav-text">Hash 函数与信息摘要</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数字签名"><span class="nav-number">1.3.2.2.2.</span> <span class="nav-text">数字签名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SSL-协议"><span class="nav-number">1.3.2.2.3.</span> <span class="nav-text">SSL 协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数字事件戳技术"><span class="nav-number">1.3.2.2.4.</span> <span class="nav-text">数字事件戳技术</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机可靠性"><span class="nav-number">1.3.3.</span> <span class="nav-text">计算机可靠性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机可靠性概述"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">计算机可靠性概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机可靠性模型"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">计算机可靠性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#串联系统"><span class="nav-number">1.3.3.2.1.</span> <span class="nav-text">串联系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#并联系统"><span class="nav-number">1.3.3.2.2.</span> <span class="nav-text">并联系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#N-模冗余系统"><span class="nav-number">1.3.3.2.3.</span> <span class="nav-text">N 模冗余系统</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ShenWenFang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("9lk8dNt56FULANV18qHRXIff-gzGzoHsz", "lSea2qzYEcPELI1zQN1wWQGt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
