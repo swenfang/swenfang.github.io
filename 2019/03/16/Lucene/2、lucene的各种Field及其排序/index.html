@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="lucene," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="lucene（2）—lucene的各种Field及其排序Lucene的Field说明Lucene存储对象是以document为存储单元，对象中相关的属性值则存放到Field中； lucene中所有Field都是IndexableField接口的实现">
+<meta name="keywords" content="lucene">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lucene的各种Field及其排序">
+<meta property="og:url" content="http://swenfang.github.io/2019/03/16/Lucene/2、lucene的各种Field及其排序/index.html">
+<meta property="og:site_name" content="ShenWenFang">
+<meta property="og:description" content="lucene（2）—lucene的各种Field及其排序Lucene的Field说明Lucene存储对象是以document为存储单元，对象中相关的属性值则存放到Field中； lucene中所有Field都是IndexableField接口的实现">
+<meta property="og:updated_time" content="2019-03-16T03:14:16.138Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lucene的各种Field及其排序">
+<meta name="twitter:description" content="lucene（2）—lucene的各种Field及其排序Lucene的Field说明Lucene存储对象是以document为存储单元，对象中相关的属性值则存放到Field中； lucene中所有Field都是IndexableField接口的实现">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://swenfang.github.io/2019/03/16/Lucene/2、lucene的各种Field及其排序/"/>
+
+
+
+
+
+  <title>lucene的各种Field及其排序 | ShenWenFang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/another"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ShenWenFang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/03/16/Lucene/2、lucene的各种Field及其排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShenWenFang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShenWenFang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">lucene的各种Field及其排序</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-16T09:53:14+08:00">
+                2019-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lucene/" itemprop="url" rel="index">
+                    <span itemprop="name">lucene</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/16/Lucene/2、lucene的各种Field及其排序/" class="leancloud_visitors" data-flag-title="lucene的各种Field及其排序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,571 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="lucene（2）—lucene的各种Field及其排序"><a href="#lucene（2）—lucene的各种Field及其排序" class="headerlink" title="lucene（2）—lucene的各种Field及其排序"></a>lucene（2）—lucene的各种Field及其排序</h1><h2 id="Lucene的Field说明"><a href="#Lucene的Field说明" class="headerlink" title="Lucene的Field说明"></a>Lucene的Field说明</h2><p>Lucene存储对象是以document为存储单元，对象中相关的属性值则存放到Field中；</p>
+<p>lucene中所有Field都是IndexableField接口的实现</p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">org.apache.lucene.index.IndexableField</div><div class="line"> </div><div class="line">Represents a single field <span class="keyword">for</span> indexing. IndexWriter consumes Iterable&lt;IndexableField&gt; as a document.</div></pre></td></tr></table></figure>
+<p>IndexableField接口提供了一些方法，主要是对field相关属性的获取，包括</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** 获取field的名称 */</span></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** 获取field的类型fieldType */</span></div><div class="line"><span class="function"><span class="keyword">public</span> IndexableFieldType <span class="title">fieldType</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** </span></div><div class="line"> *获取当前field的权重（评分值） 只有Field有评分的概念，如果我们想对document进行评分值的设定 必须预先对document中对应的field值进行评分设设定*/  <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">boost</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** 如果此Filed为二进制类型的，返回相应的值*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> BytesRef <span class="title">binaryValue</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 创建一个用户索引此Field的TokenStream</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> TokenStream <span class="title">tokenStream</span><span class="params">(Analyzer analyzer, TokenStream reuse)</span> <span class="keyword">throws</span> IOException</span>;</div></pre></td></tr></table></figure>
+<p>所有的Field均是org.apache.lucene.document.Field的子类；</p>
+<p>项目中我们常用的Field类型主要有IntField, LongField, FloatField, DoubleField, BinaryDocValuesField, NumericDocValuesField, SortedDocValuesField, StringField, TextField, StoredField.</p>
+<h2 id="lucene常见Field"><a href="#lucene常见Field" class="headerlink" title="lucene常见Field"></a>lucene常见Field</h2><p>IntField 主要对int类型的字段进行存储，需要注意的是如果需要对InfField进行排序使用SortField.Type.INT来比较，如果进范围查询或过滤，需要采用NumericRangeQuery.newIntRange() LongField 主要处理Long类型的字段的存储，排序使用SortField.Type.Long,如果进行范围查询或过滤利用NumericRangeQuery.newLongRange()，LongField常用来进行时间戳的排序，保存System.currentTimeMillions() FloatField 对Float类型的字段进行存储，排序采用SortField.Type.Float,范围查询采用NumericRangeQuery.newFloatRange() BinaryDocVluesField 只存储不共享值，如果需要共享值可以用SortedDocValuesField NumericDocValuesField 用于数值类型的Field的排序(预排序)，需要在要排序的field后添加一个同名的NumericDocValuesField SortedDocValuesField 用于String类型的Field的排序，需要在StringField后添加同名的SortedDocValuesField StringField 用户String类型的字段的存储，StringField是只索引不分词 TextField 对String类型的字段进行存储，TextField和StringField的不同是TextField既索引又分词 StoredField 存储Field的值，可以用IndexSearcher.doc和IndexReader.document来获取此Field和存储的值</p>
+<h2 id="IntField使用"><a href="#IntField使用" class="headerlink" title="IntField使用"></a>IntField使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lucene.field;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.Document;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.Field;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.IntField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.NumericDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.index.IndexWriter;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.IndexSearcher;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.MatchAllDocsQuery;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.Query;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.ScoreDoc;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.Sort;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.SortField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.TopFieldDocs;</div><div class="line"><span class="keyword">import</span> org.junit.Test;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> com.lucene.index.IndexUtil;</div><div class="line"><span class="keyword">import</span> com.lucene.search.SearchUtil;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntFieldTest</span> </span>&#123;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 保存一个intField</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIndexIntFieldStored</span><span class="params">()</span> </span>&#123;</div><div class="line">		Document document = <span class="keyword">new</span> Document();</div><div class="line">		document.add(<span class="keyword">new</span> IntField(<span class="string">"intValue"</span>, <span class="number">30</span>, Field.Store.YES));</div><div class="line">		<span class="comment">//要排序必须加同名的field，且类型为NumericDocValuesField</span></div><div class="line">		document.add(<span class="keyword">new</span> NumericDocValuesField(<span class="string">"intValue"</span>, <span class="number">30</span>));</div><div class="line">		Document document1 = <span class="keyword">new</span> Document();</div><div class="line">		document1.add(<span class="keyword">new</span> IntField(<span class="string">"intValue"</span>, <span class="number">40</span>, Field.Store.YES));</div><div class="line">		document1.add(<span class="keyword">new</span> NumericDocValuesField(<span class="string">"intValue"</span>, <span class="number">40</span>));</div><div class="line">		IndexWriter writer = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			writer = IndexUtil.getIndexWriter(<span class="string">"intFieldPath"</span>, <span class="keyword">false</span>);</div><div class="line">			writer.addDocument(document);</div><div class="line">			writer.addDocument(document1);</div><div class="line">			</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				writer.commit();</div><div class="line">				writer.close();</div><div class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">				<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 测试intField排序</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIntFieldSort</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			IndexSearcher searcher = SearchUtil.getIndexSearcher(<span class="string">"intFieldPath"</span>, <span class="keyword">null</span>);</div><div class="line">			<span class="comment">//构建排序字段</span></div><div class="line">			SortField[] sortField = <span class="keyword">new</span> SortField[<span class="number">1</span>];</div><div class="line">			sortField[<span class="number">0</span>] = <span class="keyword">new</span> SortField(<span class="string">"intValue"</span>,SortField.Type.INT,<span class="keyword">true</span>);</div><div class="line">			Sort sort = <span class="keyword">new</span> Sort(sortField);</div><div class="line">			<span class="comment">//查询所有结果</span></div><div class="line">			Query query = <span class="keyword">new</span> MatchAllDocsQuery();</div><div class="line">			TopFieldDocs docs = searcher.search(query, <span class="number">2</span>, sort);</div><div class="line">			ScoreDoc[] scores = docs.scoreDocs;</div><div class="line">			<span class="comment">//遍历结果</span></div><div class="line">			<span class="keyword">for</span> (ScoreDoc scoreDoc : scores) &#123;</div><div class="line">				System.out.println(searcher.doc(scoreDoc.doc));;</div><div class="line">			&#125;</div><div class="line">			<span class="comment">//searcher.search(query, results);</span></div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line"> </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试排序结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Document&lt;stored&lt;intValue:40&gt;&gt;</div><div class="line">Document&lt;stored&lt;intValue:30&gt;&gt;</div></pre></td></tr></table></figure>
+<p>如果修改NumericDocValuesField对应的值，结果会随着其值的大小而改变</p>
+<h2 id="LongField使用"><a href="#LongField使用" class="headerlink" title="LongField使用"></a>LongField使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lucene.field;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.Document;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.Field;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.LongField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.NumericDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.index.IndexWriter;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.IndexSearcher;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.MatchAllDocsQuery;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.Query;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.ScoreDoc;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.Sort;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.SortField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.TopFieldDocs;</div><div class="line"><span class="keyword">import</span> org.junit.Test;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> com.lucene.index.IndexUtil;</div><div class="line"><span class="keyword">import</span> com.lucene.search.SearchUtil;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LongFieldTest</span> </span>&#123;</div><div class="line"> </div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 保存一个longField</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIndexLongFieldStored</span><span class="params">()</span> </span>&#123;</div><div class="line">		Document document = <span class="keyword">new</span> Document();</div><div class="line">		document.add(<span class="keyword">new</span> LongField(<span class="string">"longValue"</span>, <span class="number">50L</span>, Field.Store.YES));</div><div class="line">		document.add(<span class="keyword">new</span> NumericDocValuesField(<span class="string">"longValue"</span>, <span class="number">50L</span>));</div><div class="line">		Document document1 = <span class="keyword">new</span> Document();</div><div class="line">		document1.add(<span class="keyword">new</span> LongField(<span class="string">"longValue"</span>, <span class="number">80L</span>, Field.Store.YES));</div><div class="line">		document1.add(<span class="keyword">new</span> NumericDocValuesField(<span class="string">"longValue"</span>, <span class="number">80L</span>));</div><div class="line">		IndexWriter writer = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			writer = IndexUtil.getIndexWriter(<span class="string">"longFieldPath"</span>, <span class="keyword">false</span>);</div><div class="line">			writer.addDocument(document);</div><div class="line">			writer.addDocument(document1);</div><div class="line">			</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				writer.commit();</div><div class="line">				writer.close();</div><div class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">				<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 测试longField排序</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLongFieldSort</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			IndexSearcher searcher = SearchUtil.getIndexSearcher(<span class="string">"longFieldPath"</span>, <span class="keyword">null</span>);</div><div class="line">			<span class="comment">//构建排序字段</span></div><div class="line">			SortField[] sortField = <span class="keyword">new</span> SortField[<span class="number">1</span>];</div><div class="line">			sortField[<span class="number">0</span>] = <span class="keyword">new</span> SortField(<span class="string">"longValue"</span>,SortField.Type.LONG,<span class="keyword">true</span>);</div><div class="line">			Sort sort = <span class="keyword">new</span> Sort(sortField);</div><div class="line">			<span class="comment">//查询所有结果</span></div><div class="line">			Query query = <span class="keyword">new</span> MatchAllDocsQuery();</div><div class="line">			TopFieldDocs docs = searcher.search(query, <span class="number">2</span>, sort);</div><div class="line">			ScoreDoc[] scores = docs.scoreDocs;</div><div class="line">			<span class="comment">//遍历结果</span></div><div class="line">			<span class="keyword">for</span> (ScoreDoc scoreDoc : scores) &#123;</div><div class="line">				<span class="comment">//System.out.println(searcher.doc(scoreDoc.doc));;</span></div><div class="line">				Document doc = searcher.doc(scoreDoc.doc);</div><div class="line">				System.out.println(doc.getField(<span class="string">"longValue"</span>).numericValue());</div><div class="line">			&#125;</div><div class="line">			<span class="comment">//searcher.search(query, results);</span></div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Document&lt;stored&lt;longValue:80&gt;&gt;</div><div class="line">Document&lt;stored&lt;longValue:50&gt;&gt;</div></pre></td></tr></table></figure>
+<h2 id="FloatField使用"><a href="#FloatField使用" class="headerlink" title="FloatField使用"></a>FloatField使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lucene.field;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.Document;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.Field;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.FloatDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.FloatField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.index.IndexWriter;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.IndexSearcher;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.MatchAllDocsQuery;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.Query;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.ScoreDoc;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.Sort;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.SortField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.TopFieldDocs;</div><div class="line"><span class="keyword">import</span> org.junit.Test;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> com.lucene.index.IndexUtil;</div><div class="line"><span class="keyword">import</span> com.lucene.search.SearchUtil;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FloatFieldTest</span> </span>&#123;</div><div class="line"> </div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 保存一个floatField</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIndexFloatFieldStored</span><span class="params">()</span> </span>&#123;</div><div class="line">		Document document = <span class="keyword">new</span> Document();</div><div class="line">		document.add(<span class="keyword">new</span> FloatField(<span class="string">"floatValue"</span>, <span class="number">9.1f</span>, Field.Store.YES));</div><div class="line">		document.add(<span class="keyword">new</span> FloatDocValuesField(<span class="string">"floatValue"</span>, <span class="number">82.0f</span>));</div><div class="line">		Document document1 = <span class="keyword">new</span> Document();</div><div class="line">		document1.add(<span class="keyword">new</span> FloatField(<span class="string">"floatValue"</span>, <span class="number">80.1f</span>, Field.Store.YES));</div><div class="line">		document1.add(<span class="keyword">new</span> FloatDocValuesField(<span class="string">"floatValue"</span>, <span class="number">80.1f</span>));</div><div class="line">		IndexWriter writer = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			writer = IndexUtil.getIndexWriter(<span class="string">"floatFieldPath"</span>, <span class="keyword">false</span>);</div><div class="line">			writer.addDocument(document);</div><div class="line">			writer.addDocument(document1);</div><div class="line">			</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				writer.commit();</div><div class="line">				writer.close();</div><div class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">				<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 测试intField排序</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFloatFieldSort</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			IndexSearcher searcher = SearchUtil.getIndexSearcher(<span class="string">"floatFieldPath"</span>, <span class="keyword">null</span>);</div><div class="line">			<span class="comment">//构建排序字段</span></div><div class="line">			SortField[] sortField = <span class="keyword">new</span> SortField[<span class="number">1</span>];</div><div class="line">			sortField[<span class="number">0</span>] = <span class="keyword">new</span> SortField(<span class="string">"floatValue"</span>,SortField.Type.FLOAT,<span class="keyword">true</span>);</div><div class="line">			Sort sort = <span class="keyword">new</span> Sort(sortField);</div><div class="line">			<span class="comment">//查询所有结果</span></div><div class="line">			Query query = <span class="keyword">new</span> MatchAllDocsQuery();</div><div class="line">			TopFieldDocs docs = searcher.search(query, <span class="number">2</span>, sort);</div><div class="line">			ScoreDoc[] scores = docs.scoreDocs;</div><div class="line">			<span class="comment">//遍历结果</span></div><div class="line">			<span class="keyword">for</span> (ScoreDoc scoreDoc : scores) &#123;</div><div class="line">				<span class="comment">//System.out.println(searcher.doc(scoreDoc.doc));;</span></div><div class="line">				Document doc = searcher.doc(scoreDoc.doc);</div><div class="line">				System.out.println(doc.getField(<span class="string">"floatValue"</span>).numericValue());</div><div class="line">			&#125;</div><div class="line">			<span class="comment">//searcher.search(query, results);</span></div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Document&lt;stored&lt;floatValue:9.1&gt;&gt;</div><div class="line">Document&lt;stored&lt;floatValue:80.1&gt;&gt;</div></pre></td></tr></table></figure>
+<h2 id="BinaryDocValuesField使用"><a href="#BinaryDocValuesField使用" class="headerlink" title="BinaryDocValuesField使用"></a>BinaryDocValuesField使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lucene.field;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.BinaryDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.Document;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.Field;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.FloatDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.FloatField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.IntField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.LongField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.NumericDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.index.IndexWriter;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.IndexSearcher;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.MatchAllDocsQuery;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.Query;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.ScoreDoc;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.Sort;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.SortField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.TopFieldDocs;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.util.BytesRef;</div><div class="line"><span class="keyword">import</span> org.junit.Test;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> com.lucene.index.IndexUtil;</div><div class="line"><span class="keyword">import</span> com.lucene.search.SearchUtil;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryDocValuesFieldTest</span> </span>&#123;</div><div class="line"> </div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 保存一个BinaryDocValuesField</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIndexLongFieldStored</span><span class="params">()</span> </span>&#123;</div><div class="line">		Document document = <span class="keyword">new</span> Document();</div><div class="line">		document.add(<span class="keyword">new</span> BinaryDocValuesField(<span class="string">"binaryValue"</span>,<span class="keyword">new</span> BytesRef(<span class="string">"1234"</span>.getBytes())));</div><div class="line">		Document document1 = <span class="keyword">new</span> Document();</div><div class="line">		document1.add(<span class="keyword">new</span> BinaryDocValuesField(<span class="string">"binaryValue"</span>,<span class="keyword">new</span> BytesRef(<span class="string">"2345"</span>.getBytes())));</div><div class="line">		IndexWriter writer = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			writer = IndexUtil.getIndexWriter(<span class="string">"binaryValueFieldPath"</span>, <span class="keyword">false</span>);</div><div class="line">			writer.addDocument(document);</div><div class="line">			writer.addDocument(document1);</div><div class="line">			</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				writer.commit();</div><div class="line">				writer.close();</div><div class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">				<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 测试BinaryDocValuesField排序</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testBinaryDocValuesFieldSort</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			IndexSearcher searcher = SearchUtil.getIndexSearcher(<span class="string">"binaryValueFieldPath"</span>, <span class="keyword">null</span>);</div><div class="line">			<span class="comment">//构建排序字段</span></div><div class="line">			SortField[] sortField = <span class="keyword">new</span> SortField[<span class="number">1</span>];</div><div class="line">			sortField[<span class="number">0</span>] = <span class="keyword">new</span> SortField(<span class="string">"binaryValue"</span>,SortField.Type.STRING_VAL,<span class="keyword">true</span>);</div><div class="line">			Sort sort = <span class="keyword">new</span> Sort(sortField);</div><div class="line">			<span class="comment">//查询所有结果</span></div><div class="line">			Query query = <span class="keyword">new</span> MatchAllDocsQuery();</div><div class="line">			TopFieldDocs docs = searcher.search(query, <span class="number">2</span>, sort);</div><div class="line">			ScoreDoc[] scores = docs.scoreDocs;</div><div class="line">			<span class="comment">//遍历结果</span></div><div class="line">			<span class="keyword">for</span> (ScoreDoc scoreDoc : scores) &#123;</div><div class="line">				<span class="comment">//System.out.println(searcher.doc(scoreDoc.doc));;</span></div><div class="line">				Document doc = searcher.doc(scoreDoc.doc);</div><div class="line">				System.out.println(doc);</div><div class="line">				<span class="comment">//System.out.println(doc.getField("binaryValue").numericValue());</span></div><div class="line">			&#125;</div><div class="line">			<span class="comment">//searcher.search(query, results);</span></div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Document&lt;&gt;</div><div class="line">Document&lt;&gt;</div></pre></td></tr></table></figure>
+<p>为什么这样呢，这是跟BinaryDocValuesField的特性决定的，只索引不存值！</p>
+<h2 id="StringField使用"><a href="#StringField使用" class="headerlink" title="StringField使用"></a>StringField使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lucene.field;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.BinaryDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.Document;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.Field;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.FloatDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.FloatField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.IntField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.LongField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.NumericDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.SortedDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.StringField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.index.IndexWriter;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.IndexSearcher;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.MatchAllDocsQuery;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.Query;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.ScoreDoc;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.Sort;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.SortField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.TopFieldDocs;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.util.BytesRef;</div><div class="line"><span class="keyword">import</span> org.junit.Test;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> com.lucene.index.IndexUtil;</div><div class="line"><span class="keyword">import</span> com.lucene.search.SearchUtil;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringFieldTest</span> </span>&#123;</div><div class="line"> </div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 保存一个StringField</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIndexLongFieldStored</span><span class="params">()</span> </span>&#123;</div><div class="line">		Document document = <span class="keyword">new</span> Document();</div><div class="line">		document.add(<span class="keyword">new</span> StringField(<span class="string">"stringValue"</span>,<span class="string">"12445"</span>, Field.Store.YES));</div><div class="line">		document.add(<span class="keyword">new</span> SortedDocValuesField(<span class="string">"stringValue"</span>, <span class="keyword">new</span> BytesRef(<span class="string">"12445"</span>.getBytes())));</div><div class="line">		Document document1 = <span class="keyword">new</span> Document();</div><div class="line">		document1.add(<span class="keyword">new</span> StringField(<span class="string">"stringValue"</span>,<span class="string">"23456"</span>, Field.Store.YES));</div><div class="line">		document1.add(<span class="keyword">new</span> SortedDocValuesField(<span class="string">"stringValue"</span>, <span class="keyword">new</span> BytesRef(<span class="string">"23456"</span>.getBytes())));</div><div class="line">		IndexWriter writer = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			writer = IndexUtil.getIndexWriter(<span class="string">"stringFieldPath"</span>, <span class="keyword">false</span>);</div><div class="line">			writer.addDocument(document);</div><div class="line">			writer.addDocument(document1);</div><div class="line">			</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				writer.commit();</div><div class="line">				writer.close();</div><div class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">				<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 测试StringField排序</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testStringFieldSort</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			IndexSearcher searcher = SearchUtil.getIndexSearcher(<span class="string">"stringFieldPath"</span>, <span class="keyword">null</span>);</div><div class="line">			<span class="comment">//构建排序字段</span></div><div class="line">			SortField[] sortField = <span class="keyword">new</span> SortField[<span class="number">1</span>];</div><div class="line">			sortField[<span class="number">0</span>] = <span class="keyword">new</span> SortField(<span class="string">"stringVal"</span>,SortField.Type.STRING,<span class="keyword">true</span>);</div><div class="line">			Sort sort = <span class="keyword">new</span> Sort(sortField);</div><div class="line">			<span class="comment">//查询所有结果</span></div><div class="line">			Query query = <span class="keyword">new</span> MatchAllDocsQuery();</div><div class="line">			TopFieldDocs docs = searcher.search(query, <span class="number">2</span>, sort);</div><div class="line">			ScoreDoc[] scores = docs.scoreDocs;</div><div class="line">			<span class="comment">//遍历结果</span></div><div class="line">			<span class="keyword">for</span> (ScoreDoc scoreDoc : scores) &#123;</div><div class="line">				<span class="comment">//System.out.println(searcher.doc(scoreDoc.doc));;</span></div><div class="line">				Document doc = searcher.doc(scoreDoc.doc);</div><div class="line">				System.out.println(doc);</div><div class="line">				<span class="comment">//System.out.println(doc.getField("binaryValue").numericValue());</span></div><div class="line">			&#125;</div><div class="line">			<span class="comment">//searcher.search(query, results);</span></div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Document&lt;stored,indexed,tokenized,omitNorms,indexOptions=DOCS&lt;stringValue:12445&gt;&gt;</div><div class="line">Document&lt;stored,indexed,tokenized,omitNorms,indexOptions=DOCS&lt;stringValue:23456&gt;&gt;</div></pre></td></tr></table></figure>
+<h2 id="TextField使用"><a href="#TextField使用" class="headerlink" title="TextField使用"></a>TextField使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lucene.field;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.BinaryDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.Document;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.Field;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.FloatDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.FloatField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.IntField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.LongField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.NumericDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.SortedDocValuesField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.StringField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.document.TextField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.index.IndexWriter;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.IndexSearcher;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.MatchAllDocsQuery;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.Query;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.ScoreDoc;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.Sort;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.SortField;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.search.TopFieldDocs;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.util.BytesRef;</div><div class="line"><span class="keyword">import</span> org.junit.Test;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> com.lucene.index.IndexUtil;</div><div class="line"><span class="keyword">import</span> com.lucene.search.SearchUtil;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TextFieldTest</span> </span>&#123;</div><div class="line"> </div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 保存一个StringField</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIndexLongFieldStored</span><span class="params">()</span> </span>&#123;</div><div class="line">		Document document = <span class="keyword">new</span> Document();</div><div class="line">		document.add(<span class="keyword">new</span> TextField(<span class="string">"textValue"</span>,<span class="string">"12345"</span>, Field.Store.YES));</div><div class="line">		document.add(<span class="keyword">new</span> SortedDocValuesField(<span class="string">"textValue"</span>, <span class="keyword">new</span> BytesRef(<span class="string">"12345"</span>.getBytes())));</div><div class="line">		Document document1 = <span class="keyword">new</span> Document();</div><div class="line">		document1.add(<span class="keyword">new</span> TextField(<span class="string">"textValue"</span>,<span class="string">"23456"</span>, Field.Store.YES));</div><div class="line">		document1.add(<span class="keyword">new</span> SortedDocValuesField(<span class="string">"textValue"</span>, <span class="keyword">new</span> BytesRef(<span class="string">"23456"</span>.getBytes())));</div><div class="line">		IndexWriter writer = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			writer = IndexUtil.getIndexWriter(<span class="string">"textFieldPath"</span>, <span class="keyword">false</span>);</div><div class="line">			writer.addDocument(document);</div><div class="line">			writer.addDocument(document1);</div><div class="line">			</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				writer.commit();</div><div class="line">				writer.close();</div><div class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">				<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 测试StringField排序</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testStringFieldSort</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			IndexSearcher searcher = SearchUtil.getIndexSearcher(<span class="string">"textFieldPath"</span>, <span class="keyword">null</span>);</div><div class="line">			<span class="comment">//构建排序字段</span></div><div class="line">			SortField[] sortField = <span class="keyword">new</span> SortField[<span class="number">1</span>];</div><div class="line">			sortField[<span class="number">0</span>] = <span class="keyword">new</span> SortField(<span class="string">"textValue"</span>,SortField.Type.STRING,<span class="keyword">true</span>);</div><div class="line">			Sort sort = <span class="keyword">new</span> Sort(sortField);</div><div class="line">			<span class="comment">//查询所有结果</span></div><div class="line">			Query query = <span class="keyword">new</span> MatchAllDocsQuery();</div><div class="line">			TopFieldDocs docs = searcher.search(query, <span class="number">2</span>, sort);</div><div class="line">			ScoreDoc[] scores = docs.scoreDocs;</div><div class="line">			<span class="comment">//遍历结果</span></div><div class="line">			<span class="keyword">for</span> (ScoreDoc scoreDoc : scores) &#123;</div><div class="line">				<span class="comment">//System.out.println(searcher.doc(scoreDoc.doc));;</span></div><div class="line">				Document doc = searcher.doc(scoreDoc.doc);</div><div class="line">				System.out.println(doc);</div><div class="line">				<span class="comment">//System.out.println(doc.getField("binaryValue").numericValue());</span></div><div class="line">			&#125;</div><div class="line">			<span class="comment">//searcher.search(query, results);</span></div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Document&lt;stored,indexed,tokenized&lt;textValue:23456&gt;&gt;</div><div class="line">Document&lt;stored,indexed,tokenized&lt;textValue:12345&gt;&gt;</div></pre></td></tr></table></figure>
+<h2 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h2><p><a href="http://download.csdn.net/detail/wuyinggui10000/8669987" target="_blank" rel="external">lucene field使用源码</a></p>
+
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="ShenWenFang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ShenWenFang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    ShenWenFang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://swenfang.github.io/2019/03/16/Lucene/2、lucene的各种Field及其排序/" title="lucene的各种Field及其排序">http://swenfang.github.io/2019/03/16/Lucene/2、lucene的各种Field及其排序/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    	
+          <div>
+            <div class="recommended_posts">
+    
+    
+    <strong>推荐文章 </strong>
+    <ul>
+        
+            <li><a href="http://swenfang.github.io/2019/03/16/Lucene/4、lucene的中文分词器jcseg和IK Analyzer分词器及其使用说明/">lucene的中文分词器jcseg和IKAnalyzer分词器及其使用说明</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/03/16/Lucene/3、lucene的analysis相关和自定义分词器/">lucene的analysis相关和自定义分词器</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/03/16/Lucene/1、lucene的IndexWriter对象创建和索引策略的选择/">lucene的IndexWriter对象创建和索引策略的选择</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/03/15/软件技术/第2章程序设计语言基础知识/">第2章程序设计语言基础知识</a></li>
+        
+    </ul>
+    
+</div>
+
+          </div>
+        
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/lucene/" rel="tag"># lucene</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/16/Lucene/1、lucene的IndexWriter对象创建和索引策略的选择/" rel="next" title="lucene的IndexWriter对象创建和索引策略的选择">
+                <i class="fa fa-chevron-left"></i> lucene的IndexWriter对象创建和索引策略的选择
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/16/Lucene/3、lucene的analysis相关和自定义分词器/" rel="prev" title="lucene的analysis相关和自定义分词器">
+                lucene的analysis相关和自定义分词器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4My82MDUx"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="ShenWenFang" />
+            
+              <p class="site-author-name" itemprop="name">ShenWenFang</p>
+              <p class="site-description motion-element" itemprop="description">每一个你不满意的现在，都有一个你没有努力的曾经。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+         <div id="music163player">
+             <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=31861269&auto=0&height=66"></iframe>
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lucene（2）—lucene的各种Field及其排序"><span class="nav-number">1.</span> <span class="nav-text">lucene（2）—lucene的各种Field及其排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lucene的Field说明"><span class="nav-number">1.1.</span> <span class="nav-text">Lucene的Field说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lucene常见Field"><span class="nav-number">1.2.</span> <span class="nav-text">lucene常见Field</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IntField使用"><span class="nav-number">1.3.</span> <span class="nav-text">IntField使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LongField使用"><span class="nav-number">1.4.</span> <span class="nav-text">LongField使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FloatField使用"><span class="nav-number">1.5.</span> <span class="nav-text">FloatField使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BinaryDocValuesField使用"><span class="nav-number">1.6.</span> <span class="nav-text">BinaryDocValuesField使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StringField使用"><span class="nav-number">1.7.</span> <span class="nav-text">StringField使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TextField使用"><span class="nav-number">1.8.</span> <span class="nav-text">TextField使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码下载地址"><span class="nav-number">1.9.</span> <span class="nav-text">源码下载地址</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ShenWenFang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("9lk8dNt56FULANV18qHRXIff-gzGzoHsz", "lSea2qzYEcPELI1zQN1wWQGt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

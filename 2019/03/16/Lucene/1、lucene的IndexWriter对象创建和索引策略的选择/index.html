@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="lucene," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="lucene（1）—lucene的IndexWriter对象创建和索引策略的选择因工作的需要（数据量大造成原有系统查询效率低），最近做了搜索引擎相关的内容，选择了lucene5版本（15年发布的）。">
+<meta name="keywords" content="lucene">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lucene的IndexWriter对象创建和索引策略的选择">
+<meta property="og:url" content="http://swenfang.github.io/2019/03/16/Lucene/1、lucene的IndexWriter对象创建和索引策略的选择/index.html">
+<meta property="og:site_name" content="ShenWenFang">
+<meta property="og:description" content="lucene（1）—lucene的IndexWriter对象创建和索引策略的选择因工作的需要（数据量大造成原有系统查询效率低），最近做了搜索引擎相关的内容，选择了lucene5版本（15年发布的）。">
+<meta property="og:updated_time" content="2019-03-16T03:13:43.606Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lucene的IndexWriter对象创建和索引策略的选择">
+<meta name="twitter:description" content="lucene（1）—lucene的IndexWriter对象创建和索引策略的选择因工作的需要（数据量大造成原有系统查询效率低），最近做了搜索引擎相关的内容，选择了lucene5版本（15年发布的）。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://swenfang.github.io/2019/03/16/Lucene/1、lucene的IndexWriter对象创建和索引策略的选择/"/>
+
+
+
+
+
+  <title>lucene的IndexWriter对象创建和索引策略的选择 | ShenWenFang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/another"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ShenWenFang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/03/16/Lucene/1、lucene的IndexWriter对象创建和索引策略的选择/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShenWenFang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShenWenFang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">lucene的IndexWriter对象创建和索引策略的选择</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-16T09:53:14+08:00">
+                2019-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lucene/" itemprop="url" rel="index">
+                    <span itemprop="name">lucene</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/16/Lucene/1、lucene的IndexWriter对象创建和索引策略的选择/" class="leancloud_visitors" data-flag-title="lucene的IndexWriter对象创建和索引策略的选择">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,751 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="lucene（1）—lucene的IndexWriter对象创建和索引策略的选择"><a href="#lucene（1）—lucene的IndexWriter对象创建和索引策略的选择" class="headerlink" title="lucene（1）—lucene的IndexWriter对象创建和索引策略的选择"></a>lucene（1）—lucene的IndexWriter对象创建和索引策略的选择</h1><p>因工作的需要（数据量大造成原有系统查询效率低），最近做了搜索引擎相关的内容，选择了lucene5版本（15年发布的）。</p>
+<a id="more"></a>
+<p>lucene是一个开放源代码的全文搜索引擎开发工具包，提供了简单强大的搜索引擎接口，其优点如下：</p>
+<ul>
+<li>数据以索引文件的形式存储，索引文件可以跨平台，只要保证索引完整，复制到任何机器或者磁盘空间均可以查询索引内容；</li>
+<li>在传统全文检索引擎的倒排索引的基础上，实现了分块索引，能够针对新的文件建立小文件索引，提升索引速度。然后通过与原有索引的合并，达到优化的目的；</li>
+<li>索引的构建和查询都十分简洁，有强大的类库实现相关功能；</li>
+<li>开发源代码，论坛和资源十分丰富。</li>
+</ul>
+<p>索引的构建过程描述如下：</p>
+<p> 1）判断JRE版本是否为64位和是否支持堆外内存，并创建</p>
+<p>​               1.1  如果满足条件，创建MMapDirectory，此种Directory可以有效的利用虚拟机内存地址空间 ；</p>
+<p>​               1.2  如果不满足以上条件，判断系统是否是windows,如果满足条件，创建SimpleFSDirectory，此种directory提供了性能不太高的多线程支持，lucene推荐使用<a href="https://blog.csdn.net/wuyinggui10000/article/details/45502445" target="_blank" rel="external">NIOFSDirectory</a><code>或者MMapDirectory来替代之；</code></p>
+<p>​               1.3 如果以上均不满足，创建NIOFSDirectory对象，此种directory的英文说明为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">An FSDirectory implementation that uses java.nio<span class="string">'s FileChannel'</span>s positional read, which allows multiple threads to read from the same file without synchronizing</div></pre></td></tr></table></figure>
+<p>大意是一个利用了java nio中FileChannel的FSDirectory实现，允许无syschronized的对同一文件进行多线程读</p>
+<p> 2）词库分析器Analyzer创建（需要注意的是使用哪种Analyzer进行索引查询，创建的时候也要使用对应的索引器，否则查询结果有问题）</p>
+<p> 3）IndexWriterConfig对象创建,并获取IndexWriter对象</p>
+<p>​            3.1 判断是覆盖索引还是追加索引，如果是覆盖索引indexWriterConfig.setOpenMode(IndexWriterConfig.OpenMode.CREATE);</p>
+<p>​            3.2 如果追加indexWriterConfig.setOpenMode(IndexWriterConfig.OpenMode.CREATE_OR_APPEND);</p>
+<p>​    4) 遍历根据要索引的对象列表，对单个对象的field进行lucene相关field构建，添加到Document对象中</p>
+<p>​    5）IndexWriter对索引进行写入；</p>
+<p>​    6）IndexWriter执行commit()和close()结束索引创建过程</p>
+<p>以lucene5为例，索引器的创建如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">/**创建索引写入器</span></div><div class="line"> * <span class="doctag">@param</span> indexPath</div><div class="line"> * <span class="doctag">@param</span> create</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> * <span class="doctag">@throws</span> IOException</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IndexWriter <span class="title">getIndexWriter</span><span class="params">(String indexPath,<span class="keyword">boolean</span> create)</span> <span class="keyword">throws</span> IOException</span>&#123;</div><div class="line">    Directory dir = FSDirectory.open(Paths.get(indexPath, <span class="keyword">new</span> String[<span class="number">0</span>]));</div><div class="line">    Analyzer analyzer = <span class="keyword">new</span> StandardAnalyzer();</div><div class="line">    IndexWriterConfig iwc = <span class="keyword">new</span> IndexWriterConfig(analyzer);</div><div class="line">    <span class="keyword">if</span> (create)&#123;</div><div class="line">        iwc.setOpenMode(IndexWriterConfig.OpenMode.CREATE);</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">        iwc.setOpenMode(IndexWriterConfig.OpenMode.CREATE_OR_APPEND);</div><div class="line">    &#125;</div><div class="line">    IndexWriter writer = <span class="keyword">new</span> IndexWriter(dir, iwc);</div><div class="line">    <span class="keyword">return</span> writer;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面给出当时工作需要的创建索引测试例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiThreadIndexTest</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Pattern p_html = Pattern.compile(<span class="string">"&lt;[^&gt;]+&gt;"</span>, Pattern.CASE_INSENSITIVE);</div><div class="line">    </div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException, ParseException </span>&#123;</div><div class="line">		String indexPath = <span class="string">"D:\\LuceneIndex\\IQC\\ag\\voice\\20190201"</span>;</div><div class="line">		System.out.println(<span class="string">"开始创建索引"</span>);</div><div class="line">		IQCConversationInfoBean iqcConversationInfoBean = <span class="keyword">new</span> IQCConversationInfoBean();</div><div class="line">		iqcConversationInfoBean.setMediaType(<span class="string">"voice"</span>);</div><div class="line">		iqcConversationInfoBean.setCallDate(<span class="string">"20190201"</span>);</div><div class="line">		iqcConversationInfoBean.setCallTime(JCalendar.getDate(<span class="string">"20190201145454"</span>, <span class="string">"yyyyMMddHHmmss"</span>));</div><div class="line">		iqcConversationInfoBean.setHangupTime(JCalendar.getDate(<span class="string">"20190201145959"</span>, <span class="string">"yyyyMMddHHmmss"</span>)); <span class="comment">// 挂机时间</span></div><div class="line">		iqcConversationInfoBean.setChannelCode(<span class="string">"ag"</span>);</div><div class="line">		iqcConversationInfoBean.setAccountCode(<span class="string">"Admin"</span>);</div><div class="line">		iqcConversationInfoBean.setEmpName(<span class="string">"超级管理员"</span>);</div><div class="line">		iqcConversationInfoBean.setLanguage(<span class="string">"1"</span>);</div><div class="line">		iqcConversationInfoBean.setCustNo(<span class="string">"123456"</span>);</div><div class="line">		iqcConversationInfoBean.setCustName(<span class="string">"洪尼玛"</span>);</div><div class="line">		iqcConversationInfoBean.setCallNo(<span class="string">"18565279427"</span>);</div><div class="line">		iqcConversationInfoBean.setSatisfiedType(<span class="string">"1"</span>); <span class="comment">// 满意度</span></div><div class="line">        <span class="comment">// 座席通话内容</span></div><div class="line">		iqcConversationInfoBean.setAgentContent(<span class="string">"您好，请问有什么可以帮到您请问是陈女士吗啊，对从您实名号，您是通过什么渠道转的？手机银行的您，是同行转账，还是跨行转账？那真没有到账的话，要以系统处理为准呢？他这些要以系统处理为准的，今天是年30系统的。我这边帮您看一下，嗯撤销不了哇，因为您当时选择的普通转账那这个你这什么时候到账，就看那边的系统处理为准的那您可以用此到家吗，你干嘛用普通到账呢啊啊我这边看到您用的是普通转账来的是系统转帐，"</span>);</div><div class="line">		<span class="comment">// agentFirst</span></div><div class="line">		iqcConversationInfoBean.setAgentFirst(<span class="string">"您好，请问有什么可以帮到您请问是陈女士吗啊，对从您实名号，您是通过什么渠道转的？手机银行的您，是同行转账，还是跨行转账？那真没有到账的话，要以系统处理为准呢？他这些要以系统处理为准的，今天是年30系统的。我这边帮您看一下，嗯撤销不了哇，因为您当时选择的普通转账那这个你这什么时候到账，就看那边的系统处理为准的那您可以用此到家吗，你干嘛用普通到账呢啊啊我这边看到您用的是普通转账来的是系统转帐，"</span>);</div><div class="line">		<span class="comment">// agentLast</span></div><div class="line">		iqcConversationInfoBean.setAgentLast(<span class="string">"已经登记好了"</span>);</div><div class="line">		<span class="comment">// 客户通话内容</span></div><div class="line">		iqcConversationInfoBean.setCustContent(<span class="string">"你好，我想问一下，我这将是广州农农商银行，现在我回来到这边那个密码，搞忘记了，可不可以在我换地方改密改密码呢，还还找密码呢"</span>);</div><div class="line">		<span class="comment">// 客户首句</span></div><div class="line">		iqcConversationInfoBean.setCustFirst(<span class="string">"你好，我想问一下，我这将是广州农农商银行，现在我回来到这边那个密码，搞忘记了，可不可以在我换地方改密改密码呢，还还找密码呢"</span>);</div><div class="line">		<span class="comment">// 客户尾句</span></div><div class="line">		iqcConversationInfoBean.setCustLast(<span class="string">"结果登记"</span>);</div><div class="line">		<span class="comment">// 全部通话内容</span></div><div class="line">		    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5000</span>;i++)&#123;</div><div class="line">                iqcConversationInfoBean.setAllContent(<span class="string">"&lt;li start=13070 end=14870 emotion=5.0 speed=4.0 &gt;坐席：您好，请问有什么可以帮您&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=14880 end=21470 emotion=6.0 speed=3.0 &gt;客户：然后你们这个银行，这里呀，那柜员机老是故障啊，嗯，也没用过的维修的&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=6  class=\"silences\"  &gt; 6S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=21480 end=23270 emotion=6.0 speed=2.68 &gt;坐席：嗯，哪个柜员机呀&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=23280 end=27780 emotion=6.0 speed=1.46 &gt;客户：我们广州市白云区江高镇&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=29000 end=30200 emotion=6.0 speed=3.0 &gt;客户：然后，新楼村&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=6  class=\"silences\"  &gt; 6S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=30210 end=32250 emotion=6.0 speed=4.11 &gt;坐席：嗯桂圆是有没有那个订单号啊？&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=32890 end=36190 emotion=6.0 speed=3.81 &gt;坐席：在屏幕上方有一个本机终端号的，有没有看到？&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=36200 end=38590 emotion=6.0 speed=3.51 &gt;客户：没看，但是我我报你帮我查一下&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=38600 end=40690 emotion=6.0 speed=4.01 &gt;坐席：那个地址在哪里啊，刚刚在哪里&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=40700 end=45490 emotion=6.0 speed=2.12 &gt;客户：呃，江高镇，然后新楼村新楼路31号&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=4  class=\"silences\"  &gt; 4S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=45500 end=46630 emotion=5.0 speed=1.06 &gt;坐席：嗯好&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=11  class=\"silences\"  &gt; 11S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=58500 end=60550 emotion=6.0 speed=3.51 &gt;坐席：他旁边没有网点的他，旁边&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=61420 end=64720 emotion=6.0 speed=2.36 &gt;客户：没有就这个柜员机，我们学校&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=4  class=\"silences\"  &gt; 4S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=64730 end=66520 emotion=6.0 speed=2.34 &gt;坐席：嗯，什么学校啊&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=66530 end=68230 emotion=6.0 speed=2.47 &gt;客户：广东、江南理工&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=68870 end=73970 emotion=6.0 speed=3.17 &gt;坐席：学校里面的嘛，对江南理工就是那个江西的，在南方的南吗？&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=73980 end=79170 emotion=6.0 speed=1.38 &gt;客户：然后是江南江南是南方的南&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=6  class=\"silences\"  &gt; 6S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=80140 end=84040 emotion=6.0 speed=3.69 &gt;坐席：江南理工没有看到他这个有柜员，机的地方啊，他是在&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=84050 end=86900 emotion=6.0 speed=2.1 &gt;客户：哦，江南理工技工学校&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=4  class=\"silences\"  &gt; 4S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=88210 end=89410 emotion=6.0 speed=3.0 &gt;坐席：在哪个区的？&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=89420 end=91140 emotion=6.0 speed=2.09 &gt;客户：白云区江高镇&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=98540 end=99740 emotion=6.0 speed=3.0 &gt;客户：然后那个金融&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=10  class=\"silences\"  &gt; 10S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=99750 end=105570 emotion=6.0 speed=2.47 &gt;坐席：他是在那个往港、煤炭地质局对面，那个技工学校吗？&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=106250 end=109250 emotion=6.0 speed=3.0 &gt;客户：不是我们是白云区江高镇新楼村的&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=3  class=\"silences\"  &gt; 3S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=109260 end=111950 emotion=6.0 speed=2.23 &gt;坐席：新农村新是哪个新啊？&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=111960 end=113150 emotion=6.0 speed=2.52 &gt;客户：新中国的新&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=113160 end=114350 emotion=4.0 speed=0.5 &gt;坐席：嗯&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=114360 end=116880 emotion=6.0 speed=3.33 &gt;客户：楼市大龙的龙村，是村庄的村。&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=3  class=\"silences\"  &gt; 3S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=118240 end=120340 emotion=6.0 speed=3.14 &gt;坐席：没有看到他这个地点有啊&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=120350 end=123340 emotion=6.0 speed=3.01 &gt;客户：那我，们在银行的奇怪呢，是因为&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=3  class=\"silences\"  &gt; 3S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=123350 end=126640 emotion=6.0 speed=3.1 &gt;坐席：您要看一下，他去柜员机的位置才行啊&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=126650 end=129340 emotion=6.0 speed=4.01 &gt;客户：我们会员就直接就是在我们学校"</span>+i+<span class="string">"里面吗？&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=129350 end=135630 emotion=7.0 speed=3.53 &gt;坐席：是什么学校啊，刚才跟你说了广东将的，其实没有跟他有这个学校，有没有全称呢？&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=136300 end=139210 emotion=7.0 speed=2.26 &gt;客户：广东、江南理工技工学校&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=6  class=\"silences\"  &gt; 6S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=142190 end=148190 emotion=6.0 speed=2.8 &gt;坐席：但是，我们收他技工，学校就只有出来刚刚那个旺港煤炭地质局&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=148200 end=158090 emotion=6.0 speed=2.73 &gt;客户：您的商品一双鞋呢，不，是旺旺，我们是在广州市白云区江高镇新楼村新楼路31号，这个详细的地址&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=9  class=\"silences\"  &gt; 9S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=158100 end=162340 emotion=6.0 speed=4.1 &gt;坐席：嗯，您学校地址，但是，他柜员机不，他不一定是这么登记的吗？&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=162980 end=172900 emotion=6.0 speed=3.81 &gt;客户：那你这个是你们的问题了，你像我这个我是我现在就是就是现在要要告诉你们呢，这里有我们这个，这个地址啊，你们所学校有因为台风的呀啊&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=11  class=\"silences\"  &gt; 11S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=173540 end=174440 emotion=6.0 speed=3.33 &gt;坐席：好评返现。&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=174450 end=178640 emotion=7.0 speed=3.57 &gt;客户：我整天啊，有问题一直，搞错了，你们要反映上去，上面&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=4  class=\"silences\"  &gt; 4S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=178650 end=184940 emotion=7.0 speed=3.52 &gt;坐席：但是，您这样去把您那个柜员机上面，它有一个模板套，您的会员区发布宝贝订单号&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=185550 end=186360 emotion=7.0 speed=2.22 &gt;坐席：好不好&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=184950 end=185540 emotion=6.0 speed=1.01 &gt;客户：嗯&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=187000 end=190300 emotion=6.0 speed=3.81 &gt;坐席：但是，我们确实现在没有看到您这个地方，有啊&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=190310 end=192100 emotion=7.0 speed=3.68 &gt;客户：那您说一下怎么办，因为&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=192110 end=193600 emotion=6.0 speed=4.83 &gt;坐席：我们没有查到我们就没有办&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=193610 end=196850 emotion=7.0 speed=4.44 &gt;客户：反馈到我想问一下，你，说你，你说让我现在怎么办？&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=3  class=\"silences\"  &gt; 3S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=197550 end=201450 emotion=6.0 speed=4.76 &gt;坐席：所以，您看一下您那个柜员机，他旁边是只有一台吗，还是什么情况啊&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=201460 end=205500 emotion=6.0 speed=2.97 &gt;客户：有一台机黑屏，什么都看不到，整天出故障啊&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=5  class=\"silences\"  &gt; 5S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=206990 end=208360 emotion=6.0 speed=3.06 &gt;坐席：嗯，稍等一下啊&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=209060 end=211320 emotion=6.0 speed=3.71 &gt;客户：你们现在真的老子真的有问题啊&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=213040 end=220180 emotion=6.0 speed=3.78 &gt;客户：你报一个详细地址了，还问我是在哪个，你说的那个不是在那里，这里你们就往那low爆了，知道吧&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=220820 end=223260 emotion=6.0 speed=2.7 &gt;客户：你要找人过来核实修改呀&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=0 silence=33  class=\"silences\"  &gt; 33S. &lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=256910 end=257430 emotion=4.0 speed=1.15 &gt;客户：嗯&lt;/li&gt;"</span> +</div><div class="line">                        <span class="string">"&lt;li start=258590 end=259330 emotion=5.0 speed=1.62 &gt;客户：是吧&lt;/li&gt;"</span>);</div><div class="line">                iqcConversationInfoBean.setSerialNo(UUID.randomUUID().toString());</div><div class="line">		        iqcConversationInfoBean.setAgentMaxSpeed((<span class="keyword">float</span>)Math.round(Math.random()*<span class="number">100</span>));</div><div class="line">		        iqcConversationInfoBean.setAgentMinSpeed((<span class="keyword">float</span>)Math.round(Math.random()*<span class="number">100</span>));</div><div class="line">		        iqcConversationInfoBean.setAgentAvgSpeed((<span class="keyword">float</span>)Math.round(Math.random()*<span class="number">100</span>));</div><div class="line">		        iqcConversationInfoBean.setAgentMaxEmotion((<span class="keyword">float</span>)Math.round(Math.random()*<span class="number">100</span>));</div><div class="line">		        iqcConversationInfoBean.setAgentMinEmotion((<span class="keyword">float</span>)Math.round(Math.random()*<span class="number">100</span>));</div><div class="line">		        iqcConversationInfoBean.setAgentAvgEmotion((<span class="keyword">float</span>)Math.round(Math.random()*<span class="number">100</span>));</div><div class="line">		        iqcConversationInfoBean.setCustMaxSpeed((<span class="keyword">float</span>)Math.round(Math.random()*<span class="number">100</span>));</div><div class="line">		        iqcConversationInfoBean.setCustMinSpeed((<span class="keyword">float</span>)Math.round(Math.random()*<span class="number">100</span>));</div><div class="line">		        iqcConversationInfoBean.setCustAvgSpeed((<span class="keyword">float</span>)Math.round(Math.random()*<span class="number">100</span>));</div><div class="line">		        iqcConversationInfoBean.setCustMaxEmotion((<span class="keyword">float</span>)Math.round(Math.random()*<span class="number">100</span>));</div><div class="line">		        iqcConversationInfoBean.setCustMinEmotion((<span class="keyword">float</span>)Math.round(Math.random()*<span class="number">100</span>));</div><div class="line">		        iqcConversationInfoBean.setCustAvgEmotion((<span class="keyword">float</span>)Math.round(Math.random()*<span class="number">100</span>));</div><div class="line">		        Map&lt;String, Object&gt; textFiled = ReflectUtil.reflectObjectToMap(iqcConversationInfoBean, <span class="keyword">true</span>);</div><div class="line">		        </div><div class="line">		        Document doc = createDoc(textFiled);</div><div class="line">		        <span class="keyword">if</span>(<span class="keyword">null</span>!=doc)&#123;</div><div class="line">		            addDoc(indexPath, doc, <span class="keyword">null</span>);</div><div class="line">		        &#125;</div><div class="line">		        <span class="comment">//System.out.println(i+"索引创建完毕");</span></div><div class="line">		    &#125;</div><div class="line">		System.out.println(<span class="string">"创建索引完毕"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Document <span class="title">createDoc</span><span class="params">(Map&lt;String, Object&gt; textFiled)</span> </span>&#123;</div><div class="line">        Document doc = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            doc = <span class="keyword">null</span>;</div><div class="line">            <span class="keyword">if</span> (textFiled != <span class="keyword">null</span> &amp;&amp; textFiled.size() &gt; <span class="number">0</span>) &#123;</div><div class="line">                doc = <span class="keyword">new</span> Document();</div><div class="line">                <span class="comment">// 遍历需要增加到索引的属性</span></div><div class="line">                List&lt;String&gt; NOT_ANALYZED = <span class="keyword">new</span> ArrayList&lt;String&gt;();<span class="comment">// 非分析域，但是需要保存</span></div><div class="line">                <span class="keyword">for</span> (String Not : <span class="string">"id;status;update;agentFirst;agentLast;agentContent;custFirst;custLast;custContent;allContent;"</span>.split(<span class="string">";"</span>)) &#123;</div><div class="line"><span class="comment">//                    for (String Not : "id;status;update;mediaType;callDate;channelCode;accountCode;empName;language;custNo;custName;callNo;satisfiedType;agentFirst;agentLast;agentContent;custFirst;custLast;custContent;allContent;".split(";")) &#123;</span></div><div class="line">                    NOT_ANALYZED.add(Not);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">for</span> (String keyName : textFiled.keySet()) &#123;</div><div class="line">                    <span class="keyword">if</span> (keyName != <span class="keyword">null</span> &amp;&amp; !keyName.isEmpty()) &#123;</div><div class="line">                        <span class="comment">// if</span></div><div class="line">                        <span class="comment">// (keyName.equals(SysConstant.config.getProperty("kbmsID"))||keyName.indexOf(SysConstant.config.getProperty("DIM"))&gt;=0)</span></div><div class="line">                        <span class="comment">// &#123;</span></div><div class="line">                        <span class="keyword">if</span> (keyName.equals(<span class="string">"serialNo"</span>)) &#123;</div><div class="line">                            doc.add(LuceneHelper.getnotanalyzedField(keyName, textFiled.get(keyName)));</div><div class="line">                        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (NOT_ANALYZED.contains(keyName)) &#123;</div><div class="line">                            Matcher m_html = p_html.matcher((String) textFiled.get(keyName));</div><div class="line">                            doc.add(<span class="keyword">new</span> Field(keyName, m_html.replaceAll(<span class="string">""</span>), Field.Store.YES,</div><div class="line">                                    Field.Index.NOT_ANALYZED));</div><div class="line">                        &#125; <span class="keyword">else</span> &#123;</div><div class="line">                            doc.add(LuceneHelper.getField(keyName, textFiled.get(keyName)));</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                System.out.println(<span class="string">"无法初始化doc"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> doc;</div><div class="line">    &#125;   </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Field <span class="title">getField</span><span class="params">(String fieldName, Object value)</span> </span>&#123;</div><div class="line">        FieldType fieldType = <span class="keyword">new</span> FieldType();</div><div class="line">        fieldType.setOmitNorms(<span class="keyword">true</span>);</div><div class="line">        fieldType.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);</div><div class="line">        fieldType.setStored(<span class="keyword">true</span>);</div><div class="line">        fieldType.setTokenized(<span class="keyword">false</span>);</div><div class="line">        <span class="keyword">if</span> (value <span class="keyword">instanceof</span> Integer) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> IntField(fieldName, Integer.parseInt(value.toString()), fieldType);</div><div class="line">            <span class="comment">// return new</span></div><div class="line">            <span class="comment">// NumericDocValuesField(fieldName,Long.parseLong(value.toString()));</span></div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value <span class="keyword">instanceof</span> Long) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> LongField(fieldName, (Long) value, fieldType);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value <span class="keyword">instanceof</span> Float) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> FloatField(fieldName, (Float) value, fieldType);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value <span class="keyword">instanceof</span> Date) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> LongField(fieldName, ((Date) value).getTime(), fieldType);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> TextField(fieldName, value.toString(), Field.Store.YES);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">addDoc</span><span class="params">(String indexPath, Document doc, String message)</span> </span>&#123;</div><div class="line">        <span class="keyword">boolean</span> res = <span class="keyword">false</span>;</div><div class="line">        <span class="comment">// 索引配置器</span></div><div class="line">        IndexWriterConfig iwc = <span class="keyword">null</span>;</div><div class="line">        IndexWriter indexWriter = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span> (indexPath != <span class="keyword">null</span> &amp;&amp; !indexPath.isEmpty() &amp;&amp; doc != <span class="keyword">null</span>) &#123;</div><div class="line">                File indexDir = <span class="keyword">new</span> File(indexPath);</div><div class="line">                <span class="keyword">if</span> (!indexDir.exists())</div><div class="line">                    indexDir.mkdirs();</div><div class="line">                <span class="keyword">if</span> (indexDir.exists()) &#123;</div><div class="line">                    <span class="comment">/* 创建索引文件 */</span></div><div class="line">                    iwc = <span class="keyword">new</span> IndexWriterConfig(ChineseAnalyzerUtil.getAnalyzer());</div><div class="line">                    <span class="comment">// 创建索引文件对象</span></div><div class="line">                    Directory dir = FSDirectory.open(indexDir.toPath());</div><div class="line">                    <span class="keyword">boolean</span> isNeedCreate = indexDir.listFiles().length &gt; <span class="number">0</span> ? <span class="keyword">false</span> : <span class="keyword">true</span>;</div><div class="line">                    <span class="keyword">if</span> (isNeedCreate) &#123;<span class="comment">// 是否需要创建,默认 CREATE_OR_APPEND</span></div><div class="line">                        iwc.setOpenMode(OpenMode.CREATE);</div><div class="line">                        System.out.println(<span class="string">"创建新索引,OpenMode==&gt;&gt;CREATE"</span>);</div><div class="line">                    &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    &#125;</div><div class="line">                    <span class="comment">// 写入索引文件对象</span></div><div class="line">                    indexWriter = <span class="keyword">new</span> IndexWriter(dir, iwc);</div><div class="line">                    <span class="comment">// 加载到索引中</span></div><div class="line">                    <span class="comment">// 遍历需要增加到索引的属性</span></div><div class="line">                    <span class="comment">// 加载到索引文档</span></div><div class="line">                    <span class="comment">// indexWriter.addDocument(doc);</span></div><div class="line">                    IndexableField kbmsID = doc.getField(<span class="string">"serialNo"</span>);</div><div class="line">                    <span class="keyword">if</span> (kbmsID != <span class="keyword">null</span>) &#123;</div><div class="line">                        String termId = kbmsID.name();</div><div class="line">                        String termValue = kbmsID.stringValue();</div><div class="line">                        indexWriter.updateDocument(<span class="keyword">new</span> Term(termId, termValue), doc);</div><div class="line">                    &#125; <span class="keyword">else</span> &#123;</div><div class="line">                        indexWriter.addDocument(doc);</div><div class="line">                    &#125;</div><div class="line">                    <span class="comment">// 提交到索引</span></div><div class="line">                    indexWriter.commit();</div><div class="line">                    indexWriter.close();</div><div class="line">                    res = <span class="keyword">true</span>;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    message = <span class="string">"contentPath 参数为空，正文无法读取，无法创建索引"</span>;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                message = <span class="string">"indexPath:"</span> + indexPath + <span class="string">" 目录不存在，无法创建索引"</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">            System.out.println(<span class="string">"创建Lucene索引异常"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (message != <span class="keyword">null</span> &amp;&amp; !message.isEmpty())</div><div class="line">            System.out.println(<span class="string">"message-"</span> + message);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>注意</code>：创建索引的内用是对一通通话的内容进行</p>
+
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="ShenWenFang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ShenWenFang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    ShenWenFang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://swenfang.github.io/2019/03/16/Lucene/1、lucene的IndexWriter对象创建和索引策略的选择/" title="lucene的IndexWriter对象创建和索引策略的选择">http://swenfang.github.io/2019/03/16/Lucene/1、lucene的IndexWriter对象创建和索引策略的选择/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    	
+          <div>
+            <div class="recommended_posts">
+    
+    
+    <strong>推荐文章 </strong>
+    <ul>
+        
+            <li><a href="http://swenfang.github.io/2019/03/16/Lucene/3、lucene的analysis相关和自定义分词器/">lucene的analysis相关和自定义分词器</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/03/16/Lucene/2、lucene的各种Field及其排序/">lucene的各种Field及其排序</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/03/15/软件技术/第2章程序设计语言基础知识/">第2章程序设计语言基础知识</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/03/13/软件技术/第3章数据结构/">第3章数据结构</a></li>
+        
+    </ul>
+    
+</div>
+
+          </div>
+        
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/lucene/" rel="tag"># lucene</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/15/软件技术/第2章程序设计语言基础知识/" rel="next" title="第2章程序设计语言基础知识">
+                <i class="fa fa-chevron-left"></i> 第2章程序设计语言基础知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/16/Lucene/2、lucene的各种Field及其排序/" rel="prev" title="lucene的各种Field及其排序">
+                lucene的各种Field及其排序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4My82MDUx"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="ShenWenFang" />
+            
+              <p class="site-author-name" itemprop="name">ShenWenFang</p>
+              <p class="site-description motion-element" itemprop="description">每一个你不满意的现在，都有一个你没有努力的曾经。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+         <div id="music163player">
+             <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=31861269&auto=0&height=66"></iframe>
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lucene（1）—lucene的IndexWriter对象创建和索引策略的选择"><span class="nav-number">1.</span> <span class="nav-text">lucene（1）—lucene的IndexWriter对象创建和索引策略的选择</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ShenWenFang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("9lk8dNt56FULANV18qHRXIff-gzGzoHsz", "lSea2qzYEcPELI1zQN1wWQGt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
