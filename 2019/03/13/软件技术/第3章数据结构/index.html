@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/190318/jiandanxuanze.gif">
 <meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/xierpaixu.gif">
 <meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/190318/kuaisupaixu.gif">
-<meta property="og:updated_time" content="2019-03-20T14:57:47.364Z">
+<meta property="og:updated_time" content="2019-03-20T15:16:06.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第3章数据结构">
 <meta name="twitter:description" content="第3章数据结构线性结构线性表栈和队列串数组、矩阵和广义表数组矩阵广义表树树与二叉树的定义二叉树的性质与存储结构二叉树的遍历线索二叉树最优二叉树树和森林图图的定义与储存图的遍历生成树与最小生成树拓扑排序和关键路径最短路径查找查找的基本概念静态查找表的查找方法动态查找表哈希表排序 十种常见排序算法可以分为两大类： 比较类排序：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因">
@@ -389,7 +389,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,212 字
+                  2,346 字
                 </span>
               
 
@@ -430,7 +430,7 @@
 <p>十种常见排序算法可以分为两大类：</p>
 <p><code>比较类排序</code>：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因此也称为非线性时间比较类排序。</p>
 <p><code>非比较类排序</code>：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此也称为线性时间非比较类排序。</p>
-<h3 id="排序的基本概念"><a href="#排序的基本概念" class="headerlink" title="排序的基本概念"></a>排序的基本概念</h3><p>假设含 n 个记录文件内容为{$R_{1}, R_{2},\ldots ,R_{n}$}，相应的关键字{$k_{1}, k_{2},\ldots ,k_{n}$}。经过排序确定一种排列{$R_{j_{1}},R_{j_{2}},\ldots ,R_{n}$}，使得它们的关键字满足以下递增（或递减）关系：$k_{i1}\leq k_{j_{2}}\leq \ldots \leq k_{j_{n}}$（或$k_{j_{1}}\geq k_{j_{2}}\geq \ldots k_{jn}$）。</p>
+<h3 id="排序的基本概念"><a href="#排序的基本概念" class="headerlink" title="排序的基本概念"></a>排序的基本概念</h3><p>假设含 n 个记录文件内容为{$R_{1}, R_{2},\ldots ,R_{n}​$}，相应的关键字{$k_{1}, k_{2},\ldots ,k_{n}​$}。经过排序确定一种排列{$R_{j_{1}},R_{j_{2}},\ldots ,R_{n}​$}，使得它们的关键字满足以下递增（或递减）关系：$k_{j_1}\leq k_{j_{2}}\leq \ldots \leq k_{j_{n}}​$（或$k_{j_{1}}\geq k_{j_{2}}\geq \ldots k_{jn}​$）。</p>
 <p>若在待排序中的一个序列中，$R_{i}​$和$R_{j}​$的关键字相同，即 $k_{i}​$=$k_{j}​$，且在排序前 $R_{i}​$先于$R_{j}​$，那么在排序后，如果$R_{i}​$和$R_{j}​$的相对次序保持不变，$R_{i}​$仍领先于$R_{j}​$，则此类排序算法为稳定的。若在排序后的序列中有可能出现$R_{j}​$领先于$R_{i}​$的情形，则此类排序为不稳定的。</p>
 <p><code>内部排序</code>：指待排序记录全部存放在内存中进行排序的过程。</p>
 <p><code>外部排序</code>：指待排序记录的数量很大，以至于内存不能容纳全部记录，在排序过程中尚需对外存进行访问的排序过程。</p>
@@ -468,6 +468,12 @@
 <li>重新排序数列，所有元素比基准数小的摆放在基准数的前面，大的摆放在后面（相同的数可以放任意一边）。在这个分区退出之后，该基准就处于数列的中间位置。称为分区（partition）操作。</li>
 <li>递归的把（recursive）把小于基准值元素的字数列和大于基准值元素的字数列排序。</li>
 </ul>
+<p>具体做法：先找出一个数作为基准数（pivot，这里取数组最中间的一位），定义两个变量作为”哨兵”，然后分别从后向前，从前向后两个方向区”探测”。</p>
+<ol>
+<li>从后向前：寻找比基准数小的数据，如果找到，停下来</li>
+<li>从前向后：寻找比基准数大的数据，如果找到，停下来</li>
+<li>如果两个方向的”探测”都找到了符合要求的数据，则交换数据，继续顺着方向寻找</li>
+</ol>
 <p><img src="https://blogimg.nos-eastchina1.126.net/190318/kuaisupaixu.gif" alt=""></p>
 <h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><h3 id="并归排序"><a href="#并归排序" class="headerlink" title="并归排序"></a>并归排序</h3><h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><h3 id="内部排序方法小结"><a href="#内部排序方法小结" class="headerlink" title="内部排序方法小结"></a>内部排序方法小结</h3><h3 id="外部排序"><a href="#外部排序" class="headerlink" title="外部排序"></a>外部排序</h3>
       
