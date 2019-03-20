@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="ShenWenFang" type="application/atom+xml" />
+
 
 
 
@@ -92,7 +94,7 @@
 <meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/190318/jiandanxuanze.gif">
 <meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/xierpaixu.gif">
 <meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/190318/kuaisupaixu.gif">
-<meta property="og:updated_time" content="2019-03-19T05:38:37.780Z">
+<meta property="og:updated_time" content="2019-03-20T14:57:47.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第3章数据结构">
 <meta name="twitter:description" content="第3章数据结构线性结构线性表栈和队列串数组、矩阵和广义表数组矩阵广义表树树与二叉树的定义二叉树的性质与存储结构二叉树的遍历线索二叉树最优二叉树树和森林图图的定义与储存图的遍历生成树与最小生成树拓扑排序和关键路径最短路径查找查找的基本概念静态查找表的查找方法动态查找表哈希表排序 十种常见排序算法可以分为两大类： 比较类排序：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因">
@@ -132,7 +134,7 @@
 
 
 
-  <title>第3章数据结构 | ShenWenFang</title>
+  <title>第3章数据结构 | ShenWenFang</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -151,7 +153,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/another"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -387,7 +389,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,217 字
+                  2,212 字
                 </span>
               
 
@@ -428,37 +430,37 @@
 <p>十种常见排序算法可以分为两大类：</p>
 <p><code>比较类排序</code>：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因此也称为非线性时间比较类排序。</p>
 <p><code>非比较类排序</code>：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此也称为线性时间非比较类排序。</p>
-<h3 id="排序的基本概念"><a href="#排序的基本概念" class="headerlink" title="排序的基本概念"></a>排序的基本概念</h3><p>假设含 n 个记录文件内容为$$\left{ R<em>{1}, R</em>{2},\ldots ,R<em>{n}\right}$$，相应的关键字$$\left{ k</em>{1}, k<em>{2},\ldots ,k</em>{n}\right}$$。经过排序确定一种排列$$\left{ Rj<em>{1},R</em>{j<em>{2}},\ldots ,R</em>{n}\right}$$，使得它们的关键字满足以下递增（或递减）关系：$$k<em>{i1}\leq k</em>{j<em>{2}}\leq \ldots \leq k</em>{j<em>{n}}$$（或$$k</em>{j<em>{1}}\geq k</em>{j<em>{2}}\geq \ldots k</em>{jn}$$）。</p>
-<p>若在待排序中的一个序列中，$$R<em>{i}$$和$$R</em>{j}$$的关键字相同，即 $$k<em>{i}$$=$$k</em>{j}$$，且在排序前 $$R<em>{i}$$先于$$R</em>{j}$$，那么在排序后，如果$$R<em>{i}$$和$$R</em>{j}$$的相对次序保持不变，$$R<em>{i}$$仍领先于$$R</em>{j}$$，则此类排序算法为稳定的。若在排序后的序列中有可能出现$$R<em>{j}$$领先于$$R</em>{i}​$$的情形，则此类排序为不稳定的。</p>
+<h3 id="排序的基本概念"><a href="#排序的基本概念" class="headerlink" title="排序的基本概念"></a>排序的基本概念</h3><p>假设含 n 个记录文件内容为{$R_{1}, R_{2},\ldots ,R_{n}$}，相应的关键字{$k_{1}, k_{2},\ldots ,k_{n}$}。经过排序确定一种排列{$R_{j_{1}},R_{j_{2}},\ldots ,R_{n}$}，使得它们的关键字满足以下递增（或递减）关系：$k_{i1}\leq k_{j_{2}}\leq \ldots \leq k_{j_{n}}$（或$k_{j_{1}}\geq k_{j_{2}}\geq \ldots k_{jn}$）。</p>
+<p>若在待排序中的一个序列中，$R_{i}​$和$R_{j}​$的关键字相同，即 $k_{i}​$=$k_{j}​$，且在排序前 $R_{i}​$先于$R_{j}​$，那么在排序后，如果$R_{i}​$和$R_{j}​$的相对次序保持不变，$R_{i}​$仍领先于$R_{j}​$，则此类排序算法为稳定的。若在排序后的序列中有可能出现$R_{j}​$领先于$R_{i}​$的情形，则此类排序为不稳定的。</p>
 <p><code>内部排序</code>：指待排序记录全部存放在内存中进行排序的过程。</p>
 <p><code>外部排序</code>：指待排序记录的数量很大，以至于内存不能容纳全部记录，在排序过程中尚需对外存进行访问的排序过程。</p>
 <h3 id="简单排序"><a href="#简单排序" class="headerlink" title="简单排序"></a>简单排序</h3><h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><p>又称简单插入排序，是一种简单的排序算法。</p>
-<p>具体做法：在插入第 i 个记录时，$$R<em>{1}$$、$$R</em>{2}$$、….、$$R<em>{i-1}$$ 已经安排好序，这时将 $$R</em>{i}$$的关键字 $$k<em>{i}$$一次与 $$K</em>{i-1}$$、$$K<em>{i-2}$$等进行比较，从而找到应该插入的位置并将$$R</em>{i}$$插入，插入位置及其后的记录向后移动。</p>
+<p>具体做法：在插入第 i 个记录时，$R_{1}$、$R_{2}$、….、$R_{i-1}$ 已经安排好序，这时将 $R_{i}$的关键字 $k_{i}$一次与 $K_{i-1}$、$K_{i-2}$等进行比较，从而找到应该插入的位置并将$R_{i}$插入，插入位置及其后的记录向后移动。</p>
 <p><img src="https://blogimg.nos-eastchina1.126.net/190318/jiandacharu.gif" alt=""></p>
 <p>实现程序  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] insertionSort(<span class="keyword">int</span>[] arr)&#123;</div><div class="line">    <span class="keyword">int</span> len = arr.length;</div><div class="line">    <span class="keyword">int</span> preIndex,current;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;len;i++)&#123;</div><div class="line">        preIndex = i - <span class="number">1</span>;</div><div class="line">        current = arr[i];</div><div class="line">        <span class="keyword">while</span>(preIndex&gt;=<span class="number">0</span> &amp;&amp; current&lt;arr[preIndex])&#123;</div><div class="line">            arr[preIndex+<span class="number">1</span>] = arr[preIndex];</div><div class="line">            preIndex--;</div><div class="line">        &#125;</div><div class="line">        arr[preIndex+<span class="number">1</span>] = current;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>直接排序算法在最好的情况下（待排序列已按关键码有序），每趟只需操作 1 次比较且不需要移动元素，因此n个元素排序时的总比较次数为 n-1 次，总移动次数为0。在最坏情况下（元素已经逆序排序），进行第 i 趟排序时，待插入的记录需要同前面的 i 个记录进行比较，因此，总比较次数为 $$\dfrac {n\left( n-1\right) }{2}$$在排序过程中，第 i 趟排序时移动记录的次数为 i+1 （包括移进、移除tmp）,总移动次数为 $$\dfrac {\left( n+3\right) \left( n+2\right) }{2}$$</p>
-<p><code>注意</code>：是一种稳定的排序算法;时间复杂度$$O\left( n^{2}\right)$$;在排序过程中仅需要一个元素的辅助空间用于交换，空间复杂度为$$O\left( 1\right)$$</p>
+<p>直接排序算法在最好的情况下（待排序列已按关键码有序），每趟只需操作 1 次比较且不需要移动元素，因此n个元素排序时的总比较次数为 n-1 次，总移动次数为0。在最坏情况下（元素已经逆序排序），进行第 i 趟排序时，待插入的记录需要同前面的 i 个记录进行比较，因此，总比较次数为 $\dfrac {n\left( n-1\right) }{2}$在排序过程中，第 i 趟排序时移动记录的次数为 i+1 （包括移进、移除tmp）,总移动次数为 $\dfrac {\left( n+3\right) \left( n+2\right) }{2}$</p>
+<p><code>注意</code>：是一种稳定的排序算法;时间复杂度$O\left( n^{2}\right)$;在排序过程中仅需要一个元素的辅助空间用于交换，空间复杂度为$O\left( 1\right)$</p>
 <h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。</p>
 <p>具体的做法：</p>
 <p><img src="https://blogimg.nos-eastchina1.126.net/190318/maopao.gif" alt=""></p>
 <p>实现程序：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] bubbleSort(<span class="keyword">int</span>[] arr)&#123;</div><div class="line">    <span class="keyword">int</span> n = arr.length;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n - <span class="number">1</span>;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span> ; j &lt; n - <span class="number">1</span> - i;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])&#123;</div><div class="line">                <span class="keyword">int</span> temp = arr[j+<span class="number">1</span>];</div><div class="line">                arr[j+<span class="number">1</span>] = arr[j];</div><div class="line">                arr[j] = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>冒泡排序在最好情况下（待排序列已按关键码有序），只需要做一趟，元素的比较次数为 n-1 且不需要交换元素。在最坏情况下（元素已经逆序排序），在进行第 j 趟排序时，最大的 j-1 个元素已经排好序，其余的 n-(j-1) 个元素需要进行 n-j 次比较和 n-j 次交换。因此总比较次数为：$$\dfrac {n\left( n-1\right) }{2}$$ ，总的交换次数为：$$\dfrac {n\left( n-1\right) }{2}​$$</p>
-<p><code>注意</code>：稳定的排序方法；时间复杂度$$O\left( n^{2}\right)$$;在排序过程中仅需要一个元素的辅助空间用于交换，空间复杂度为$$O\left( 1\right)​$$</p>
+<p>冒泡排序在最好情况下（待排序列已按关键码有序），只需要做一趟，元素的比较次数为 n-1 且不需要交换元素。在最坏情况下（元素已经逆序排序），在进行第 j 趟排序时，最大的 j-1 个元素已经排好序，其余的 n-(j-1) 个元素需要进行 n-j 次比较和 n-j 次交换。因此总比较次数为：$\dfrac {n\left( n-1\right) }{2}$ ，总的交换次数为：$\dfrac {n\left( n-1\right) }{2}​$</p>
+<p><code>注意</code>：稳定的排序方法；时间复杂度$O\left( n^{2}\right)$;在排序过程中仅需要一个元素的辅助空间用于交换，空间复杂度为$O\left( 1\right)​$</p>
 <h4 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h4><p>是一种简单直观的排序算法。工作原理：首先在末尾排序序列中找到最小（大）元素，存放到排序序列的其实位置，然后，再从剩下元素中继续寻找最小（最大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
 <p>具体做法：</p>
 <p><img src="https://blogimg.nos-eastchina1.126.net/190318/jiandanxuanze.gif" alt=""></p>
 <p>程序实现：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] selectionSort(<span class="keyword">int</span>[] arr)&#123;</div><div class="line">    <span class="keyword">int</span> n = arr.length;</div><div class="line">    <span class="keyword">int</span> minIndex,temp;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</div><div class="line">        minIndex = i;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>;j&lt;n;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(arr[j]&lt;arr[minIndex])&#123;</div><div class="line">                minIndex = j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        temp = arr[i];</div><div class="line">        arr[i] = arr[minIndex];</div><div class="line">        arr[minIndex] = temp;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>简单选择排序算法在最好情况下（待排序列按关键码有序），不需要移动元素，因此 n 个元素排序时的总移动次数为 0 次。在坏情况下（元素已经逆序排序），前$$\dfrac {n}{2}$$趟中，每趟排序移动记录的次数都为3次（两个数组元素加交换值），其后不再移动元素，共进行 n-1 趟排序，总移动次数为$$3\left( n-1\right) /2$$。无论哪种情况，元素总比较次数为$$\dfrac {n\left( n-1\right) }{2}$$。</p>
-<p><code>注意</code>：不稳定的排序方法；时间复杂度为：$$O\left( n^{2}\right)$$；在排序过程中仅需要一个元素的辅助空间用于数组元素的交换，空间复杂度为$$O\left( 1\right)$$</p>
-<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><p>是第一个突破$$O\left( n^{2}\right)$$的排序算法，是简单插入排序的改进版。与插入排序的不同之处在于，它会优先比较距离较远的元素，通过逐步减少间距，最终以1为间距或者进行一次常规的插入排序。希尔排序又叫缩小增量排序。    </p>
+<p>简单选择排序算法在最好情况下（待排序列按关键码有序），不需要移动元素，因此 n 个元素排序时的总移动次数为 0 次。在坏情况下（元素已经逆序排序），前$\dfrac {n}{2}$趟中，每趟排序移动记录的次数都为3次（两个数组元素加交换值），其后不再移动元素，共进行 n-1 趟排序，总移动次数为$3\left( n-1\right) /2$。无论哪种情况，元素总比较次数为$\dfrac {n\left( n-1\right) }{2}$。</p>
+<p><code>注意</code>：不稳定的排序方法；时间复杂度为：$O\left( n^{2}\right)$；在排序过程中仅需要一个元素的辅助空间用于数组元素的交换，空间复杂度为$O\left( 1\right)$</p>
+<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><p>是第一个突破$O\left( n^{2}\right)​$的排序算法，是简单插入排序的改进版。与插入排序的不同之处在于，它会优先比较距离较远的元素，通过逐步减少间距，最终以1为间距或者进行一次常规的插入排序。希尔排序又叫缩小增量排序。    </p>
 <p>具体做法：先取一个小于 n 的整数 d1 作为第一个增量，把文件的全部记录分成 d1 个组，即将所有距离为 d1 倍数序号的记录放在同一个组中，在和组内进行直接插入排序；然后取第二个增量 d2（d2&lt;d1），重复上述分组和排序工作，依次类推，直到所有的增量 d = 1，即所有的记录放在同一组进行直接插入排序为止。</p>
 <p><img src="https://blogimg.nos-eastchina1.126.net/xierpaixu.gif" alt=""></p>
 <p>程序实现：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] shellSort(<span class="keyword">int</span>[] arr)&#123;</div><div class="line">    <span class="keyword">int</span> n = arr.length;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> gap = (<span class="keyword">int</span>)Math.floor(n/<span class="number">2</span>);gap &gt; <span class="number">0</span>;gap = (<span class="keyword">int</span>)Math.floor(gap/<span class="number">2</span>))&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = gap;i &lt; n;i++)&#123;</div><div class="line">            <span class="keyword">int</span> j = i;</div><div class="line">            <span class="keyword">int</span> current = arr[i];</div><div class="line">            <span class="keyword">while</span>(j - gap &gt;= <span class="number">0</span> &amp;&amp; current &lt; arr[j - gap])&#123;</div><div class="line">                arr[j] = arr[j - gap];</div><div class="line">                j = j - gap;</div><div class="line">            &#125;</div><div class="line">            arr[j] = current;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>注意</code>：是一种不稳定的排序方法；时间复杂度为：$$O\left( n^{1.3}\right)$$；空间复杂度数为：$$O\left( 1\right)​$$</p>
+<p><code>注意</code>：是一种不稳定的排序方法；时间复杂度为：$O\left( n^{1.3}\right)$；空间复杂度数为：$O\left( 1\right)​$</p>
 <h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>基本思路：通过一趟排序将待排序的记录划分为独立的两部分，称为前半区和后半区，其中，前半区中记录的关键字均不大于后半区记录的关键字，然后再分别对这两部分进行快速排序。</p>
 <p>具体做法：快速排序使用分治法把一串（list）分为两个子串（sub-lists）。</p>
 <ul>
@@ -697,6 +699,13 @@
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
@@ -1374,7 +1383,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

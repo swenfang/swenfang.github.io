@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -73,6 +73,8 @@
 
 
 
+
+  <link rel="alternate" href="/atom.xml" title="ShenWenFang" type="application/atom+xml" />
 
 
 
@@ -147,7 +149,7 @@
 
 
 
-  <title>第1章计算机网络概述 | ShenWenFang</title>
+  <title>第1章计算机网络概述 | ShenWenFang</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -166,7 +168,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/another"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -402,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  10,900 字
+                  10,906 字
                 </span>
               
 
@@ -514,15 +516,15 @@
 <p>当浮点数的阶码用 R 位的移码表示，尾数用 M 位的补码表示，浮点数表示的数值范围：</p>
 <p>最大：$$+\left( 1-2^{-m+1}\right) \times 2^\left( 2^{r-1}-1\right)$$</p>
 <p>最小：$$ -1 \times 2^\left( 2^{r-1}-1\right)​$$</p>
-<h6 id="工业标准-IEEE754"><a href="#工业标准-IEEE754" class="headerlink" title="工业标准 IEEE754"></a>工业标准 IEEE754</h6><p>标准的表示形式为： $$\left( -1\right) ^{S}2^{E}\left( b<em>{0}b</em>{1}b<em>{3}\ldots b</em>{p-1}\right)​$$</p>
+<h6 id="工业标准-IEEE754"><a href="#工业标准-IEEE754" class="headerlink" title="工业标准 IEEE754"></a>工业标准 IEEE754</h6><p>标准的表示形式为： $$\left( -1\right) ^{S}2^{E}\left( b_{0}b_{1}b_{3}\ldots b_{p-1}\right)​$$</p>
 <p>其中，$$\left( -1\right) ^{S}$$ 浮点数的数符，当 S 为 0 时表示正数，S 为 1 时表示负数；E 为指数（阶码），用移码表示；</p>
-<p>$$\left( b<em>{0}b</em>{1}b<em>{3}\ldots b</em>{p-1}\right)$$为尾数，长度为 p 位，用原码表示。</p>
+<p>$$\left( b_{0}b_{1}b_{3}\ldots b_{p-1}\right)$$为尾数，长度为 p 位，用原码表示。</p>
 <p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093302-106776.jpg" alt=""></p>
 <p>根据 IEEE754 标准，被编码的值分为 3 种不同的情况：<code>规范化的值</code>、<code>非规范化的值</code>和<code>特殊值</code>。</p>
 <p>【1】、规范化的值：当阶码部分的二进制值不全为0，也不全为1时。</p>
 <p>例子：利用 IEEE754 标准将数 176.0625 表示为单精度浮点数。</p>
 <p>1、十进制数–&gt;转成二进制 （转换过程访问：<a href="https://www.cnblogs.com/xkfz007/articles/2590472.html）" target="_blank" rel="external">https://www.cnblogs.com/xkfz007/articles/2590472.html）</a></p>
-<p>$$\left( 176.065\right) <em>{10}=\left( 10110000.001\right) </em>{2}​$$</p>
+<p>$$\left( 176.065\right) _{10}=\left( 10110000.001\right) _{2}​$$</p>
 <p>2、规格化处理</p>
 <p>$$10110000.001​$$ = $$1\langle \rangle 01100000001\times 2^{7}​$$</p>
 <p>将 $$b_{0}​$$ 去掉并扩展为单浮点数所规定的 23 位尾数。</p>
@@ -590,8 +592,8 @@
 <p>②<code>超标量</code>：</p>
 <p>③<code>超长指令字</code>：</p>
 <h6 id="吞吐率和流水建立的时间"><a href="#吞吐率和流水建立的时间" class="headerlink" title="吞吐率和流水建立的时间"></a>吞吐率和流水建立的时间</h6><p>单位时间内流水线处理机流出的结果数（对指令，单位时间内执行的指令数）。</p>
-<p>当流水线的子过程所用的时间不一样，吞吐率 $$p=1/\max \left{ \Delta t<em>{1},\Delta t</em>{2},\ldots ,\Delta t_{m}\right}$$</p>
-<p>若m个子过程所用的时间一样，均为 $$\Delta t<em>{0}$$ ,则建立时间  $$T</em>{0}=m\Delta t_{0}$$</p>
+<p>当流水线的子过程所用的时间不一样，吞吐率 $$p=1/\max \left{ \Delta t_{1},\Delta t_{2},\ldots ,\Delta t_{m}\right}$$</p>
+<p>若m个子过程所用的时间一样，均为 $$\Delta t_{0}$$ ,则建立时间  $$T_{0}=m\Delta t_{0}$$</p>
 <h4 id="阵列、并行、多处理机"><a href="#阵列、并行、多处理机" class="headerlink" title="阵列、并行、多处理机"></a>阵列、并行、多处理机</h4><p><code>并行性</code>：同一时刻发生；<code>并发性</code>：同一时间间隔内连续发生。</p>
 <p>1、阵列处理机：将重复处理的多个单元（PU）按一定方式连成阵列。是一中单指令多数据流计算机，通过资源重复实现并行。</p>
 <p>2、并行处理机：SIMD（共享存储器和分布式存取器形式） 和 MIMD 是典型的并行计算机。</p>
@@ -670,8 +672,8 @@
 <p>②先进先出：将最先进入Cache的块替换出去。</p>
 <p>③近期最少使用：</p>
 <p>④优化替换：必须先执行一次程序，统计 Cache 的替换情况。在第二次执行该程序便可以使用做有效的方式来替换。</p>
-<h5 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h5><p>设 $$H<em>{c}​$$ 是Cache 的命中率， $$t</em>{c}​$$ 是Cache 的存取时间， $$t<em>{m}​$$ 是主存的访问时间，则 Cache 存储器的等效加权平均访问时间 $$t</em>{a}​$$ 为：$$t<em>{a}=H</em>{c}t<em>{c}+\left( 1-H</em>{c}\right) t<em>{m}=t</em>{c}+\left( 1-H<em>{c}\right) \left( t</em>{m}-t_{c}\right)​$$</p>
-<p>假设 Cache 访问和主存的访问是同时启动的， $$t<em>{c}$$ 是Cache 的存取时间，$$\left( t</em>{m}-t<em>{c}\right)$$ 为失效访问时间。如果在 Cache 不命中时才启动主内存，则 ：$$t</em>{a}=t<em>{c}+\left( 1-H</em>{c}\right) t_{m}$$</p>
+<h5 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h5><p>设 $$H_{c}​$$ 是Cache 的命中率， $$t_{c}​$$ 是Cache 的存取时间， $$t_{m}​$$ 是主存的访问时间，则 Cache 存储器的等效加权平均访问时间 $$t_{a}​$$ 为：$$t_{a}=H_{c}t_{c}+\left( 1-H_{c}\right) t_{m}=t_{c}+\left( 1-H_{c}\right) \left( t_{m}-t_{c}\right)​$$</p>
+<p>假设 Cache 访问和主存的访问是同时启动的， $$t_{c}$$ 是Cache 的存取时间，$$\left( t_{m}-t_{c}\right)$$ 为失效访问时间。如果在 Cache 不命中时才启动主内存，则 ：$$t_{a}=t_{c}+\left( 1-H_{c}\right) t_{m}$$</p>
 <p>总结：降低 Cache 的失效率是提高 Cache 性能的一项重要措施。主要方法是：<code>选择恰当的块容量、提高 Cache 的容量和提高 Cache 的相联度</code>。</p>
 <p>Cache 容量越大（增加 Cache 的成本和Cache 的命中时间），命中率越高，随着 Cache 容量的增加，失效率接近0%。</p>
 <p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093550-361073.jpg" alt=""></p>
@@ -927,12 +929,12 @@
 <p>计算机的 RAS 是指用可靠性 R 、可用性 A 和可维修性S这3个指衡量一个计算机系统。</p>
 <h4 id="计算机可靠性模型"><a href="#计算机可靠性模型" class="headerlink" title="计算机可靠性模型"></a>计算机可靠性模型</h4><p>常见的系统可靠性数学模型有一下3种：</p>
 <h5 id="串联系统"><a href="#串联系统" class="headerlink" title="串联系统"></a>串联系统</h5><p>且仅当所欲的子系统都能正常工作时。系统才正常工作。</p>
-<p>可靠性公式：（$$R<em>{1}$$ $$R</em>{2}$$ 表示子系统）</p>
-<p>$$R=R<em>{1}R</em>{2}\ldots R_{N}$$</p>
-<p>失效公式：（$$\lambda <em>{1}​$$ $$\lambda </em>{2}​$$ 表示子系统的失效率）</p>
-<p>$$\lambda =\lambda <em>{1}+\lambda </em>{2}+\ldots +\lambda _{N}​$$</p>
+<p>可靠性公式：（$$R_{1}$$ $$R_{2}$$ 表示子系统）</p>
+<p>$$R=R_{1}R_{2}\ldots R_{N}$$</p>
+<p>失效公式：（$$\lambda _{1}​$$ $$\lambda _{2}​$$ 表示子系统的失效率）</p>
+<p>$$\lambda =\lambda _{1}+\lambda _{2}+\ldots +\lambda _{N}​$$</p>
 <h5 id="并联系统"><a href="#并联系统" class="headerlink" title="并联系统"></a>并联系统</h5><p>只要有一个子系统正常工作，系统就能正常运行</p>
-<p>可靠性公式：$$R=1-\left( 1-R<em>{1}\right) \left( 1-R</em>{2}\right) \ldots \left( 1-R_{N}\right)​$$</p>
+<p>可靠性公式：$$R=1-\left( 1-R_{1}\right) \left( 1-R_{2}\right) \ldots \left( 1-R_{N}\right)​$$</p>
 <p>失效率：$$\mu =\dfrac {1}{\dfrac {1}{\lambda }\sum ^{N}_{j=1}\dfrac {1}{j}}​$$</p>
 <p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190310093745-219866.jpg" alt=""></p>
 <h5 id="N-模冗余系统"><a href="#N-模冗余系统" class="headerlink" title="N 模冗余系统"></a>N 模冗余系统</h5><p>由N个（N=2n+1）相同的子系统和一个表决器组成。只要有 n+1 个或 n+1 个以上的子系统能正常工作，系统就正常工作。</p>
@@ -1181,6 +1183,13 @@
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
@@ -1858,7 +1867,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

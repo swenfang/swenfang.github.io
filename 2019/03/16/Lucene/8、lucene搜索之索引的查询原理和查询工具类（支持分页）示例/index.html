@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="ShenWenFang" type="application/atom+xml" />
+
 
 
 
@@ -129,7 +131,7 @@
 
 
 
-  <title>lucene搜索之索引的查询原理和查询工具类（支持分页）示例 | ShenWenFang</title>
+  <title>lucene搜索之索引的查询原理和查询工具类（支持分页）示例 | ShenWenFang</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -148,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/another"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -384,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,478 字
+                  1,480 字
                 </span>
               
 
@@ -447,7 +449,7 @@
 </li>
 <li>IndexSearcher.search(Query query, Collector results) 查询符合collector的记录，collector定义了分页等信息</li>
 <li>IndexSearcher.search(Query query, int n,Sort sort, boolean doDocScores, boolean doMaxScore) 实现任意排序的查询，同时控制是否计算hit score和max score是否被计算在内，查询前n条符合query条件的document;</li>
-<li><p>IndexSearcher.search(Query query, CollectorManager<c, t=""> collectorManager) 利用给定的collectorManager获取符合query条件的结果，其执行流程如下：</c,></p>
+<li><p>IndexSearcher.search(Query query, CollectorManager&lt;C, T&gt; collectorManager) 利用给定的collectorManager获取符合query条件的结果，其执行流程如下：</p>
 <p>先判断是否有ExecutorService执行查询的任务，如果没有executor，IndexSearcher会在单个任务下进行查询操作；</p>
 <p>如果IndexSearcher有executor，则会由每个线程控制一部分索引的读取，而且查询的过程中采用的是future机制，此种方式是边读边往结果集里边追加数据，这种异</p>
 <p>步的处理机制也提升了效率，其执行过程如下：</p>
@@ -689,6 +691,13 @@
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
@@ -1335,7 +1344,7 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 

@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="ShenWenFang" type="application/atom+xml" />
+
 
 
 
@@ -125,7 +127,7 @@
 
 
 
-  <title>Java选择题【1~60】 | ShenWenFang</title>
+  <title>Java选择题【1~60】 | ShenWenFang</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -144,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/another"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -653,7 +655,7 @@
 <p>D. implements</p>
 <p>解答：BD</p>
 <p>import导入包的保留字，implements实现接口的保留字。</p>
-<ol>
+<ol start="30">
 <li>Which two statements are true regarding the return values of property written hashCodeand equals methods from two instances of the same class? (Choose two)</li>
 </ol>
 <p>A. If the hashCode values are different, the objects might be equal.</p>
@@ -662,7 +664,7 @@
 <p>D. If the hashCode values are different, the objects must be unequal.</p>
 <p>解答：CD</p>
 <p>先通过 hashcode 来判断某个对象是否存放某个桶里，但这个桶里可能有很多对象，那么我们就需要再通过 equals 来在这个桶里找到我们要的对象。</p>
-<ol>
+<ol start="31">
 <li>字符的数字范围是什么?</li>
 </ol>
 <p>A. 0 … 32767</p>
@@ -672,7 +674,7 @@
 <p>E. Range is platform dependent.</p>
 <p>解答：B</p>
 <p>在Java中，char是一个无符号16位类型，取值范围为0到65535。</p>
-<ol>
+<ol start="32">
 <li>Given:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">float</span>[] f = <span class="keyword">new</span> <span class="keyword">float</span>[<span class="number">2</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line"></div><div class="line">System.out.println(“f[<span class="number">0</span>] = “ + f[<span class="number">0</span>]);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -682,7 +684,7 @@
 <p>C. Compilation fails.</p>
 <p>D. An exception is thrown at runtime.</p>
 <p>解答：B</p>
-<ol>
+<ol start="33">
 <li>Given:</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">String str = NULL;</div><div class="line"></div><div class="line">System.out.println(str);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1191,6 +1193,13 @@
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
@@ -1837,7 +1846,7 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
