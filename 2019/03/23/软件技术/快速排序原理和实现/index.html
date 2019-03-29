@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="快速排序原理和实现原理高快省的排序算法，既不浪费空间也可以快一点的排序算法。假设我们现在对“6  1  2 7  9  3  4  5 10  8”这个10个数进行排序。首先在这个序列中随便找一个数作为基准数。为了方便，就让第一个数6作为基准数吧。接下来，需要将这个序列中所有比基准数大的数放在6的右边，比基准数小的数放在6的左边，类似下面这种排列：3  1  2 5  4  6  9 7  10">
+<meta name="description" content="快速排序原理和实现原理高快省的排序算法，既不浪费空间也可以快一点的排序算法。">
 <meta name="keywords" content="软件技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快速排序原理和实现">
 <meta property="og:url" content="http://swenfang.github.io/2019/03/23/软件技术/快速排序原理和实现/index.html">
 <meta property="og:site_name" content="ShenWenFang">
-<meta property="og:description" content="快速排序原理和实现原理高快省的排序算法，既不浪费空间也可以快一点的排序算法。假设我们现在对“6  1  2 7  9  3  4  5 10  8”这个10个数进行排序。首先在这个序列中随便找一个数作为基准数。为了方便，就让第一个数6作为基准数吧。接下来，需要将这个序列中所有比基准数大的数放在6的右边，比基准数小的数放在6的左边，类似下面这种排列：3  1  2 5  4  6  9 7  10">
+<meta property="og:description" content="快速排序原理和实现原理高快省的排序算法，既不浪费空间也可以快一点的排序算法。">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190322104101-714647.jpg">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190322104119-335436.jpg">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190322104136-475270.jpg">
@@ -96,10 +96,10 @@
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190322104242-347520.jpg">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190322104303-766599.jpg">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190322104349-934078.jpg">
-<meta property="og:updated_time" content="2019-03-25T14:22:16.776Z">
+<meta property="og:updated_time" content="2019-03-26T05:23:37.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速排序原理和实现">
-<meta name="twitter:description" content="快速排序原理和实现原理高快省的排序算法，既不浪费空间也可以快一点的排序算法。假设我们现在对“6  1  2 7  9  3  4  5 10  8”这个10个数进行排序。首先在这个序列中随便找一个数作为基准数。为了方便，就让第一个数6作为基准数吧。接下来，需要将这个序列中所有比基准数大的数放在6的右边，比基准数小的数放在6的左边，类似下面这种排列：3  1  2 5  4  6  9 7  10">
+<meta name="twitter:description" content="快速排序原理和实现原理高快省的排序算法，既不浪费空间也可以快一点的排序算法。">
 <meta name="twitter:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190322104101-714647.jpg">
 
 
@@ -428,7 +428,9 @@
       
 
       
-        <h1 id="快速排序原理和实现"><a href="#快速排序原理和实现" class="headerlink" title="快速排序原理和实现"></a>快速排序原理和实现</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>高快省的排序算法，既不浪费空间也可以快一点的排序算法。<br>假设我们现在对“6  1  2 7  9  3  4  5 10  8”这个10个数进行排序。首先在这个序列中随便找一个数作为基准数。为了方便，就让第一个数6作为基准数吧。接下来，需要将这个序列中所有比基准数大的数放在6的右边，比基准数小的数放在6的左边，类似下面这种排列：3  1  2 5  4  6  9 7  10  8</p>
+        <h1 id="快速排序原理和实现"><a href="#快速排序原理和实现" class="headerlink" title="快速排序原理和实现"></a>快速排序原理和实现</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>高快省的排序算法，既不浪费空间也可以快一点的排序算法。</p>
+<a id="more"></a>
+<p>假设我们现在对“6  1  2 7  9  3  4  5 10  8”这个10个数进行排序。首先在这个序列中随便找一个数作为基准数。为了方便，就让第一个数6作为基准数吧。接下来，需要将这个序列中所有比基准数大的数放在6的右边，比基准数小的数放在6的左边，类似下面这种排列：3  1  2 5  4  6  9 7  10  8</p>
 <p>在初始状态下，数字6在序列的第1位。我们的目标是将6挪到序列中间的某个位置，假设这个位置是k。现在就需要寻找这个k，并且以第k位为分界点，左边的数都小于等于6，右边的数都大于等于6。</p>
 <p>方法其实很简单：分别从初始序列“6  1  2 7  9  3  4  5 10  8”两端开始“探测”。先从右往左找一个小于6的数，再从左往右找一个大于6的数，然后交换他们。这里可以用两个变量i和j，分别指向序列最左边和最右边。我们为这两个变量起个好听的名字“哨兵i”和“哨兵j”。刚开始的时候让哨兵i指向序列的最左边（即i=1），指向数字6。让哨兵j指向序列的最右边（即=10），指向数字。</p>
 <p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190322104101-714647.jpg" alt=""></p>
@@ -518,13 +520,13 @@
     <strong>推荐文章 </strong>
     <ul>
         
-            <li><a href="http://swenfang.github.io/2019/03/23/Future 任务机制和 FutureTask/">Future 任务机制和 FutureTask</a></li>
+            <li><a href="http://swenfang.github.io/2019/03/29/Essay/废掉一个人最隐蔽的方式是让他忙到没时间成长/">废掉一个人最隐蔽的方式是让他忙到没时间成长</a></li>
         
-            <li><a href="http://swenfang.github.io/2019/03/16/Lucene/9、lucene搜索之拼写检查和相似度查询提示（spellcheck）/">lucene搜索之拼写检查和相似度查询提示（spellcheck）</a></li>
+            <li><a href="http://swenfang.github.io/2019/03/23/Future 任务机制和 FutureTask/">Future 任务机制和 FutureTask</a></li>
         
             <li><a href="http://swenfang.github.io/2019/03/16/Lucene/8、lucene搜索之索引的查询原理和查询工具类（支持分页）示例/">lucene搜索之索引的查询原理和查询工具类（支持分页）示例</a></li>
         
-            <li><a href="http://swenfang.github.io/2019/03/16/Lucene/7、lucene搜索之IndexSearcher构建过程/">lucene搜索之IndexSearcher构建过程</a></li>
+            <li><a href="http://swenfang.github.io/2019/03/16/Lucene/9、lucene搜索之拼写检查和相似度查询提示（spellcheck）/">lucene搜索之拼写检查和相似度查询提示（spellcheck）</a></li>
         
     </ul>
     
@@ -559,6 +561,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/29/Essay/废掉一个人最隐蔽的方式是让他忙到没时间成长/" rel="prev" title="废掉一个人最隐蔽的方式是让他忙到没时间成长">
+                废掉一个人最隐蔽的方式是让他忙到没时间成长 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -644,7 +650,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -655,7 +661,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -666,7 +672,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
