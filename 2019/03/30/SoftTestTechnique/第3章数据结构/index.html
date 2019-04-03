@@ -84,7 +84,7 @@
 <meta name="description" content="tags: - 软件技术 categories: 软件技术title: 第3章数据结构mathjax: true 第3章数据结构线性结构线性表栈和队列串数组、矩阵和广义表数组矩阵广义表树树与二叉树的定义二叉树的性质与存储结构二叉树的遍历线索二叉树最优二叉树树和森林图图的定义与储存图的遍历生成树与最小生成树拓扑排序和关键路径最短路径查找查找的基本概念静态查找表的查找方法动态查找表哈希表排序 十种常见">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ShenWenFang">
-<meta property="og:url" content="http://swenfang.github.io/2019/03/13/软件技术/第3章数据结构/index.html">
+<meta property="og:url" content="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第3章数据结构/index.html">
 <meta property="og:site_name" content="ShenWenFang">
 <meta property="og:description" content="tags: - 软件技术 categories: 软件技术title: 第3章数据结构mathjax: true 第3章数据结构线性结构线性表栈和队列串数组、矩阵和广义表数组矩阵广义表树树与二叉树的定义二叉树的性质与存储结构二叉树的遍历线索二叉树最优二叉树树和森林图图的定义与储存图的遍历生成树与最小生成树拓扑排序和关键路径最短路径查找查找的基本概念静态查找表的查找方法动态查找表哈希表排序 十种常见">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190316115757-374692.jpg">
@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/190318/jiandanxuanze.gif">
 <meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/xierpaixu.gif">
 <meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/190318/bingguipaixu.gif">
-<meta property="og:updated_time" content="2019-03-28T05:34:00.372Z">
+<meta property="og:updated_time" content="2019-03-30T14:18:27.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ShenWenFang">
 <meta name="twitter:description" content="tags: - 软件技术 categories: 软件技术title: 第3章数据结构mathjax: true 第3章数据结构线性结构线性表栈和队列串数组、矩阵和广义表数组矩阵广义表树树与二叉树的定义二叉树的性质与存储结构二叉树的遍历线索二叉树最优二叉树树和森林图图的定义与储存图的遍历生成树与最小生成树拓扑排序和关键路径最短路径查找查找的基本概念静态查找表的查找方法动态查找表哈希表排序 十种常见">
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://swenfang.github.io/2019/03/13/软件技术/第3章数据结构/"/>
+  <link rel="canonical" href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第3章数据结构/"/>
 
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/03/13/软件技术/第3章数据结构/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第3章数据结构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -323,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-13T19:09:20+08:00">
-                2019-03-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T10:35:49+08:00">
+                2019-03-30
               </time>
             
 
@@ -341,7 +341,7 @@
 
           
           
-             <span id="/2019/03/13/软件技术/第3章数据结构/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2019/03/30/SoftTestTechnique/第3章数据结构/" class="leancloud_visitors" data-flag-title="">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -366,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,083 字
+                  3,306 字
                 </span>
               
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  12 分钟
+                  13 分钟
                 </span>
               
             </div>
@@ -444,11 +444,9 @@
 <h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>基本思想：通过一趟排序将待排序的记录划分为独立的两部分，称为前半区和后半区，其中，前半区中记录的关键字均不大于后半区记录的关键字，然后再分别对这两部分记录继续进行快速排序，从而使整个序列有序。</p>
 <p>一趟快速排的过程称为一次划分，具体的做法是：设两个位置指示变量 i 和 j，它们的初始值分别指向序列的第一个记录和最后一个记录。设枢轴记录（通常是第一个记录）的关键字为 pivot,则首先从 j 所指定的位置向前搜索，找到第一个关键字小于 pivot 的记录时向前移到 i 的位置，然后从 i 所指位置向后搜索，找到第一个关键字大于 pivot 的记录时将改记录向后移到 j 所指位置，重复该过程直至 i 与 j 相等位置。</p>
 <p>具体做法：</p>
-<p>请看  </p>
-<p><a href="https://swenfang.github.io/2019/03/23/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%8E%9F%E7%90%86%E5%92%8C%E5%AE%9E%E7%8E%B0/#more">https://swenfang.github.io/2019/03/23/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%8E%9F%E7%90%86%E5%92%8C%E5%AE%9E%E7%8E%B0/#more</a></p>
-<p>这篇文章。</p>
+<p>请看  <a href="https://swenfang.github.io/2019/03/23/软件技术/快速排序原理和实现/">https://swenfang.github.io/2019/03/23/软件技术/快速排序原理和实现/</a>这篇文章。</p>
 <p>程序实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span></span>&#123;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] arr = &#123;<span class="number">6</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">8</span>&#125;;</div><div class="line">        quickSort(arr,<span class="number">0</span>,arr.length-<span class="number">1</span>);</div><div class="line">        System.out.println(Arrays.toString(arr));</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// 划分</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">        <span class="comment">// 用 arr[low] 作为枢纽轴元素 pivot 进行划分</span></div><div class="line">        <span class="comment">// 使得 arr[low,...,i-1] 均不大于 pivot，data[i+1,...,high]均小于 pivot</span></div><div class="line">        <span class="keyword">int</span> i,j; <span class="keyword">int</span> pivot;</div><div class="line">        pivot = arr[low]; i = low;j = high;</div><div class="line">        <span class="keyword">while</span>(i &lt; j)&#123;</div><div class="line">            <span class="comment">/*从数组的两端交替地向中间扫描*/</span></div><div class="line">            <span class="keyword">while</span>(i &lt; j &amp;&amp; arr[j] &gt;= pivot)j--;</div><div class="line">            arr[i] = arr[j];<span class="comment">/*比枢轴元素小者往前移动*/</span></div><div class="line">            <span class="keyword">while</span>(i &lt; j &amp;&amp; arr[i] &lt;= pivot)i++;</div><div class="line">            arr[j] = arr[i];<span class="comment">/*比枢轴元素大者往后移动*/</span></div><div class="line">        &#125;</div><div class="line">        arr[i] = pivot;</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 对整型数组进行非递减排序</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] quickSort(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)&#123;</div><div class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</div><div class="line">            <span class="keyword">int</span> loc = partition(arr,low,high);<span class="comment">/*进行划分*/</span></div><div class="line">            quickSort(arr,low,loc-<span class="number">1</span>);<span class="comment">/*对前半区进行快速排序*/</span></div><div class="line">            quickSort(arr,loc+<span class="number">1</span>,high);<span class="comment">/*对后半区进行快速排序*/</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> arr;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span></span>&#123;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] arr = &#123;<span class="number">6</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">8</span>&#125;;</div><div class="line">        quickSort(arr,<span class="number">0</span>,arr.length-<span class="number">1</span>);</div><div class="line">        System.out.println(Arrays.toString(arr));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 划分</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</div><div class="line">        <span class="comment">// 用 arr[low] 作为枢纽轴元素 pivot 进行划分</span></div><div class="line">        <span class="comment">// 使得 arr[low,...,i-1] 均不大于 pivot，data[i+1,...,high]均小于 pivot</span></div><div class="line">        <span class="keyword">int</span> i,j; <span class="keyword">int</span> pivot;</div><div class="line">        pivot = arr[low]; i = low;j = high;</div><div class="line">        <span class="keyword">while</span>(i &lt; j)&#123;</div><div class="line">            <span class="comment">/*从数组的两端交替地向中间扫描*/</span></div><div class="line">            <span class="keyword">while</span>(i &lt; j &amp;&amp; arr[j] &gt;= pivot)j--;</div><div class="line">            arr[i] = arr[j];<span class="comment">/*比枢轴元素小者往前移动*/</span></div><div class="line">            <span class="keyword">while</span>(i &lt; j &amp;&amp; arr[i] &lt;= pivot)i++;</div><div class="line">            arr[j] = arr[i];<span class="comment">/*比枢轴元素大者往后移动*/</span></div><div class="line">        &#125;</div><div class="line">        arr[i] = pivot;</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 对整型数组进行非递减排序</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] quickSort(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)&#123;</div><div class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</div><div class="line">            <span class="keyword">int</span> loc = partition(arr,low,high);<span class="comment">/*进行划分*/</span></div><div class="line">            quickSort(arr,low,loc-<span class="number">1</span>);<span class="comment">/*对前半区进行快速排序*/</span></div><div class="line">            quickSort(arr,loc+<span class="number">1</span>,high);<span class="comment">/*对后半区进行快速排序*/</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> arr;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>注意</code>：快速排序算法的时间复杂度为 $O\left( n\log _{2}n\right)$，在所有算法复杂度为此数量级的排序方法中，快速排序被认为是平均性能最好的一种。但是，若初始记录序列按关键字有序或基本有序时，即每次划分都是将序列分为某一半序列的长度为0的情况，此时快速排序的性能退化为时间复杂度是$O\left( n^{2}\right)$。快速排序是一种<code>不稳定</code>的排序算法。</p>
 <h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用<code>分治法</code>（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。</p>
 <p>具体做法：</p>
@@ -462,7 +460,7 @@
 <li>重复步骤3直到某一指针到达序列尾</li>
 <li>将另一个序列剩下的所有元素直接复制到合并序列尾</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSort</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span>[] arr = &#123;<span class="number">6</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">8</span>&#125;;</div><div class="line">        sort(arr,<span class="number">0</span>,arr.length-<span class="number">1</span>);</div><div class="line">        System.out.println(Arrays.toString(arr));</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 使用递归</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Sort</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> leftStart,<span class="keyword">int</span> rightEnd)</span></span>&#123;</div><div class="line">        <span class="comment">// 满足基本条件</span></div><div class="line">        <span class="keyword">if</span>(leftStart&gt;=rightEnd)&#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 算出左边数组结束位置</span></div><div class="line">        <span class="keyword">int</span> leftEnd = (leftStart+rightEnd) &gt;&gt; <span class="number">1</span>;</div><div class="line">        <span class="comment">// 算出右边数组开始位置</span></div><div class="line">        <span class="keyword">int</span> rightStart = leftEnd+<span class="number">1</span>;</div><div class="line">        <span class="comment">/*递归地对arr[leftStart...leftEnd]进行归并排序*/</span></div><div class="line">        Sort(arr,leftStart,leftEnd);</div><div class="line">       <span class="comment">/*递归地对arr[rightStart...rightEnd]进行归并排序*/</span></div><div class="line">        Sort(arr,rightStart,rightEnd);</div><div class="line">        <span class="comment">/*对一维数组arr[leftStart...rightEnd]中的元素进行两路归并牌排序*/</span></div><div class="line">        Merge(arr,leftStart,leftEnd,rightStart,rightEnd);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 两两归并</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> leftStart,<span class="keyword">int</span> leftEnd,<span class="keyword">int</span> rightStart,<span class="keyword">int</span> rightEnd)</span></span>&#123;</div><div class="line">        <span class="comment">// 定义一个临时数组</span></div><div class="line">        <span class="keyword">int</span>[] tempArr = <span class="keyword">new</span> <span class="keyword">int</span>[arr.length];</div><div class="line">        <span class="keyword">int</span> tempIndex = leftStart;</div><div class="line">        <span class="keyword">int</span> resultIndex = leftStart;</div><div class="line">        <span class="comment">// 进行比较</span></div><div class="line">        <span class="keyword">while</span>(leftStart &lt;= leftEnd &amp;&amp; rightStart &lt;= rightEnd)&#123;</div><div class="line">            tempArr[tempIndex++] = arr[leftStart] &lt;= arr[rightStart] ? 	                                       arr[leftStart++]:arr[rightStart++];</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 把最后一个比较的元素存放到临时素组中</span></div><div class="line">        <span class="keyword">while</span>(leftStart&lt;=leftEnd)&#123;</div><div class="line">            tempArr[tempIndex++] = arr[leftStart++];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">while</span>(rightStart &lt;= rightEnd)&#123;</div><div class="line">             tempArr[tempIndex++] = arr[rightStart++];</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">// 把临时数组元素顺序复制到原数组</span></div><div class="line">        <span class="keyword">while</span>(resultIndex &lt;= rightEnd)&#123;</div><div class="line">            arr[resultIndex] = tempArr[resultIndex++]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>迭代法（Bottom-up）</p>
 <p>假设序列共有 n 个元素</p>
 <ol>
@@ -471,7 +469,6 @@
 <li>重复步骤2，直到所有元素排序完毕，即序列数为1</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<p><a href="https://juejin.im/post/5b31ae466fb9a00e790083d2#heading-0" target="_blank" rel="external">https://juejin.im/post/5b31ae466fb9a00e790083d2#heading-0</a></p>
 <p><code>适用</code>：多链表排序。</p>
 <h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><h3 id="内部排序方法小结"><a href="#内部排序方法小结" class="headerlink" title="内部排序方法小结"></a>内部排序方法小结</h3><h3 id="外部排序"><a href="#外部排序" class="headerlink" title="外部排序"></a>外部排序</h3>
       
@@ -524,7 +521,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://swenfang.github.io/2019/03/13/软件技术/第3章数据结构/" title="">http://swenfang.github.io/2019/03/13/软件技术/第3章数据结构/</a>
+    <a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第3章数据结构/" title="">http://swenfang.github.io/2019/03/30/SoftTestTechnique/第3章数据结构/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -543,13 +540,13 @@
     <strong>推荐文章 </strong>
     <ul>
         
-            <li><a href="http://swenfang.github.io/2019/03/16/Lucene/10、lucene搜索之联想词提示之suggest原理和应用/">lucene搜索之联想词提示之suggest原理和应用</a></li>
+            <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第2章程序设计语言基础知识/">第2章程序设计语言基础知识</a></li>
         
-            <li><a href="http://swenfang.github.io/2019/03/15/软件技术/第2章程序设计语言基础知识/">第2章程序设计语言基础知识</a></li>
+            <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第1章计算机网络概述/">第1章计算机网络概述</a></li>
         
-            <li><a href="http://swenfang.github.io/2019/03/02/客服中心培训第一天/">阿里智能客服中心培训-1</a></li>
+            <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/快速排序原理和实现/">快速排序原理和实现</a></li>
         
-            <li><a href="http://swenfang.github.io/2019/02/18/软件技术/第1章计算机网络概述/">第1章计算机网络概述</a></li>
+            <li><a href="http://swenfang.github.io/2019/03/29/Essay/废掉一个人最隐蔽的方式是让他忙到没时间成长/">废掉一个人最隐蔽的方式是让他忙到没时间成长</a></li>
         
     </ul>
     
@@ -569,8 +566,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/02/客服中心培训第一天/" rel="next" title="阿里智能客服中心培训-1">
-                <i class="fa fa-chevron-left"></i> 阿里智能客服中心培训-1
+              <a href="/2019/03/30/SoftTestTechnique/第2章程序设计语言基础知识/" rel="next" title="第2章程序设计语言基础知识">
+                <i class="fa fa-chevron-left"></i> 第2章程序设计语言基础知识
               </a>
             
           </div>
@@ -578,10 +575,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/15/软件技术/第2章程序设计语言基础知识/" rel="prev" title="第2章程序设计语言基础知识">
-                第2章程序设计语言基础知识 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

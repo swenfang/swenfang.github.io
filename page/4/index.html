@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/03/15/软件技术/第2章程序设计语言基础知识/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/03/16/Lucene/12、lucene搜索之分组处理group查询/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -306,7 +306,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/15/软件技术/第2章程序设计语言基础知识/" itemprop="url">第2章程序设计语言基础知识</a></h1>
+                <a class="post-title-link" href="/2019/03/16/Lucene/12、lucene搜索之分组处理group查询/" itemprop="url">lucene搜索之分组处理group查询</a></h1>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T23:09:51+08:00">
-                2019-03-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-16T09:53:13+08:00">
+                2019-03-16
               </time>
             
 
@@ -341,8 +341,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/软件技术/" itemprop="url" rel="index">
-                    <span itemprop="name">软件技术</span>
+                  <a href="/categories/lucene/" itemprop="url" rel="index">
+                    <span itemprop="name">lucene</span>
                   </a>
                 </span>
 
@@ -358,7 +358,7 @@
 
           
           
-             <span id="/2019/03/15/软件技术/第2章程序设计语言基础知识/" class="leancloud_visitors" data-flag-title="第2章程序设计语言基础知识">
+             <span id="/2019/03/16/Lucene/12、lucene搜索之分组处理group查询/" class="leancloud_visitors" data-flag-title="lucene搜索之分组处理group查询">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  386 字
+                  2,515 字
                 </span>
               
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  13 分钟
                 </span>
               
             </div>
@@ -421,10 +421,10 @@
 
       
         
-          <h1 id="第2章程序设计语言基础知识"><a href="#第2章程序设计语言基础知识" class="headerlink" title="第2章程序设计语言基础知识"></a>第2章程序设计语言基础知识</h1><h2 id="程序设计语言概述"><a href="#程序设计语言概述" class="headerlink" title="程序设计语言概述"></a>程序设计语言概述</h2><h3 id="程序设计语言的基本概念"><a href="#程序设计语言的基本概念" class="headerlink" title="程序设计语言的基本概念"></a>程序设计语言的基本概念</h3><h4 id="低级语言和高级语言"><a href="#低级语言和高级语言" class="headerlink" title="低级语言和高级语言"></a>低级语言和高级语言</h4><p>机器语言和汇编语言为高级语言。在此基础上，人们开发了功能更强、抽象级别更高的语言以支持程序设计，于是产生了面向各类应用程序的程序设计语言，称为高级语言。ge:Java、C、C++、PHP、Python等。</p>
+          <h1 id="lucene（12）—lucene搜索之分组处理group查询"><a href="#lucene（12）—lucene搜索之分组处理group查询" class="headerlink" title="lucene（12）—lucene搜索之分组处理group查询"></a>lucene（12）—lucene搜索之分组处理group查询</h1><h2 id="grouping介绍"><a href="#grouping介绍" class="headerlink" title="grouping介绍"></a>grouping介绍</h2><p>我们在做lucene搜索的时候，可能会用到对某个条件的数据进行统计，比如统计有多少个省份，在sql查询中我们可以用distinct来完成类似的功能，也可以用group by来对查询的列进行分组查询。在lucene中我们实现类似的功能怎么做呢，比较费时的做法时我们查询出所有的结果，然后对结果里边的省份对应的field查询出来，往set里边放，显然这种做法效率低，不可取；lucene为了解决上述问题，提供了用于分组操作的模块group，group主要用户处理不同lucene中含有某个相同field值的不同document的分组统计。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/15/软件技术/第2章程序设计语言基础知识/#more" rel="contents">
+            <a class="btn" href="/2019/03/16/Lucene/12、lucene搜索之分组处理group查询/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -479,7 +479,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/03/13/软件技术/第3章数据结构/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/03/16/Lucene/11、lucene搜索之高亮显示highlighter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -498,7 +498,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/13/软件技术/第3章数据结构/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2019/03/16/Lucene/11、lucene搜索之高亮显示highlighter/" itemprop="url">lucene搜索之高亮显示highlighter</a></h1>
         
 
         <div class="post-meta">
@@ -510,8 +510,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-13T19:09:20+08:00">
-                2019-03-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-16T09:53:13+08:00">
+                2019-03-16
               </time>
             
 
@@ -521,6 +521,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lucene/" itemprop="url" rel="index">
+                    <span itemprop="name">lucene</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -528,7 +550,7 @@
 
           
           
-             <span id="/2019/03/13/软件技术/第3章数据结构/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2019/03/16/Lucene/11、lucene搜索之高亮显示highlighter/" class="leancloud_visitors" data-flag-title="lucene搜索之高亮显示highlighter">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -553,7 +575,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,083 字
+                  2,249 字
                 </span>
               
 
@@ -591,18 +613,203 @@
 
       
         
-          
-          tags:
-- 软件技术
-categories: 软件技术title: 第3章数据结构mathjax: true
-第3章数据结构线性结构线性表栈和队列串数组、矩阵和广义表数组矩阵广义表树树与二叉树的定义二叉树的性质与存储结构二叉树的遍历线索二叉树最优二叉树树和森林图图的定义与储存图的遍历生成树与最小生成树拓扑排序和关键路径最短路径查找查找的基本概念静态查找表的查找方法动态查找表哈希表排序
-十种常见排序算法可以分为两大类：
-比较类排序：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因此也称为非线性时间比较类排序。
-非比较类排序：不通过比较来决定元素间的相对次序，它可以
-          ...
+          <h1 id="lucene（11）—lucene搜索之高亮显示highlighter"><a href="#lucene（11）—lucene搜索之高亮显示highlighter" class="headerlink" title="lucene（11）—lucene搜索之高亮显示highlighter"></a>lucene（11）—lucene搜索之高亮显示highlighter</h1><h2 id="highlighter介绍"><a href="#highlighter介绍" class="headerlink" title="highlighter介绍"></a>highlighter介绍</h2><p>我们在做查询的时候，希望对我们自己的搜索结果与搜索内容相近的地方进行着重显示，就如下面的效果 </p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/13/软件技术/第3章数据结构/#more" rel="contents">
+            <a class="btn" href="/2019/03/16/Lucene/11、lucene搜索之高亮显示highlighter/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+    	
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/03/16/Lucene/10、lucene搜索之联想词提示之suggest原理和应用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShenWenFang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShenWenFang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/16/Lucene/10、lucene搜索之联想词提示之suggest原理和应用/" itemprop="url">lucene搜索之联想词提示之suggest原理和应用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-16T09:53:13+08:00">
+                2019-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lucene/" itemprop="url" rel="index">
+                    <span itemprop="name">lucene</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/16/Lucene/10、lucene搜索之联想词提示之suggest原理和应用/" class="leancloud_visitors" data-flag-title="lucene搜索之联想词提示之suggest原理和应用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,267 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="lucene（10）—lucene搜索之联想词提示之suggest原理和应用"><a href="#lucene（10）—lucene搜索之联想词提示之suggest原理和应用" class="headerlink" title="lucene（10）—lucene搜索之联想词提示之suggest原理和应用"></a>lucene（10）—lucene搜索之联想词提示之suggest原理和应用</h1><p>昨天了解了suggest包中的spell相关的内容，主要是拼写检查和相似度查询提示；</p>
+<p>今天准备了解下关于<a href="https://www.baidu.com/s?wd=%E8%81%94%E6%83%B3&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="external">联想</a>词的内容，lucene的联想词是在org.apache.lucene.search.suggest包下边，提供了自动补全或者联想提示功能的支持；</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/16/Lucene/10、lucene搜索之联想词提示之suggest原理和应用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -795,199 +1002,6 @@ categories: 软件技术title: 第3章数据结构mathjax: true
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/03/02/客服中心培训第一天/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-
-
-    
-
-    
-
-    
-
-    	
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/02/18/软件技术/第1章计算机网络概述/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ShenWenFang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShenWenFang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/18/软件技术/第1章计算机网络概述/" itemprop="url">第1章计算机网络概述</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-18T13:13:32+08:00">
-                2019-02-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/软件技术/" itemprop="url" rel="index">
-                    <span itemprop="name">软件技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/02/18/软件技术/第1章计算机网络概述/" class="leancloud_visitors" data-flag-title="第1章计算机网络概述">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  10,906 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  39 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="第1章计算机网络概述"><a href="#第1章计算机网络概述" class="headerlink" title="第1章计算机网络概述"></a>第1章计算机网络概述</h1><h2 id="计算机系统基础知识"><a href="#计算机系统基础知识" class="headerlink" title="计算机系统基础知识"></a>计算机系统基础知识</h2><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190315110740-590645.jpg" alt=""></p>
-<h3 id="计算机系统硬件基本组成"><a href="#计算机系统硬件基本组成" class="headerlink" title="计算机系统硬件基本组成"></a>计算机系统硬件基本组成</h3><p>计算机系统是由硬件和软件组成的。基本硬件系统由 <code>运算器</code> <code>控制器</code>  <code>存储器</code> <code>输入设备</code> <code>输出设备</code>。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/18/软件技术/第1章计算机网络概述/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
