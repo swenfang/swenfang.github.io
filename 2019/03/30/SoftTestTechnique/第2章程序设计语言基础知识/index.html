@@ -99,7 +99,8 @@
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190403101129-17260.jpg">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190403101916-708797.jpg">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190403102347-362614.jpg">
-<meta property="og:updated_time" content="2019-04-03T15:07:48.240Z">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190404012854-166000.jpg">
+<meta property="og:updated_time" content="2019-04-04T05:31:44.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第2章程序设计语言基础知识">
 <meta name="twitter:description" content="第2章程序设计语言基础知识程序设计语言概述程序设计语言的基本概念低级语言和高级语言机器语言和汇编语言为高级语言。在此基础上，人们开发了功能更强、抽象级别更高的语言以支持程序设计，于是产生了面向各类应用程序的程序设计语言，称为高级语言。ge:Java、C、C++、PHP、Python等。">
@@ -394,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5,062 字
+                  5,202 字
                 </span>
               
 
@@ -670,12 +671,17 @@
 <p>1）上下文无关文法</p>
 <p>规范推导；短语、直接短语和句柄；</p>
 <p>2）自顶向下语法分析方法</p>
-<p>基本思想：对于给定的输入串 $\omega$ ，从文法的开始符号 S 出发进行最左推导，直到得到一个合法的句子或者发现一个非法结构。在推导的过程中试图用一切可能的方法，自上而下、从左到右地输入串 $\omega$  建立语法树。整个过程是一个反复试探的过程。</p>
+<p>基本思想：对于给定的输入串 $\omega​$ ，从文法的开始符号 S 出发进行最左推导，直到得到一个合法的句子或者发现一个非法结构。在推导的过程中试图用一切可能的方法，自上而下、从左到右地输入串 $\omega​$  建立语法树。整个过程是一个反复试探的过程。</p>
 <ul>
 <li>消除文法的左递归</li>
 <li>提起公共左因子</li>
 <li>LL(1) 文法</li>
+<li>递归下降分析法</li>
+<li>预测分析法</li>
 </ul>
+<p>3）自底向上语法分析方法</p>
+<p>又称移进-归约分析法。基本思想是：对输入序号  $\omega​$ 自左向右进行扫描，并输入符号逐个移进栈中，边移进边分析，一旦栈顶符号串形成某个句型的归约串，就用某个产生式的左部非终结符来替代，这一步称为归约。重复这一过程，直到栈中只剩下文法的开始符号且输入串也被扫描完为止。</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190404012854-166000.jpg" alt=""></p>
 <h4 id="中间代码生成"><a href="#中间代码生成" class="headerlink" title="中间代码生成"></a>中间代码生成</h4><h4 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h4><h4 id="目标代码生成"><a href="#目标代码生成" class="headerlink" title="目标代码生成"></a>目标代码生成</h4><h4 id="符号表管理"><a href="#符号表管理" class="headerlink" title="符号表管理"></a>符号表管理</h4><h4 id="出错处理"><a href="#出错处理" class="headerlink" title="出错处理"></a>出错处理</h4><h3 id="解释程序基本原理"><a href="#解释程序基本原理" class="headerlink" title="解释程序基本原理"></a>解释程序基本原理</h3>
       
     </div>
@@ -748,9 +754,9 @@
         
             <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第3章数据结构/"></a></li>
         
-            <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第1章计算机网络概述/">第1章计算机网络概述</a></li>
-        
             <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/快速排序原理和实现/">快速排序原理和实现</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第1章计算机网络概述/">第1章计算机网络概述</a></li>
         
             <li><a href="http://swenfang.github.io/2019/03/29/Essay/废掉一个人最隐蔽的方式是让他忙到没时间成长/">废掉一个人最隐蔽的方式是让他忙到没时间成长</a></li>
         
@@ -778,8 +784,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/30/SoftTestTechnique/第1章计算机网络概述/" rel="next" title="第1章计算机网络概述">
-                <i class="fa fa-chevron-left"></i> 第1章计算机网络概述
+              <a href="/2019/03/30/SoftTestTechnique/快速排序原理和实现/" rel="next" title="快速排序原理和实现">
+                <i class="fa fa-chevron-left"></i> 快速排序原理和实现
               </a>
             
           </div>
