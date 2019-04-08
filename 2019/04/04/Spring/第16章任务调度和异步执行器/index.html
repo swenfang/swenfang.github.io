@@ -90,7 +90,9 @@
 <meta property="og:description" content="第16章任务调度和异步执行器">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190405022855-962145.jpg">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190405033803-608110.jpg">
-<meta property="og:updated_time" content="2019-04-05T15:10:03.086Z">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190406025400-7454.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190406051505-539589.jpg">
+<meta property="og:updated_time" content="2019-04-07T12:37:38.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第16章任务调度和异步执行器">
 <meta name="twitter:description" content="第16章任务调度和异步执行器">
@@ -385,7 +387,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,009 字
+                  5,767 字
                 </span>
               
 
@@ -401,7 +403,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8 分钟
+                  23 分钟
                 </span>
               
             </div>
@@ -442,7 +444,6 @@
 <p>通过 SimpleTrigger 对 SimpleJob 进行调度</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleTriggerRunner</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">/*创建一个 JobDetail 实例，指定 SimpleJob*/</span></div><div class="line">            JobDetail jobDetail = <span class="keyword">new</span> JobDetail(<span class="string">"job1_1"</span>,<span class="string">"jdroup1"</span>, SimpleJob.class);</div><div class="line"></div><div class="line">            <span class="comment">/*通过 SimpleTrigger 定义调度规则：马上启动，每2秒运行一次，共运行100次*/</span></div><div class="line">            SimpleTrigger simpleTrigger = <span class="keyword">new</span> SimpleTrigger(<span class="string">"Trigger1_1"</span>,<span class="string">"tgroup1"</span>);</div><div class="line">            simpleTrigger.setStartTime(<span class="keyword">new</span> Date());</div><div class="line">            simpleTrigger.setRepeatInterval(<span class="number">2000</span>);</div><div class="line">            simpleTrigger.setRepeatCount(<span class="number">100</span>);</div><div class="line"></div><div class="line">            <span class="comment">/*通过 SchedulerFactory 获取一个调度器实例*/</span></div><div class="line">            SchedulerFactory schedulerFactory = <span class="keyword">new</span> StdSchedulerFactory();</div><div class="line">            Scheduler scheduler = schedulerFactory.getScheduler();</div><div class="line"></div><div class="line">            <span class="comment">/*注册并进行调度*/</span></div><div class="line">            scheduler.scheduleJob(jobDetail,simpleTrigger);</div><div class="line">            scheduler.start(); <span class="comment">/*调度启动*/</span></div><div class="line">        &#125; <span class="keyword">catch</span> (SchedulerException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>还可以通过 SimpleTrigger 的 setStartTime(Date startTime) 和 setEndTime(Date endTime) 的方法指定运行的时间范围。当运行次数和时间范围产生冲突时，超过时间范围的任务不被执行。如可以通过 simpleTrigger.setStartTime(new Date(System.CurrentTimeMillis()+60000L))方法指定 60 秒后开始运行。</p>
-<p>除了通过 scheduleJob(jobDetail,simpleTrigger) 方法建立 Trigger 和 JobDetail 的关联外，还可以通过如下方式建立关联：</p>
 <p>执行结果：</p>
 <p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190405033803-608110.jpg" alt=""></p>
 <h3 id="使用-CronTrigger"><a href="#使用-CronTrigger" class="headerlink" title="使用 CronTrigger"></a>使用 CronTrigger</h3><p>CronTrigger 能够提供比 SimpleTrigger 更有具体实际意义的调度方案，调度规则基于 Cron 表达式。CronTrigger 支持日历相关的周期时间间隔（比如每月第一个周一执行），而不是简单的周期时间间隔。</p>
@@ -527,71 +528,178 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>“0 0 12 <em> </em> ? “</td>
+<td>每天 12:00 运行</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 15 10 ? <em> </em>“</td>
+<td>每天 10:15 运行</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 15 10 <em> </em> ?”</td>
+<td>每天 10:15 运行</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 15 10 <em> </em> ? *”</td>
+<td>每天 10:15 运行</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 15 10 <em> </em> ? 2008”</td>
+<td>2008 年的每天 10:15 运行</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 <em> 14 </em> * ?”</td>
+<td>每天14点到15点每分钟运行一次。开始于14:00 ，结束于14:59</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 0/15 14 <em> </em> ?”</td>
+<td>每天14点到15点每5分钟运行一次，开始于 14:00 ，结束于14:59</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 0/5 14,18 <em> </em> ?”</td>
+<td>每天14点到15点每5分钟运行一次，此外每天 18点到19点每5分钟也运行一次</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 0-15 14 <em> </em> ?”</td>
+<td>每天14:00 到 14:05，每分钟运行一次</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 10,44 14 ? 3 WED”</td>
+<td>3月每周三的 14:10 到 14:44 ,每分钟运行一次</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 15 10 ? * MON-FRI”</td>
+<td>每周一、二、三、四、五的 10:15 运行</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 15 10 15 * ?”</td>
+<td>每月15 日的 10:15 运行</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 15 10 L * ?”</td>
+<td>每月最后一天星期五的 10:15 运行</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 15 10 ? * 6L”</td>
+<td>每月最后一个星期五的 10:15 运行</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>“0 15 10 ? 6L 2014-2016”</td>
+<td>2014年、2015年、2016年每月最后一个星期五的 10:15 运行</td>
 </tr>
 <tr>
-<td></td>
+<td>“0 15 10 ? * 6#3”</td>
+<td>每月第三个星期五的 10:15 运行</td>
 </tr>
 </tbody>
 </table>
-<h4 id="CronTrigger-实例"><a href="#CronTrigger-实例" class="headerlink" title="CronTrigger  实例"></a>CronTrigger  实例</h4><h3 id="使用-Calender"><a href="#使用-Calender" class="headerlink" title="使用 Calender"></a>使用 Calender</h3><h3 id="任务调度信息存储"><a href="#任务调度信息存储" class="headerlink" title="任务调度信息存储"></a>任务调度信息存储</h3><h2 id="在Spring中使用Quartz"><a href="#在Spring中使用Quartz" class="headerlink" title="在Spring中使用Quartz"></a>在Spring中使用Quartz</h2><h3 id="创建-JobDetail"><a href="#创建-JobDetail" class="headerlink" title="创建 JobDetail"></a>创建 JobDetail</h3><h3 id="创建-Trigger"><a href="#创建-Trigger" class="headerlink" title="创建 Trigger"></a>创建 Trigger</h3><h3 id="创建Scheduler"><a href="#创建Scheduler" class="headerlink" title="创建Scheduler"></a>创建Scheduler</h3><h2 id="在Spring中使用JDK-Timer"><a href="#在Spring中使用JDK-Timer" class="headerlink" title="在Spring中使用JDK Timer"></a>在Spring中使用JDK Timer</h2><h3 id="Timer-和-TimerTask"><a href="#Timer-和-TimerTask" class="headerlink" title="Timer 和 TimerTask"></a>Timer 和 TimerTask</h3><h3 id="Spring-对-Java-Timer-的支持"><a href="#Spring-对-Java-Timer-的支持" class="headerlink" title="Spring 对 Java Timer 的支持"></a>Spring 对 Java Timer 的支持</h3><h2 id="Spring-对-Java-5-0-Executor-的支持"><a href="#Spring-对-Java-5-0-Executor-的支持" class="headerlink" title="Spring 对 Java 5.0 Executor 的支持"></a>Spring 对 Java 5.0 Executor 的支持</h2><h3 id="了解-Java-5-0-的-Executor"><a href="#了解-Java-5-0-的-Executor" class="headerlink" title="了解 Java 5.0 的 Executor"></a>了解 Java 5.0 的 Executor</h3><h3 id="Spring-对-Executor-所提供的抽象"><a href="#Spring-对-Executor-所提供的抽象" class="headerlink" title="Spring 对 Executor 所提供的抽象"></a>Spring 对 Executor 所提供的抽象</h3><h2 id="实际应用中的调度"><a href="#实际应用中的调度" class="headerlink" title="实际应用中的调度"></a>实际应用中的调度</h2><h3 id="如何产生任务"><a href="#如何产生任务" class="headerlink" title="如何产生任务"></a>如何产生任务</h3><h3 id="任务调度对应程序集群的影响"><a href="#任务调度对应程序集群的影响" class="headerlink" title="任务调度对应程序集群的影响"></a>任务调度对应程序集群的影响</h3><h3 id="任务调度云"><a href="#任务调度云" class="headerlink" title="任务调度云"></a>任务调度云</h3><h3 id="Web应用程序中调度器的启动和关闭问题"><a href="#Web应用程序中调度器的启动和关闭问题" class="headerlink" title="Web应用程序中调度器的启动和关闭问题"></a>Web应用程序中调度器的启动和关闭问题</h3><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2>
+<h4 id="CronTrigger-实例"><a href="#CronTrigger-实例" class="headerlink" title="CronTrigger  实例"></a>CronTrigger  实例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CronTriggerRunner</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            JobDetail jobDetail = <span class="keyword">new</span> JobDetail(<span class="string">"job_2"</span>,<span class="string">"jGroup1"</span>, SimpleJob.class);</div><div class="line"></div><div class="line">            <span class="comment">/*创建 CronTrigger,指定组及名称*/</span></div><div class="line">            CronTrigger cronTrigger = <span class="keyword">new</span> CronTrigger(<span class="string">"trigger1_2"</span>,<span class="string">"tgroup1"</span>);</div><div class="line">            <span class="comment">/*定义 Cron 表达式*/</span></div><div class="line">            CronExpression cexp = <span class="keyword">new</span> CronExpression(<span class="string">"0/5 * * * * ?"</span>);</div><div class="line">            <span class="comment">/*设置 Cron 表达式*/</span></div><div class="line">            cronTrigger.setCronExpression(cexp);</div><div class="line"></div><div class="line">			<span class="comment">/*②*/</span></div><div class="line">            SchedulerFactory schedulerFactory = <span class="keyword">new</span> StdSchedulerFactory();</div><div class="line">            Scheduler scheduler = schedulerFactory.getScheduler();</div><div class="line">            scheduler.scheduleJob(jobDetail,cronTrigger);</div><div class="line">            scheduler.start();</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行 CronTriggerRunner，每5秒将触发 SimpleJob 运行一次。在默认情况下，Cron 表达式对应当前的时区，可以通过 CronTriggerRunner  的 setTimeZone(TimeZone timeZone) 方法显示指定时区。也可以指定开始时间和结束时间。</p>
+<p><code>注意</code>：在代码 ② 处需要通过 Thread.currentThread.sleep() 方法让主线程睡眠一段时间，使调度器可以继续执行任务调度的工作；否则在调度器启动后，因为主线程立即退出，寄生于主线程的调度器也将关闭，调度器的任务都将相应的销毁，这将导致看不到实际的运行效果。在单元测试的时候，使主线程休眠一段时间以便让任务线程不被提前终止是经常使用的测试方法。对于测试某些长周期执行的调度任务，开发者可以简单地调整操作系统时间进行模拟。</p>
+<p>运行结果：</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190406025400-7454.jpg" alt=""></p>
+<h3 id="使用-Calender"><a href="#使用-Calender" class="headerlink" title="使用 Calender"></a>使用 Calender</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> com.mrsw.adx.admin.service.impl.SimpleJob;</div><div class="line"><span class="keyword">import</span> org.quartz.*;</div><div class="line"><span class="keyword">import</span> org.quartz.impl.StdSchedulerFactory;</div><div class="line"><span class="keyword">import</span> org.quartz.impl.calendar.AnnualCalendar;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">import</span> java.util.Calendar;</div><div class="line"><span class="keyword">import</span> java.util.Date;</div><div class="line"><span class="keyword">import</span> java.util.GregorianCalendar;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalendarExample</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            SchedulerFactory sf = <span class="keyword">new</span> StdSchedulerFactory();</div><div class="line">            Scheduler scheduler = sf.getScheduler();</div><div class="line"></div><div class="line">            <span class="comment">/*法定节日是以每年为周期的，所以使用 AnnualCalendar*/</span></div><div class="line">            AnnualCalendar holidays = <span class="keyword">new</span> AnnualCalendar();</div><div class="line"></div><div class="line">            <span class="comment">/*五一劳动节*/</span></div><div class="line">            Calendar laborDay = <span class="keyword">new</span> GregorianCalendar();</div><div class="line">            laborDay.add(Calendar.MONTH,<span class="number">5</span>);</div><div class="line">            laborDay.add(Calendar.DATE,<span class="number">1</span>);</div><div class="line"></div><div class="line">            <span class="comment">/*国庆节*/</span></div><div class="line">            Calendar nationalDay = <span class="keyword">new</span> GregorianCalendar();</div><div class="line">            nationalDay.add(Calendar.MONTH,<span class="number">10</span>);</div><div class="line">            nationalDay.add(Calendar.DATE,<span class="number">1</span>);</div><div class="line"></div><div class="line">            <span class="comment">/*排除这两个特殊日期*/</span></div><div class="line">            ArrayList&lt;Calendar&gt; calendars = <span class="keyword">new</span> ArrayList&lt;Calendar&gt;();</div><div class="line">            calendars.add(laborDay);</div><div class="line">            calendars.add(nationalDay);</div><div class="line">            holidays.setDaysExcluded(calendars);<span class="comment">/*①*/</span></div><div class="line"></div><div class="line">            <span class="comment">/*向 Scheduler 注册日历*/</span></div><div class="line">            scheduler.addCalendar(<span class="string">"holidays"</span>,holidays,<span class="keyword">false</span>,<span class="keyword">false</span>);</div><div class="line"></div><div class="line">            <span class="comment">/*4月1日上午10点*/</span></div><div class="line">            Date runDate = TriggerUtils.getDateOf(<span class="number">0</span>,<span class="number">0</span>,<span class="number">10</span>,<span class="number">1</span>,<span class="number">4</span>);</div><div class="line">            JobDetail job = <span class="keyword">new</span> JobDetail(<span class="string">"job1"</span>,<span class="string">"group1"</span>, SimpleJob.class);</div><div class="line">            SimpleTrigger trigger = <span class="keyword">new</span> SimpleTrigger(<span class="string">"trigger1"</span>,<span class="string">"group1"</span>,runDate,</div><div class="line">                    <span class="keyword">null</span>,SimpleTrigger.REPEAT_INDEFINITELY,</div><div class="line">                    <span class="number">60L</span> * <span class="number">60L</span> * <span class="number">1000L</span>);</div><div class="line">            trigger.setCalendarName(<span class="string">"holidays"</span>);</div><div class="line">            <span class="comment">/*让 Trigger 应用指定的日历规则*/</span></div><div class="line"></div><div class="line">            scheduler.scheduleJob(job,trigger);</div><div class="line">            scheduler.start();</div><div class="line">            <span class="comment">// 在实际应用中主线程不能停止，否则 Scheduler 得不到执行，此处省略</span></div><div class="line">        &#125; <span class="keyword">catch</span> (SchedulerException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>注意</code>：在向 Scheduler 注册日历的时候，addCalendar(String calName,Calendar calendar,boolean replace,boolean updateTrigger)。如果 updateTrigger 为 true,则 Scheduler 中引用 Calendar 的 Trigger 将得到更新，如①所示。</p>
+<h3 id="任务调度信息存储"><a href="#任务调度信息存储" class="headerlink" title="任务调度信息存储"></a>任务调度信息存储</h3><p>默认情况下，Quartz 将任务调度的运行信息（调度现场信息包括运行次数、调度规则和JobDataMap 中的数据等。）保存在内存中。这种方法提供了最佳的性能，因为在内存中数据访问速度最快；不足之处在于缺乏数据的持久性，当程序中途停止或系统崩溃时，所有运行的信息都会丢失。</p>
+<p>持久化任务调度信息，可以通过调整 Quartz 的属性文件，将这些数据保存到数据库。</p>
+<h4 id="通过配置文件调整任务调度信息的保存策略"><a href="#通过配置文件调整任务调度信息的保存策略" class="headerlink" title="通过配置文件调整任务调度信息的保存策略"></a>通过配置文件调整任务调度信息的保存策略</h4><p>在 Quartz  JAR 文件的 org.quartz 包下就包含了一个 quartz.properties 属性配置文件，并提供了默认配置。如果需要调整默认配置，则可以直接在类路径下建立一个新的 quartz.properties 属性文件，它将被 Quartz加载并覆盖默认的配置。</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190406051505-539589.jpg" alt=""></p>
+<p>Quartz 的属性文件配置主要包括以下三方面的信息：</p>
+<ol>
+<li>集群信息</li>
+<li>调度器线程池</li>
+<li>任务调度现场数据的保存</li>
+</ol>
+<p><code>注意</code>：如果任务数目很大，则可以通过增大线程池获得更好的性能。</p>
+<p>可以通过 以下设置将任务调度现场数据保存到数据库。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 要将任务调度保存到数据库，必须使用 JobStoreTX 代替原来的 RAMJobStore</div><div class="line">org.quartz.jobStore.class = org.quartz.impl.jdbcjobstore.JobStoreTX</div><div class="line"># 数据库表前缀</div><div class="line">org.quartz.jobStore.tablePrefix = QRTZ_</div><div class="line"># 数据源名称</div><div class="line">org.quartz.jobStore.dataSource = qzDS</div><div class="line"></div><div class="line"># 定义数据源的具体属性</div><div class="line">org.quartz.dataSource.qzDS.driver = com.mysql.jdbc.Driver</div><div class="line">org.quartz.dataSource.qzDS.URL = jdbc:mysql://localhost:3306/sampledb</div><div class="line">org.quartz.dataSource.qzDS.user = stamen</div><div class="line">org.quartz.dataSource.qzDS.password = abd</div><div class="line">org.quartz.dataSource.qzDS.maxConnections = 10</div></pre></td></tr></table></figure>
+<p><code>注意</code>：必须事先在相应的数据库中创建 Quartz 的数据表（8张），在 Quartz 的完整发布的 dosc/dbTables 目录下拥有对应的不同的数据库脚本。</p>
+<h4 id="查询数据库的运行信息"><a href="#查询数据库的运行信息" class="headerlink" title="查询数据库的运行信息"></a>查询数据库的运行信息</h4><h2 id="在Spring中使用Quartz"><a href="#在Spring中使用Quartz" class="headerlink" title="在Spring中使用Quartz"></a>在Spring中使用Quartz</h2><p>Spring 为创建 Quartz 的 Scheduler 、Trigger 和 JobDetail 提供了便利的 FactoryBean 类，以便能够在 Spring 容器中享受注入的好处。</p>
+<p>Spring 为 Quartz 提供了两个方面的支持：</p>
+<p>（1）为 Quartz 的重要组件提供更具 Bean 风格的扩展类</p>
+<p>（2）提供创建 Scheduler 的 BeanFactory 类，方便在 Spring 环境下创建对应的组件对象，并结合 Spring 容器生命周期执行启动和停止的动作。</p>
+<h3 id="创建-JobDetail"><a href="#创建-JobDetail" class="headerlink" title="创建 JobDetail"></a>创建 JobDetail</h3><p>Spring 通过扩展 JobDetail 提供了一个更具 Bean 风格的 JobDetailFactoryBean。还提供了一个 MethodInvokingJobDetailBean，通过这个 FactoryBean 可以将 Spring 容器中 Bean 的方法包装成 Quartz 任务，这样开发者就不必为 Job 创建对应的类。</p>
+<h4 id="JobDetailFactoryBean"><a href="#JobDetailFactoryBean" class="headerlink" title="JobDetailFactoryBean"></a>JobDetailFactoryBean</h4><p>扩展于 Quartz 的 JobDetail 。使用该 Bean 声明 JobDetail 时，bean 的名字即任务的名字，如果没有指定所属组，就使用默认组。除了 JobDetail 的属性外，还定义了以下属性：</p>
+<ul>
+<li>jobCalss：类型为 Class，实现 Job 接口的任务类</li>
+<li>beanName：默认为 Bean 的 id 名，通过该属性显示指定 Bean 名称，它对应任务的名称。</li>
+<li>jobDataAsMap：类型为 Map ，为任务所对应的 JobDataMap 提供值。</li>
+<li>applicationContextJobDataKey：可以将 Spring ApplicationContext 的引用保存到 JobDataMap 中，以便在 Job 的代码中访问 ApplicationContext。需要指定一个健用于在 jobDataAsMap 中保存 ApplicationContext。</li>
+<li>jobListenerName：类型为 String[] ，指定注册在 Scheduler 中的 JobDataMap 名称，以便让这些监听器对本任务的事件进行监听。</li>
+</ul>
+<p>在下面的配置片段中使用 JobDetailBean 在 Spring 中配置一个 JobDetail</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;bean name="jobDetail" class="org.springframework.scheduling.quartz.JobDetailBean"</div><div class="line">    p:jobClass="com.smart.quartz.MyJob"</div><div class="line">    p:applicationContextJobDataKey="applicationContext"&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">    	&lt;map&gt;</div><div class="line">    		&lt;entry key=“size” value="10"/&gt;</div><div class="line">        &lt;/map&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<p>说明：JobDetailFactoryBean 封装了 MyJob 任务，并为 Job 对应的 JobDataMap 设置了一个健为 size 的数据。此外，通过指定 applicationContextJobDataKey ，让 Job 的 JobDataMap 持有 Spring ApplicationContext 的引用。</p>
+<p>这样，MyJob 在运行时就可以通过 JobDataMap 访问到 size 和 ApplicationContext。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyJob</span> <span class="keyword">implements</span> <span class="title">Job</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(JobExecutionContext jctx)</span> <span class="keyword">throws</span> JobExecutionException </span>&#123;</div><div class="line"></div><div class="line">        <span class="comment">/*获取 JobDetail 关联的 JobDataMap*/</span></div><div class="line">        Map dataMap = jctx.getJobDetail().getJobDataMap();</div><div class="line">        String size = (String) dataMap.get(<span class="string">"size"</span>);</div><div class="line"></div><div class="line">        ApplicationContext ctx = (ApplicationContext)dataMap.get(<span class="string">"applicationContext"</span>);</div><div class="line">        System.out.println(<span class="string">"size："</span>+size);</div><div class="line">        <span class="comment">/*① 对 JobDataMap 所做的更改是否被持久化取决于任务的类型*/</span></div><div class="line">        dataMap.put(<span class="string">"size"</span>,size+<span class="string">"0"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在代码 ① 处对 JobDataMap 进行修改。如果 MyJob 实现了 Job 接口，则这种更改对于下一次执行是不可见的；如果 MyJob 实现了 StatefulJob 接口，则这种更改对于下一次执行是可见的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyJob</span> <span class="keyword">implements</span> <span class="title">StatefulJob</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(JobExecutionContext jctx)</span> <span class="keyword">throws</span> JobExecutionException </span>&#123;</div><div class="line"><span class="comment">//    Map dataMap = jctx.getJobDetail().getJobDataMap();</span></div><div class="line">        Map dataMap = jctx.getTrigger().getJobDataMap();</div><div class="line">        String size =(String)dataMap.get(<span class="string">"size"</span>);</div><div class="line">        ApplicationContext ctx = (ApplicationContext)dataMap.get(<span class="string">"applicationContext"</span>);</div><div class="line">        System.out.println(<span class="string">"size:"</span>+size);</div><div class="line">        dataMap.put(<span class="string">"size"</span>,size+<span class="string">"0"</span>);</div><div class="line"></div><div class="line">        String count =(String)dataMap.get(<span class="string">"count"</span>);</div><div class="line">        System.out.println(<span class="string">"count:"</span>+count);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="MethodInvokingJobDetailFactryBean"><a href="#MethodInvokingJobDetailFactryBean" class="headerlink" title="MethodInvokingJobDetailFactryBean"></a>MethodInvokingJobDetailFactryBean</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 通过封装服务类方法实现 --&gt;</div><div class="line">&lt;bean id=<span class="string">"jobDetail_1"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"</span></div><div class="line">p:targetObject-ref=<span class="string">"myService"</span> p:targetMethod=<span class="string">"doJob"</span></div><div class="line">p:concurrent=<span class="string">"false"</span>/&gt;</div><div class="line">&lt;bean id=<span class="string">"myService"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.smart.service.MyService"</span> /&gt;</div></pre></td></tr></table></figure>
+<p>jobDetail_1 将 MyService#doJob() 封装成一个任务，同时通过 concurrent 属性指定任务的类型。默认情况下为无状态的任务。如果希望封装为有状态的任务，仅需将 concurrent 属性设置为 false 就可以了。Sping 通过名为 concurrent 的属性指定任务类型，能够更直接的描述任务执行的方式（有状态的任务不能并发执行，无状态的任务可以并发执行），对于不熟悉 Quartz 内部机制的用户来说，比起 stateful ，concurrent 更简明达意。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyService</span> </span>&#123;</div><div class="line">   <span class="comment">/*被封装成任务的目标方法*/</span> </div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doJob</span><span class="params">()</span></span>&#123;</div><div class="line">	   System.out.println(<span class="string">"in MyService.dojob()."</span>);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>注意</code>：通过 MethodInvokingJobDetailFactoryBean 产生的 JobDetail 不能被序列化，所以不能持久化到数据库。若希望使用持久化任务，则只能创建正规的 Quartz 的 Job 实现类 。</p>
+<h3 id="创建-Trigger"><a href="#创建-Trigger" class="headerlink" title="创建 Trigger"></a>创建 Trigger</h3><h4 id="SimpleTriggerFactoryBean"><a href="#SimpleTriggerFactoryBean" class="headerlink" title="SimpleTriggerFactoryBean"></a>SimpleTriggerFactoryBean</h4><p>在默认情况下，通过 SimpleTriggerFactoryBean 配置的 Trigger 名称即为 Bean 的名称，属于默认组。SimpleTriggerFactoryBean 在 SimpleTrigger 的基础上新增了以下属性。</p>
+<p>jobDetail：对应的 JobDetail。</p>
+<p>beanName：默认为 Bean 的 id 名，通过该属性显示指定 Bean 名称，它对应 Trigger 的名称。</p>
+<p>jobDataAsMap：以 Map 类型为 Trigger 关联的  JobDataMap 提供值。</p>
+<p>startDelay：延迟多少时间开始触发，单位为毫秒，默认值为0</p>
+<p>triggerListenerNames：类型为 String[]，指定注册在 Scheduler 中的 TriggerListener 名称，以便让这些监听器对本触发器的时间进行监听。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean"</div><div class="line">	p:jobDetail-ref="jobDetail" p:startDelay="1000" p:repeatInterval="2000"</div><div class="line">	p:repeatCount="100"&gt;</div><div class="line">	&lt;property name="jobDataAsMap"&gt;&lt;!--①--&gt;</div><div class="line">		&lt;map&gt;</div><div class="line">			&lt;entry key="count" value="10" /&gt;</div><div class="line">		&lt;/map&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<p>代码①处配置的 Map 数据将填充到 Trigger 的 JobDataMap 中，执行任务时必须通过以下方式获取配置的值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyJob</span> <span class="keyword">implements</span> <span class="title">StatefulJob</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(JobExecutionContext jctx)</span> <span class="keyword">throws</span> JobExecutionException </span>&#123;</div><div class="line">        Map dataMap = jctx.getTrigger().getJobDataMap();</div><div class="line">        <span class="comment">/*对 JobDataMap 的更改不会被持久化，不影响下次的执行*/</span></div><div class="line">        String count =(String)dataMap.get(<span class="string">"count"</span>);</div><div class="line">        System.out.println(<span class="string">"count:"</span>+count);</div><div class="line">    &#125;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="CronTriggerFactoryBean"><a href="#CronTriggerFactoryBean" class="headerlink" title="CronTriggerFactoryBean"></a>CronTriggerFactoryBean</h4><p>扩展于 CronTrigger ,触发器的名称即为 Bean 的名称，保存在默认组中。在 CronTrigger 的基础上，新增的属性和 SimpleTriggerFactoryBean 大致相同，配置的方法也和 SimpleTriggerFactoryBean 相同。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=<span class="string">"checkImagesTrigger"</span> </div><div class="line">      <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.scheduling.quartz.CronTriggerBean"</span></div><div class="line">      p:jobDetail-ref=<span class="string">"jobDetail"</span></div><div class="line">      p:cronExpression=<span class="string">"0/5 * * * * ?"</span>/&gt;</div></pre></td></tr></table></figure>
+<h3 id="创建Scheduler"><a href="#创建Scheduler" class="headerlink" title="创建Scheduler"></a>创建Scheduler</h3><p>Quartz 的 SchedulerFactory 是标准的工厂类，不太合适在 Spring 环境下使用。此外，为了保证 Scheduler 能够感知 Spring 容器的生命周期，在 Spring 容器启动后，Scheduler 自动开始工作，而在 Spring 容器关闭之前，自动关闭 Scheduler 。Spring 提供了 SchedulerFactoryBean，这个 FactoryBean 大致拥有以下功能。</p>
+<ul>
+<li>以更具 Bean 风格的方式为 FactoryBean 提供配置信息。</li>
+<li>让 Scheduler 和 Spring 容器的生命周期建立关联，相生相息</li>
+<li>通过属性配置的方式代替 Quartz 自身的配置文件 </li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactory"&gt;</div><div class="line">	&lt;!--注册多个 trigger--&gt;</div><div class="line">	&lt;property name="triggers"&gt;</div><div class="line">		&lt;list&gt;</div><div class="line">			&lt;ref bean="simpleTrigger"/&gt;</div><div class="line">    	&lt;/list&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!--以Map类型设置 SchedulerContext 数据--&gt;</div><div class="line">    &lt;property name="schedulerContextAsMap"&gt;</div><div class="line">    	&lt;map&gt;</div><div class="line">    		&lt;entry key="timeout" value="30"/&gt;	</div><div class="line">    	&lt;/map&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;!--显示指定 quartz 的配置文件地址--&gt;</div><div class="line">    &lt;properties name="configLocation" value="classpath:com/smart/quartz/quartz.properties"/&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<p>SchedulerFactoryBean 还有以下常见的属性：</p>
+<ul>
+<li>calendars：类型为 Map，通过该属性向 Scheduler 注册 Calendar</li>
+<li>jobDetails：类型为 JobDetail[]，通过该属性向 Scheduler 注册 JobDetail</li>
+<li>autoStartup：SchedulerFactoryBean 在初始化后是否马上启动 Scheduler，默认为 true。若设置为 false，则需要手动启动 Scheduler</li>
+<li>startupDelay：在 SchedulerFactoryBean 在初始化完成后，延迟多少秒后启动 Scheduler，默认为0。除非拥有需要立即执行的任务，一般情况下，可以通过 startupDelay 属性让 Scheduler 延迟一小段时间后启动，以便让 Spring 能够更快初始化容器中剩余的 Bean</li>
+</ul>
+<p>SchedulerFactoryBean 的一个重要功能是允许用户将 Quartz 配置文件的信息转移到 Spring 配置文件中。SchedulerFactoryBean 通过以下属性代替框架的自身配置文件：</p>
+<ul>
+<li>dataSource：当需要持久化任务调度数据时，在 Quartz 中配置数据源，也可以直接在 Spring 中通过 dataSource 指定一个 Spring 管理的数据源。如果指定了该属性，即使 quartz.properties 中已经定义了数据源，也会被 dataSource 覆盖</li>
+<li>transactionManager：可以通过该属性设置一个 Spring 事务管理器</li>
+<li>nonTransactionalDataSource：在全局事务的情况下，如果不希望 Scheduler 执行的相关数据操作参与到全局事务中，则可以通过该属性指定数据源。在 Spring 本地事务的情况下，使用 dataSource 属性就足够了</li>
+<li>quartzProperties：类型为 properties ，允许用户在 Spring 中定义 Quartz 的属性，其值将覆盖 quartz.properties 配置文件中的设置。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;bean id="scheduler"</div><div class="line">	class="org.springframework.scheduling.quartz.SchedulerFactoryBean"&gt;</div><div class="line">	&lt;property name="quartzProperties"&gt;</div><div class="line">		&lt;props&gt;</div><div class="line">			&lt;!--属性值1--&gt;</div><div class="line">			&lt;prop key="org.quartz.threadPool.class"&gt;</div><div class="line">				org.quartz.simpl.SimpleThreadPool</div><div class="line">			&lt;/prop&gt;</div><div class="line">			&lt;!--属性值2--&gt;</div><div class="line">			&lt;prop key="org.quartz.threadPool.threadCount"&gt;10&lt;/prop&gt;</div><div class="line">		&lt;/props&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<h2 id="在Spring中使用JDK-Timer"><a href="#在Spring中使用JDK-Timer" class="headerlink" title="在Spring中使用JDK Timer"></a>在Spring中使用JDK Timer</h2><h3 id="Timer-和-TimerTask"><a href="#Timer-和-TimerTask" class="headerlink" title="Timer 和 TimerTask"></a>Timer 和 TimerTask</h3><p>TimerTask 代表一个需要多次执行的任务，它实现了 Runnable 接口，可以在 run() 方法定义任务逻辑。而 Timer 负责制定调度规则并调度 TimerTask。</p>
+<h4 id="TimerTask"><a href="#TimerTask" class="headerlink" title="TimerTask"></a>TimerTask</h4><p>相当于 Quartz 的  Job ，代表一个被调度的任务。二者区别在于，每次执行任务时，Quartz 都创建一个 Job 实例，而 JDK Timer 则使用相同的 TimerTask 实例。</p>
+<p>实现了 Runnable 接口，是一个抽象类，只有以下3个方法：</p>
+<ol>
+<li>abstract void run()：子类覆盖这个方法并定义任务执行逻辑，每次执行任务时，run() 方法就被调用一次。</li>
+<li>boolean cancel()：取消任务。</li>
+<li>long scheduledExecutionTime()：返回词此任务的计划执行时间。该方法一般在固定频率执行时使用才会有意义。</li>
+</ol>
+<h4 id="Timer"><a href="#Timer" class="headerlink" title="Timer"></a>Timer</h4><p>Timer 的构造函数在创建 Timer 对象的同时将启动一个 Time 背景线程。构造函数如下：</p>
+<ul>
+<li>Timer()：创建一个Timer，背景线程是一个非守护线程</li>
+<li>Timer(boolean isDaemon)：当 isDaemon 为 true，背景线程为守护线程，守护线程将在应用程序主线程停止后自动退出。</li>
+<li>Timer(String name)：与 Timer() 类似，只是通过 name 指定守护线程名称。</li>
+</ul>
+<p>通过以下方法执行任务：</p>
+<ul>
+<li>schedule(TimerTask task,Date time)：在特定的时间点执行一次任务。</li>
+<li>schedule(TimerTask task,long delay)：延迟指定时间后执行一次任务，delay的单位为毫秒</li>
+</ul>
+<p>通过以下方按固定时间间隔执行任务：</p>
+<ul>
+<li>schedule(TimerTask task,Date firstTime,long period)：从指定时间开始周期性地执行任务，period 为毫秒，后一次执行将在前一次执行完成后才开始计时。如任务被安排每 2 秒执行一次，假设第一次任务在 0 秒时间点开始执行并花费了 1.5  秒，则第二次将在第 3.5 秒时执行。</li>
+<li>schedule(TimerTask task,long delay,long period)：在延迟指定时间后，周期性地执行任务</li>
+</ul>
+<p>通过以下方法按照固定频率执行任务：</p>
+<ul>
+<li>scheduleAtFixedRate(TimerTask task,Date firstTime,long period)：在指定时间点后，以指定频率执行任务。</li>
+</ul>
+<h4 id="Java-Timer-实例"><a href="#Java-Timer-实例" class="headerlink" title="Java Timer 实例"></a>Java Timer 实例</h4><h3 id="Spring-对-Java-Timer-的支持"><a href="#Spring-对-Java-Timer-的支持" class="headerlink" title="Spring 对 Java Timer 的支持"></a>Spring 对 Java Timer 的支持</h3><h2 id="Spring-对-Java-5-0-Executor-的支持"><a href="#Spring-对-Java-5-0-Executor-的支持" class="headerlink" title="Spring 对 Java 5.0 Executor 的支持"></a>Spring 对 Java 5.0 Executor 的支持</h2><h3 id="了解-Java-5-0-的-Executor"><a href="#了解-Java-5-0-的-Executor" class="headerlink" title="了解 Java 5.0 的 Executor"></a>了解 Java 5.0 的 Executor</h3><h3 id="Spring-对-Executor-所提供的抽象"><a href="#Spring-对-Executor-所提供的抽象" class="headerlink" title="Spring 对 Executor 所提供的抽象"></a>Spring 对 Executor 所提供的抽象</h3><h2 id="实际应用中的调度"><a href="#实际应用中的调度" class="headerlink" title="实际应用中的调度"></a>实际应用中的调度</h2><h3 id="如何产生任务"><a href="#如何产生任务" class="headerlink" title="如何产生任务"></a>如何产生任务</h3><h3 id="任务调度对应程序集群的影响"><a href="#任务调度对应程序集群的影响" class="headerlink" title="任务调度对应程序集群的影响"></a>任务调度对应程序集群的影响</h3><h3 id="任务调度云"><a href="#任务调度云" class="headerlink" title="任务调度云"></a>任务调度云</h3><h3 id="Web应用程序中调度器的启动和关闭问题"><a href="#Web应用程序中调度器的启动和关闭问题" class="headerlink" title="Web应用程序中调度器的启动和关闭问题"></a>Web应用程序中调度器的启动和关闭问题</h3><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2>
       
     </div>
     
@@ -661,11 +769,11 @@
     <strong>推荐文章 </strong>
     <ul>
         
+            <li><a href="http://swenfang.github.io/2019/04/08/java 源码解读/并发编程之ThreadLocal、Volatile、synchronized、Atomic关键字扫盲/">并发编程之ThreadLocal、Volatile、synchronized、Atomic关键字</a></li>
+        
             <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第3章数据结构/">第3章数据结构</a></li>
         
             <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第2章程序设计语言基础知识/">第2章程序设计语言基础知识</a></li>
-        
-            <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第1章计算机网络概述/">第1章计算机网络概述</a></li>
         
             <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/快速排序原理和实现/">快速排序原理和实现</a></li>
         
@@ -702,6 +810,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/08/java 源码解读/并发编程之ThreadLocal、Volatile、synchronized、Atomic关键字扫盲/" rel="prev" title="并发编程之ThreadLocal、Volatile、synchronized、Atomic关键字">
+                并发编程之ThreadLocal、Volatile、synchronized、Atomic关键字 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -787,7 +899,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -798,7 +910,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -853,7 +965,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第16章任务调度和异步执行器"><span class="nav-number">1.</span> <span class="nav-text">第16章任务调度和异步执行器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#任务调度概述"><span class="nav-number">1.1.</span> <span class="nav-text">任务调度概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quartz快速进阶"><span class="nav-number">1.2.</span> <span class="nav-text">Quartz快速进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Quartz-基础结构"><span class="nav-number">1.2.1.</span> <span class="nav-text">Quartz 基础结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Simple-Trigger"><span class="nav-number">1.2.2.</span> <span class="nav-text">使用Simple Trigger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-CronTrigger"><span class="nav-number">1.2.3.</span> <span class="nav-text">使用 CronTrigger</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cron-表达式"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Cron 表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CronTrigger-实例"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">CronTrigger  实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Calender"><span class="nav-number">1.2.4.</span> <span class="nav-text">使用 Calender</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务调度信息存储"><span class="nav-number">1.2.5.</span> <span class="nav-text">任务调度信息存储</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Spring中使用Quartz"><span class="nav-number">1.3.</span> <span class="nav-text">在Spring中使用Quartz</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-JobDetail"><span class="nav-number">1.3.1.</span> <span class="nav-text">创建 JobDetail</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Trigger"><span class="nav-number">1.3.2.</span> <span class="nav-text">创建 Trigger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Scheduler"><span class="nav-number">1.3.3.</span> <span class="nav-text">创建Scheduler</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Spring中使用JDK-Timer"><span class="nav-number">1.4.</span> <span class="nav-text">在Spring中使用JDK Timer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Timer-和-TimerTask"><span class="nav-number">1.4.1.</span> <span class="nav-text">Timer 和 TimerTask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-对-Java-Timer-的支持"><span class="nav-number">1.4.2.</span> <span class="nav-text">Spring 对 Java Timer 的支持</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-对-Java-5-0-Executor-的支持"><span class="nav-number">1.5.</span> <span class="nav-text">Spring 对 Java 5.0 Executor 的支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#了解-Java-5-0-的-Executor"><span class="nav-number">1.5.1.</span> <span class="nav-text">了解 Java 5.0 的 Executor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-对-Executor-所提供的抽象"><span class="nav-number">1.5.2.</span> <span class="nav-text">Spring 对 Executor 所提供的抽象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实际应用中的调度"><span class="nav-number">1.6.</span> <span class="nav-text">实际应用中的调度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何产生任务"><span class="nav-number">1.6.1.</span> <span class="nav-text">如何产生任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务调度对应程序集群的影响"><span class="nav-number">1.6.2.</span> <span class="nav-text">任务调度对应程序集群的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务调度云"><span class="nav-number">1.6.3.</span> <span class="nav-text">任务调度云</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web应用程序中调度器的启动和关闭问题"><span class="nav-number">1.6.4.</span> <span class="nav-text">Web应用程序中调度器的启动和关闭问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.7.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第16章任务调度和异步执行器"><span class="nav-number">1.</span> <span class="nav-text">第16章任务调度和异步执行器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#任务调度概述"><span class="nav-number">1.1.</span> <span class="nav-text">任务调度概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quartz快速进阶"><span class="nav-number">1.2.</span> <span class="nav-text">Quartz快速进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Quartz-基础结构"><span class="nav-number">1.2.1.</span> <span class="nav-text">Quartz 基础结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Simple-Trigger"><span class="nav-number">1.2.2.</span> <span class="nav-text">使用Simple Trigger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-CronTrigger"><span class="nav-number">1.2.3.</span> <span class="nav-text">使用 CronTrigger</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cron-表达式"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Cron 表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CronTrigger-实例"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">CronTrigger  实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Calender"><span class="nav-number">1.2.4.</span> <span class="nav-text">使用 Calender</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务调度信息存储"><span class="nav-number">1.2.5.</span> <span class="nav-text">任务调度信息存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过配置文件调整任务调度信息的保存策略"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">通过配置文件调整任务调度信息的保存策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询数据库的运行信息"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">查询数据库的运行信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Spring中使用Quartz"><span class="nav-number">1.3.</span> <span class="nav-text">在Spring中使用Quartz</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-JobDetail"><span class="nav-number">1.3.1.</span> <span class="nav-text">创建 JobDetail</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JobDetailFactoryBean"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">JobDetailFactoryBean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MethodInvokingJobDetailFactryBean"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">MethodInvokingJobDetailFactryBean</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Trigger"><span class="nav-number">1.3.2.</span> <span class="nav-text">创建 Trigger</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SimpleTriggerFactoryBean"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">SimpleTriggerFactoryBean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CronTriggerFactoryBean"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">CronTriggerFactoryBean</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Scheduler"><span class="nav-number">1.3.3.</span> <span class="nav-text">创建Scheduler</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Spring中使用JDK-Timer"><span class="nav-number">1.4.</span> <span class="nav-text">在Spring中使用JDK Timer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Timer-和-TimerTask"><span class="nav-number">1.4.1.</span> <span class="nav-text">Timer 和 TimerTask</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TimerTask"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">TimerTask</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Timer"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">Timer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-Timer-实例"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">Java Timer 实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-对-Java-Timer-的支持"><span class="nav-number">1.4.2.</span> <span class="nav-text">Spring 对 Java Timer 的支持</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-对-Java-5-0-Executor-的支持"><span class="nav-number">1.5.</span> <span class="nav-text">Spring 对 Java 5.0 Executor 的支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#了解-Java-5-0-的-Executor"><span class="nav-number">1.5.1.</span> <span class="nav-text">了解 Java 5.0 的 Executor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-对-Executor-所提供的抽象"><span class="nav-number">1.5.2.</span> <span class="nav-text">Spring 对 Executor 所提供的抽象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实际应用中的调度"><span class="nav-number">1.6.</span> <span class="nav-text">实际应用中的调度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何产生任务"><span class="nav-number">1.6.1.</span> <span class="nav-text">如何产生任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务调度对应程序集群的影响"><span class="nav-number">1.6.2.</span> <span class="nav-text">任务调度对应程序集群的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务调度云"><span class="nav-number">1.6.3.</span> <span class="nav-text">任务调度云</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web应用程序中调度器的启动和关闭问题"><span class="nav-number">1.6.4.</span> <span class="nav-text">Web应用程序中调度器的启动和关闭问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.7.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
             
 
           </div>
