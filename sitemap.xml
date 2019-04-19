@@ -2,23 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://swenfang.github.io/2019/04/19/CentOS/CentOS%20%E5%AE%89%E8%A3%85%20JAVA%E7%8E%AF%E5%A2%83/</loc>
+    
+    <lastmod>2019-04-19T14:43:07.658Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://swenfang.github.io/2019/04/19/CentOS/CentOS%20%E5%AE%89%E8%A3%85%20Tomcat/</loc>
+    
+    <lastmod>2019-04-19T14:42:51.387Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://swenfang.github.io/2019/04/19/CentOS/CentOS%20%E6%90%AD%E5%BB%BA%20Solr7%20%E5%8D%95%E6%9C%BA%E6%9C%8D%E5%8A%A1/</loc>
+    
+    <lastmod>2019-04-19T14:42:41.424Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://swenfang.github.io/2019/04/19/Solr/CentOS%20%E6%90%AD%E5%BB%BA%20Solr7%20%E5%8D%95%E6%9C%BA%E6%9C%8D%E5%8A%A1/</loc>
+    
+    <lastmod>2019-04-19T14:40:12.167Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://swenfang.github.io/2019/04/19/Solr/</loc>
     
     <lastmod>2019-04-19T14:29:23.948Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://swenfang.github.io/2019/04/19/Surroundings/CentOS%20%E5%AE%89%E8%A3%85%20Tomcat/</loc>
-    
-    <lastmod>2019-04-19T14:28:31.120Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://swenfang.github.io/2019/04/19/Surroundings/CentOS%20%E5%AE%89%E8%A3%85%20JAVA%E7%8E%AF%E5%A2%83/</loc>
-    
-    <lastmod>2019-04-19T14:28:02.284Z</lastmod>
     
   </url>
   
