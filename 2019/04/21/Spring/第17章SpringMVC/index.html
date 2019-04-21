@@ -89,7 +89,8 @@
 <meta property="og:site_name" content="ShenWenFang">
 <meta property="og:description" content="第 17 章 Spring MVCSpring MVC 的框架设计">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190421060506-224411.jpg">
-<meta property="og:updated_time" content="2019-04-21T10:13:04.927Z">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190421074655-629111.jpg">
+<meta property="og:updated_time" content="2019-04-21T15:05:37.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第 17 章 Spring MVC">
 <meta name="twitter:description" content="第 17 章 Spring MVCSpring MVC 的框架设计">
@@ -384,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  37 字
+                  1,004 字
                 </span>
               
 
@@ -400,7 +401,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -423,8 +424,19 @@
       
         <h1 id="第-17-章-Spring-MVC"><a href="#第-17-章-Spring-MVC" class="headerlink" title="第 17 章 Spring MVC"></a>第 17 章 Spring MVC</h1><h2 id="Spring-MVC-的框架设计"><a href="#Spring-MVC-的框架设计" class="headerlink" title="Spring MVC 的框架设计"></a>Spring MVC 的框架设计</h2><a id="more"></a>
 <p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190421060506-224411.jpg" alt="Spring MVC 框架设计图"></p>
-<p>其中带有阿拉伯数字的说明，是 MVC 框架运行的流程。</p>
-<h2 id="Spring-MVC-流程"><a href="#Spring-MVC-流程" class="headerlink" title="Spring MVC 流程"></a>Spring MVC 流程</h2>
+<p>其中带有阿拉伯数字的说明，是 MVC 框架运行的流程。处理请求先到达控制器（Controller），控制器的作用是进行请求分发，这样它会根据请求的内容去访问模型层（Model）；现今互联网系统中，数据主要从数据库和 NoSQL 中来，而且对于数据库而言往往还存在事务的机制，为了适应这种变化，设计者会将模型层再分成两层，即服务层（Service）和（DAO）;当控制器获取到由模型层返回的数据后，就将数据渲染到视图中，这样就能够展现给用户了。</p>
+<h2 id="Spring-MVC-流程"><a href="#Spring-MVC-流程" class="headerlink" title="Spring MVC 流程"></a>Spring MVC 流程</h2><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190421074655-629111.jpg" alt=""></p>
+<p>它是 Spring MVC 运行的全流程，其中图中的阿拉伯数字是其执行流程。在启用 Spring MVC 时，它开始初始化一些重要组件，如 DispactherServlet、HandlerAdapter的实现类 RequestMappingHandlerAdapter 等组件对象。关于这些组件的初始化，可以看 spring-webmvc-xxx.jar 的属性文件 DispatcherServlet.properties，它定义的对象都是在 Spring MVC 开始时就初始化，并且存放在 Spring IOC 容器中。</p>
+<p>DispatcherServlet.properties 源码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"># 国际化解析器</div><div class="line">org.springframework.web.servlet.LocaleResolver=org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver</div><div class="line"></div><div class="line"># 主题解析器</div><div class="line">org.springframework.web.servlet.ThemeResolver=org.springframework.web.servlet.theme.FixedThemeResolver</div><div class="line"></div><div class="line"># HandlerMapping 实例</div><div class="line">org.springframework.web.servlet.HandlerMapping=org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,\</div><div class="line">	org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping</div><div class="line">	</div><div class="line"># 处理器适配器	</div><div class="line">org.springframework.web.servlet.HandlerAdapter=org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,\</div><div class="line">	org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,\</div><div class="line">	org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter</div><div class="line"></div><div class="line"># 处理器异常解析器</div><div class="line">org.springframework.web.servlet.HandlerExceptionResolver=org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver,\</div><div class="line">	org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver,\</div><div class="line">	org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver</div><div class="line"></div><div class="line"># 策略视图名称转换器，当你没有返回视图逻辑名称的时候，通过它可以生成默认的视图名称</div><div class="line">org.springframework.web.servlet.RequestToViewNameTranslator=org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator</div><div class="line"></div><div class="line"># 视图解析器</div><div class="line">org.springframework.web.servlet.ViewResolver=org.springframework.web.servlet.view.InternalResourceViewResolver</div><div class="line"></div><div class="line"># FlashMap 管理器。</div><div class="line">org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.support.SessionFlashMapManager</div></pre></td></tr></table></figure>
+<p>首先这些组件会在 Spring MVC 得到初始化。</p>
+<p>其次是开发控制器（Controller），代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Controller</span></div><div class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</div><div class="line">    <span class="comment">//注入用户服务类</span></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="keyword">private</span> UserService userService = <span class="keyword">null</span>;</div><div class="line">    <span class="comment">// 展示用户详情</span></div><div class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"details"</span>)</div><div class="line">    <span class="keyword">public</span> ModelAndV工ewdetails(Long工d)&#123;</div><div class="line">        <span class="comment">// 访问模型层得到数据</span></div><div class="line">        User user= userService.getUser(id); </div><div class="line">        <span class="comment">// 模型和视图</span></div><div class="line">        ModelAndView mv = <span class="keyword">new</span> ModelAndView();</div><div class="line">        <span class="comment">// 定义模型视图</span></div><div class="line">        mv.setViewName(<span class="string">"user/details"</span>); </div><div class="line">        <span class="comment">// 加入数据模型</span></div><div class="line">        mv.addObject(<span class="string">"user"</span>,user);</div><div class="line">        <span class="comment">// 返回模型和视图</span></div><div class="line">        <span class="keyword">return</span> mv;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里的注解 @Controller 表明这是一个控制器，然后 @RequestMapping 代表请求路径和控制器（或其他方法）的映射关系，它会在Web 服务器启动 Spring MVC 时，被扫描到 HandlerMapping 的机制中存储，之后在用户发起请求被 DispatcherServlet 拦截后，通过 URI 和其他的条件，通过 HandlerMapper 机制就能找到对应的控制器（或其方法）进行响应。只是通过 HandlerMapping 返回的是一个 HandlerExecutionChain 对象，这个对象的源码如下。HandlerExecutionChain 对象包含一个处理器（handler）。这里的处理器是对控制器（controller）的包装，因为我们的控制器方法就可以读入 HTTP 和上下文的相关参数，然后再传递给控制器方法。而在控制器执行完成返回后，处理器又可以通过配置信息对控制器的返回结果进行处理。</p>
+<p>处理器包含了控制器方法的逻辑，此外还有处理器的拦截器（interceptor），这样就能够通过拦截器进一步地增强处理器的功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HandlerExecutionChain</span> </span>&#123;</div><div class="line">    <span class="comment">// 日志</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Log logger = LogFactory.getLog(HandlerExecutionChain.class);</div><div class="line">    <span class="comment">// 处理器</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Object handler;</div><div class="line">    <span class="comment">// 拦截器数组</span></div><div class="line">    <span class="keyword">private</span> HandlerInterceptor[] interceptors;</div><div class="line">    <span class="comment">// 拦截器列表</span></div><div class="line">    <span class="keyword">private</span> List&lt;HandlerInterceptor&gt; interceptorList;</div><div class="line">    <span class="comment">// 拦截器当前下标</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> interceptorIndex;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>得到了处理器（handler），还需要去运行，但是我们有普通HTTP请求，也有按 BeanName 的请求，甚至是 WebSocket ，所以还需要一个适配器去运行 HandlerExecutionChain 对象包含的处理器，就是 HandlerAdapter 接口定义的实现类，HttpRequestHandlerAdapter。</p>
+
       
     </div>
     
@@ -496,9 +508,9 @@
         
             <li><a href="http://swenfang.github.io/2019/04/19/Solr/"></a></li>
         
-            <li><a href="http://swenfang.github.io/2019/04/19/CentOS/CentOS安装Tomcat/">CentOS安装Tomcat</a></li>
-        
             <li><a href="http://swenfang.github.io/2019/04/19/CentOS/CentOS安装JAVA环境/">CentOS安装JAVA环境（JDK 1.8）</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/04/19/CentOS/CentOS安装Tomcat/">CentOS安装Tomcat</a></li>
         
             <li><a href="http://swenfang.github.io/2019/04/19/CentOS/CentOS搭建Solr7 单机服务/">CentOS搭建Solr7单机服务</a></li>
         
