@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://swenfang.github.io/2019/04/22/Spring%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    
+    <lastmod>2019-04-22T15:03:31.094Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://swenfang.github.io/2018/06/03/%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    
+    <lastmod>2019-04-22T15:01:20.992Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://swenfang.github.io/2019/04/21/Spring/%E7%AC%AC17%E7%AB%A0SpringMVC/</loc>
     
     <lastmod>2019-04-21T15:05:37.566Z</lastmod>
@@ -40,13 +54,6 @@
     <loc>http://swenfang.github.io/2019/04/19/Solr/</loc>
     
     <lastmod>2019-04-19T14:29:23.948Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://swenfang.github.io/2018/06/03/%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
-    
-    <lastmod>2019-04-16T15:12:32.219Z</lastmod>
     
   </url>
   
