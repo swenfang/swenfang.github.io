@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="为什么要用全文搜索搜索引擎我们的所有数据在数据库里面都有，而且 Oracle、SQL Server 等数据库里也能提供查询检索或者聚类分析功能，直接通过数据库查询不就可以了吗？确实，我们大部分的查询功能都可以通过数据库查询获得，如果查询效率低下，还可以通过建数据库索引，优化SQL等方式进行提升效率，甚至通过引入缓存来加快数据的返回速度。如果数据量更大，就可以分库分表来分担查询压力。 那为什么还要全">
+<meta name="description" content="为什么要用全文搜索搜索引擎我们的所有数据在数据库里面都有，而且 Oracle、SQL Server 等数据库里也能提供查询检索或者聚类分析功能，直接通过数据库查询不就可以了吗？确实，我们大部分的查询功能都可以通过数据库查询获得，如果查询效率低下，还可以通过建数据库索引，优化SQL等方式进行提升效率，甚至通过引入缓存来加快数据的返回速度。如果数据量更大，就可以分库分表来分担查询压力。">
 <meta name="keywords" content="基础面试题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="全文检索面试题">
 <meta property="og:url" content="http://swenfang.github.io/2019/05/12/面试总结/全文检索面试题/index.html">
 <meta property="og:site_name" content="ShenWenFang">
-<meta property="og:description" content="为什么要用全文搜索搜索引擎我们的所有数据在数据库里面都有，而且 Oracle、SQL Server 等数据库里也能提供查询检索或者聚类分析功能，直接通过数据库查询不就可以了吗？确实，我们大部分的查询功能都可以通过数据库查询获得，如果查询效率低下，还可以通过建数据库索引，优化SQL等方式进行提升效率，甚至通过引入缓存来加快数据的返回速度。如果数据量更大，就可以分库分表来分担查询压力。 那为什么还要全">
+<meta property="og:description" content="为什么要用全文搜索搜索引擎我们的所有数据在数据库里面都有，而且 Oracle、SQL Server 等数据库里也能提供查询检索或者聚类分析功能，直接通过数据库查询不就可以了吗？确实，我们大部分的查询功能都可以通过数据库查询获得，如果查询效率低下，还可以通过建数据库索引，优化SQL等方式进行提升效率，甚至通过引入缓存来加快数据的返回速度。如果数据量更大，就可以分库分表来分担查询压力。">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190416110409-779428.jpg">
-<meta property="og:updated_time" content="2019-05-12T13:44:34.139Z">
+<meta property="og:updated_time" content="2019-05-12T15:11:13.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全文检索面试题">
-<meta name="twitter:description" content="为什么要用全文搜索搜索引擎我们的所有数据在数据库里面都有，而且 Oracle、SQL Server 等数据库里也能提供查询检索或者聚类分析功能，直接通过数据库查询不就可以了吗？确实，我们大部分的查询功能都可以通过数据库查询获得，如果查询效率低下，还可以通过建数据库索引，优化SQL等方式进行提升效率，甚至通过引入缓存来加快数据的返回速度。如果数据量更大，就可以分库分表来分担查询压力。 那为什么还要全">
+<meta name="twitter:description" content="为什么要用全文搜索搜索引擎我们的所有数据在数据库里面都有，而且 Oracle、SQL Server 等数据库里也能提供查询检索或者聚类分析功能，直接通过数据库查询不就可以了吗？确实，我们大部分的查询功能都可以通过数据库查询获得，如果查询效率低下，还可以通过建数据库索引，优化SQL等方式进行提升效率，甚至通过引入缓存来加快数据的返回速度。如果数据量更大，就可以分库分表来分担查询压力。">
 <meta name="twitter:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190416110409-779428.jpg">
 
 
@@ -422,6 +422,7 @@
 
       
         <h3 id="为什么要用全文搜索搜索引擎"><a href="#为什么要用全文搜索搜索引擎" class="headerlink" title="为什么要用全文搜索搜索引擎"></a>为什么要用全文搜索搜索引擎</h3><p>我们的所有数据在数据库里面都有，而且 Oracle、SQL Server 等数据库里也能提供查询检索或者聚类分析功能，直接通过数据库查询不就可以了吗？确实，我们大部分的查询功能都可以通过数据库查询获得，如果查询效率低下，还可以通过建数据库索引，优化SQL等方式进行提升效率，甚至通过引入缓存来加快数据的返回速度。如果数据量更大，就可以分库分表来分担查询压力。</p>
+<a id="more"></a>
 <p>那为什么还要全文搜索引擎呢？我们主要从以下几个原因分析：</p>
 <ul>
 <li><strong>数据类型</strong> 全文索引搜索支持非结构化数据的搜索，可以更好地快速搜索大量存在的任何单词或单词组的非结构化文本。 例如 Google，百度类的网站搜索，它们都是根据网页中的关键字生成索引，我们在搜索的时候输入关键字，它们会将该关键字即索引匹配到的所有网页返回；还有常见的项目中应用日志的搜索等等。对于这些非结构化的数据文本，关系型数据库搜索不是能很好的支持。</li>

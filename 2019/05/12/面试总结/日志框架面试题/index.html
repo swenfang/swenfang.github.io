@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="更快的执行速度基于我们先前在log4j上的工作，logback 重写了内部的实现，在某些特定的场景上面，甚至可以比之前的速度快上10倍。在保证logback的组件更加快速的同时，同时所需的内存更加少。 充分的测试Logback 历经了几年，数不清小时数的测试。尽管log4j也是测试过的，但是Logback的测试更加充分，跟log4j不在同一个级别。我们认为，这正是人们选择Logback而不是log">
+<meta name="description" content="更快的执行速度基于我们先前在log4j上的工作，logback 重写了内部的实现，在某些特定的场景上面，甚至可以比之前的速度快上10倍。在保证logback的组件更加快速的同时，同时所需的内存更加少。">
 <meta name="keywords" content="基础面试题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="日志框架面试题">
 <meta property="og:url" content="http://swenfang.github.io/2019/05/12/面试总结/日志框架面试题/index.html">
 <meta property="og:site_name" content="ShenWenFang">
-<meta property="og:description" content="更快的执行速度基于我们先前在log4j上的工作，logback 重写了内部的实现，在某些特定的场景上面，甚至可以比之前的速度快上10倍。在保证logback的组件更加快速的同时，同时所需的内存更加少。 充分的测试Logback 历经了几年，数不清小时数的测试。尽管log4j也是测试过的，但是Logback的测试更加充分，跟log4j不在同一个级别。我们认为，这正是人们选择Logback而不是log">
-<meta property="og:updated_time" content="2019-05-12T13:53:23.683Z">
+<meta property="og:description" content="更快的执行速度基于我们先前在log4j上的工作，logback 重写了内部的实现，在某些特定的场景上面，甚至可以比之前的速度快上10倍。在保证logback的组件更加快速的同时，同时所需的内存更加少。">
+<meta property="og:updated_time" content="2019-05-12T15:11:25.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日志框架面试题">
-<meta name="twitter:description" content="更快的执行速度基于我们先前在log4j上的工作，logback 重写了内部的实现，在某些特定的场景上面，甚至可以比之前的速度快上10倍。在保证logback的组件更加快速的同时，同时所需的内存更加少。 充分的测试Logback 历经了几年，数不清小时数的测试。尽管log4j也是测试过的，但是Logback的测试更加充分，跟log4j不在同一个级别。我们认为，这正是人们选择Logback而不是log">
+<meta name="twitter:description" content="更快的执行速度基于我们先前在log4j上的工作，logback 重写了内部的实现，在某些特定的场景上面，甚至可以比之前的速度快上10倍。在保证logback的组件更加快速的同时，同时所需的内存更加少。">
 
 
 
@@ -420,6 +420,7 @@
 
       
         <h2 id="更快的执行速度"><a href="#更快的执行速度" class="headerlink" title="更快的执行速度"></a>更快的执行速度</h2><p>基于我们先前在log4j上的工作，logback 重写了内部的实现，在某些特定的场景上面，甚至可以比之前的速度快上10倍。在保证logback的组件更加快速的同时，同时所需的内存更加少。</p>
+<a id="more"></a>
 <h2 id="充分的测试"><a href="#充分的测试" class="headerlink" title="充分的测试"></a>充分的测试</h2><p>Logback 历经了几年，数不清小时数的测试。尽管log4j也是测试过的，但是Logback的测试更加充分，跟log4j不在同一个级别。我们认为，这正是人们选择Logback而不是log4j的最重要的原因。人们都希望即使在恶劣的条件下，你的登录依然稳定而可靠。</p>
 <h2 id="logback-classic-非常自然的实现了SLF4J"><a href="#logback-classic-非常自然的实现了SLF4J" class="headerlink" title="logback-classic 非常自然的实现了SLF4J"></a>logback-classic 非常自然的实现了SLF4J</h2><p>logback-classic中的登陆类自然的实现了SLF4J。当你使用logback-classic作为底层实现时，涉及到LF4J日记系统的问题你完全不需要考虑。更进一步来说，由于 logback-classic强烈建议使用SLF4J作为客户端日记系统实现，如果需要切换到log4j或者其他，你只需要替换一个jar包即可，不需要去改变那些通过</p>
 <p>SLF4J API 实现的代码。这可以大大减少更换日记系统的工作量。</p>

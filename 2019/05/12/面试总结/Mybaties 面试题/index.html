@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="ShenWenFang">
 <meta property="og:description" content="Hibernate与MyBatis的异同相同点：Hibernate与MyBatis都可以是通过SessionFactoryBuider由XML配置文件生成SessionFactory，然后由SessionFactory 生成Session，最后由Session来开启执行事务和SQL语句。其中SessionFactoryBuider，SessionFactory，Session的生命周期都是差不多的">
 <meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190426111417-279991.jpg">
-<meta property="og:updated_time" content="2019-05-12T13:47:43.788Z">
+<meta property="og:updated_time" content="2019-05-12T15:10:54.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybaties 面试题">
 <meta name="twitter:description" content="Hibernate与MyBatis的异同相同点：Hibernate与MyBatis都可以是通过SessionFactoryBuider由XML配置文件生成SessionFactory，然后由SessionFactory 生成Session，最后由Session来开启执行事务和SQL语句。其中SessionFactoryBuider，SessionFactory，Session的生命周期都是差不多的">
@@ -421,7 +421,9 @@
       
 
       
-        <h2 id="Hibernate与MyBatis的异同"><a href="#Hibernate与MyBatis的异同" class="headerlink" title="Hibernate与MyBatis的异同"></a>Hibernate与MyBatis的异同</h2><p>相同点：<br>Hibernate与MyBatis都可以是通过SessionFactoryBuider由XML配置文件生成SessionFactory，然后由SessionFactory 生成Session，最后由Session来开启执行事务和SQL语句。其中SessionFactoryBuider，SessionFactory，Session的生命周期都是差不多的。Hibernate和MyBatis都支持JDBC和JTA事务处理。<br>Mybatis优势：<br>MyBatis可以进行更为细致的SQL优化，可以减少查询字段。<br>MyBatis容易掌握，而Hibernate门槛较高。<br>Hibernate优势：<br>Hibernate的DAO层开发比MyBatis简单，Mybatis需要维护SQL和结果映射。<br>Hibernate对对象的维护和缓存要比MyBatis好，对增删改查的对象的维护要方便。<br>Hibernate数据库移植性很好，MyBatis的数据库移植性不好，不同的数据库需要写不同SQL。<br>Hibernate有更好的二级缓存机制，可以使用第三方缓存。MyBatis本身提供的缓存机制不佳。</p>
+        <h2 id="Hibernate与MyBatis的异同"><a href="#Hibernate与MyBatis的异同" class="headerlink" title="Hibernate与MyBatis的异同"></a>Hibernate与MyBatis的异同</h2><p>相同点：<br>Hibernate与MyBatis都可以是通过SessionFactoryBuider由XML配置文件生成SessionFactory，然后由SessionFactory 生成Session，最后由Session来开启执行事务和SQL语句。其中SessionFactoryBuider，SessionFactory，Session的生命周期都是差不多的。Hibernate和MyBatis都支持JDBC和JTA事务处理。</p>
+<a id="more"></a>
+<p>Mybatis优势：<br>MyBatis可以进行更为细致的SQL优化，可以减少查询字段。<br>MyBatis容易掌握，而Hibernate门槛较高。<br>Hibernate优势：<br>Hibernate的DAO层开发比MyBatis简单，Mybatis需要维护SQL和结果映射。<br>Hibernate对对象的维护和缓存要比MyBatis好，对增删改查的对象的维护要方便。<br>Hibernate数据库移植性很好，MyBatis的数据库移植性不好，不同的数据库需要写不同SQL。<br>Hibernate有更好的二级缓存机制，可以使用第三方缓存。MyBatis本身提供的缓存机制不佳。</p>
 <h2 id="Hibernate与MyBatis在sql优化方面异同"><a href="#Hibernate与MyBatis在sql优化方面异同" class="headerlink" title="Hibernate与MyBatis在sql优化方面异同"></a>Hibernate与MyBatis在sql优化方面异同</h2><p>Hibernate的查询会将表中的所有字段查询出来，这一点会有性能消耗。Hibernate也可以自己写SQL来指定需要查询的字段，但这样就破坏了Hibernate开发的简洁性。<br>而Mybatis的SQL是手动编写的，所以可以按需求指定查询的字段。<br>Hibernate HQL语句的调优需要将SQL打印出来，而Hibernate的SQL被很多人嫌弃因为太丑了。<br>MyBatis的SQL是自己手动写的所以调整方便。但Hibernate具有自己的日志统计。Mybatis本身不带日志统计，使用Log4j进行日志记录。</p>
 <h2 id="Hibernate与MyBatis对象管理对比"><a href="#Hibernate与MyBatis对象管理对比" class="headerlink" title="Hibernate与MyBatis对象管理对比"></a>Hibernate与MyBatis对象管理对比</h2><p>Hibernate 是完整的对象/关系映射解决方案，它提供了对象状态管理（state management）的功能，使开发者不再需要理会底层数据库系统的细节。也就是说，相对于常见的 JDBC/SQL 持久层方案中需要管理 SQL 语句，Hibernate采用了更自然的面向对象的视角来持久化 Java 应用中的数据。<br>换句话说，使用 Hibernate 的开发者应该总是关注对象的状态（state），不必考虑 SQL 语句的执行。这部分细节已经由 Hibernate 掌管妥当，只有开发者在进行系统性能调优的时候才需要进行了解。而MyBatis在这一块没有文档说明，用户需要对对象自己进行详细的管理。</p>
 <h2 id="Mybatis分层结构"><a href="#Mybatis分层结构" class="headerlink" title="Mybatis分层结构"></a>Mybatis分层结构</h2><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190426111417-279991.jpg" alt=""></p>

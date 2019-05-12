@@ -421,13 +421,9 @@
 
       
         
-          
-          1、多线程有什么用？
-1）发挥多核CPU的优势
-随着工业的进步，现在的笔记本、台式机乃至商用的应用服务器至少也都是双核的，4核、8核甚至16核的也都不少见，如果是单线程的程序，那么在双核CPU上就浪费了50%，在4核CPU上就浪费了75%。单核CPU上所谓的”多线程”那是假的多线程，同一时间处理器只会处理一段逻辑，只不过线程之间切换得比较快，看着像多个线程”同时”运行罢了。多核CPU上的多线程才是真正的多线程，它能让你的多段逻辑同时工作，多线程，可以真正发挥出多核CPU的优势来，达到充分利用CPU的目的。
-2）防止阻塞
-从程序运行效率的角度来看，单核CPU不但不会发挥出多线程的优势，反而会因为
-          ...
+          <p>1、多线程有什么用？</p>
+<p>1）发挥多核CPU的优势</p>
+<p>随着工业的进步，现在的笔记本、台式机乃至商用的应用服务器至少也都是双核的，4核、8核甚至16核的也都不少见，如果是单线程的程序，那么在双核CPU上就浪费了50%，在4核CPU上就浪费了75%。单核CPU上所谓的”多线程”那是假的多线程，同一时间处理器只会处理一段逻辑，只不过线程之间切换得比较快，看着像多个线程”同时”运行罢了。多核CPU上的多线程才是真正的多线程，它能让你的多段逻辑同时工作，多线程，可以真正发挥出多核CPU的优势来，达到充分利用CPU的目的。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/12/面试总结/线程面试题/#more" rel="contents">
@@ -619,11 +615,7 @@
 
       
         
-          
-          更快的执行速度基于我们先前在log4j上的工作，logback 重写了内部的实现，在某些特定的场景上面，甚至可以比之前的速度快上10倍。在保证logback的组件更加快速的同时，同时所需的内存更加少。
-充分的测试Logback 历经了几年，数不清小时数的测试。尽管log4j也是测试过的，但是Logback的测试更加充分，跟log4j不在同一个级别。我们认为，这正是人们选择Logback而不是log4j的最重要的原因。人们都希望即使在恶劣的条件下，你的登录依然稳定而可靠。
-logback-classic 非常自然的实现了SLF4Jlogback-classic中的登陆类自然的实现了SLF4J。当
-          ...
+          <h2 id="更快的执行速度"><a href="#更快的执行速度" class="headerlink" title="更快的执行速度"></a>更快的执行速度</h2><p>基于我们先前在log4j上的工作，logback 重写了内部的实现，在某些特定的场景上面，甚至可以比之前的速度快上10倍。在保证logback的组件更加快速的同时，同时所需的内存更加少。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/12/面试总结/日志框架面试题/#more" rel="contents">
@@ -815,17 +807,7 @@ logback-classic 非常自然的实现了SLF4Jlogback-classic中的登陆类自�
 
       
         
-          
-          jdk7的新特性jdk7的新特性方面主要有下面几方面的增强
-二进制变量的表示
-二进制变量的表示,支持将整数类型用二进制来表示，用0b开头。
-所有整数int、short、long、byte都可以用二进制表示：
-12&gt;byte aByte = (byte) 0b00100001;&gt;
-
-Switch语句支持String类型Try-with-resource语句参考博客：try-with-resources语句 
-
-try-with-resources语句是一种声明了一种或多种资源的try语句。资源是指在程序用完了之后必须要关闭的对象。try-with-resources语句保证了每个声明
-          ...
+          <h2 id="jdk7的新特性"><a href="#jdk7的新特性" class="headerlink" title="jdk7的新特性"></a>jdk7的新特性</h2><p>jdk7的新特性方面主要有下面几方面的增强</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/12/面试总结/Jdk1.7与 jdk1.8的区别和最新的特征/#more" rel="contents">
@@ -1017,9 +999,7 @@ try-with-resources语句是一种声明了一种或多种资源的try语句。�
 
       
         
-          
-          Hibernate与MyBatis的异同相同点：Hibernate与MyBatis都可以是通过SessionFactoryBuider由XML配置文件生成SessionFactory，然后由SessionFactory 生成Session，最后由Session来开启执行事务和SQL语句。其中SessionFactoryBuider，SessionFactory，Session的生命周期都是差不多的。Hibernate和MyBatis都支持JDBC和JTA事务处理。Mybatis优势：MyBatis可以进行更为细致的SQL优化，可以减少查询字段。MyBatis容易掌握，而Hibernate门槛较
-          ...
+          <h2 id="Hibernate与MyBatis的异同"><a href="#Hibernate与MyBatis的异同" class="headerlink" title="Hibernate与MyBatis的异同"></a>Hibernate与MyBatis的异同</h2><p>相同点：<br>Hibernate与MyBatis都可以是通过SessionFactoryBuider由XML配置文件生成SessionFactory，然后由SessionFactory 生成Session，最后由Session来开启执行事务和SQL语句。其中SessionFactoryBuider，SessionFactory，Session的生命周期都是差不多的。Hibernate和MyBatis都支持JDBC和JTA事务处理。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/12/面试总结/Mybaties 面试题/#more" rel="contents">
@@ -1211,12 +1191,7 @@ try-with-resources语句是一种声明了一种或多种资源的try语句。�
 
       
         
-          
-          为什么要用全文搜索搜索引擎我们的所有数据在数据库里面都有，而且 Oracle、SQL Server 等数据库里也能提供查询检索或者聚类分析功能，直接通过数据库查询不就可以了吗？确实，我们大部分的查询功能都可以通过数据库查询获得，如果查询效率低下，还可以通过建数据库索引，优化SQL等方式进行提升效率，甚至通过引入缓存来加快数据的返回速度。如果数据量更大，就可以分库分表来分担查询压力。
-那为什么还要全文搜索引擎呢？我们主要从以下几个原因分析：
-
-数据类型 全文索引搜索支持非结构化数据的搜索，可以更好地快速搜索大量存在的任何单词或单词组的非结构化文本。 例如 Google，百度类的网站搜索，它们都是
-          ...
+          <h3 id="为什么要用全文搜索搜索引擎"><a href="#为什么要用全文搜索搜索引擎" class="headerlink" title="为什么要用全文搜索搜索引擎"></a>为什么要用全文搜索搜索引擎</h3><p>我们的所有数据在数据库里面都有，而且 Oracle、SQL Server 等数据库里也能提供查询检索或者聚类分析功能，直接通过数据库查询不就可以了吗？确实，我们大部分的查询功能都可以通过数据库查询获得，如果查询效率低下，还可以通过建数据库索引，优化SQL等方式进行提升效率，甚至通过引入缓存来加快数据的返回速度。如果数据量更大，就可以分库分表来分担查询压力。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/12/面试总结/全文检索面试题/#more" rel="contents">
@@ -1408,17 +1383,7 @@ try-with-resources语句是一种声明了一种或多种资源的try语句。�
 
       
         
-          
-          什么是事务事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。
-数据库ACID1. 原子性（Atomicity）
-原子性是指事务是一个不可分割的工作单位，事务中的操作要么全部成功，要么全部失败。比如在同一个事务中的SQL语句，要么全部执行成功，要么全部执行失败。
-
-　　回滚可以用日志来实现，日志记录着事务所执行的修改操作，在回滚时反向执行这些修改操作即可。
-2. 一致性（Consistency）
-事务必须使数据库从一个一致性状态变换到另外一个一致性状态。
-
-以转账为例子，A向B转账，假设转账之前这两个用户的钱加起来总共是200
-          ...
+          <h2 id="什么是事务"><a href="#什么是事务" class="headerlink" title="什么是事务"></a>什么是事务</h2><p>事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/12/面试总结/数据库面试题/#more" rel="contents">
@@ -1610,18 +1575,14 @@ try-with-resources语句是一种声明了一种或多种资源的try语句。�
 
       
         
-          
-          Spring Boot 与 Spring 的区别
-Spring Boot可以建立独立的Spring应用程序；
-内嵌了如Tomcat，Jetty和Undertow这样的容器，也就是说可以直接跑起来，用不着再做部署工作了。
-无需再像Spring那样搞一堆繁琐的xml文件的配置；
-可以自动配置Spring；
-提供了一些现有的功能，如度量工具，表单数据验证以及一些外部配置这样的一些第三方功能；
-提供的POM可以简化Maven的配置；
-
-SpringBoot 的自动配置是怎么做的
-Spring boot 的所有自动化配置的实现都在 spring-boot-autoconfigure 依赖中，通过@Ena
-          ...
+          <h3 id="Spring-Boot-与-Spring-的区别"><a href="#Spring-Boot-与-Spring-的区别" class="headerlink" title="Spring Boot 与 Spring 的区别"></a>Spring Boot 与 Spring 的区别</h3><ul>
+<li>Spring Boot可以建立独立的Spring应用程序；</li>
+<li>内嵌了如Tomcat，Jetty和Undertow这样的容器，也就是说可以直接跑起来，用不着再做部署工作了。</li>
+<li>无需再像Spring那样搞一堆繁琐的xml文件的配置；</li>
+<li>可以自动配置Spring；</li>
+<li>提供了一些现有的功能，如度量工具，表单数据验证以及一些外部配置这样的一些第三方功能；</li>
+<li>提供的POM可以简化Maven的配置；</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/#more" rel="contents">
@@ -1813,12 +1774,7 @@ Spring boot 的所有自动化配置的实现都在 spring-boot-autoconfigure �
 
       
         
-          
-          1、什么是Redis?答：Redis全称为：Remote Dictionary Server（远程数据服务），是一个基于内存的高性能key-value数据库。
-2、Redis的数据类型？答：Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及zset(sorted set：有序集合)。
-我们实际项目中比较常用的是string，hash如果你是Redis中高级用户，还需要加上下面几种数据结构HyperLogLog、Geo、Pub/Sub。
-如果你说还玩过Redis Module，像BloomFilter，RedisSearch，Redis-ML
-          ...
+          <h2 id="1、什么是Redis"><a href="#1、什么是Redis" class="headerlink" title="1、什么是Redis?"></a><strong>1、什么是Redis?</strong></h2><p>答：Redis全称为：Remote Dictionary Server（远程数据服务），是一个基于内存的高性能key-value数据库。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/12/面试总结/Redis 面试题/#more" rel="contents">
