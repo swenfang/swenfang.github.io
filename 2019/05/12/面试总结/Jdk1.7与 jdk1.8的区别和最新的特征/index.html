@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="基础面试题," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ShenWenFang" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="jdk7的新特性jdk7的新特性方面主要有下面几方面的增强 二进制变量的表示 二进制变量的表示,支持将整数类型用二进制来表示，用0b开头。 所有整数int、short、long、byte都可以用二进制表示： 12&amp;gt;byte aByte = (byte) 0b00100001;&amp;gt;  Switch语句支持String类型Try-with-resource语句参考博客：try-with-re">
+<meta name="keywords" content="基础面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jdk1.7与 jdk1.8的区别和最新的特征">
+<meta property="og:url" content="http://swenfang.github.io/2019/05/12/面试总结/Jdk1.7与 jdk1.8的区别和最新的特征/index.html">
+<meta property="og:site_name" content="ShenWenFang">
+<meta property="og:description" content="jdk7的新特性jdk7的新特性方面主要有下面几方面的增强 二进制变量的表示 二进制变量的表示,支持将整数类型用二进制来表示，用0b开头。 所有整数int、short、long、byte都可以用二进制表示： 12&amp;gt;byte aByte = (byte) 0b00100001;&amp;gt;  Switch语句支持String类型Try-with-resource语句参考博客：try-with-re">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190506104625-683894.jpg">
+<meta property="og:updated_time" content="2019-05-12T13:50:27.237Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jdk1.7与 jdk1.8的区别和最新的特征">
+<meta name="twitter:description" content="jdk7的新特性jdk7的新特性方面主要有下面几方面的增强 二进制变量的表示 二进制变量的表示,支持将整数类型用二进制来表示，用0b开头。 所有整数int、short、long、byte都可以用二进制表示： 12&amp;gt;byte aByte = (byte) 0b00100001;&amp;gt;  Switch语句支持String类型Try-with-resource语句参考博客：try-with-re">
+<meta name="twitter:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190506104625-683894.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://swenfang.github.io/2019/05/12/面试总结/Jdk1.7与 jdk1.8的区别和最新的特征/"/>
+
+
+
+
+
+  <title>Jdk1.7与 jdk1.8的区别和最新的特征 | ShenWenFang</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/another"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ShenWenFang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/12/面试总结/Jdk1.7与 jdk1.8的区别和最新的特征/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShenWenFang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShenWenFang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Jdk1.7与 jdk1.8的区别和最新的特征</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T21:50:51+08:00">
+                2019-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">基础面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/12/面试总结/Jdk1.7与 jdk1.8的区别和最新的特征/" class="leancloud_visitors" data-flag-title="Jdk1.7与 jdk1.8的区别和最新的特征">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,507 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="jdk7的新特性"><a href="#jdk7的新特性" class="headerlink" title="jdk7的新特性"></a>jdk7的新特性</h2><p>jdk7的新特性方面主要有下面几方面的增强</p>
+<h3 id="二进制变量的表示"><a href="#二进制变量的表示" class="headerlink" title="二进制变量的表示"></a>二进制变量的表示</h3><blockquote>
+<p>二进制变量的表示,支持将整数类型用二进制来表示，用0b开头。</p>
+<p>所有整数int、short、long、byte都可以用二进制表示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;<span class="keyword">byte</span> aByte = (<span class="keyword">byte</span>) <span class="number">0b00100001</span>;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Switch语句支持String类型"><a href="#Switch语句支持String类型" class="headerlink" title="Switch语句支持String类型"></a>Switch语句支持String类型</h3><h3 id="Try-with-resource语句"><a href="#Try-with-resource语句" class="headerlink" title="Try-with-resource语句"></a>Try-with-resource语句</h3><p>参考博客：<a href="http://www.cnblogs.com/aspirant/p/8621848.html" target="_blank" rel="external">try-with-resources语句</a> </p>
+<blockquote>
+<p>try-with-resources语句是一种声明了一种或多种资源的try语句。资源是指在程序用完了之后必须要关闭的对象。try-with-resources语句保证了每个声明了的资源在语句结束的时候都会被关闭。任何实现了java.lang.AutoCloseable接口的对象，和实现了java.io.Closeable接口的对象，都可以当做资源使用。</p>
+</blockquote>
+<h3 id="Catch多个异常"><a href="#Catch多个异常" class="headerlink" title="Catch多个异常"></a>Catch多个异常</h3><blockquote>
+<p>在Java 7中，catch代码块得到了升级，用以在单个catch块中处理多个异常。如果你要捕获多个异常并且它们包含相似的代码，使用这一特性将会减少代码重复度。下面用一个例子来理解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;<span class="keyword">catch</span>(IOException | SQLException | Exception ex)&#123;</div><div class="line">&gt;     logger.error(ex);</div><div class="line">&gt;     <span class="keyword">throw</span> <span class="keyword">new</span> MyException(ex.getMessage());</div><div class="line">&gt;&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="数字类型的下划线表示"><a href="#数字类型的下划线表示" class="headerlink" title="数字类型的下划线表示"></a>数字类型的下划线表示</h3><blockquote>
+<p>数字类型的下划线表示 更友好的表示方式，不过要注意下划线添加的一些标准。</p>
+<p>字面常量数字里加下划线的规则：下划线只能在数字之间，在数字的开始或结束一定不能使用下划线。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&gt;<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UsingUnderscoreInNumericLiterals</span> </span>&#123;</div><div class="line">&gt;    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">&gt;        <span class="keyword">int</span> int_num = <span class="number">1_00_00_000</span>;</div><div class="line">&gt;        System.out.println(<span class="string">"int num:"</span> + int_num);</div><div class="line">&gt;</div><div class="line">&gt;        <span class="keyword">long</span> long_num = <span class="number">1_00_00_000</span>;</div><div class="line">&gt;        System.out.println(<span class="string">"long num:"</span> + long_num);</div><div class="line">&gt;</div><div class="line">&gt;        <span class="keyword">float</span> float_num = <span class="number">2.10_001F</span>;</div><div class="line">&gt;        System.out.println(<span class="string">"float num:"</span> + float_num);</div><div class="line">&gt;</div><div class="line">&gt;        <span class="keyword">double</span> double_num = <span class="number">2.10_12_001</span>;</div><div class="line">&gt;        System.out.println(<span class="string">"double num:"</span> + double_num);</div><div class="line">&gt;    &#125;</div><div class="line">&gt;&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="泛型实例的创建简化"><a href="#泛型实例的创建简化" class="headerlink" title="泛型实例的创建简化"></a>泛型实例的创建简化</h3><blockquote>
+<p>泛型实例的创建可以通过类型推断来简化 可以去掉后面new部分的泛型类型，只用&lt;&gt;就可以了。</p>
+</blockquote>
+<h3 id="并发工具增强"><a href="#并发工具增强" class="headerlink" title="并发工具增强"></a>并发工具增强</h3><blockquote>
+<p>并发工具增强： fork-join框架最大的增强，充分利用多核特性，将大问题分解成各个子问题，由多个cpu可以同时解决多个子问题，最后合并结果，继承RecursiveTask，实现compute方法，然后调用fork计算，最后用join合并结果。    </p>
+</blockquote>
+<p>参考自己写的例子：<a href="http://www.cnblogs.com/aspirant/p/8622584.html" target="_blank" rel="external">Java7 Fork-Join 框架：任务切分，并行处理</a></p>
+<h2 id="JDK1-8的新特性"><a href="#JDK1-8的新特性" class="headerlink" title="JDK1.8的新特性"></a>JDK1.8的新特性</h2><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190506104625-683894.jpg" alt=""></p>
+<h3 id="接口的默认和静态方法"><a href="#接口的默认和静态方法" class="headerlink" title="接口的默认和静态方法"></a>接口的默认和静态方法</h3><blockquote>
+<p>Java 8允许我们给接口添加一个非抽象的方法实现，只需要使用 default关键字即可，这个特征又叫做扩展方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">JDK8Interface</span> </span>&#123;</div><div class="line">&gt;    <span class="comment">// static修饰符定义静态方法  </span></div><div class="line">&gt;    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">staticMethod</span><span class="params">()</span> </span>&#123;  </div><div class="line">&gt;        System.out.println(<span class="string">"接口中的静态方法"</span>);  </div><div class="line">&gt;    &#125;  </div><div class="line">&gt;    <span class="comment">// default修饰符定义默认方法  </span></div><div class="line">&gt;    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">defaultMethod</span><span class="params">()</span> </span>&#123;  </div><div class="line">&gt;        System.out.println(<span class="string">"接口中的默认方法"</span>);  </div><div class="line">&gt;    &#125;  </div><div class="line">&gt;&#125;  </div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h3><blockquote>
+<p>Lambda 表达式：(例如： (x, y) -&gt; { return x + y; } ;λ表达式有三部分组成：参数列表，箭头（-&gt;），以及一个表达式或语句块。)</p>
+<p>参考博客: <a href="http://www.cnblogs.com/LvLoveYuForever/p/6697982.html" target="_blank" rel="external">lambda表达式详解</a>; </p>
+<p><a href="https://www.jianshu.com/p/40f833bf2c48" target="_blank" rel="external">函数式接口和Lambda表达式深入理解</a></p>
+<p>在Java 8 中你就没必要使用这种传统的匿名对象的方式了，Java 8提供了更简洁的语法，lambda表达式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;Collections.sort(names, (String a, String b) -&gt; &#123;</div><div class="line">&gt;      <span class="keyword">return</span> b.compareTo(a);</div><div class="line">&gt;&#125;);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="方法与构造函数引用"><a href="#方法与构造函数引用" class="headerlink" title="方法与构造函数引用"></a>方法与构造函数引用</h3><blockquote>
+<p>Java 8 允许你使用 : 关键字来传递方法或者构造函数引用，上面的代码展示了如何引用一个静态方法，我们也可以引用一个对象的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;converter = something::startsWith;</div><div class="line">&gt;String converted = converter.convert(<span class="string">"Java"</span>);</div><div class="line">&gt;System.out.println(converted);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h3><blockquote>
+<p>所谓的函数式接口，当然首先是一个接口，然后就是在这个接口里面只能有一个抽象方法。</p>
+</blockquote>
+<h3 id="Annotation-注解"><a href="#Annotation-注解" class="headerlink" title="Annotation 注解"></a>Annotation 注解</h3><blockquote>
+<p>Annotation 注解：支持多重注解：</p>
+<p>很多时候一个注解需要在某一位置多次使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;YourAnnotation</div><div class="line">&gt;<span class="meta">@YourAnnotation</span></div><div class="line">&gt;<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">&gt;    <span class="comment">//TODO</span></div><div class="line">&gt;&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="新的日期时间-API"><a href="#新的日期时间-API" class="headerlink" title="新的日期时间 API"></a>新的日期时间 API</h3><blockquote>
+<p>Java 8新的Date-Time API (JSR 310)受Joda-Time的影响，提供了新的java.time包，可以用来替代</p>
+<p>java.util.Date和java.util.Calendar。一般会用到Clock、LocaleDate、LocalTime、LocaleDateTime、ZonedDateTime、Duration这些类，对于时间日期的改进还是非常不错的。</p>
+</blockquote>
+<h3 id="Base64编码"><a href="#Base64编码" class="headerlink" title="Base64编码"></a>Base64编码</h3><blockquote>
+<p>Base64编码是一种常见的字符编码，可以用来作为电子邮件或Web Service附件的传输编码。</p>
+<p>在Java 8中，Base64编码成为了Java类库的标准。Base64类同时还提供了对URL、MIME友好的编码器与解码器。</p>
+</blockquote>
+<h3 id="JavaScript引擎Nashorn"><a href="#JavaScript引擎Nashorn" class="headerlink" title="JavaScript引擎Nashorn"></a>JavaScript引擎Nashorn</h3><blockquote>
+<p>Nashorn允许在JVM上开发运行JavaScript应用，允许Java与JavaScript相互调用。</p>
+</blockquote>
+<h3 id="Stream的使用"><a href="#Stream的使用" class="headerlink" title="Stream的使用"></a>Stream的使用</h3><blockquote>
+<p>Stream API是把真正的函数式编程风格引入到Java中。其实简单来说可以把Stream理解为MapReduce，当然Google的MapReduce的灵感也是来自函数式编程。她其实是一连串支持连续、并行聚集操作的元素。从语法上看，也很像linux的管道、或者链式编程，代码写起来简洁明了，非常酷帅！</p>
+</blockquote>
+<h3 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h3><blockquote>
+<p>Java 8引入Optional类来防止空指针异常，Optional类最先是由Google的Guava项目引入的。Optional类实际上是个容器：它可以保存类型T的值，或者保存null。使用Optional类我们就不用显式进行空指针检查了。</p>
+</blockquote>
+<h3 id="扩展注解的支持"><a href="#扩展注解的支持" class="headerlink" title="扩展注解的支持"></a>扩展注解的支持</h3><blockquote>
+<p>Java 8扩展了注解的上下文，几乎可以为任何东西添加注解，包括局部变量、泛型类、父类与接口的实现，连方法的异常也能添加注解。</p>
+</blockquote>
+<h3 id="并行（parallel）数组"><a href="#并行（parallel）数组" class="headerlink" title="并行（parallel）数组"></a>并行（parallel）数组</h3><blockquote>
+<p>支持对数组进行并行处理，主要是parallelSort()方法，它可以在多核机器上极大提高数组排序的速度。</p>
+</blockquote>
+<h3 id="编译器优化"><a href="#编译器优化" class="headerlink" title="编译器优化"></a>编译器优化</h3><blockquote>
+<p>Java 8将方法的参数名加入了字节码中，这样在运行时通过反射就能获取到参数名，只需要在编译时使用-parameters参数。</p>
+<p>新的Java1.8对IO做了升级：</p>
+<p>关于IO/NIO 新IO的对比，请参考：<a href="http://www.cnblogs.com/aspirant/p/8630283.html" target="_blank" rel="external">Java NIO：IO与NIO的区别 -阿里面试题</a></p>
+<p>还对CurrentHashMap做了升级，请参考：<a href="http://www.cnblogs.com/aspirant/p/8623864.html" target="_blank" rel="external">ConcurrentHashMap原理分析（1.7与1.8）</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="ShenWenFang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ShenWenFang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    ShenWenFang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://swenfang.github.io/2019/05/12/面试总结/Jdk1.7与 jdk1.8的区别和最新的特征/" title="Jdk1.7与 jdk1.8的区别和最新的特征">http://swenfang.github.io/2019/05/12/面试总结/Jdk1.7与 jdk1.8的区别和最新的特征/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    	
+          <div>
+            <div class="recommended_posts">
+    
+    
+    <strong>推荐文章 </strong>
+    <ul>
+        
+            <li><a href="http://swenfang.github.io/2019/05/12/面试总结/线程面试题/">线程面试题</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/05/12/面试总结/日志框架面试题/">日志框架面试题</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/05/12/面试总结/Mybaties 面试题/">Mybaties 面试题</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/05/12/面试总结/全文检索面试题/">全文检索面试题</a></li>
+        
+    </ul>
+    
+</div>
+
+          </div>
+        
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/基础面试题/" rel="tag"># 基础面试题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/12/面试总结/Mybaties 面试题/" rel="next" title="Mybaties 面试题">
+                <i class="fa fa-chevron-left"></i> Mybaties 面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/12/面试总结/日志框架面试题/" rel="prev" title="日志框架面试题">
+                日志框架面试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4My82MDUx"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="ShenWenFang" />
+            
+              <p class="site-author-name" itemprop="name">ShenWenFang</p>
+              <p class="site-description motion-element" itemprop="description">每一个你不满意的现在，都有一个你没有努力的曾经。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+         <div id="music163player">
+             <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=31861269&auto=0&height=66"></iframe>
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jdk7的新特性"><span class="nav-number">1.</span> <span class="nav-text">jdk7的新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二进制变量的表示"><span class="nav-number">1.1.</span> <span class="nav-text">二进制变量的表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Switch语句支持String类型"><span class="nav-number">1.2.</span> <span class="nav-text">Switch语句支持String类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Try-with-resource语句"><span class="nav-number">1.3.</span> <span class="nav-text">Try-with-resource语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Catch多个异常"><span class="nav-number">1.4.</span> <span class="nav-text">Catch多个异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字类型的下划线表示"><span class="nav-number">1.5.</span> <span class="nav-text">数字类型的下划线表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型实例的创建简化"><span class="nav-number">1.6.</span> <span class="nav-text">泛型实例的创建简化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发工具增强"><span class="nav-number">1.7.</span> <span class="nav-text">并发工具增强</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK1-8的新特性"><span class="nav-number">2.</span> <span class="nav-text">JDK1.8的新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口的默认和静态方法"><span class="nav-number">2.1.</span> <span class="nav-text">接口的默认和静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda-表达式"><span class="nav-number">2.2.</span> <span class="nav-text">Lambda 表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法与构造函数引用"><span class="nav-number">2.3.</span> <span class="nav-text">方法与构造函数引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数式接口"><span class="nav-number">2.4.</span> <span class="nav-text">函数式接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Annotation-注解"><span class="nav-number">2.5.</span> <span class="nav-text">Annotation 注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新的日期时间-API"><span class="nav-number">2.6.</span> <span class="nav-text">新的日期时间 API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Base64编码"><span class="nav-number">2.7.</span> <span class="nav-text">Base64编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript引擎Nashorn"><span class="nav-number">2.8.</span> <span class="nav-text">JavaScript引擎Nashorn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stream的使用"><span class="nav-number">2.9.</span> <span class="nav-text">Stream的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optional"><span class="nav-number">2.10.</span> <span class="nav-text">Optional</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展注解的支持"><span class="nav-number">2.11.</span> <span class="nav-text">扩展注解的支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并行（parallel）数组"><span class="nav-number">2.12.</span> <span class="nav-text">并行（parallel）数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译器优化"><span class="nav-number">2.13.</span> <span class="nav-text">编译器优化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ShenWenFang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("9lk8dNt56FULANV18qHRXIff-gzGzoHsz", "lSea2qzYEcPELI1zQN1wWQGt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

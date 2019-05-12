@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="基础面试题," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ShenWenFang" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="什么是事务事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。 数据库ACID1. 原子性（Atomicity） 原子性是指事务是一个不可分割的工作单位，事务中的操作要么全部成功，要么全部失败。比如在同一个事务中的SQL语句，要么全部执行成功，要么全部执行失败。  　　回滚可以用日志来实现，日志记录着事务所执行的修改操作，在回滚时">
+<meta name="keywords" content="基础面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库面试题">
+<meta property="og:url" content="http://swenfang.github.io/2019/05/12/面试总结/数据库面试题/index.html">
+<meta property="og:site_name" content="ShenWenFang">
+<meta property="og:description" content="什么是事务事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。 数据库ACID1. 原子性（Atomicity） 原子性是指事务是一个不可分割的工作单位，事务中的操作要么全部成功，要么全部失败。比如在同一个事务中的SQL语句，要么全部执行成功，要么全部执行失败。  　　回滚可以用日志来实现，日志记录着事务所执行的修改操作，在回滚时">
+<meta property="og:image" content="https://github.com/frank-lam/fullstack-tutorial/raw/master/notes/assets/a58e294a-615d-4ea0-9fbf-064a6daec4b2-1534474592177.png">
+<meta property="og:updated_time" content="2019-05-12T13:34:34.687Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库面试题">
+<meta name="twitter:description" content="什么是事务事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。 数据库ACID1. 原子性（Atomicity） 原子性是指事务是一个不可分割的工作单位，事务中的操作要么全部成功，要么全部失败。比如在同一个事务中的SQL语句，要么全部执行成功，要么全部执行失败。  　　回滚可以用日志来实现，日志记录着事务所执行的修改操作，在回滚时">
+<meta name="twitter:image" content="https://github.com/frank-lam/fullstack-tutorial/raw/master/notes/assets/a58e294a-615d-4ea0-9fbf-064a6daec4b2-1534474592177.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://swenfang.github.io/2019/05/12/面试总结/数据库面试题/"/>
+
+
+
+
+
+  <title>数据库面试题 | ShenWenFang</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/another"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ShenWenFang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/12/面试总结/数据库面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShenWenFang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShenWenFang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据库面试题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T21:37:12+08:00">
+                2019-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">基础面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/12/面试总结/数据库面试题/" class="leancloud_visitors" data-flag-title="数据库面试题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7,300 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  26 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="什么是事务"><a href="#什么是事务" class="headerlink" title="什么是事务"></a>什么是事务</h2><p>事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。</p>
+<h2 id="数据库ACID"><a href="#数据库ACID" class="headerlink" title="数据库ACID"></a>数据库ACID</h2><h3 id="1-原子性（Atomicity）"><a href="#1-原子性（Atomicity）" class="headerlink" title="1. 原子性（Atomicity）"></a>1. 原子性（Atomicity）</h3><blockquote>
+<p>原子性是指事务是一个不可分割的工作单位，事务中的操作要么全部成功，要么全部失败。比如在同一个事务中的SQL语句，要么全部执行成功，要么全部执行失败。</p>
+</blockquote>
+<p>　　回滚可以用日志来实现，日志记录着事务所执行的修改操作，在回滚时反向执行这些修改操作即可。</p>
+<h3 id="2-一致性（Consistency）"><a href="#2-一致性（Consistency）" class="headerlink" title="2. 一致性（Consistency）"></a>2. 一致性（Consistency）</h3><blockquote>
+<p>事务必须使数据库从一个一致性状态变换到另外一个一致性状态。</p>
+</blockquote>
+<p>以转账为例子，A向B转账，假设转账之前这两个用户的钱加起来总共是2000，那么A向B转账之后，不管这两个账户怎么转，A用户的钱和B用户的钱加起来的总额还是2000，这个就是事务的一致性。</p>
+<h3 id="3-隔离性（Isolation）"><a href="#3-隔离性（Isolation）" class="headerlink" title="3. 隔离性（Isolation）"></a>3. 隔离性（Isolation）</h3><blockquote>
+<p>隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。</p>
+</blockquote>
+<p>　　即要达到这么一种效果：对于任意两个并发的事务 T1 和 T2，在事务 T1 看来，T2 要么在 T1 开始之前就已经结束，要么在 T1 结束之后才开始，这样每个事务都感觉不到有其他事务在并发地执行。</p>
+<h3 id="4-持久性（Durability）"><a href="#4-持久性（Durability）" class="headerlink" title="4. 持久性（Durability）"></a>4. 持久性（Durability）</h3><blockquote>
+<p>一旦事务提交，则其所做的修改将会永远保存到数据库中。即使系统发生崩溃，事务执行的结果也不能丢失。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">可以通过数据库备份和恢复来实现，在系统发生奔溃时，使用备份的数据库进行数据恢复。</div></pre></td></tr></table></figure>
+<p>事务的 ACID 特性概念简单，但不是很好理解，主要是因为这几个特性不是一种平级关系：</p>
+<ul>
+<li>只有满足一致性，事务的执行结果才是正确的。</li>
+<li>在无并发的情况下，事务串行执行，隔离性一定能够满足。此时要只要能满足原子性，就一定能满足一致性。</li>
+<li>在并发的情况下，多个事务并发执行，事务不仅要满足原子性，还需要满足隔离性，才能满足一致性。</li>
+<li>事务满足持久化是为了能应对数据库奔溃的情况。</li>
+</ul>
+<p><a href="https://github.com/frank-lam/fullstack-tutorial/blob/master/notes/assets/a58e294a-615d-4ea0-9fbf-064a6daec4b2-1534474592177.png" target="_blank" rel="external"><img src="https://github.com/frank-lam/fullstack-tutorial/raw/master/notes/assets/a58e294a-615d-4ea0-9fbf-064a6daec4b2-1534474592177.png" alt="img"></a></p>
+<h2 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h2><h3 id="1-串行化-Serializable"><a href="#1-串行化-Serializable" class="headerlink" title="1. 串行化 (Serializable)"></a>1. 串行化 (Serializable)</h3><p>　　所有事务一个接着一个的执行，这样可以避免幻读 (phantom read)，对于基于锁来实现并发控制的数据库来说，串行化要求在执行范围查询的时候，需要获取范围锁，如果不是基于锁实现并发控制的数据库，则检查到有违反串行操作的事务时，需回滚该事务。</p>
+<h3 id="2-可重复读-Repeated-Read"><a href="#2-可重复读-Repeated-Read" class="headerlink" title="2. 可重复读 (Repeated Read)"></a>2. 可重复读 (Repeated Read)</h3><p>　　所有被 Select 获取的数据都不能被修改，这样就可以避免一个事务前后读取数据不一致的情况。但是却没有办法控制幻读，因为这个时候其他事务不能更改所选的数据，但是可以增加数据，即前一个事务有读锁但是没有范围锁，为什么叫做可重复读等级呢？那是因为该等级解决了下面的不可重复读问题。</p>
+<p>　　引申：现在主流数据库都使用 MVCC 并发控制，使用之后RR（可重复读）隔离级别下是不会出现幻读的现象。</p>
+<h3 id="3-读已提交-Read-Committed"><a href="#3-读已提交-Read-Committed" class="headerlink" title="3. 读已提交 (Read Committed)"></a>3. 读已提交 (Read Committed)</h3><p>　　被读取的数据可以被其他事务修改，这样可能导致不可重复读。也就是说，事务读取的时候获取读锁，但是在读完之后立即释放(不需要等事务结束)，而写锁则是事务提交之后才释放，释放读锁之后，就可能被其他事务修改数据。该等级也是 SQL Server 默认的隔离等级。</p>
+<h3 id="4-读未提交-Read-Uncommitted"><a href="#4-读未提交-Read-Uncommitted" class="headerlink" title="4. 读未提交 (Read Uncommitted)"></a>4. 读未提交 (Read Uncommitted)</h3><p>　　最低的隔离等级，允许其他事务看到没有提交的数据，会导致脏读。</p>
+<p><strong>总结</strong></p>
+<ul>
+<li>四个级别逐渐增强，每个级别解决一个问题，每个级别解决一个问题，事务级别遇到，性能越差，大多数环境(Read committed 就可以用了)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻影读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未提交读</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>提交读</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>可重复读</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>可串行化</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+<h2 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h2><p>　对于初学者来说我们通常不关注存储引擎，但是 MySQL 提供了多个存储引擎，包括处理事务安全表的引擎和处理非事务安全表的引擎。在 MySQL 中，不需要在整个服务器中使用同一种存储引擎，针对具体的要求，可以对每一个表使用不同的存储引擎。</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>　　MySQL 中的数据用各种不同的技术存储在文件（或者内存）中。这些技术中的每一种技术都使用不同的存储机制、索引技巧、锁定水平并且最终提供广泛的不同的功能和能力。通过选择不同的技术，你能够获得额外的速度或者功能，从而改善你的应用的整体功能。存储引擎说白了就是如何存储数据、如何为存储的数据建立索引和如何更新、查询数据等技术的实现方法。</p>
+<p>　　例如，如果你在研究大量的临时数据，你也许需要使用内存存储引擎。内存存储引擎能够在内存中存储所有的表格数据。又或者，你也许需要一个支持事务处理的数据库（以确保事务处理不成功时数据的回退能力）。</p>
+<blockquote>
+<p>在MySQL中有很多存储引擎，每种存储引擎大相径庭，那么又改如何选择呢？</p>
+</blockquote>
+<p>　　<code>MySQL 5.5</code> 以前的默认存储引擎是 <code>MyISAM</code>, <code>MySQL 5.5</code> 之后的默认存储引擎是 <code>InnoDB</code></p>
+<p>　　不同存储引起都有各自的特点，为适应不同的需求，需要选择不同的存储引擎，所以首先考虑这些存储引擎各自的功能和兼容。</p>
+<h3 id="1-MyISAM"><a href="#1-MyISAM" class="headerlink" title="1. MyISAM"></a>1. MyISAM</h3><p>MySQL 5.5 版本之前的默认存储引擎，在 <code>5.0</code> 以前最大表存储空间最大 <code>4G</code>，<code>5.0</code> 以后最大 <code>256TB</code>。</p>
+<p>Myisam 存储引擎由 <code>.myd</code>（数据）和 <code>.myi</code>（索引文件）组成，<code>.frm</code>文件存储表结构（所以存储引擎都有）</p>
+<p><strong>特性</strong></p>
+<ul>
+<li>并发性和锁级别 （对于读写混合的操作不好，为表级锁，写入和读互斥）</li>
+<li>表损坏修复</li>
+<li>Myisam 表支持的索引类型（全文索引）</li>
+<li>Myisam 支持表压缩（压缩后，此表为只读，不可以写入。使用 myisampack 压缩）</li>
+</ul>
+<p><strong>应用场景</strong></p>
+<ul>
+<li>没有事务</li>
+<li>只读类应用（插入不频繁，查询非常频繁）</li>
+<li>空间类应用（唯一支持空间函数的引擎）</li>
+<li>做很多 count 的计算</li>
+</ul>
+<h3 id="2-InnoDB"><a href="#2-InnoDB" class="headerlink" title="2. InnoDB"></a>2. InnoDB</h3><p>MySQL 5.5 及之后版本的默认存储引擎</p>
+<p><strong>特性</strong></p>
+<ul>
+<li>InnoDB为事务性存储引擎</li>
+<li>完全支持事物的 ACID 特性</li>
+<li>Redo log （实现事务的持久性） 和 Undo log（为了实现事务的原子性，存储未完成事务log，用于回滚）</li>
+<li>InnoDB支持行级锁</li>
+<li>行级锁可以最大程度的支持并发</li>
+<li>行级锁是由存储引擎层实现的</li>
+</ul>
+<p><strong>应用场景</strong></p>
+<ul>
+<li>可靠性要求比较高，或者要求事务</li>
+<li>表更新和查询都相当的频繁，并且行锁定的机会比较大的情况。</li>
+</ul>
+<h3 id="3-CSV"><a href="#3-CSV" class="headerlink" title="3. CSV"></a>3. CSV</h3><p><strong>文件系统存储特点</strong></p>
+<ul>
+<li>数据以文本方式存储在文件中</li>
+<li><code>.csv</code>文件存储表内容</li>
+<li><code>.csm</code>文件存储表的元数据，如表状态和数据量</li>
+<li><code>.frm</code>存储表的结构</li>
+</ul>
+<p><strong>CSV存储引擎特点</strong></p>
+<ul>
+<li>以 CSV 格式进行数据存储</li>
+<li>所有列必须都是不能为 NULL</li>
+<li>不支持索引</li>
+<li>可以对数据文件直接编辑（其他引擎是二进制存储，不可编辑）</li>
+</ul>
+<p><strong>引用场景</strong></p>
+<ul>
+<li>作为数据交换的中间表</li>
+</ul>
+<h3 id="4-Archive"><a href="#4-Archive" class="headerlink" title="4. Archive"></a>4. Archive</h3><p><strong>特性</strong></p>
+<ul>
+<li>以 zlib 对表数据进行压缩，磁盘 I/O 更少</li>
+<li>数据存储在ARZ为后缀的文件中（表文件为 <code>a.arz</code>，<code>a.frm</code>）</li>
+<li>只支持 insert 和 select 操作（不可以 delete 和 update，会提示没有这个功能）</li>
+<li>只允许在自增ID列上加索引</li>
+</ul>
+<p><strong>应用场景</strong></p>
+<ul>
+<li>日志和数据采集类应用</li>
+</ul>
+<h3 id="5-Memory"><a href="#5-Memory" class="headerlink" title="5. Memory"></a>5. Memory</h3><p>特性</p>
+<ul>
+<li>也称为 HEAP 存储引擎，所以数据保存在内存中（数据库重启后会导致数据丢失）</li>
+<li>支持 HASH 索引（等值查找应选择 HASH）和 BTree 索引（范围查找应选择）</li>
+<li>所有字段都为固定长度，varchar(10) == char(10)</li>
+<li>不支持 BLOG 和 TEXT 等大字段</li>
+<li>Memory 存储使用表级锁（性能可能不如 innodb）</li>
+<li>最大大小由 <code>max_heap_table_size</code> 参数决定</li>
+<li>Memory存储引擎默认表大小只有 <code>16M</code>，可以通过调整 <code>max_heap_table_size</code> 参数</li>
+</ul>
+<p>应用场景</p>
+<ul>
+<li>用于查找或是映射表，例如右边和地区的对应表</li>
+<li>用于保存数据分析中产生的中间表</li>
+<li>用于缓存周期性聚合数据的结果表</li>
+</ul>
+<p><strong>注意：</strong> Memory 数据易丢失，所以要求数据可再生</p>
+<h3 id="6-Federated"><a href="#6-Federated" class="headerlink" title="6. Federated"></a>6. Federated</h3><p><strong>特性</strong></p>
+<ul>
+<li>提供了访问远程 MySQL 服务器上表的方法</li>
+<li>本地不存储数据，数据全部放在远程服务器上</li>
+</ul>
+<p><strong>使用 Federated</strong></p>
+<p>默认是禁止的。如果需要启用，需要在启动时增加Federated参数</p>
+<h3 id="问：独立表空间和系统表空间应该如何抉择"><a href="#问：独立表空间和系统表空间应该如何抉择" class="headerlink" title="问：独立表空间和系统表空间应该如何抉择"></a>问：独立表空间和系统表空间应该如何抉择</h3><p><strong>两者比较</strong></p>
+<ul>
+<li>系统表空间：无法简单的收缩大小（这很恐怖，会导致 ibdata1 一直增大，即使删除了数据也不会变小）</li>
+<li>独立表空间：可以通过 optimize table 命令收缩系统文件</li>
+<li>系统表空间：会产生I/O瓶颈（因为只有一个文件）</li>
+<li>独立表空间：可以向多个文件刷新数据</li>
+</ul>
+<p><strong>总结</strong> 强烈建议：对Innodb引擎使用独立表空间（mysql5.6版本以后默认是独立表空间）</p>
+<p><strong>系统表转移为独立表的步骤（非常繁琐）</strong></p>
+<ul>
+<li>使用 mysqldump 导出所有数据库表数据</li>
+<li>停止 mysql 服务，修改参数，并且删除Innodb相关文件</li>
+<li>重启 mysql 服务，重建mysql系统表空间</li>
+<li>重新导入数据</li>
+</ul>
+<h3 id="问：如何选择存储引擎"><a href="#问：如何选择存储引擎" class="headerlink" title="问：如何选择存储引擎"></a>问：如何选择存储引擎</h3><p><strong>参考条件：</strong></p>
+<ul>
+<li>是否需要事务</li>
+<li>是否可以热备份</li>
+<li>崩溃恢复</li>
+<li>存储引擎的特有特性</li>
+</ul>
+<p><strong>重要一点：</strong> 不要混合使用存储引擎 <strong>强烈推荐：</strong> Innodb</p>
+<h3 id="问：MyISAM和InnoDB引擎的区别"><a href="#问：MyISAM和InnoDB引擎的区别" class="headerlink" title="问：MyISAM和InnoDB引擎的区别"></a>问：MyISAM和InnoDB引擎的区别</h3><p><strong>区别：</strong></p>
+<ul>
+<li>MyISAM 不支持外键，而 InnoDB 支持</li>
+<li>MyISAM 是非事务安全型的，而 InnoDB 是事务安全型的。</li>
+<li>MyISAM 锁的粒度是表级，而 InnoDB 支持行级锁定。</li>
+<li>MyISAM 支持全文类型索引，而 InnoDB 不支持全文索引。</li>
+<li>MyISAM 相对简单，所以在效率上要优于 InnoDB，小型应用可以考虑使用 MyISAM。</li>
+<li>MyISAM 表是保存成文件的形式，在跨平台的数据转移中使用 MyISAM 存储会省去不少的麻烦。</li>
+<li>InnoDB 表比 MyISAM 表更安全，可以在保证数据不会丢失的情况下，切换非事务表到事务表（alter table tablename type=innodb）。</li>
+</ul>
+<p><strong>应用场景：</strong></p>
+<ul>
+<li>MyISAM 管理非事务表。它提供高速存储和检索，以及全文搜索能力。如果应用中需要执行大量的 SELECT 查询，那么 MyISAM 是更好的选择。</li>
+<li>InnoDB 用于事务处理应用程序，具有众多特性，包括 ACID 事务支持。如果应用中需要执行大量的 INSERT 或 UPDATE 操作，则应该使用 InnoDB，这样可以提高多用户并发操作的性能。</li>
+</ul>
+<h3 id="问：为什么不建议-InnoDB-使用亿级大表"><a href="#问：为什么不建议-InnoDB-使用亿级大表" class="headerlink" title="问：为什么不建议 InnoDB 使用亿级大表"></a>问：为什么不建议 InnoDB 使用亿级大表</h3><p>仅作拓展延伸，详情请转向：<a href="http://xiaorui.cc/2016/12/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%BB%BA%E8%AE%AEinnodb%E4%BD%BF%E7%94%A8%E4%BA%BF%E7%BA%A7%E5%A4%A7%E8%A1%A8/" target="_blank" rel="external">为什么不建议innodb使用亿级大表 | 峰云就她了</a></p>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h3 id="索引分类"><a href="#索引分类" class="headerlink" title="索引分类"></a>索引分类</h3><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>特性</td>
+<td>说明</td>
+<td>InnoDB</td>
+<td>MyISAM</td>
+<td>MEMORY</td>
+</tr>
+<tr>
+<td>B树索引 (B-tree indexes)</td>
+<td>自增ID物理连续性更高， 二叉树，红黑树高度不可控</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>R树索引 (R-tree indexes)</td>
+<td>空间索引</td>
+<td></td>
+<td>√</td>
+<td></td>
+</tr>
+<tr>
+<td>哈希索引 (Hash indexes)</td>
+<td>无法做范围查询</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+</tr>
+<tr>
+<td>全文索引 (Full-text indexes)</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+<h4 id="B-Tree-索引"><a href="#B-Tree-索引" class="headerlink" title="B+Tree 索引"></a>B+Tree 索引</h4><p>B+Tree 索引是大多数 MySQL 存储引擎的默认索引类型。</p>
+<p>因为不再需要进行全表扫描，只需要对树进行搜索即可，因此查找速度快很多。除了用于查找，还可以用于排序和分组。</p>
+<p>可以指定多个列作为索引列，多个索引列共同组成键。</p>
+<h4 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h4><p>InnoDB 引擎有一个特殊的功能叫 “自适应哈希索引”，当某个索引值被使用的非常频繁时，会在 B+Tree 索引之上再创建一个哈希索引，这样就让 B+Tree 索引具有哈希索引的一些优点，比如快速的哈希查找</p>
+<h4 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h4><p>MyISAM 存储引擎支持全文索引，用于查找文本中的关键词，而不是直接比较是否相等。查找条件使用 MATCH AGAINST，而不是普通的 WHERE</p>
+<h4 id="空间数据索引（R-Tree）"><a href="#空间数据索引（R-Tree）" class="headerlink" title="空间数据索引（R-Tree）"></a>空间数据索引（R-Tree）</h4><p>MyISAM 存储引擎支持空间数据索引，可以用于地理数据存储。空间数据索引会从所有维度来索引数据，可以有效地使用任意维度来进行组合查询。</p>
+<h4 id="mysql中的索引类型有哪些，可以从哪些角度来看？"><a href="#mysql中的索引类型有哪些，可以从哪些角度来看？" class="headerlink" title="mysql中的索引类型有哪些，可以从哪些角度来看？"></a>mysql中的索引类型有哪些，可以从哪些角度来看？</h4><p><strong>从数据结构角度</strong></p>
+<p>1、B+树索引(O(log(n)))：关于B+树索引，可以参考 <a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="external">MySQL索引背后的数据结构及算法原理</a></p>
+<p>2、hash索引：<br>a 仅仅能满足”=”,”IN”和”&lt;=&gt;”查询，不能使用范围查询<br>b 其检索效率非常高，索引的检索可以一次定位，不像B-Tree 索引需要从根节点到枝节点，最后才能访问到页节点这样多次的IO访问，所以 Hash 索引的查询效率要远高于 B-Tree 索引<br>c 只有Memory存储引擎显示支持hash索引</p>
+<p>3、FULLTEXT索引（现在MyISAM和InnoDB引擎都支持了）</p>
+<p>4、R-Tree索引（用于对GIS数据类型创建SPATIAL索引）</p>
+<p><strong>从物理存储角度</strong></p>
+<p>1、聚集索引（clustered index）聚集索引一个表只能有一个，而非聚集索引一个表可以存在多个 </p>
+<p>2、非聚集索引（non-clustered index） 聚集索引存储记录是物理上连续存在，而非聚集索引是逻辑上的连续，物理存储并不连续 </p>
+<p><strong>从逻辑角度</strong></p>
+<p>1、主键索引：主键索引是一种特殊的唯一索引，不允许有空值</p>
+<p>2、普通索引或者单列索引 : 即一个索引只包含单个列，一个表可以有多个单列索引</p>
+<p>3、多列索引（复合索引）：复合索引指多个字段上创建的索引，只有在查询条件中使用了创建索引时的第一个字段，索引才会被使用。使用复合索引时遵循最左前缀集合</p>
+<p>4、唯一索引或者非唯一索引</p>
+<p>5、空间索引：空间索引是对空间数据类型的字段建立的索引，MYSQL中的空间数据类型有4种，分别是GEOMETRY、POINT、LINESTRING、POLYGON。<br>MYSQL使用SPATIAL关键字进行扩展，使得能够用于创建正规索引类型的语法创建空间索引。创建空间索引的列，必须将其声明为NOT NULL，空间索引只能在存储引擎为MYISAM的表中创建</p>
+<h3 id="索引的缺点"><a href="#索引的缺点" class="headerlink" title="索引的缺点"></a>索引的缺点</h3><ul>
+<li>创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加</li>
+<li>索引需要占用物理空间，除了数据表占用数据空间之外，每一个索引还要占一定的物理空间，如果建立聚簇索引，那么需要的空间就会更大</li>
+<li>当对表中的数据进行增加、删除和修改的时候，索引也需要维护，降低数据维护的速度</li>
+</ul>
+<h3 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h3><ul>
+<li>创建唯一性索引，保证数据库表中每一行数据的唯一性</li>
+<li>大大加快数据的检索速度，这是创建索引的最主要的原因</li>
+<li>加速数据库表之间的连接，特别是在实现数据的参考完整性方面特别有意义</li>
+<li>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间</li>
+<li>通过使用索引，可以在查询中使用优化隐藏器，提高系统的性能</li>
+</ul>
+<h3 id="在什么情况下适合建立索引"><a href="#在什么情况下适合建立索引" class="headerlink" title="在什么情况下适合建立索引"></a>在什么情况下适合建立索引</h3><ul>
+<li>为经常出现在关键字order by、group by、distinct后面的字段，建立索引。</li>
+<li>在union等集合操作的结果集字段上，建立索引。其建立索引的目的同上。</li>
+<li>为经常用作查询选择 where 后的字段，建立索引。</li>
+<li>在经常用作表连接 join 的属性上，建立索引。</li>
+<li>考虑使用索引覆盖。对数据很少被更新的表，如果用户经常只查询其中的几个字段，可以考虑在这几个字段上建立索引，从而将表的扫描改变为索引的扫描。</li>
+</ul>
+<h3 id="索引失效"><a href="#索引失效" class="headerlink" title="索引失效"></a>索引失效</h3><ul>
+<li><p>如果MySQL估计使用<strong>全表扫秒比使用索引快</strong>，则不适用索引。</p>
+<p>例如，如果列key均匀分布在1和100之间，下面的查询使用索引就不是很好：select * from table_name where key&gt;1 and key&lt;90;</p>
+</li>
+<li><p>如果<strong>条件中有or</strong>，即使其中有条件带索引也不会使用</p>
+<p>例如：select * from table_name where key1=’a’ or key2=’b’;如果在key1上有索引而在key2上没有索引，则该查询也不会走索引</p>
+</li>
+<li><p>复合索引，如果索引列<strong>不是复合索引的第一部分</strong>，则不使用索引（即不符合最左前缀）</p>
+<p>例如，复合索引为(key1,key2),则查询select * from table_name where key2=’b’;将不会使用索引</p>
+</li>
+<li><p>如果<strong>like是以 % 开始的</strong>，则该列上的索引不会被使用。</p>
+<p>例如select * from table_name where key1 like ‘%a’；该查询即使key1上存在索引，也不会被使用如果列类型是字符串，那一定要在条件中使用引号引起来，否则不会使用索引</p>
+</li>
+<li><p>如果列为字符串，则where条件中必须将字符常量值加引号，否则即使该列上存在索引，也不会被使用。</p>
+<p>例如,select * from table_name where key1=1;如果key1列保存的是字符串，即使key1上有索引，也不会被使用。</p>
+</li>
+<li><p>如果使用MEMORY/HEAP表，并且where条件中不使用“=”进行索引列，那么不会用到索引，head表只有在“=”的条件下才会使用索引</p>
+</li>
+</ul>
+<h4 id="左连接和右连接区别"><a href="#左连接和右连接区别" class="headerlink" title="左连接和右连接区别"></a>左连接和右连接区别</h4><blockquote>
+<p>左连接where只影向右表，右连接where只影响左表。</p>
+</blockquote>
+<h3 id="MySQL-主从复制原理"><a href="#MySQL-主从复制原理" class="headerlink" title="MySQL 主从复制原理"></a>MySQL 主从复制原理</h3><blockquote>
+<p>主库将变更写入 binlog 日志，然后从库连接到主库之后，从库有一个 IO 线程，将主库的 binlog 日志拷贝到自己本地，写入一个 relay 中继日志中。接着从库中有一个 SQL 线程会从中继日志读取 binlog，然后执行 binlog 日志中的内容，也就是在自己本地再次执行一遍 SQL，这样就可以保证自己跟主库的数据是一样的。</p>
+</blockquote>
+<h2 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h2><h2 id="Mysql-的分页-SQL-语句"><a href="#Mysql-的分页-SQL-语句" class="headerlink" title="Mysql 的分页 SQL 语句"></a>Mysql 的分页 SQL 语句</h2><p>select * from tablename limit m,n(n是指从第m+1条开始，取n条)</p>
+<h2 id="下面提供几个查询优化的建议。"><a href="#下面提供几个查询优化的建议。" class="headerlink" title="下面提供几个查询优化的建议。"></a>下面提供几个查询优化的建议。</h2><h2 id="使用explain分析查询语句"><a href="#使用explain分析查询语句" class="headerlink" title="使用explain分析查询语句"></a>使用explain分析查询语句</h2><p>前面已经演示过如何使用<code>explain</code>命令分析查询语句了，这里再解释一下其中几个有参考价值的字段的含义：</p>
+<h3 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h3><p>select_type表示查询中每个select子句的类型，一般有下面几个值:</p>
+<ul>
+<li>simple 简单SELECT,不使用UNION或子查询等。</li>
+<li>primary 查询中若包含任何复杂的子部分,最外层的select被标记为PRIMARY。</li>
+<li>union union中的第二个或后面的SELECT语句。</li>
+<li>dependent union union 中的第二个或后面的SELECT语句，取决于外面的查询。</li>
+<li>union result union 的结果。</li>
+<li>subquery子查询中的第一个SELECT。</li>
+<li>dependent subquery子查询中的第一个SELECT，取决于外面的查询。</li>
+<li>derived派生表的SELECT, FROM子句的子查询。</li>
+<li>uncacheable subquery一个子查询的结果不能被缓存，必须重新评估外链接的第一行。</li>
+</ul>
+<h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><p>type表示MySQL在表中找到所需行的方式，又称“访问类型”，常用的类型有：</p>
+<p>ALL, index,  range, ref, eq_ref, const, system, NULL。</p>
+<p>从左到右，性能从差到好。</p>
+<ul>
+<li>ALL： Full Table Scan，MySQL将遍历全表以找到匹配的行。</li>
+<li>index: Full Index Scan，index与ALL区别为index类型只遍历索引树。</li>
+<li>range: 只检索给定范围的行，使用一个索引来选择行。</li>
+<li>ref: 表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值。</li>
+<li>eq_ref: 类似ref，区别就在使用的索引是唯一索引，对于每个索引键值，表中只有一条记录匹配，简单来说，就是多表连接中使用primary key或者 unique key作为关联条件。</li>
+<li>const: 当MySQL对查询某部分进行优化，并转换为一个常量时，使用这些类型访问。 如将主键置于where列表中，MySQL就能将该查询转换为一个常量。</li>
+<li>NULL: MySQL在优化过程中分解语句，执行时甚至不用访问表或索引，例如从一个索引列里选取最小值可以通过单独索引查找完成。</li>
+</ul>
+<h3 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h3><p>key列显示MySQL实际决定使用的键（索引），如果没有选择索引，键是NULL。</p>
+<h3 id="possible-keys"><a href="#possible-keys" class="headerlink" title="possible_keys"></a>possible_keys</h3><p>possible_keys指出MySQL能使用哪个索引在表中找到记录，查询涉及到的字段上如果存在索引则该索引将被列出，但不一定被查询使用。</p>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3><p>ref表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值。</p>
+<h3 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h3><p>rows表示MySQL根据表统计信息，以及索引选用的情况，找到所需记录需要读取的行数。这个行数是估算的值，实际行数可能不同。</p>
+<h2 id="声明NOT-NULL"><a href="#声明NOT-NULL" class="headerlink" title="声明NOT NULL"></a>声明NOT NULL</h2><p>当数据列被声明为NOT NULL以后，在查询的时候就不需要判断是否为NULL，由于减少了判断，可以降低复杂性，提高查询速度。</p>
+<p>如果要表示数据列为空，可以使用0等代替。</p>
+<h2 id="考虑使用数值类型代替字符串"><a href="#考虑使用数值类型代替字符串" class="headerlink" title="考虑使用数值类型代替字符串"></a>考虑使用数值类型代替字符串</h2><p>MySQL对数值类型的处理速度要远远快于字符串，而且数值类型往往更加节省空间。</p>
+<p>例如对于“Male”和“Female”可以用“0”和“1”进行代替。</p>
+<h2 id="考虑使用ENUM类型"><a href="#考虑使用ENUM类型" class="headerlink" title="考虑使用ENUM类型"></a>考虑使用ENUM类型</h2><p>如果你的数据列的取值是确定有限的，可以使用ENUM类型代替字符串。因为MySQL会把这些值表示为一系列对应的数字，这样处理的速度会提高很多。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> shirts (</div><div class="line">    <span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">40</span>),</div><div class="line">    <span class="keyword">size</span> ENUM(<span class="string">'x-small'</span>, <span class="string">'small'</span>, <span class="string">'medium'</span>, <span class="string">'large'</span>, <span class="string">'x-large'</span>)</div><div class="line">);</div><div class="line"></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> shirts (<span class="keyword">name</span>, <span class="keyword">size</span>) <span class="keyword">VALUES</span> (<span class="string">'dress shirt'</span>,<span class="string">'large'</span>), (<span class="string">'t-shirt'</span>,<span class="string">'medium'</span>),</div><div class="line">  (<span class="string">'polo shirt'</span>,<span class="string">'small'</span>);</div><div class="line"></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>, <span class="keyword">size</span> <span class="keyword">FROM</span> shirts <span class="keyword">WHERE</span> <span class="keyword">size</span> = <span class="string">'medium'</span>;</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>索引是一个单独的，存储在磁盘上的数据结构，索引对数据表中一列或者多列值进行排序，索引包含着对数据表中所有数据的引用指针。</p>
+<p>本教程从MySQL开始讲起，又介绍了MySQL中索引的使用，最后提供了使用索引的几条原则和优化查询的几个方法。</p>
+<h2 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h2><h2 id="oracle中row-id理解"><a href="#oracle中row-id理解" class="headerlink" title="oracle中row_id理解"></a>oracle中row_id理解</h2><p>ORACLE的row_id是一个伪列,其个是为18个字节可将这18个字节用6363来划分,分别表示段编号,数据文件编号,数据块</p>
+<h2 id="嵌入式数据库和传统数据库的区别"><a href="#嵌入式数据库和传统数据库的区别" class="headerlink" title="嵌入式数据库和传统数据库的区别"></a>嵌入式数据库和传统数据库的区别</h2><p>嵌入式数据库主要像：SQLite、</p>
+<p>传统数据库服务器：SQL Server、Oracle、MySQL</p>
+<p>嵌入式数据库：SQLite的主要特点：</p>
+<ol>
+<li>支持事件，不需要配置，不需要安装，也不需要管理员；</li>
+<li>支持大部分SQL92；</li>
+<li>一个完整的数据库保存在磁盘上面一个文件，同一个数据库文件可以在不同机器上面使用，最大支持数据库到2T，字符和BLOB的支持仅限制于可用内存；</li>
+<li>整个系统少于3万行代码，少于250KB的内存占用(gcc)，大部分应用比目前常见的客户端/服务端的数据库快，没有其它依赖</li>
+<li>源代码开放，代码95%有较好的注释，简单易用的API。官方带有TCL的编译版本。</li>
+</ol>
+<p>关系数据库特点：</p>
+<ol>
+<li>更好的安全性、多用户管理</li>
+<li>强大的数据管理能力，如索引、视图等关系对象</li>
+<li>强大的数据库编程式的设计，像T-SQL、存储过程、游标</li>
+<li>丰富的数据类型</li>
+</ol>
+<h2 id="Inserted和deleted的含义"><a href="#Inserted和deleted的含义" class="headerlink" title="Inserted和deleted的含义"></a>Inserted和deleted的含义</h2><p>inserted表反映插入或更新操作时插入的记录</p>
+<p>deleted表反映删除或更新操作时删除的记录</p>
+<h2 id="函数和过程的区别"><a href="#函数和过程的区别" class="headerlink" title="函数和过程的区别"></a>函数和过程的区别</h2><p>存储过程：</p>
+<ul>
+<li>一般用于在数据库中完成特定的业务或任务</li>
+<li>可以定义返回类型，也可以不定义返回类型</li>
+<li>SQL语句中不可以调用</li>
+</ul>
+<p>函数：</p>
+<ul>
+<li>一般用于特定的数据查询或数据转转换处理</li>
+<li>申请时必须要定义返回类型，且程序体中必须定义return语句</li>
+<li>不能独立执行，必须作为表达式的一部分调用</li>
+<li>SQL语句中可以调用</li>
+</ul>
+<h2 id="数据库优化的方案"><a href="#数据库优化的方案" class="headerlink" title="数据库优化的方案"></a>数据库优化的方案</h2><p>建立主键，为数据库创建索引，建立存储过程，触发器，可提高查询速度。</p>
+<h2 id="Oracle中有哪几种索引"><a href="#Oracle中有哪几种索引" class="headerlink" title="Oracle中有哪几种索引"></a>Oracle中有哪几种索引</h2><ol>
+<li><strong>单列索引与复合索引：</strong>一个索引可以由一个或多个列组成，用来创建索引的列被称为“索引列”。单列索引是基于单列所创建的索引，复合索引是基于两列或者多列所创建的索引。</li>
+<li><strong>唯一索引与非唯一索引：</strong>唯一索引是索引列值不能重复的索引，非唯一索引是索引列可以重复的索引。无论是唯一索引还是非唯一索引，索引列都允许取NULL值。默认情况下，Oracle创建的索引是不唯一索引。</li>
+<li><strong>B树索引：</strong>B树索引是按B树算法组织并存放索引数据的，所以B树索引主要依赖其组织并存放索引数据的算法来实现快速检索功能。</li>
+<li><strong>位图索引：</strong>位图索引在多列查询时，可以对两个列上的位图进行AND和OR操作，达到更好的查询效果。</li>
+<li><strong>函数索引：</strong>Oracle中不仅能够直接对表中的列创建索引，还可以对包含列的函数或表达式创建索引，这种索引称为“位图索引</li>
+</ol>
+<h2 id="数据库索引的优点和缺点"><a href="#数据库索引的优点和缺点" class="headerlink" title="数据库索引的优点和缺点"></a>数据库索引的优点和缺点</h2><p>优点：</p>
+<ol>
+<li>通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。</li>
+<li>可以大大加快数据的检索速度，这也是创建索引的最主要的原因。</li>
+<li>可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。</li>
+<li>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。</li>
+<li>通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加。</li>
+<li>索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。</li>
+<li>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度。</li>
+</ol>
+<h2 id="触发器有几种"><a href="#触发器有几种" class="headerlink" title="触发器有几种"></a>触发器有几种</h2><p>共2种，一种DML触发，就是遇到DML事件时触发执行，像insert\update\delete。一种DDL触发，遇到DDL事件时触发，像Login Datatabase、更改数据库状态、create语句等。</p>
+<h2 id="oracle中除了数据库备份，还有什么方法备份"><a href="#oracle中除了数据库备份，还有什么方法备份" class="headerlink" title="oracle中除了数据库备份，还有什么方法备份"></a>oracle中除了数据库备份，还有什么方法备份</h2><p>Oracle数据库有三种标准的备份方法，它们分别是导出/导入(EXP/IMP)、热备份和冷备份。导出备份是一种逻辑备份，冷备份和热备份是物理备份。</p>
+<p>10G有几种新功能进行备份，像数据磅</p>
+<h2 id="写出删除表中重复记录的语句oracle"><a href="#写出删除表中重复记录的语句oracle" class="headerlink" title="写出删除表中重复记录的语句oracle"></a>写出删除表中重复记录的语句oracle</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> people</div><div class="line"><span class="keyword">where</span> peopleId <span class="keyword">in</span> (<span class="keyword">select</span> peopleId <span class="keyword">from</span> people <span class="keyword">group</span> <span class="keyword">by</span> peopleId <span class="keyword">having</span> <span class="keyword">count</span>(peopleId) &gt; <span class="number">1</span>) <span class="keyword">and</span> <span class="keyword">rowid</span> <span class="keyword">not</span> <span class="keyword">in</span> (<span class="keyword">select</span> <span class="keyword">min</span>(<span class="keyword">rowid</span>) <span class="keyword">from</span>   people <span class="keyword">group</span> <span class="keyword">by</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="ShenWenFang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ShenWenFang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    ShenWenFang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://swenfang.github.io/2019/05/12/面试总结/数据库面试题/" title="数据库面试题">http://swenfang.github.io/2019/05/12/面试总结/数据库面试题/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    	
+          <div>
+            <div class="recommended_posts">
+    
+    
+    <strong>推荐文章 </strong>
+    <ul>
+        
+            <li><a href="http://swenfang.github.io/2019/05/12/面试总结/Mybaties 面试题/">Mybaties 面试题</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/05/12/面试总结/全文检索面试题/">全文检索面试题</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/">SpringBoot和SpringCloud面试题</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/05/12/面试总结/Redis 面试题/">Redis 面试题</a></li>
+        
+    </ul>
+    
+</div>
+
+          </div>
+        
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/基础面试题/" rel="tag"># 基础面试题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/" rel="next" title="SpringBoot和SpringCloud面试题">
+                <i class="fa fa-chevron-left"></i> SpringBoot和SpringCloud面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/12/面试总结/全文检索面试题/" rel="prev" title="全文检索面试题">
+                全文检索面试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4My82MDUx"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="ShenWenFang" />
+            
+              <p class="site-author-name" itemprop="name">ShenWenFang</p>
+              <p class="site-description motion-element" itemprop="description">每一个你不满意的现在，都有一个你没有努力的曾经。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+         <div id="music163player">
+             <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=31861269&auto=0&height=66"></iframe>
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是事务"><span class="nav-number">1.</span> <span class="nav-text">什么是事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库ACID"><span class="nav-number">2.</span> <span class="nav-text">数据库ACID</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-原子性（Atomicity）"><span class="nav-number">2.1.</span> <span class="nav-text">1. 原子性（Atomicity）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-一致性（Consistency）"><span class="nav-number">2.2.</span> <span class="nav-text">2. 一致性（Consistency）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-隔离性（Isolation）"><span class="nav-number">2.3.</span> <span class="nav-text">3. 隔离性（Isolation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-持久性（Durability）"><span class="nav-number">2.4.</span> <span class="nav-text">4. 持久性（Durability）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">3.</span> <span class="nav-text">事务隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-串行化-Serializable"><span class="nav-number">3.1.</span> <span class="nav-text">1. 串行化 (Serializable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-可重复读-Repeated-Read"><span class="nav-number">3.2.</span> <span class="nav-text">2. 可重复读 (Repeated Read)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-读已提交-Read-Committed"><span class="nav-number">3.3.</span> <span class="nav-text">3. 读已提交 (Read Committed)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-读未提交-Read-Uncommitted"><span class="nav-number">3.4.</span> <span class="nav-text">4. 读未提交 (Read Uncommitted)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储引擎"><span class="nav-number">4.</span> <span class="nav-text">存储引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">4.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MyISAM"><span class="nav-number">4.2.</span> <span class="nav-text">1. MyISAM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-InnoDB"><span class="nav-number">4.3.</span> <span class="nav-text">2. InnoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CSV"><span class="nav-number">4.4.</span> <span class="nav-text">3. CSV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Archive"><span class="nav-number">4.5.</span> <span class="nav-text">4. Archive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Memory"><span class="nav-number">4.6.</span> <span class="nav-text">5. Memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Federated"><span class="nav-number">4.7.</span> <span class="nav-text">6. Federated</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问：独立表空间和系统表空间应该如何抉择"><span class="nav-number">4.8.</span> <span class="nav-text">问：独立表空间和系统表空间应该如何抉择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问：如何选择存储引擎"><span class="nav-number">4.9.</span> <span class="nav-text">问：如何选择存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问：MyISAM和InnoDB引擎的区别"><span class="nav-number">4.10.</span> <span class="nav-text">问：MyISAM和InnoDB引擎的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问：为什么不建议-InnoDB-使用亿级大表"><span class="nav-number">4.11.</span> <span class="nav-text">问：为什么不建议 InnoDB 使用亿级大表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引"><span class="nav-number">5.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引分类"><span class="nav-number">5.1.</span> <span class="nav-text">索引分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#B-Tree-索引"><span class="nav-number">5.1.1.</span> <span class="nav-text">B+Tree 索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈希索引"><span class="nav-number">5.1.2.</span> <span class="nav-text">哈希索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全文索引"><span class="nav-number">5.1.3.</span> <span class="nav-text">全文索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#空间数据索引（R-Tree）"><span class="nav-number">5.1.4.</span> <span class="nav-text">空间数据索引（R-Tree）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mysql中的索引类型有哪些，可以从哪些角度来看？"><span class="nav-number">5.1.5.</span> <span class="nav-text">mysql中的索引类型有哪些，可以从哪些角度来看？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引的缺点"><span class="nav-number">5.2.</span> <span class="nav-text">索引的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引的优点"><span class="nav-number">5.3.</span> <span class="nav-text">索引的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在什么情况下适合建立索引"><span class="nav-number">5.4.</span> <span class="nav-text">在什么情况下适合建立索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引失效"><span class="nav-number">5.5.</span> <span class="nav-text">索引失效</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#左连接和右连接区别"><span class="nav-number">5.5.1.</span> <span class="nav-text">左连接和右连接区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL-主从复制原理"><span class="nav-number">5.6.</span> <span class="nav-text">MySQL 主从复制原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql"><span class="nav-number">6.</span> <span class="nav-text">Mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql-的分页-SQL-语句"><span class="nav-number">7.</span> <span class="nav-text">Mysql 的分页 SQL 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面提供几个查询优化的建议。"><span class="nav-number">8.</span> <span class="nav-text">下面提供几个查询优化的建议。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用explain分析查询语句"><span class="nav-number">9.</span> <span class="nav-text">使用explain分析查询语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#select-type"><span class="nav-number">9.1.</span> <span class="nav-text">select_type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">9.2.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Key"><span class="nav-number">9.3.</span> <span class="nav-text">Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#possible-keys"><span class="nav-number">9.4.</span> <span class="nav-text">possible_keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref"><span class="nav-number">9.5.</span> <span class="nav-text">ref</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rows"><span class="nav-number">9.6.</span> <span class="nav-text">rows</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明NOT-NULL"><span class="nav-number">10.</span> <span class="nav-text">声明NOT NULL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑使用数值类型代替字符串"><span class="nav-number">11.</span> <span class="nav-text">考虑使用数值类型代替字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑使用ENUM类型"><span class="nav-number">12.</span> <span class="nav-text">考虑使用ENUM类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle"><span class="nav-number">1.</span> <span class="nav-text">Oracle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oracle中row-id理解"><span class="nav-number">2.</span> <span class="nav-text">oracle中row_id理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌入式数据库和传统数据库的区别"><span class="nav-number">3.</span> <span class="nav-text">嵌入式数据库和传统数据库的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inserted和deleted的含义"><span class="nav-number">4.</span> <span class="nav-text">Inserted和deleted的含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数和过程的区别"><span class="nav-number">5.</span> <span class="nav-text">函数和过程的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库优化的方案"><span class="nav-number">6.</span> <span class="nav-text">数据库优化的方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle中有哪几种索引"><span class="nav-number">7.</span> <span class="nav-text">Oracle中有哪几种索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库索引的优点和缺点"><span class="nav-number">8.</span> <span class="nav-text">数据库索引的优点和缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#触发器有几种"><span class="nav-number">9.</span> <span class="nav-text">触发器有几种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oracle中除了数据库备份，还有什么方法备份"><span class="nav-number">10.</span> <span class="nav-text">oracle中除了数据库备份，还有什么方法备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写出删除表中重复记录的语句oracle"><span class="nav-number">11.</span> <span class="nav-text">写出删除表中重复记录的语句oracle</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ShenWenFang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("9lk8dNt56FULANV18qHRXIff-gzGzoHsz", "lSea2qzYEcPELI1zQN1wWQGt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

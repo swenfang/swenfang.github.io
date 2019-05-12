@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="基础面试题," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ShenWenFang" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Spring Boot 与 Spring 的区别 Spring Boot可以建立独立的Spring应用程序； 内嵌了如Tomcat，Jetty和Undertow这样的容器，也就是说可以直接跑起来，用不着再做部署工作了。 无需再像Spring那样搞一堆繁琐的xml文件的配置； 可以自动配置Spring； 提供了一些现有的功能，如度量工具，表单数据验证以及一些外部配置这样的一些第三方功能； 提供的PO">
+<meta name="keywords" content="基础面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot和SpringCloud面试题">
+<meta property="og:url" content="http://swenfang.github.io/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/index.html">
+<meta property="og:site_name" content="ShenWenFang">
+<meta property="og:description" content="Spring Boot 与 Spring 的区别 Spring Boot可以建立独立的Spring应用程序； 内嵌了如Tomcat，Jetty和Undertow这样的容器，也就是说可以直接跑起来，用不着再做部署工作了。 无需再像Spring那样搞一堆繁琐的xml文件的配置； 可以自动配置Spring； 提供了一些现有的功能，如度量工具，表单数据验证以及一些外部配置这样的一些第三方功能； 提供的PO">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412111608-386935.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412111643-879260.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412111757-854161.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412111845-373920.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412111915-868350.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412111943-135952.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412112020-566111.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412112049-558890.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412112116-418572.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412112805-800691.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412112825-592667.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412112904-253034.jpg">
+<meta property="og:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412112922-392868.jpg">
+<meta property="og:updated_time" content="2019-05-12T13:32:42.924Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot和SpringCloud面试题">
+<meta name="twitter:description" content="Spring Boot 与 Spring 的区别 Spring Boot可以建立独立的Spring应用程序； 内嵌了如Tomcat，Jetty和Undertow这样的容器，也就是说可以直接跑起来，用不着再做部署工作了。 无需再像Spring那样搞一堆繁琐的xml文件的配置； 可以自动配置Spring； 提供了一些现有的功能，如度量工具，表单数据验证以及一些外部配置这样的一些第三方功能； 提供的PO">
+<meta name="twitter:image" content="http://blogimg.nos-eastchina1.126.net/shenwf20190412111608-386935.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://swenfang.github.io/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/"/>
+
+
+
+
+
+  <title>SpringBoot和SpringCloud面试题 | ShenWenFang</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/another"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ShenWenFang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShenWenFang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShenWenFang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SpringBoot和SpringCloud面试题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T21:33:19+08:00">
+                2019-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">基础面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/" class="leancloud_visitors" data-flag-title="SpringBoot和SpringCloud面试题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  10,420 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  37 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Spring-Boot-与-Spring-的区别"><a href="#Spring-Boot-与-Spring-的区别" class="headerlink" title="Spring Boot 与 Spring 的区别"></a>Spring Boot 与 Spring 的区别</h3><ul>
+<li>Spring Boot可以建立独立的Spring应用程序；</li>
+<li>内嵌了如Tomcat，Jetty和Undertow这样的容器，也就是说可以直接跑起来，用不着再做部署工作了。</li>
+<li>无需再像Spring那样搞一堆繁琐的xml文件的配置；</li>
+<li>可以自动配置Spring；</li>
+<li>提供了一些现有的功能，如度量工具，表单数据验证以及一些外部配置这样的一些第三方功能；</li>
+<li>提供的POM可以简化Maven的配置；</li>
+</ul>
+<h3 id="SpringBoot-的自动配置是怎么做的"><a href="#SpringBoot-的自动配置是怎么做的" class="headerlink" title="SpringBoot 的自动配置是怎么做的"></a>SpringBoot 的自动配置是怎么做的</h3><blockquote>
+<p>Spring boot 的所有自动化配置的实现都在 spring-boot-autoconfigure 依赖中，通过@EnableAutoConfiguration 核心注解初始化，并扫描 ClassPath 目录中自动配置类对应依赖。并对对应的组件依赖按一定规则获取默认配置并自动初始化所需要的 Bean。</p>
+</blockquote>
+<p>先答为什么需要自动配置？<br>顾名思义，自动配置的意义是利用这种模式代替了配置 XML 繁琐模式。以前使用 Spring MVC ，需要进行配置组件扫描、调度器、视图解析器等，使用 Spring Boot 自动配置后，只需要添加 MVC 组件即可自动配置所需要的 Bean。所有自动配置的实现都在 spring-boot-autoconfigure 依赖中，包括 Spring MVC 、Data 和其它框架的自动配置。</p>
+<p>接着答spring-boot-autoconfigure 依赖的工作原理?<br>spring-boot-autoconfigure 依赖的工作原理很简单，通过 @EnableAutoConfiguration 核心注解初始化，并扫描 ClassPath 目录中自动配置类对应依赖。比如工程中有木有添加 Thymeleaf 的 Starter 组件依赖。如果有，就按按一定规则获取默认配置并自动初始化所需要的 Bean。</p>
+<p>ioc的思想最核心的地方在于，<strong>资源不由使用资源的双方管理，而由不使用资源的第三方管理</strong>，这可以带来很多好处： </p>
+<ul>
+<li>第一，资源集中管理，实现资源的可配置和易管理。 </li>
+<li>第二，降低了使用资源双方的依赖程度，也就是我们说的耦合度。</li>
+</ul>
+<h3 id="什么是springboot"><a href="#什么是springboot" class="headerlink" title="什么是springboot"></a>什么是springboot</h3><pre><code>用来简化spring应用的初始搭建以及开发过程 使用特定的方式来进行配置（properties或yml文件） 
+创建独立的spring引用程序 main方法运行
+嵌入的Tomcat 无需部署war文件
+简化maven配置
+自动配置spring添加对应功能starter自动化配置               
+</code></pre><h3 id="springboot常用的starter有哪些"><a href="#springboot常用的starter有哪些" class="headerlink" title="springboot常用的starter有哪些"></a>springboot常用的starter有哪些</h3><pre><code>spring-boot-starter-web 嵌入tomcat和web开发需要servlet与jsp支持
+spring-boot-starter-data-jpa 数据库支持
+spring-boot-starter-data-redis redis数据库支持
+spring-boot-starter-data-solr solr支持
+mybatis-spring-boot-starter 第三方的mybatis集成starter      
+</code></pre><h3 id="springboot自动配置的原理"><a href="#springboot自动配置的原理" class="headerlink" title="springboot自动配置的原理"></a>springboot自动配置的原理</h3><pre><code>在spring程序main方法中 添加@SpringBootApplication或者@EnableAutoConfiguration
+会自动去maven中读取每个starter中的spring.factories文件  该文件里配置了所有需要被创建spring容器中的bean
+</code></pre><h3 id="springboot读取配置文件的方式"><a href="#springboot读取配置文件的方式" class="headerlink" title="springboot读取配置文件的方式"></a>springboot读取配置文件的方式</h3><pre><code>springboot默认读取配置文件为application.properties或者是application.yml    
+</code></pre><h3 id="springboot集成mybatis的过程"><a href="#springboot集成mybatis的过程" class="headerlink" title="springboot集成mybatis的过程"></a>springboot集成mybatis的过程</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">添加mybatis的starter maven依赖</div><div class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">在mybatis的接口中 添加@Mapper注解</div><div class="line">在application.yml配置数据源信息</div></pre></td></tr></table></figure>
+<p>​        </p>
+<h3 id="springboot如何添加【修改代码】自动重启功能"><a href="#springboot如何添加【修改代码】自动重启功能" class="headerlink" title="springboot如何添加【修改代码】自动重启功能"></a>springboot如何添加【修改代码】自动重启功能</h3><p>添加开发者工具集=====spring-boot-devtools</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>SpringBoot2.0新增什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">1.支持 Java9</div><div class="line"></div><div class="line">2.基于 Spring5 构建</div><div class="line"></div><div class="line">3.Tomcat 升级到 8.5</div><div class="line"></div><div class="line">4.Flyway 升级到 5</div><div class="line"></div><div class="line">5.Hibernate 升级到 5.2</div><div class="line"></div><div class="line">6.Thymeleaf 升级到 3</div></pre></td></tr></table></figure>
+<p>​        </p>
+<h3 id="什么是微服务"><a href="#什么是微服务" class="headerlink" title="什么是微服务"></a>什么是微服务</h3><pre><code>以前的模式是 所有的代码在同一个工程中 部署在同一个服务器中 同一个项目的不同模块不同功能互相抢占资源
+微服务 将工程根据不同的业务规则拆分成微服务 微服务部署在不同的机器上 服务之间进行相互调用
+Java微服务的框架有 dubbo（只能用来做微服务），spring cloud（提供了服务的发现，断路器等）
+</code></pre><h3 id="springcloud如何实现服务的注册和发现"><a href="#springcloud如何实现服务的注册和发现" class="headerlink" title="springcloud如何实现服务的注册和发现"></a>springcloud如何实现服务的注册和发现</h3><pre><code>服务在发布时 指定对应的服务名（服务名包括了IP地址和端口） 将服务注册到注册中心（eureka或者zookeeper）
+这一过程是springcloud自动实现 只需要在main方法添加@EnableDisscoveryClient  同一个服务修改端口就可以启动多个实例调用方法：传递服务名称通过注册中心获取所有的可用实例 通过负载均衡策略调用（ribbon和feign）对应的服务
+</code></pre><h3 id="ribbon和feign区别"><a href="#ribbon和feign区别" class="headerlink" title="ribbon和feign区别"></a>ribbon和feign区别</h3><pre><code>Ribbon添加maven依赖 spring-starter-ribbon 使用@RibbonClient(value=&quot;服务名称&quot;) 使用RestTemplate调用远程服务对应的方法feign添加maven依赖 spring-starter-feign 服务提供方提供对外接口 调用方使用 在接口上使用@FeignClient(&quot;指定服务名&quot;)
+</code></pre><h3 id="Ribbon和Feign的区别："><a href="#Ribbon和Feign的区别：" class="headerlink" title="Ribbon和Feign的区别："></a>Ribbon和Feign的区别：</h3><pre><code>Ribbon和Feign都是用于调用其他服务的，不过方式不同。
+1.启动类使用的注解不同，Ribbon用的是@RibbonClient，Feign用的是@EnableFeignClients。
+2.服务的指定位置不同，Ribbon是在@RibbonClient注解上声明，Feign则是在定义抽象方法的接口中使用@FeignClient声明。
+3.调用方式不同，Ribbon需要自己构建http请求，模拟http请求然后使用RestTemplate发送给其他服务，步骤相当繁琐。Feign则是在Ribbon的基础上进行了一次改进，采用接口的方式，将需要调用的其他服务的方法定义成抽象方法即可，
+不需要自己构建http请求。不过要注意的是抽象方法的注解、方法签名要和提供服务的方法完全一致。
+</code></pre><h3 id="springcloud断路器的作用"><a href="#springcloud断路器的作用" class="headerlink" title="springcloud断路器的作用"></a>springcloud断路器的作用</h3><pre><code>当一个服务调用另一个服务由于网络原因或者自身原因出现问题时 调用者就会等待被调用者的响应 当更多的服务请求到这些资源时导致更多的请求等待 这样就会发生连锁效应（雪崩效应） 断路器就是解决这一问题
+            断路器有完全打开状态
+                    一定时间内 达到一定的次数无法调用 并且多次检测没有恢复的迹象 断路器完全打开，那么下次请求就不会请求到该服务
+
+            半开
+                    短时间内 有恢复迹象 断路器会将部分请求发给该服务 当能正常调用时 断路器关闭
+            关闭
+                    当服务一直处于正常状态 能正常调用 断路器关闭
+</code></pre><h3 id="服务注册发现组件Eureka工作原理"><a href="#服务注册发现组件Eureka工作原理" class="headerlink" title="服务注册发现组件Eureka工作原理"></a>服务注册发现组件Eureka工作原理</h3><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412111608-386935.jpg" alt=""></p>
+<h3 id="服务网关组件Zuul工作原理"><a href="#服务网关组件Zuul工作原理" class="headerlink" title="服务网关组件Zuul工作原理"></a>服务网关组件Zuul工作原理</h3><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412111643-879260.jpg" alt=""></p>
+<h3 id="跨域时序图"><a href="#跨域时序图" class="headerlink" title="跨域时序图"></a>跨域时序图</h3><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412111757-854161.jpg" alt=""></p>
+<h3 id="Eureka与Ribbon整合工作原理"><a href="#Eureka与Ribbon整合工作原理" class="headerlink" title="Eureka与Ribbon整合工作原理"></a>Eureka与Ribbon整合工作原理</h3><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412111845-373920.jpg" alt=""></p>
+<h3 id="解决分布式一致性"><a href="#解决分布式一致性" class="headerlink" title="解决分布式一致性"></a>解决分布式一致性</h3><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412111915-868350.jpg" alt=""></p>
+<h3 id="级联故障流程"><a href="#级联故障流程" class="headerlink" title="级联故障流程"></a>级联故障流程</h3><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412111943-135952.jpg" alt=""></p>
+<h3 id="断路器组件Hystrix工作原理"><a href="#断路器组件Hystrix工作原理" class="headerlink" title="断路器组件Hystrix工作原理"></a>断路器组件Hystrix工作原理</h3><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412112020-566111.jpg" alt=""></p>
+<h3 id="分布式追踪Sleuth工作原理"><a href="#分布式追踪Sleuth工作原理" class="headerlink" title="分布式追踪Sleuth工作原理"></a>分布式追踪Sleuth工作原理</h3><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412112049-558890.jpg" alt=""></p>
+<h3 id="SpringBoot自动配置工作原理"><a href="#SpringBoot自动配置工作原理" class="headerlink" title="SpringBoot自动配置工作原理"></a>SpringBoot自动配置工作原理</h3><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412112116-418572.jpg" alt=""></p>
+<h3 id="什么是SpringCloud"><a href="#什么是SpringCloud" class="headerlink" title="什么是SpringCloud"></a>什么是SpringCloud</h3><p>Spring cloud流应用程序启动器是基于Spring Boot的Spring集成应用程序，提供与外部系统的集成。Spring cloud Task，一个生命周期短暂的微服务框架，用于快速构建执行有限数据处理的应用程序。</p>
+<h3 id="使用Spring-Cloud有什么优势"><a href="#使用Spring-Cloud有什么优势" class="headerlink" title="使用Spring Cloud有什么优势"></a>使用Spring Cloud有什么优势</h3><p>使用Spring Boot开发分布式微服务时，我们面临以下问题</p>
+<ul>
+<li>与分布式系统相关的复杂性-这种开销包括网络问题，延迟开销，带宽问题，安全问题。</li>
+<li>服务发现-服务发现工具管理群集中的流程和服务如何查找和互相交谈。它涉及一个服务目录，在该目录中注册服务，然后能够查找并连接到该目录中的服务。</li>
+<li>冗余-分布式系统中的冗余问题。</li>
+<li>负载平衡 –负载平衡改善跨多个计算资源的工作负荷，诸如计算机，计算机集群，网络链路，<a href="https://www.baidu.com/s?wd=%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="external">中央处理单元</a>，或磁盘驱动器的分布。</li>
+<li>性能-问题 由于各种运营开销导致的性能问题。</li>
+<li>部署复杂性-Devops技能的要求。</li>
+</ul>
+<h3 id="服务注册和发现是什么意思？Spring-Cloud如何实现？"><a href="#服务注册和发现是什么意思？Spring-Cloud如何实现？" class="headerlink" title="服务注册和发现是什么意思？Spring Cloud如何实现？"></a>服务注册和发现是什么意思？Spring Cloud如何实现？</h3><p>当我们开始一个项目时，我们通常在属性文件中进行所有的配置。随着越来越多的服务开发和部署，添加和修改这些属性变得更加复杂。有些服务可能会下降，而某些位置可能会发生变化。手动更改属性可能会产生问题。 Eureka服务注册和发现可以在这种情况下提供帮助。由于所有服务都在Eureka服务器上注册并通过调用Eureka服务器完成查找，因此无需处理服务地点的任何更改和处理。</p>
+<h3 id="负载平衡的意义什么"><a href="#负载平衡的意义什么" class="headerlink" title="负载平衡的意义什么"></a>负载平衡的意义什么</h3><p>在计算中，负载平衡可以改善跨计算机，计算机集群，网络链接，中央处理单元或磁盘驱动器等多种计算资源的工作负载分布。负载平衡旨在优化资源使用，最大化吞吐量，最小化响应时间并避免任何单一资源的过载。使用多个组件进行负载平衡而不是单个组件可能会通过冗余来提高可靠性和可用性。负载平衡通常涉及专用软件或硬件，例如<a href="https://www.baidu.com/s?wd=%E5%A4%9A%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="external">多层交换机</a>或域名系统服务器进程。</p>
+<h3 id="什么是Hystrix？它如何实现容错？"><a href="#什么是Hystrix？它如何实现容错？" class="headerlink" title="什么是Hystrix？它如何实现容错？"></a>什么是Hystrix？它如何实现容错？</h3><p>Hystrix是一个延迟和容错库，旨在隔离远程系统，服务和第三方库的访问点，当出现故障是<a href="https://www.baidu.com/s?wd=%E4%B8%8D%E5%8F%AF%E9%81%BF%E5%85%8D&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="external">不可避免</a>的故障时，停止级联故障并在复杂的分布式系统中实现弹性。</p>
+<p>通常对于使用微服务架构开发的系统，涉及到许多微服务。这些微服务彼此协作。</p>
+<p>思考以下微服务</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412112805-800691.jpg" alt=""></p>
+<p>假设如果上图中的微服务9失败了，那么使用传统方法我们将传播一个异常。但这仍然会导致整个系统崩溃。</p>
+<p>随着微服务数量的增加，这个问题变得更加复杂。微服务的数量可以高达1000.这是hystrix出现的地方 我们将使用Hystrix在这种情况下的Fallback方法功能。我们有两个服务employee-consumer使用由employee-consumer公开的服务。</p>
+<p>简化图如下所示</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412112825-592667.jpg" alt=""></p>
+<p>现在假设由于某种原因，employee-producer公开的服务会抛出异常。我们在这种情况下使用Hystrix定义了一个回退方法。这种后备方法应该具有与公开服务相同的返回类型。如果暴露服务中出现异常，则回退方法将返回一些值。</p>
+<h3 id="什么是Hystrix断路器？我们需要它吗？"><a href="#什么是Hystrix断路器？我们需要它吗？" class="headerlink" title="什么是Hystrix断路器？我们需要它吗？"></a>什么是Hystrix断路器？我们需要它吗？</h3><p>由于某些原因，employee-consumer公开服务会引发异常。在这种情况下使用Hystrix我们定义了一个回退方法。如果在公开服务中发生异常，则回退方法返回一些默认值。</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412112904-253034.jpg" alt=""></p>
+<p>如果firstPage method() 中的异常继续发生，则Hystrix电路将中断，并且员工使用者将一起跳过firtsPage方法，并直接调用回退方法。 断路器的目的是给第一页方法或第一页方法可能调用的其他方法留出时间，并导致异常恢复。可能发生的情况是，在负载较小的情况下，导致异常的问题有更好的恢复机会 。</p>
+<p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190412112922-392868.jpg" alt=""></p>
+<h3 id="什么是Netflix-Feign？它的优点是什么？"><a href="#什么是Netflix-Feign？它的优点是什么？" class="headerlink" title="什么是Netflix Feign？它的优点是什么？"></a>什么是Netflix Feign？它的优点是什么？</h3><p>Feign是受到Retrofit，JAXRS-2.0和WebSocket启发的java客户端联编程序。Feign的第一个目标是将约束分母的复杂性统一到http apis，而不考虑其稳定性。在employee-consumer的例子中，我们使用了employee-producer使用REST模板公开的REST服务。</p>
+<p>但是我们必须编写大量代码才能执行以下步骤</p>
+<ul>
+<li>使用功能区进行负载平衡。</li>
+<li>获取服务实例，然后获取基本URL。</li>
+<li>利用REST模板来使用服务。 前面的代码如下</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Controller</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConsumerControllerClient</span> </span>&#123;</div><div class="line"> </div><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="keyword">private</span> LoadBalancerClient loadBalancer;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getEmployee</span><span class="params">()</span> <span class="keyword">throws</span> RestClientException, IOException </span>&#123;</div><div class="line"> </div><div class="line">    ServiceInstance serviceInstance=loadBalancer.choose(<span class="string">"employee-producer"</span>);</div><div class="line"> </div><div class="line">    System.out.println(serviceInstance.getUri());</div><div class="line"> </div><div class="line">    String baseUrl=serviceInstance.getUri().toString();</div><div class="line"> </div><div class="line">    baseUrl=baseUrl+<span class="string">"/employee"</span>;</div><div class="line"> </div><div class="line">    RestTemplate restTemplate = <span class="keyword">new</span> RestTemplate();</div><div class="line">    ResponseEntity&lt;String&gt; response=<span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span>&#123;</div><div class="line">    response=restTemplate.exchange(baseUrl,</div><div class="line">            HttpMethod.GET, getHeaders(),String.class);</div><div class="line">    &#125;<span class="keyword">catch</span> (Exception ex)</div><div class="line">    &#123;</div><div class="line">        System.out.println(ex);</div><div class="line">    &#125;</div><div class="line">    System.out.println(response.getBody());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之前的代码，有像NullPointer这样的例外的机会，并不是最优的。我们将看到如何使用Netflix Feign使呼叫变得更加轻松和清洁。如果Netflix Ribbon依赖关系也在类路径中，那么Feign默认也会负责负载平衡。</p>
+<h3 id="什么是Spring-Cloud-Bus？我们需要它吗？"><a href="#什么是Spring-Cloud-Bus？我们需要它吗？" class="headerlink" title="什么是Spring Cloud Bus？我们需要它吗？"></a>什么是Spring Cloud Bus？我们需要它吗？</h3><p>考虑以下情况：我们有多个应用程序使用Spring Cloud Config读取属性，而Spring Cloud Config从GIT读取这些属性。</p>
+<p>下面的例子中多个员工生产者模块从</p>
+<h3 id="什么是微服务架构"><a href="#什么是微服务架构" class="headerlink" title="什么是微服务架构"></a>什么是微服务架构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">   1.微服务是系统架构上的一种设计风格，他的主旨是将一个原本独立的系统拆分成多个小型服务</div><div class="line"></div><div class="line">2.这些小型服务都在各自独立的进程中运行</div><div class="line"></div><div class="line">3.服务之间通过基于HTTP的RESTful API进行通信协作</div><div class="line"></div><div class="line">4.被拆分的每个微服务都围绕系统中的某一项或一些耦合度较高的业务功能进行构建</div><div class="line"></div><div class="line">5.并且每个微服务都维护着自身的数据存储，业务开发，自动化测试案例以及独立部署机制</div><div class="line"></div><div class="line">6.由于有了轻量级的通信协作基础，所以这些微服务可以使用不同的语言来编写</div></pre></td></tr></table></figure>
+<h3 id="微服务之间是如何独立通讯的？"><a href="#微服务之间是如何独立通讯的？" class="headerlink" title="微服务之间是如何独立通讯的？"></a>微服务之间是如何独立通讯的？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">同步：RPC,REST等；使用HTTP的RESTful API或轻量级的消息发送协议，实现信息传递与服务调用的触发。</div><div class="line"></div><div class="line">	异步：消息队列，要考虑可靠传输，高性能，以及编程模型的编号等；通过在轻量级的消息总线上传递消息，类似Rabbitmq等一些提供可靠异步</div><div class="line"></div><div class="line">			交换的中间件。</div></pre></td></tr></table></figure>
+<h3 id="谈谈你对SpringBoot-SpringCloud的理解"><a href="#谈谈你对SpringBoot-SpringCloud的理解" class="headerlink" title="谈谈你对SpringBoot,SpringCloud的理解"></a>谈谈你对SpringBoot,SpringCloud的理解</h3><h3 id="什么是服务熔断，什么是服务降级？"><a href="#什么是服务熔断，什么是服务降级？" class="headerlink" title="什么是服务熔断，什么是服务降级？"></a>什么是服务熔断，什么是服务降级？</h3><p>扇出与雪崩响应：</p>
+<p>多位微服务之间调用的时候，假设微服务A调用微服务B和微服务C，微服务B和微服务C又调用其他微服务，这就是所谓的”扇处”。如果扇处的链路上某个微服务的调用响应时间过长或者不可用，对微服务A的调用就会占用越来越多的系统资源，进而引起系统崩溃—所谓的”雪崩效应”。</p>
+<p>服务熔断：</p>
+<p>熔断机制是应对雪崩效应的一种微服务链路保护机制！！！当扇出链路的某个微服务不可用或者响应时间太长时，会进行服务的降级，进而熔断该节点微服务的调用，快速返回“错误”的响应信息。当检测到该节点微服务调用响应正常后恢复链路。在SpringCloud框架里熔断机制通过Hystrix实现。Hystrix会监控微服务调用的状况，当失败的调用到一定阈值就会启动熔断机制(默认是5秒内20次调用失败就会启动熔断机制)。但服务熔断来处理雪崩效应是非常可怕的，不可取的。第一如果有多个方法，对应的FallBack方法也会随之膨胀；第二异常处理与业务逻辑高耦合，完全不符合Spring AOP面向切面的思想。</p>
+<p>服务降级：</p>
+<p>整体资源快不够了，忍痛将某些服务先关掉，待渡过难关，再开启回来。服务降级处理是在客户端(消费者)完成的与服务端没有关系。</p>
+<p>个人感觉：多个微服务之间进行调用，假设微服务A调用微服务B和微服务C,微服务B和微服务C又调用其他微服务，这就是所谓的“扇出”。如果扇出链路上某个微服务的调用响应时间过长或者不可用，对微服务A的调用就会占用越来越多的系统资源，进而引起系统崩溃—所谓的“雪崩效应”。</p>
+<p>服务熔断和服务降级都是为了解决雪崩效应，只是二者实现方式不同：</p>
+<p>服务熔断在服务提供端，进行服务降级，进而熔断该节点微服务的调用，快速返回“失败”的响应信息。当检测到 该节点微服务调用响应正常恢复链路。当失败的次数达到一定阈值就会启动熔断机制服务降级，处理方式在客户端完成与服务端有没有关系，整体资源快不够了，忍痛将某些服务先关掉，待度过难关再开启回来。</p>
+<p>服务监控：htstrix dashbord</p>
+<h3 id="微服务的优缺点？"><a href="#微服务的优缺点？" class="headerlink" title="微服务的优缺点？"></a>微服务的优缺点？</h3><p>优点：</p>
+<p>每个服务足够内聚，足够小，代码容易理解这样能聚焦一个指定的业务功能或业务需求</p>
+<p>开发简单、开发效率提高，一个服务可能就是专一的只干一件事。</p>
+<p>微服务能够被小团队独立开发，这个团队可以使2到5人的开发人员组成。</p>
+<p>微服务是松耦合的，是有功能意义的服务，无论实在开发阶段或部署阶段都是独立的。</p>
+<p>微服务能使用不同的语言开发。</p>
+<p>微服务只是业务逻辑的代码，不会和HTML,CSS或其他界面组件混合。</p>
+<p>每个微服务都有自己的存储能力，可以有自己的数据库。也可以有统一的数据库。</p>
+<p>缺点：</p>
+<p>开发人员要处理分布式系统的复杂性</p>
+<p>多服务运维难度，随着服务的增加，运维的压力也在增加</p>
+<p>系统部署依赖</p>
+<p>服务间通信成本</p>
+<p>数据一致性</p>
+<p>系统集成测试</p>
+<p>性能监控</p>
+<h3 id="分布式事务？"><a href="#分布式事务？" class="headerlink" title="分布式事务？"></a>分布式事务？</h3><p>使用lcn</p>
+<h3 id="谈谈你所知道的微服务技术栈有哪些？"><a href="#谈谈你所知道的微服务技术栈有哪些？" class="headerlink" title="谈谈你所知道的微服务技术栈有哪些？"></a>谈谈你所知道的微服务技术栈有哪些？</h3><h3 id="什么是springboot-1"><a href="#什么是springboot-1" class="headerlink" title="什么是springboot"></a>什么是springboot</h3><p>Spring Boot的宗旨并非要重写Spring或是替代Spring,而是希望通过设计大量的自动化配置等方式来简化Spring原有样板化的配置，用来简化Spring初始构建以及开发工程的，使用特定的方式来进行配置</p>
+<ol>
+<li>大量的自动化配置来简化Spring原有样板化的配置，</li>
+<li>简化Maven配置，是依赖管理变得更加简单(添加对应功能的starter)，</li>
+<li>快速开发(创建独立的Spring引用程序，main方法运行)，</li>
+<li>轻松部署(内嵌的tomcat，不需要部署war文件，直接运行jar文件)</li>
+</ol>
+<h3 id="SpringBoot自动配置的原理"><a href="#SpringBoot自动配置的原理" class="headerlink" title="SpringBoot自动配置的原理"></a>SpringBoot自动配置的原理</h3><p>在spring程序main方法中 添加@SpringBootApplication或者@EnableAutoConfiguration会自动去maven中读取每个starter中的spring.factories文件  该文件里配置了所有需要被创建spring容器中的bean</p>
+<h3 id="springboot读取配置文件的方式-1"><a href="#springboot读取配置文件的方式-1" class="headerlink" title="springboot读取配置文件的方式"></a>springboot读取配置文件的方式</h3><p>springboot默认读取配置文件为application.properties或者是application.yml</p>
+<h3 id="springCloud如何实现服务的注册和发现的"><a href="#springCloud如何实现服务的注册和发现的" class="headerlink" title="springCloud如何实现服务的注册和发现的"></a>springCloud如何实现服务的注册和发现的</h3><p>服务在发布时 指定对应的服务名（服务名包括了IP地址和端口） 将服务注册到注册中心（eureka或者zookeeper）这一过程是springcloud自动实现 只需要在main方法添加@EnableDisscoveryClient  同一个服务修改端口就可以启动多个实例调用方法：传递服务名称通过注册中心获取所有的可用实例 通过负载均衡策略调用（ribbon和feign）对应的服务</p>
+<h3 id="对外服务接口带有Request参数的请求，带有Header信息的请求，带有RequestBody的请求以及请求响应体是一个对象的请求，Spring-Cloud-Feign接口调用如何绑定参数？"><a href="#对外服务接口带有Request参数的请求，带有Header信息的请求，带有RequestBody的请求以及请求响应体是一个对象的请求，Spring-Cloud-Feign接口调用如何绑定参数？" class="headerlink" title="对外服务接口带有Request参数的请求，带有Header信息的请求，带有RequestBody的请求以及请求响应体是一个对象的请求，Spring Cloud Feign接口调用如何绑定参数？"></a>对外服务接口带有Request参数的请求，带有Header信息的请求，带有RequestBody的请求以及请求响应体是一个对象的请求，Spring Cloud Feign接口调用如何绑定参数？</h3><p>注意：在各参数绑定时，@RequestParam,@RequestHeader等可以指定参数名称的注解，它的value不能少。在SpringMVC程序中，这些注解会根据参数名作为默认值，但是在Feign中绑定参数必须通过value属性来指明具体的参数名，不然抛异常，value不能少。</p>
+<h3 id="Feign与Ribbon，Hystrix的关系"><a href="#Feign与Ribbon，Hystrix的关系" class="headerlink" title="Feign与Ribbon，Hystrix的关系"></a>Feign与Ribbon，Hystrix的关系</h3><p>Feign的客户端负载均衡是通过SpringCloud Ribbon实现的，所以可以直接通过配置Ribbon客户端的方式来自定义各个服务客户端的参数。Feign引入了服务保护与容错的工具Hystix,默认情况下，Feign将所有Feign客户端方法都封装到Hystrix命令中进行服务保护。</p>
+<h3 id="Ribbon全局配置，Ribbon指定服务配置，Ribbon重要的配置参数，Ribbon重试机制"><a href="#Ribbon全局配置，Ribbon指定服务配置，Ribbon重要的配置参数，Ribbon重试机制" class="headerlink" title="Ribbon全局配置，Ribbon指定服务配置，Ribbon重要的配置参数，Ribbon重试机制"></a>Ribbon全局配置，Ribbon指定服务配置，Ribbon重要的配置参数，Ribbon重试机制</h3><p>Ribbon全局配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ribbon.ConnectTimeout = 500</div><div class="line">ribbon.ReadTimeout = 5000</div></pre></td></tr></table></figure>
+<p>Ribbon指定服务配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在SpringCloud Feign中针对各个服务客户端进行个性化配置的方式与在SpringCloud Ribbon的配置方式是一样的，都采用&lt;Client&gt;.ribbon.key=value的格式进行设置。服务名就是@FeignClients指定的name或value。</div></pre></td></tr></table></figure>
+<p>Ribbon重要的配置参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#建立连接的超时时间</div><div class="line">HELLO-SERVICE.ribbon.ConnectTimeout = 500</div><div class="line">#连接超时时间</div><div class="line">HELLO-SERVICE.ribbon.ReadTimeout = 2000</div><div class="line">#所有操作都重试	</div><div class="line">HELLO-SERVICE.ribbon.OkToRetryOnAllOperations = true</div><div class="line">#重试发生，更换节点数最大值</div><div class="line">HELLO-SERVICE.ribbon.MaxAutoRetriesNextServer = 2</div><div class="line">#单个节点重试最大值</div><div class="line">HELLO-SERVICE.ribbon.MaxAutoRetries = 1</div></pre></td></tr></table></figure>
+<p>重试机制：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">SpringCloud Feign默认实现了重试机制，重试时间计算方式。Feign重试机制默认关闭，以免和ribbon冲突。</div><div class="line">ribbon:</div><div class="line">			ReadTimeout: 3000</div><div class="line">			ConnectTimeout: 3000</div><div class="line">			MaxAutoRetries: 1 #同一台实例最大重试次数,不包括首次调用</div><div class="line">			MaxAutoRetriesNextServer: 1 #重试负载均衡其他的实例最大重试次数,不包括首次调用</div><div class="line">			OkToRetryOnAllOperations: false  #是否所有操作都重试 </div><div class="line">根据上面的参数计算重试的次数：MaxAutoRetries+MaxAutoRetriesNextServer+(MaxAutoRetries *MaxAutoRetriesNextServer) 即重试3次则一共产生4次调用。如果在重试期间，时间超过了hystrix的超时时间，便会立即执行熔断，fallback。所以要根据上面配置的参数计算hystrix的超时时间，使得在重试期间不能达到hystrix的超时时间，不然重试机制就会没有意义</div><div class="line">hystrix超时时间的计算： </div><div class="line">(1 + MaxAutoRetries + MaxAutoRetriesNextServer) * ReadTimeout 即按照以上的配置 hystrix的超时时间应该配置为 （1+1+1）*3=9秒</div><div class="line">当ribbon超时后且hystrix没有超时，便会采取重试机制。当OkToRetryOnAllOperations设置为false时，只会对get请求进行重试。如果设置为true，便会对所有的请求进行重试，如果是put或post等写操作，如果服务器接口没做幂等性，会产生不好的结果，所以OkToRetryOnAllOperations慎用。如果不配置ribbon的重试次数，默认会重试一次</div><div class="line">注意：</div><div class="line">	默认情况下,GET方式请求无论是连接异常还是读取异常,都会进行重试</div><div class="line">	非GET方式请求,只有连接异常时,才会进行重试</div></pre></td></tr></table></figure>
+<h3 id="Ribbon超时与Hystrix超时区别"><a href="#Ribbon超时与Hystrix超时区别" class="headerlink" title="Ribbon超时与Hystrix超时区别"></a>Ribbon超时与Hystrix超时区别</h3><p>让Hystrix超时时间大于Ribbon超时时间,否则Hystrix命令直接熔断，重试机制就没意义了</p>
+<h3 id="服务降级，服务容错，断路器三者关系"><a href="#服务降级，服务容错，断路器三者关系" class="headerlink" title="服务降级，服务容错，断路器三者关系"></a>服务降级，服务容错，断路器三者关系</h3><p>服务降级是服务容错的重要功能，服务降级的实现只需为Feign客户端定义接口编写一个具体的接口实现类，每个重写方法的实现逻辑都可以用来定义相应的服务降级逻辑。每一个服务接口的断路器实际就是实现类中重写函数的实现。</p>
+<h3 id="Zuul网关服务主要解决的问题"><a href="#Zuul网关服务主要解决的问题" class="headerlink" title="Zuul网关服务主要解决的问题"></a>Zuul网关服务主要解决的问题</h3><p>从运维人员角度看：</p>
+<p>客户端请求通过F5,Nginx等设施的路由和负载均衡分配后，被转发到不同的服务实例上。当有实例增减或是IP地址变动时，运维人员需要手工维护路由规则和服务实例。当系统复杂时，就需要一套机制有效降低维护路由规则与服务实例列表的难度。    </p>
+<p>从开发人员角度看：</p>
+<p>为了保证对外服务的安全性，所有对外的微服务接口往往都会有一定的权限校验机制。为了防止客户端在发起请求时被篡改等安全方面的考虑，需要签名校验，对校验的修改，扩展，优化，就需要解决各个前置校验的冗余问题。</p>
+<p>API网关是整个微服务架构系统的入口，所有的外部客户端访问都需要经过他来进行调度和过滤。它处理要实现请求路由，负载均衡，校验过滤等功能之外，还需要更多的能力，比如与服务治理框架结合，请求转发时的熔断机制，服务的聚合等一系列高级功能。</p>
+<h3 id="Zuul如何维护路由规则和服务实例列表，如何解决签名校验，登录校验在微服务架构中的冗余问题"><a href="#Zuul如何维护路由规则和服务实例列表，如何解决签名校验，登录校验在微服务架构中的冗余问题" class="headerlink" title="Zuul如何维护路由规则和服务实例列表，如何解决签名校验，登录校验在微服务架构中的冗余问题"></a>Zuul如何维护路由规则和服务实例列表，如何解决签名校验，登录校验在微服务架构中的冗余问题</h3><p>服务实例列表的维护：Zuul与服务治理框架整合，将自身注册为服务治理下的应用，从服务中心获取所有其他微服务的实例信息。</p>
+<p>路由规则的维护：Zuul默认会通过以服务名的作为contextPath的方式来创建路由映射。</p>
+<p>校验逻辑在本质上与微服务应用自身的业务没有多大关系，完全可以把它们独立成一个单独的服务存在，只是这个微服务不是给各个微服务调用，而是在API网关服务上进行统一调用来对微服务接口做前置过滤，以实现对微服务接口的拦截和过滤。Zuul提供了一套过滤器机制，通过创建各种过滤器，然后指定哪些规则的请求需要执行校验逻辑，只有通过的校验才会被路由到具体的微服务接口，不然返回错误信息。</p>
+<h3 id="Zuul的请求过滤功能-安全校验，权限控制"><a href="#Zuul的请求过滤功能-安全校验，权限控制" class="headerlink" title="Zuul的请求过滤功能(安全校验，权限控制)"></a>Zuul的请求过滤功能(安全校验，权限控制)</h3><p>通过继承ZuulFilter抽象类并重写了下面4个方法，来实现自定义的过滤器</p>
+<p>filterType:过滤器类型，决定过滤器在请求的哪个生命周期中执行，具体如下：</p>
+<p>pre:可以在请求被路由之前调用</p>
+<p>routing:在路由请求时被调用</p>
+<p>post:在routing和error过滤器之后被调用</p>
+<p>error:处理请求时发生错误时被调用</p>
+<p>filterOrder:过滤器执行顺序，当请求存在多个过滤器时，需要根据该方法返回值依次执行，数值越小优先级越高</p>
+<p>shouldFilter:判断该过滤器是否需要被执行。实际中我们利用这个函数来制定过滤器的有效范围</p>
+<p>run:过滤器具体的执行逻辑</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> ZuulException </span>&#123;</div><div class="line">        RequestContext ctx = RequestContext.getCurrentContext();</div><div class="line">        HttpServletRequest request = ctx.getRequest();</div><div class="line">        logger.info(<span class="string">"send &#123;&#125; request to &#123;&#125;"</span> + request.getMethod(), request.getRequestURL().toString());</div><div class="line">        Object accessToken = request.getParameter(<span class="string">"accessToken"</span>);</div><div class="line">        <span class="keyword">if</span> (accessToken == <span class="keyword">null</span>) &#123;</div><div class="line">            logger.warn(<span class="string">"access token is empty!"</span>);</div><div class="line">            ctx.setSendZuulResponse(<span class="keyword">false</span>);	<span class="comment">//不对请求进行路由</span></div><div class="line">            ctx.setResponseStatusCode(<span class="number">401</span>);	<span class="comment">//设置错误码</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;					<span class="comment">//请求返回值为null</span></div><div class="line">        &#125;</div><div class="line">        logger.info(<span class="string">"access token ok"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;						<span class="comment">//实际返回值路由成功后的返回值</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="Zuul两个核心功能"><a href="#Zuul两个核心功能" class="headerlink" title="Zuul两个核心功能"></a>Zuul两个核心功能</h3><p>1.作为系统的统一入口，屏蔽了系统内部各个微服务的细节</p>
+<p>2.可以与服务治理框架结合，实现自动化的服务实例以及负载均衡的路由转发功能</p>
+<p>3.可以实现接口的权限校验与微服务业务逻辑的解耦。</p>
+<p>4.通过网关中的过滤器，在各个生命周期中去校验请求的内容，将原本在对外服务层做的校验前移，保证了微服务的无状态性，同时降低了微服务的测试难度，让服务本身更专注业务逻辑的处理。</p>
+<h3 id="Zuul完成路由工作原理"><a href="#Zuul完成路由工作原理" class="headerlink" title="Zuul完成路由工作原理"></a>Zuul完成路由工作原理</h3><p>Zuul与服务治理框架整合，在其帮助下，API网关服务本身就已经维护了系统中所有serviceId与实例地址的映射关系。当有外部请求到达API网关的时候，根据请求的url路径找到最佳匹配的path规则，API网关就可以知道要将该请求路由到哪个具体的serviceId上去。由于在API网关中已经知道serviceId对应服务实例的地址清单，那么只需要通过Ribbon的负载均衡策略，直接在这些实例清单中选择一个具体的实例进行转发就能完成路由工作。</p>
+<h3 id="Zuul对Cookie和头信息的处理"><a href="#Zuul对Cookie和头信息的处理" class="headerlink" title="Zuul对Cookie和头信息的处理"></a>Zuul对Cookie和头信息的处理</h3><p>默认情况下，SpringCloud Zuul在请求路由时，会过滤掉HTTP请求头信息的一些敏感信息，防止他们被传递到下游的外部服务器。默认的敏感头信息通过zuul.sensitiveHeaders参数定义，包括Cookie，Set-Cookie，Authorization三个属性。Cookie在Zuul网关中默认是不会传递的，引发问题：Web应用无法实现登录和鉴权。</p>
+<p>全局设置：</p>
+<p>zuul.sensitive-headers=            #是所有经过zuul的敏感头信息有效</p>
+<p>指定路由设置：</p>
+<p>zuul.routes.<routename>.sensitive-headers=                #对指定路由开启自定义敏感头</routename></p>
+<p>zuul.routes.<routename>.custom-sensitive-headers=true    #将指定路由的敏感头设置为空</routename></p>
+<h3 id="Zuul异常处理"><a href="#Zuul异常处理" class="headerlink" title="Zuul异常处理"></a>Zuul异常处理</h3><p>SpringBoot全局异常处理</p>
+<p>实现SendErrorFilter过滤器的处理异常响应结果</p>
+<h3 id="Zuul动态加载"><a href="#Zuul动态加载" class="headerlink" title="Zuul动态加载"></a>Zuul动态加载</h3><p>微服务架构中，由于API网关服务担负着外部访问统一入口的重任，与其他应用不同，任务关闭应用和重启应用的操作都会使系统对外服务停止，对于高可用的系统来说绝对不能被允许。所以网关服务必须具备动态更新内部逻辑的能力，比如动态修改路由规则，动态添加/删除过滤器等。</p>
+<p>动态路由：对于路由规则的控制几乎都可以在配置文件中完成，所以很自然的将它与SpringCloud Config动态刷新机制联系到一起。只需将API网关服务的配置文件通过Config连接的Git仓库存储和管理，就能轻松实现动态刷新路由规则的功能。</p>
+<p>/routes     接口来获取当前网关上的路由规则</p>
+<p>/refresh 接口发送POST请求来刷新配置信息</p>
+<p>动态过滤器；</p>
+<h3 id="Config-分布式配置中心"><a href="#Config-分布式配置中心" class="headerlink" title="Config:分布式配置中心"></a>Config:分布式配置中心</h3><h3 id="Config介绍"><a href="#Config介绍" class="headerlink" title="Config介绍"></a>Config介绍</h3><p>为分布式系统中的微服务应用提供集中化的外部配置支持，分为服务端与客户端。其中服务端也称为分布式配置中心，用来连接配置仓库并未客户端提供获取配置信心，加密/解密信息等访问接口；而客户端则是微服务架构中的各个微服务应用或基础设施，通过指定的配置中心来管理应用资源与业务相关的配置内容，并在启动的时候从配置中心获取和加载配置信息。</p>
+<h3 id="客户端应用从配置管理中获取配置信息的执行流程"><a href="#客户端应用从配置管理中获取配置信息的执行流程" class="headerlink" title="客户端应用从配置管理中获取配置信息的执行流程"></a>客户端应用从配置管理中获取配置信息的执行流程</h3><p>1.客户端应用启动时，根据bootstrap.properties中配置的应用名{application},环境名{profile},分支名{label}，向Config Server请求获取配置信息</p>
+<p>2.Config Server根据自己维护的Git仓库信息和客户端传递过来的配置定位信息去查找配置信息</p>
+<p>3.通过git clone命令将找到的配置信息下载到Config Server的文件系统中</p>
+<p>4.Config Server创建Spring的ApplicationContext实例，并从Git本地仓库中加载配置文件，最后将这些配置内容读取出来返回给客户端应用</p>
+<p>5.客户端应用在获得外部配置文件后加载到客户端的ApplicationContext实例中，该配置内容的优先级大于客户端jar包内部的配置内容，所以jar包中重复的内容将不再被加载</p>
+<h3 id="Git配置仓库，SVN配置仓库，本地仓库，高可用配置"><a href="#Git配置仓库，SVN配置仓库，本地仓库，高可用配置" class="headerlink" title="Git配置仓库，SVN配置仓库，本地仓库，高可用配置"></a>Git配置仓库，SVN配置仓库，本地仓库，高可用配置</h3><p>高可用配置两种方式：传统模式(不需要注册中心),服务模式(将Config Server作为一个普通的微服务应用，微服务应用通过配置中心的服务名获取配置信息)</p>
+<h4 id="健康监测属性覆盖"><a href="#健康监测属性覆盖" class="headerlink" title="健康监测属性覆盖"></a>健康监测属性覆盖</h4><p>Config Server可以使用属性覆盖Git配置的属性信息，可以为SpringCloud应用配置一些共同属性或默认属性</p>
+<h3 id="安全保护，加密解密，高可用配置"><a href="#安全保护，加密解密，高可用配置" class="headerlink" title="安全保护，加密解密，高可用配置"></a>安全保护，加密解密，高可用配置</h3><p>加密解密：对称加密与非对称加密</p>
+<p>配置文件中数据库的用户名与密码等敏感信息不应该对外暴露，就可以使用加密方式，对密码用户名进行加密。当微服务客户端加载配置时，配置中心会自动为带有{cipher}前缀的值进行解密。</p>
+<p>高可用配置-服务端：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="attr">        server:</span></div><div class="line"><span class="attr">  port:</span> <span class="number">13001</span></div><div class="line"><span class="attr">spring:</span></div><div class="line"><span class="attr">  application:</span></div><div class="line">	<span class="attr">name:</span> <span class="string">config-server</span></div><div class="line"><span class="attr">  cloud:</span></div><div class="line">	<span class="attr">config:</span></div><div class="line">	  <span class="attr">server:</span></div><div class="line">		<span class="attr">git:</span></div><div class="line">		  <span class="attr">uri:</span> <span class="attr">https://gitee.com/SunYanGang/cloud-config-server.git</span></div><div class="line">		  <span class="attr">search-paths:</span> <span class="string">/SunYanGang/cloud-config-server</span></div><div class="line">		  <span class="attr">password:</span> <span class="string">mayun_6688</span></div><div class="line">		  <span class="attr">username:</span> <span class="number">18811748164</span></div></pre></td></tr></table></figure>
+<p>高可用配置-客户端：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="attr">   eureka:</span></div><div class="line"><span class="attr">  client:</span></div><div class="line">	<span class="attr">fetch-registry:</span> <span class="literal">true</span></div><div class="line">	<span class="attr">register-with-eureka:</span> <span class="literal">true</span></div><div class="line">	<span class="attr">service-url:</span></div><div class="line">	  <span class="attr">defaultZone:</span> <span class="attr">http://eurekaserver01:8080/eureka,http://eurekaserver02:8081/eureka,http://eurekaserver03:8082/eureka</span></div><div class="line"><span class="attr">server:</span></div><div class="line"><span class="attr">  port:</span> <span class="number">12001</span></div><div class="line"><span class="attr">spring:</span></div><div class="line"><span class="attr">  application:</span></div><div class="line">	<span class="attr">name:</span> <span class="string">api-gateway</span>               <span class="comment">#指定应用名称</span></div><div class="line"><span class="attr">  cloud:</span></div><div class="line">	<span class="attr">config:</span></div><div class="line">	  <span class="attr">profile:</span> <span class="string">dev</span>                  <span class="comment">#指定配置文件的环境</span></div><div class="line">	  <span class="attr">label:</span> <span class="string">master</span>                 <span class="comment">#指定git</span></div><div class="line">	  <span class="attr">discovery:</span></div><div class="line">		<span class="attr">enabled:</span> <span class="literal">true</span>               <span class="comment">#开启通过服务来访问Config Server的功能</span></div><div class="line">		<span class="attr">service-id:</span> <span class="string">config-server</span>   <span class="comment">#指定服务中心注册的服务名</span></div><div class="line"><span class="attr">management:</span></div><div class="line"><span class="attr">  security:</span></div><div class="line">	<span class="attr">enabled:</span> <span class="literal">false</span></div><div class="line"><span class="attr">eureka:</span></div><div class="line"><span class="attr">  client:</span></div><div class="line">	<span class="attr">service-url:</span></div><div class="line">	  <span class="attr">defaultZone:</span> <span class="attr">http://eurekaserver01:8080/eureka,http://eurekaserver02:8081/eureka,http://eurekaserver03:8082/eureka</span></div><div class="line">	<span class="attr">fetch-registry:</span> <span class="literal">true</span></div><div class="line">	<span class="attr">register-with-eureka:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<h3 id="失败快速响应与重试"><a href="#失败快速响应与重试" class="headerlink" title="失败快速响应与重试"></a>失败快速响应与重试</h3><p>SpringCloud Config的客户端会预先加载很多其他信息，然后再开始连接Config Server进行属性的注入。连接Config Server发费较长的时间，所以我们希望快速知道当前应用是否能顺利地从Config Server获取到配置信息。还有重试机制，避免一些间歇性问题引起的失败导致客户端应用无法启动的情况。</p>
+<h3 id="获取远程配置"><a href="#获取远程配置" class="headerlink" title="获取远程配置"></a>获取远程配置</h3><p>application:应用名</p>
+<p>profile:应用环境</p>
+<p>label:分支名</p>
+<p>通过客户端配置方式加载的内容如下：</p>
+<p>spring.application.name:对应配置文件中的{application}内容</p>
+<p>spring.application.name:对应配置文件中的{application}内容</p>
+<p>spring.cloud.config.label:对应分支内容，如不配置，默认为master</p>
+<h3 id="动态刷新配置"><a href="#动态刷新配置" class="headerlink" title="动态刷新配置"></a>动态刷新配置</h3><p>配置中心的客户端pom.xml文件新增 spring-boot-starter-actuator监控模块，其中包含了/refresh端点的实现，该端点将用于实现客户端应用配置信息的重新获取与刷新。</p>
+<p>POST请求向客户端发送 http:<em>//配置中心客户端：端口/refresh</em></p>
+<h3 id="consul-eureka-ribbon-hystrix-feign-zuul-config-bus-rabbitmq-理解与问题"><a href="#consul-eureka-ribbon-hystrix-feign-zuul-config-bus-rabbitmq-理解与问题" class="headerlink" title="consul,eureka,ribbon,hystrix,feign,zuul,config,bus(rabbitmq)理解与问题"></a>consul,eureka,ribbon,hystrix,feign,zuul,config,bus(rabbitmq)理解与问题</h3><h4 id="Eureka理论："><a href="#Eureka理论：" class="headerlink" title="Eureka理论："></a>Eureka理论：</h4><p>1.服务治理：为了解决微服务架构中的服务实例维护问题(传统的一个服务调用另一个服务，需要静态配置另一个服务的接口路径，一旦IP，端口等变化，需要手工修改)，产生了大量的服务治理框架和产品。这些框架和产品的实现都是围绕着服务注册和服务发现机制来完成对微服务应用实例的自动化管理。</p>
+<p>服务注册：服务治理框架通常会构建一个注册中心，每个注册单元向注册中心登记自己提供的服务，将主机与端口号，版本号，协议等一些附加信息告知注册中心，注册中心按照服务名组织服务清单。当服务都注册到注册中心并启动后，注册中心还需要以心跳的方式检测清单中的服务是否可用，若不可用则从服务清单中剔除，达到排除故障服务的效果。</p>
+<p>服务发现：由于在服务治理框架下运作，服务之间的调用不再通过具体的实例地址来实现，而是通过向服务名发起请求调用实现。所以服务调用方在调用其他服务的时候，并不知道具体的服务实例位置。因此调用方需要向注册中心咨询服务，并获取所有的服务实例清单，以实现对具体的服务实例的访问。调用其他服务的时候，可能对应多个服务实例，服务调用方从这多个实例中以某种轮询策略取出一个位置来进行服务调用，就是客户端负载均衡。实际框架为了性能等因素，不会采用每次想服务注册中心获取服务的方式，并且不同的应用场景在缓存和服务剔除等机制上也会有一些不同的实现策略。</p>
+<p>2.Eureka:</p>
+<p>Eureka服务端，也称为服务注册中心。支持高可用配置，提供良好的服务实例可用性，可以应对多种不同的故障场景。如果Eureka以集群模式部署，当集群中有分片出现故障时，那么Eureka就转入自我保护模式。它允许分片故障期间继续提供服务的发现与注册，当故障分片恢复运行时，集群中的分片会把他们的状态再次同步回来。</p>
+<p>Eureka客户端，主要处理服务注册和发现的。(重点：服务续约，刷新服务状态)客户端服务通过注解和参数配置的方式，嵌入在客户端应用程序的代码中，在应用程序运行时，Eureka客户端向注册中心注册自身提供的服务并周期性地发送心跳来更新它的服务租约。同时，它也能从服务端查询当前注册的服务信息并把它们缓存到本地并周期性地刷新服务状态。</p>
+<p>3.服务治理基础架构的三个核心要素：</p>
+<p>服务注册中心：提供服务注册和发现的功能</p>
+<p>服务提供者：提供服务的应用，自身注册到注册中心，以便其他服务发现和调用</p>
+<p>服务消费者：从注册中心获取服务，从而使消费者可以知道去何处调用所需要的服务</p>
+<p>4.服务提供者，服务消费者，服务注册中心各自重要的通信行为</p>
+<p>注意服务续约，服务剔除，自我保护，服务获取，服务同步，服务续约和服务剔除有关系，服务剔除和服务注册中心自我保护有关系获取服务缓存到本地有个更新时间间隔。</p>
+<p>4.1 服务提供者：</p>
+<p>服务注册：服务提供者在启动服务时发送Rest请求将自己注册到服务注册中心，同时带上自身的一些元数据信息。注册中心接到Rest请求后，将元数据信息存储到双层Map中，其中第一层的key是服务名，第二层的key是具体服务的实例名。</p>
+<p>服务同步：指”高可用的注册中心”集群中多个注册中心之间的同步，当服务提供者发送注册请求到一个注册中心时，该注册中心会将请求转发给集群中相连的其他注册中心，从而实现注册中心之间服务的同步。</p>
+<p>服务续约：服务提供者会维护一个心跳用来持续告诉注册中心自己还活着，防止服务注册中心将该服务实例从服务列表中剔除。有两个比较重要的属性：续租任务的调用时间间隔，默认30s（客户端定义）;服务失效的时间间隔，默认90s（服务端定义）</p>
+<p>4.2 服务消费者：</p>
+<p>获取服务：启动服务消费者的时候，它会发送一个REST请求给服务注册中心，来获取上面注册的服务清单。为了性能考虑，服务注册注册中心会维护一个只读的服务清单来返回给客户端，同时客户端缓存清单会每隔30s更新一次。    </p>
+<p>服务调用：服务消费者在获取到服务清单后，通过服务名可以获取具体提供服务的实例名和该实例的元数据信息。在Ribbon中会采用默认的轮询方式进行调用，从而实现客户端的负载均衡。</p>
+<p>服务下线：关闭和重启服务实例，包括正常关闭和非正常关闭。</p>
+<p>4.3 服务注册中心：</p>
+<p>失效剔除：服务注册中心启动时创建定时任务，每隔一段时间（默认60s）将清单中超时(默认90s)没有续约的服务剔除出去。对于服务正常下线，会告诉注册中心，而服务由于内存溢出，网络故障等原因使得服务不能正常工作，注册中心并不会收到“服务下线”的请求。</p>
+<p>自我保护：服务注册中心在运行期间统计心跳失败比例，若是网络延迟不稳定导致，则会将当前实例注册信息保护起来，不让服务实例过期而被服务剔除。 但会引发问题：消费者拿到已不存在发服务实例报错，因此客户端必须要有容错机制，比如请求重试，断路器等机制。</p>
+<p>4.4 Eureka Client负责下面的任务：</p>
+<p>向Eureka Server注册服务实例</p>
+<p>向Eureka Server服务租约</p>
+<p>当服务关闭时向Eureka Server取消租约</p>
+<p>查询Eureka Server中的服务实例列表</p>
+
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="ShenWenFang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ShenWenFang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    ShenWenFang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://swenfang.github.io/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/" title="SpringBoot和SpringCloud面试题">http://swenfang.github.io/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    	
+          <div>
+            <div class="recommended_posts">
+    
+    
+    <strong>推荐文章 </strong>
+    <ul>
+        
+            <li><a href="http://swenfang.github.io/2019/05/12/面试总结/全文检索面试题/">全文检索面试题</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/05/12/面试总结/数据库面试题/">数据库面试题</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/05/12/面试总结/Redis 面试题/">Redis 面试题</a></li>
+        
+            <li><a href="http://swenfang.github.io/2019/05/12/面试总结/JVM 面试题/">JVM 面试题</a></li>
+        
+    </ul>
+    
+</div>
+
+          </div>
+        
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/基础面试题/" rel="tag"># 基础面试题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/12/面试总结/Redis 面试题/" rel="next" title="Redis 面试题">
+                <i class="fa fa-chevron-left"></i> Redis 面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/12/面试总结/数据库面试题/" rel="prev" title="数据库面试题">
+                数据库面试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4My82MDUx"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="ShenWenFang" />
+            
+              <p class="site-author-name" itemprop="name">ShenWenFang</p>
+              <p class="site-description motion-element" itemprop="description">每一个你不满意的现在，都有一个你没有努力的曾经。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+         <div id="music163player">
+             <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=31861269&auto=0&height=66"></iframe>
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot-与-Spring-的区别"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot 与 Spring 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot-的自动配置是怎么做的"><span class="nav-number">2.</span> <span class="nav-text">SpringBoot 的自动配置是怎么做的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是springboot"><span class="nav-number">3.</span> <span class="nav-text">什么是springboot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springboot常用的starter有哪些"><span class="nav-number">4.</span> <span class="nav-text">springboot常用的starter有哪些</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springboot自动配置的原理"><span class="nav-number">5.</span> <span class="nav-text">springboot自动配置的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springboot读取配置文件的方式"><span class="nav-number">6.</span> <span class="nav-text">springboot读取配置文件的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springboot集成mybatis的过程"><span class="nav-number">7.</span> <span class="nav-text">springboot集成mybatis的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springboot如何添加【修改代码】自动重启功能"><span class="nav-number">8.</span> <span class="nav-text">springboot如何添加【修改代码】自动重启功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是微服务"><span class="nav-number">9.</span> <span class="nav-text">什么是微服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springcloud如何实现服务的注册和发现"><span class="nav-number">10.</span> <span class="nav-text">springcloud如何实现服务的注册和发现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ribbon和feign区别"><span class="nav-number">11.</span> <span class="nav-text">ribbon和feign区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ribbon和Feign的区别："><span class="nav-number">12.</span> <span class="nav-text">Ribbon和Feign的区别：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springcloud断路器的作用"><span class="nav-number">13.</span> <span class="nav-text">springcloud断路器的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务注册发现组件Eureka工作原理"><span class="nav-number">14.</span> <span class="nav-text">服务注册发现组件Eureka工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务网关组件Zuul工作原理"><span class="nav-number">15.</span> <span class="nav-text">服务网关组件Zuul工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域时序图"><span class="nav-number">16.</span> <span class="nav-text">跨域时序图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Eureka与Ribbon整合工作原理"><span class="nav-number">17.</span> <span class="nav-text">Eureka与Ribbon整合工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决分布式一致性"><span class="nav-number">18.</span> <span class="nav-text">解决分布式一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#级联故障流程"><span class="nav-number">19.</span> <span class="nav-text">级联故障流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#断路器组件Hystrix工作原理"><span class="nav-number">20.</span> <span class="nav-text">断路器组件Hystrix工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式追踪Sleuth工作原理"><span class="nav-number">21.</span> <span class="nav-text">分布式追踪Sleuth工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot自动配置工作原理"><span class="nav-number">22.</span> <span class="nav-text">SpringBoot自动配置工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是SpringCloud"><span class="nav-number">23.</span> <span class="nav-text">什么是SpringCloud</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Spring-Cloud有什么优势"><span class="nav-number">24.</span> <span class="nav-text">使用Spring Cloud有什么优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务注册和发现是什么意思？Spring-Cloud如何实现？"><span class="nav-number">25.</span> <span class="nav-text">服务注册和发现是什么意思？Spring Cloud如何实现？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负载平衡的意义什么"><span class="nav-number">26.</span> <span class="nav-text">负载平衡的意义什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Hystrix？它如何实现容错？"><span class="nav-number">27.</span> <span class="nav-text">什么是Hystrix？它如何实现容错？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Hystrix断路器？我们需要它吗？"><span class="nav-number">28.</span> <span class="nav-text">什么是Hystrix断路器？我们需要它吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Netflix-Feign？它的优点是什么？"><span class="nav-number">29.</span> <span class="nav-text">什么是Netflix Feign？它的优点是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Spring-Cloud-Bus？我们需要它吗？"><span class="nav-number">30.</span> <span class="nav-text">什么是Spring Cloud Bus？我们需要它吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是微服务架构"><span class="nav-number">31.</span> <span class="nav-text">什么是微服务架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微服务之间是如何独立通讯的？"><span class="nav-number">32.</span> <span class="nav-text">微服务之间是如何独立通讯的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#谈谈你对SpringBoot-SpringCloud的理解"><span class="nav-number">33.</span> <span class="nav-text">谈谈你对SpringBoot,SpringCloud的理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是服务熔断，什么是服务降级？"><span class="nav-number">34.</span> <span class="nav-text">什么是服务熔断，什么是服务降级？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微服务的优缺点？"><span class="nav-number">35.</span> <span class="nav-text">微服务的优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式事务？"><span class="nav-number">36.</span> <span class="nav-text">分布式事务？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#谈谈你所知道的微服务技术栈有哪些？"><span class="nav-number">37.</span> <span class="nav-text">谈谈你所知道的微服务技术栈有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是springboot-1"><span class="nav-number">38.</span> <span class="nav-text">什么是springboot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot自动配置的原理"><span class="nav-number">39.</span> <span class="nav-text">SpringBoot自动配置的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springboot读取配置文件的方式-1"><span class="nav-number">40.</span> <span class="nav-text">springboot读取配置文件的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springCloud如何实现服务的注册和发现的"><span class="nav-number">41.</span> <span class="nav-text">springCloud如何实现服务的注册和发现的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对外服务接口带有Request参数的请求，带有Header信息的请求，带有RequestBody的请求以及请求响应体是一个对象的请求，Spring-Cloud-Feign接口调用如何绑定参数？"><span class="nav-number">42.</span> <span class="nav-text">对外服务接口带有Request参数的请求，带有Header信息的请求，带有RequestBody的请求以及请求响应体是一个对象的请求，Spring Cloud Feign接口调用如何绑定参数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feign与Ribbon，Hystrix的关系"><span class="nav-number">43.</span> <span class="nav-text">Feign与Ribbon，Hystrix的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ribbon全局配置，Ribbon指定服务配置，Ribbon重要的配置参数，Ribbon重试机制"><span class="nav-number">44.</span> <span class="nav-text">Ribbon全局配置，Ribbon指定服务配置，Ribbon重要的配置参数，Ribbon重试机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ribbon超时与Hystrix超时区别"><span class="nav-number">45.</span> <span class="nav-text">Ribbon超时与Hystrix超时区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务降级，服务容错，断路器三者关系"><span class="nav-number">46.</span> <span class="nav-text">服务降级，服务容错，断路器三者关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zuul网关服务主要解决的问题"><span class="nav-number">47.</span> <span class="nav-text">Zuul网关服务主要解决的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zuul如何维护路由规则和服务实例列表，如何解决签名校验，登录校验在微服务架构中的冗余问题"><span class="nav-number">48.</span> <span class="nav-text">Zuul如何维护路由规则和服务实例列表，如何解决签名校验，登录校验在微服务架构中的冗余问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zuul的请求过滤功能-安全校验，权限控制"><span class="nav-number">49.</span> <span class="nav-text">Zuul的请求过滤功能(安全校验，权限控制)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zuul两个核心功能"><span class="nav-number">50.</span> <span class="nav-text">Zuul两个核心功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zuul完成路由工作原理"><span class="nav-number">51.</span> <span class="nav-text">Zuul完成路由工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zuul对Cookie和头信息的处理"><span class="nav-number">52.</span> <span class="nav-text">Zuul对Cookie和头信息的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zuul异常处理"><span class="nav-number">53.</span> <span class="nav-text">Zuul异常处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zuul动态加载"><span class="nav-number">54.</span> <span class="nav-text">Zuul动态加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Config-分布式配置中心"><span class="nav-number">55.</span> <span class="nav-text">Config:分布式配置中心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Config介绍"><span class="nav-number">56.</span> <span class="nav-text">Config介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端应用从配置管理中获取配置信息的执行流程"><span class="nav-number">57.</span> <span class="nav-text">客户端应用从配置管理中获取配置信息的执行流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git配置仓库，SVN配置仓库，本地仓库，高可用配置"><span class="nav-number">58.</span> <span class="nav-text">Git配置仓库，SVN配置仓库，本地仓库，高可用配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#健康监测属性覆盖"><span class="nav-number">58.1.</span> <span class="nav-text">健康监测属性覆盖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全保护，加密解密，高可用配置"><span class="nav-number">59.</span> <span class="nav-text">安全保护，加密解密，高可用配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#失败快速响应与重试"><span class="nav-number">60.</span> <span class="nav-text">失败快速响应与重试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取远程配置"><span class="nav-number">61.</span> <span class="nav-text">获取远程配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态刷新配置"><span class="nav-number">62.</span> <span class="nav-text">动态刷新配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#consul-eureka-ribbon-hystrix-feign-zuul-config-bus-rabbitmq-理解与问题"><span class="nav-number">63.</span> <span class="nav-text">consul,eureka,ribbon,hystrix,feign,zuul,config,bus(rabbitmq)理解与问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Eureka理论："><span class="nav-number">63.1.</span> <span class="nav-text">Eureka理论：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ShenWenFang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("9lk8dNt56FULANV18qHRXIff-gzGzoHsz", "lSea2qzYEcPELI1zQN1wWQGt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

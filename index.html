@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/12/面试总结/面试总结/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/12/面试总结/线程面试题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -306,7 +306,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/12/面试总结/面试总结/" itemprop="url">程序员如何高效率拿 offer</a></h1>
+                <a class="post-title-link" href="/2019/05/12/面试总结/线程面试题/" itemprop="url">线程面试题</a></h1>
         
 
         <div class="post-meta">
@@ -318,7 +318,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T21:13:49+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T21:55:28+08:00">
                 2019-05-12
               </time>
             
@@ -358,7 +358,7 @@
 
           
           
-             <span id="/2019/05/12/面试总结/面试总结/" class="leancloud_visitors" data-flag-title="程序员如何高效率拿 offer">
+             <span id="/2019/05/12/面试总结/线程面试题/" class="leancloud_visitors" data-flag-title="线程面试题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,438 字
+                  7,509 字
                 </span>
               
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  26 分钟
                 </span>
               
             </div>
@@ -421,11 +421,16 @@
 
       
         
-          <h1 id="程序员如何高效率拿-offer"><a href="#程序员如何高效率拿-offer" class="headerlink" title="程序员如何高效率拿 offer"></a>程序员如何高效率拿 offer</h1><p><img src="http://blogimg.nos-eastchina1.126.net/shenwf20190512090714-358904.jpg" alt=""></p>
-<p>一天四场面试，三场收到 offer，来看看我是怎么做到如何高效率拿到 offer 的。</p>
+          
+          1、多线程有什么用？
+1）发挥多核CPU的优势
+随着工业的进步，现在的笔记本、台式机乃至商用的应用服务器至少也都是双核的，4核、8核甚至16核的也都不少见，如果是单线程的程序，那么在双核CPU上就浪费了50%，在4核CPU上就浪费了75%。单核CPU上所谓的”多线程”那是假的多线程，同一时间处理器只会处理一段逻辑，只不过线程之间切换得比较快，看着像多个线程”同时”运行罢了。多核CPU上的多线程才是真正的多线程，它能让你的多段逻辑同时工作，多线程，可以真正发挥出多核CPU的优势来，达到充分利用CPU的目的。
+2）防止阻塞
+从程序运行效率的角度来看，单核CPU不但不会发挥出多线程的优势，反而会因为
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/05/12/面试总结/面试总结/#more" rel="contents">
+            <a class="btn" href="/2019/05/12/面试总结/线程面试题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -480,7 +485,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/03/Java JVM/关于GCOverheadLimitExceeded/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/12/面试总结/日志框架面试题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -499,7 +504,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/03/Java JVM/关于GCOverheadLimitExceeded/" itemprop="url">关于GC overhead limit exceeded</a></h1>
+                <a class="post-title-link" href="/2019/05/12/面试总结/日志框架面试题/" itemprop="url">日志框架面试题</a></h1>
         
 
         <div class="post-meta">
@@ -511,201 +516,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-03T11:36:04+08:00">
-                2019-05-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java-JVM/" itemprop="url" rel="index">
-                    <span itemprop="name">Java JVM</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/05/03/Java JVM/关于GCOverheadLimitExceeded/" class="leancloud_visitors" data-flag-title="关于GC overhead limit exceeded">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,012 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="关于GC-overhead-limit-exceeded"><a href="#关于GC-overhead-limit-exceeded" class="headerlink" title="关于GC overhead limit exceeded"></a>关于GC overhead limit exceeded</h1><blockquote>
-<p>我遇到这样的问题，本地部署时抛出异常java.lang.OutOfMemoryError：GC overhead limit exceeded导致服务起不来，查看日志发现加载了太多资源到内存，本地的性能也不好，gc时间消耗的较多。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/03/Java JVM/关于GCOverheadLimitExceeded/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-
-
-    
-
-    
-
-    
-
-    	
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/04/22/Spring面试题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ShenWenFang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShenWenFang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/22/Spring面试题/" itemprop="url">Spring 面试题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T23:05:21+08:00">
-                2019-04-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T21:53:46+08:00">
+                2019-05-12
               </time>
             
 
@@ -744,7 +556,7 @@
 
           
           
-             <span id="/2019/04/22/Spring面试题/" class="leancloud_visitors" data-flag-title="Spring 面试题">
+             <span id="/2019/05/12/面试总结/日志框架面试题/" class="leancloud_visitors" data-flag-title="日志框架面试题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -769,7 +581,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  12,139 字
+                  2,568 字
                 </span>
               
 
@@ -785,7 +597,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  46 分钟
+                  10 分钟
                 </span>
               
             </div>
@@ -808,18 +620,13 @@
       
         
           
-          Spring IOC、AOP的理解、实现的原理，以及优点
-Spring的IoC容器是Spring的核心，Spring AOP是spring框架的重要组成部分
-IOC
-
-我的理解
-正常的情况下，比如有一个类，在类里面有方法（不是静态的方法），调用类里面的方法，创建类的对象，使用对象调用方法，创建类对象的过程，需要new出来对象
-通过控制反转，把对象的创建不是通过new方式实现，而是交给Spring配置创建类对象
-IOC的意思是控件反转也就是由容器控制程序之间的关系，这也是spring的优点所在，把控件权交给了外部容器，之前的写法，由程序代码直接操控，而现在控制权由应用代码中转到了外部容器，控制权
+          更快的执行速度基于我们先前在log4j上的工作，logback 重写了内部的实现，在某些特定的场景上面，甚至可以比之前的速度快上10倍。在保证logback的组件更加快速的同时，同时所需的内存更加少。
+充分的测试Logback 历经了几年，数不清小时数的测试。尽管log4j也是测试过的，但是Logback的测试更加充分，跟log4j不在同一个级别。我们认为，这正是人们选择Logback而不是log4j的最重要的原因。人们都希望即使在恶劣的条件下，你的登录依然稳定而可靠。
+logback-classic 非常自然的实现了SLF4Jlogback-classic中的登陆类自然的实现了SLF4J。当
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/04/22/Spring面试题/#more" rel="contents">
+            <a class="btn" href="/2019/05/12/面试总结/日志框架面试题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -874,7 +681,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/04/21/Spring/第17章SpringMVC/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/12/面试总结/Jdk1.7与 jdk1.8的区别和最新的特征/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -893,7 +700,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/21/Spring/第17章SpringMVC/" itemprop="url">第 17 章 Spring MVC</a></h1>
+                <a class="post-title-link" href="/2019/05/12/面试总结/Jdk1.7与 jdk1.8的区别和最新的特征/" itemprop="url">Jdk1.7与 jdk1.8的区别和最新的特征</a></h1>
         
 
         <div class="post-meta">
@@ -905,8 +712,8 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T17:54:09+08:00">
-                2019-04-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T21:50:51+08:00">
+                2019-05-12
               </time>
             
 
@@ -928,8 +735,8 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
+                  <a href="/categories/基础面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">基础面试题</span>
                   </a>
                 </span>
 
@@ -945,7 +752,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
 
           
           
-             <span id="/2019/04/21/Spring/第17章SpringMVC/" class="leancloud_visitors" data-flag-title="第 17 章 Spring MVC">
+             <span id="/2019/05/12/面试总结/Jdk1.7与 jdk1.8的区别和最新的特征/" class="leancloud_visitors" data-flag-title="Jdk1.7与 jdk1.8的区别和最新的特征">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -970,7 +777,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,004 字
+                  1,507 字
                 </span>
               
 
@@ -986,7 +793,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -1008,10 +815,20 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
 
       
         
-          <h1 id="第-17-章-Spring-MVC"><a href="#第-17-章-Spring-MVC" class="headerlink" title="第 17 章 Spring MVC"></a>第 17 章 Spring MVC</h1><h2 id="Spring-MVC-的框架设计"><a href="#Spring-MVC-的框架设计" class="headerlink" title="Spring MVC 的框架设计"></a>Spring MVC 的框架设计</h2>
+          
+          jdk7的新特性jdk7的新特性方面主要有下面几方面的增强
+二进制变量的表示
+二进制变量的表示,支持将整数类型用二进制来表示，用0b开头。
+所有整数int、short、long、byte都可以用二进制表示：
+12&gt;byte aByte = (byte) 0b00100001;&gt;
+
+Switch语句支持String类型Try-with-resource语句参考博客：try-with-resources语句 
+
+try-with-resources语句是一种声明了一种或多种资源的try语句。资源是指在程序用完了之后必须要关闭的对象。try-with-resources语句保证了每个声明
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/04/21/Spring/第17章SpringMVC/#more" rel="contents">
+            <a class="btn" href="/2019/05/12/面试总结/Jdk1.7与 jdk1.8的区别和最新的特征/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1066,7 +883,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/04/19/Solr/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/12/面试总结/Mybaties 面试题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -1085,7 +902,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/19/Solr/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2019/05/12/面试总结/Mybaties 面试题/" itemprop="url">Mybaties 面试题</a></h1>
         
 
         <div class="post-meta">
@@ -1097,180 +914,8 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T22:29:23+08:00">
-                2019-04-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/04/19/Solr/" class="leancloud_visitors" data-flag-title="">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  0 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/19/Solr/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-
-
-    
-
-    
-
-    
-
-    	
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/04/19/CentOS/CentOS安装JAVA环境/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ShenWenFang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShenWenFang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/19/CentOS/CentOS安装JAVA环境/" itemprop="url">CentOS安装JAVA环境（JDK 1.8）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T22:25:20+08:00">
-                2019-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T21:48:03+08:00">
+                2019-05-12
               </time>
             
 
@@ -1292,8 +937,8 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CentOS/" itemprop="url" rel="index">
-                    <span itemprop="name">CentOS</span>
+                  <a href="/categories/基础面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">基础面试题</span>
                   </a>
                 </span>
 
@@ -1309,7 +954,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
 
           
           
-             <span id="/2019/04/19/CentOS/CentOS安装JAVA环境/" class="leancloud_visitors" data-flag-title="CentOS安装JAVA环境（JDK 1.8）">
+             <span id="/2019/05/12/面试总结/Mybaties 面试题/" class="leancloud_visitors" data-flag-title="Mybaties 面试题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1334,7 +979,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  169 字
+                  6,192 字
                 </span>
               
 
@@ -1350,7 +995,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  22 分钟
                 </span>
               
             </div>
@@ -1372,11 +1017,12 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
 
       
         
-          <h1 id="CentOS安装JAVA环境（JDK-1-8）"><a href="#CentOS安装JAVA环境（JDK-1-8）" class="headerlink" title="CentOS安装JAVA环境（JDK 1.8）"></a>CentOS安装JAVA环境（JDK 1.8）</h1><h2 id="打开url选择jdk1-8下载"><a href="#打开url选择jdk1-8下载" class="headerlink" title="打开url选择jdk1.8下载"></a>打开url选择jdk1.8下载</h2><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
-<p>我选择linux x64版本：</p>
+          
+          Hibernate与MyBatis的异同相同点：Hibernate与MyBatis都可以是通过SessionFactoryBuider由XML配置文件生成SessionFactory，然后由SessionFactory 生成Session，最后由Session来开启执行事务和SQL语句。其中SessionFactoryBuider，SessionFactory，Session的生命周期都是差不多的。Hibernate和MyBatis都支持JDBC和JTA事务处理。Mybatis优势：MyBatis可以进行更为细致的SQL优化，可以减少查询字段。MyBatis容易掌握，而Hibernate门槛较
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/04/19/CentOS/CentOS安装JAVA环境/#more" rel="contents">
+            <a class="btn" href="/2019/05/12/面试总结/Mybaties 面试题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1431,7 +1077,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/04/19/CentOS/CentOS安装Tomcat/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/12/面试总结/全文检索面试题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -1450,7 +1096,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/19/CentOS/CentOS安装Tomcat/" itemprop="url">CentOS安装Tomcat</a></h1>
+                <a class="post-title-link" href="/2019/05/12/面试总结/全文检索面试题/" itemprop="url">全文检索面试题</a></h1>
         
 
         <div class="post-meta">
@@ -1462,8 +1108,8 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T22:25:20+08:00">
-                2019-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T21:46:33+08:00">
+                2019-05-12
               </time>
             
 
@@ -1485,8 +1131,8 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CentOS/" itemprop="url" rel="index">
-                    <span itemprop="name">CentOS</span>
+                  <a href="/categories/基础面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">基础面试题</span>
                   </a>
                 </span>
 
@@ -1502,7 +1148,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
 
           
           
-             <span id="/2019/04/19/CentOS/CentOS安装Tomcat/" class="leancloud_visitors" data-flag-title="CentOS安装Tomcat">
+             <span id="/2019/05/12/面试总结/全文检索面试题/" class="leancloud_visitors" data-flag-title="全文检索面试题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1527,7 +1173,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  696 字
+                  7,757 字
                 </span>
               
 
@@ -1543,7 +1189,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  27 分钟
                 </span>
               
             </div>
@@ -1565,10 +1211,15 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
 
       
         
-          <h1 id="CentOS安装Tomcat"><a href="#CentOS安装Tomcat" class="headerlink" title="CentOS安装Tomcat"></a>CentOS安装Tomcat</h1><h2 id="一-tomcat的简介"><a href="#一-tomcat的简介" class="headerlink" title="一.tomcat的简介"></a>一.tomcat的简介</h2><p>这是<strong>Apache Tomcat</strong> Servlet / JSP容器的文档包的顶级入口点 。的Apache Tomcat 8.0版实现了Servlet 3.1和JavaServer Pages 2.3 <a href="https://wiki.apache.org/tomcat/Specifications" target="_blank" rel="external">规范</a>从 <a href="https://www.jcp.org/" target="_blank" rel="external">Java社区进程</a>，并包含许多额外的功能，使开发和部署Web应用程序和Web服务的有用平台<br>
+          
+          为什么要用全文搜索搜索引擎我们的所有数据在数据库里面都有，而且 Oracle、SQL Server 等数据库里也能提供查询检索或者聚类分析功能，直接通过数据库查询不就可以了吗？确实，我们大部分的查询功能都可以通过数据库查询获得，如果查询效率低下，还可以通过建数据库索引，优化SQL等方式进行提升效率，甚至通过引入缓存来加快数据的返回速度。如果数据量更大，就可以分库分表来分担查询压力。
+那为什么还要全文搜索引擎呢？我们主要从以下几个原因分析：
+
+数据类型 全文索引搜索支持非结构化数据的搜索，可以更好地快速搜索大量存在的任何单词或单词组的非结构化文本。 例如 Google，百度类的网站搜索，它们都是
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/04/19/CentOS/CentOS安装Tomcat/#more" rel="contents">
+            <a class="btn" href="/2019/05/12/面试总结/全文检索面试题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1623,7 +1274,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/04/19/CentOS/CentOS搭建Solr7 单机服务/">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/12/面试总结/数据库面试题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShenWenFang">
@@ -1642,7 +1293,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/19/CentOS/CentOS搭建Solr7 单机服务/" itemprop="url">CentOS搭建Solr7单机服务</a></h1>
+                <a class="post-title-link" href="/2019/05/12/面试总结/数据库面试题/" itemprop="url">数据库面试题</a></h1>
         
 
         <div class="post-meta">
@@ -1654,8 +1305,8 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T22:25:20+08:00">
-                2019-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T21:37:12+08:00">
+                2019-05-12
               </time>
             
 
@@ -1677,8 +1328,8 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CentOS/" itemprop="url" rel="index">
-                    <span itemprop="name">CentOS</span>
+                  <a href="/categories/基础面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">基础面试题</span>
                   </a>
                 </span>
 
@@ -1694,7 +1345,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
 
           
           
-             <span id="/2019/04/19/CentOS/CentOS搭建Solr7 单机服务/" class="leancloud_visitors" data-flag-title="CentOS搭建Solr7单机服务">
+             <span id="/2019/05/12/面试总结/数据库面试题/" class="leancloud_visitors" data-flag-title="数据库面试题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1719,7 +1370,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  808 字
+                  7,300 字
                 </span>
               
 
@@ -1735,7 +1386,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  26 分钟
                 </span>
               
             </div>
@@ -1757,10 +1408,420 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
 
       
         
-          <h1 id="CentOS搭建Solr7单机服务"><a href="#CentOS搭建Solr7单机服务" class="headerlink" title="CentOS搭建Solr7单机服务"></a>CentOS搭建Solr7单机服务</h1><h2 id="一-Solr安装环境"><a href="#一-Solr安装环境" class="headerlink" title="一.Solr安装环境"></a>一.Solr安装环境</h2><h3 id="1-官方参考文档"><a href="#1-官方参考文档" class="headerlink" title="1.官方参考文档"></a>1.官方参考文档</h3><p>Solr教程参考指南：<a href="http://lucene.apache.org/solr/guide/7_4/solr-tutorial.html" target="_blank" rel="external">http://lucene.apache.org/solr/guide/7_4/solr-tutorial.html</a></p>
+          
+          什么是事务事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。
+数据库ACID1. 原子性（Atomicity）
+原子性是指事务是一个不可分割的工作单位，事务中的操作要么全部成功，要么全部失败。比如在同一个事务中的SQL语句，要么全部执行成功，要么全部执行失败。
+
+　　回滚可以用日志来实现，日志记录着事务所执行的修改操作，在回滚时反向执行这些修改操作即可。
+2. 一致性（Consistency）
+事务必须使数据库从一个一致性状态变换到另外一个一致性状态。
+
+以转账为例子，A向B转账，假设转账之前这两个用户的钱加起来总共是200
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/04/19/CentOS/CentOS搭建Solr7 单机服务/#more" rel="contents">
+            <a class="btn" href="/2019/05/12/面试总结/数据库面试题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+    	
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShenWenFang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShenWenFang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/" itemprop="url">SpringBoot和SpringCloud面试题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T21:33:19+08:00">
+                2019-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">基础面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/" class="leancloud_visitors" data-flag-title="SpringBoot和SpringCloud面试题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  10,420 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  37 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Spring Boot 与 Spring 的区别
+Spring Boot可以建立独立的Spring应用程序；
+内嵌了如Tomcat，Jetty和Undertow这样的容器，也就是说可以直接跑起来，用不着再做部署工作了。
+无需再像Spring那样搞一堆繁琐的xml文件的配置；
+可以自动配置Spring；
+提供了一些现有的功能，如度量工具，表单数据验证以及一些外部配置这样的一些第三方功能；
+提供的POM可以简化Maven的配置；
+
+SpringBoot 的自动配置是怎么做的
+Spring boot 的所有自动化配置的实现都在 spring-boot-autoconfigure 依赖中，通过@Ena
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/12/面试总结/SpringBoot和SpringCloud面试题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+
+
+    
+
+    
+
+    
+
+    	
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://swenfang.github.io/2019/05/12/面试总结/Redis 面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShenWenFang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShenWenFang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/12/面试总结/Redis 面试题/" itemprop="url">Redis 面试题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T21:31:31+08:00">
+                2019-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">基础面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/12/面试总结/Redis 面试题/" class="leancloud_visitors" data-flag-title="Redis 面试题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,369 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  23 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          1、什么是Redis?答：Redis全称为：Remote Dictionary Server（远程数据服务），是一个基于内存的高性能key-value数据库。
+2、Redis的数据类型？答：Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及zset(sorted set：有序集合)。
+我们实际项目中比较常用的是string，hash如果你是Redis中高级用户，还需要加上下面几种数据结构HyperLogLog、Geo、Pub/Sub。
+如果你说还玩过Redis Module，像BloomFilter，RedisSearch，Redis-ML
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/12/面试总结/Redis 面试题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1806,7 +1867,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1856,7 +1917,7 @@ IOC的意思是控件反转也就是由容器控制程序之间的关系，这�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">91</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
