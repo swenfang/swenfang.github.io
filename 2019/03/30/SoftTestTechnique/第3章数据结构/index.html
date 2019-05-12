@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/190318/jiandanxuanze.gif">
 <meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/xierpaixu.gif">
 <meta property="og:image" content="https://blogimg.nos-eastchina1.126.net/190318/bingguipaixu.gif">
-<meta property="og:updated_time" content="2019-04-27T06:43:09.951Z">
+<meta property="og:updated_time" content="2019-04-27T08:18:54.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第3章数据结构">
 <meta name="twitter:description" content="第3章数据结构">
@@ -431,23 +431,23 @@
 <p>十种常见排序算法可以分为两大类：</p>
 <p><code>比较类排序</code>：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因此也称为非线性时间比较类排序。</p>
 <p><code>非比较类排序</code>：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此也称为线性时间非比较类排序。</p>
-<h3 id="排序的基本概念"><a href="#排序的基本概念" class="headerlink" title="排序的基本概念"></a>排序的基本概念</h3><p>假设含 n 个记录文件内容为{$R_{1}, R_{2},\ldots ,R_{n}$}，相应的关键字{$k_{1}, k_{2},\ldots ,k_{n}$}。经过排序确定一种排列{$R_{j_{1}},R_{j_{2}},\ldots ,R_{j_{n}}$}，使得它们的关键字满足以下递增（或递减）关系：$k_{j_1}\leq k_{j_{2}}\leq \ldots \leq k_{j_{n}}$（或$k_{j_{1}}\geq k_{j_{2}}\geq \ldots k_{jn}$）。</p>
+<h3 id="排序的基本概念"><a href="#排序的基本概念" class="headerlink" title="排序的基本概念"></a>排序的基本概念</h3><p>假设含 $n$ 个记录文件内容为{$R_{1}, R_{2},\ldots ,R_{n}$}，相应的关键字{$k_{1}, k_{2},\ldots ,k_{n}$}。经过排序确定一种排列{$R_{j_{1}},R_{j_{2}},\ldots ,R_{j_{n}}$}，使得它们的关键字满足以下递增（或递减）关系：$k_{j_1}\leq k_{j_{2}}\leq \ldots \leq k_{j_{n}}$（或$k_{j_{1}}\geq k_{j_{2}}\geq \ldots k_{jn}$）。</p>
 <p>若在待排序中的一个序列中，$R_{i}$和$R_{j}$的关键字相同，即 $k_{i}$=$k_{j}$，且在排序前 $R_{i}$先于$R_{j}$，那么在排序后，如果$R_{i}$和$R_{j}$的相对次序保持不变，$R_{i}$仍领先于$R_{j}$，则此类排序算法为稳定的。若在排序后的序列中有可能出现$R_{j}$领先于$R_{i}$的情形，则此类排序为不稳定的。</p>
 <p><code>内部排序</code>：指待排序记录全部存放在内存中进行排序的过程。</p>
 <p><code>外部排序</code>：指待排序记录的数量很大，以至于内存不能容纳全部记录，在排序过程中尚需对外存进行访问的排序过程。</p>
 <h3 id="简单排序"><a href="#简单排序" class="headerlink" title="简单排序"></a>简单排序</h3><h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><p>又称简单插入排序，是一种简单的排序算法。</p>
-<p>具体做法：在插入第 i 个记录时，$R_{1}$、$R_{2}$、….、$R_{i-1}$ 已经安排好序，这时将 $R_{i}$的关键字 $k_{i}$一次与 $K_{i-1}$、$K_{i-2}$等进行比较，从而找到应该插入的位置并将$R_{i}$插入，插入位置及其后的记录向后移动。</p>
+<p>具体做法：在插入第$ i $个记录时，$R_{1}$、$R_{2}$、….、$R_{i-1}$ 已经安排好序，这时将 $R_{i}$的关键字 $k_{i}$依次与 $K_{i-1}$、$K_{i-2}$等进行比较，从而找到应该插入的位置并将$R_{i}$插入，插入位置及其后的记录向后移动。</p>
 <p><img src="https://blogimg.nos-eastchina1.126.net/190318/jiandacharu.gif" alt=""></p>
 <p>实现程序  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] insertionSort(<span class="keyword">int</span>[] arr)&#123;</div><div class="line">    <span class="keyword">int</span> len = arr.length;</div><div class="line">    <span class="keyword">int</span> preIndex,current;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;len;i++)&#123;</div><div class="line">        preIndex = i - <span class="number">1</span>;</div><div class="line">        current = arr[i];</div><div class="line">        <span class="keyword">while</span>(preIndex&gt;=<span class="number">0</span> &amp;&amp; current&lt;arr[preIndex])&#123;</div><div class="line">            arr[preIndex+<span class="number">1</span>] = arr[preIndex];</div><div class="line">            preIndex--;</div><div class="line">        &#125;</div><div class="line">        arr[preIndex+<span class="number">1</span>] = current;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>直接排序算法在最好的情况下（待排序列已按关键码有序），每趟只需操作 1 次比较且不需要移动元素，因此n个元素排序时的总比较次数为 n-1 次，总移动次数为0。在最坏情况下（元素已经逆序排序），进行第 i 趟排序时，待插入的记录需要同前面的 i 个记录进行比较，因此，总比较次数为 $\dfrac {n\left( n-1\right) }{2}$在排序过程中，第 i 趟排序时移动记录的次数为 i+1 （包括移进、移除tmp）,总移动次数为 $\dfrac {\left( n+3\right) \left( n+2\right) }{2}$</p>
+<p>直接排序算法在最好的情况下（待排序列已按关键码有序），每趟只需操作 1 次比较且不需要移动元素，因此$n$个元素排序时的总比较次数为$ n-1$ 次，总移动次数为0。在最坏情况下（元素已经逆序排序），进行第 $i$ 趟排序时，待插入的记录需要同前面的 $i$ 个记录进行比较，因此，总比较次数为 $\dfrac {n\left( n-1\right) }{2}$在排序过程中，第 $i$ 趟排序时移动记录的次数为 $i+1$ （包括移进、移除tmp）,总移动次数为 $\dfrac {\left( n+3\right) \left( n+2\right) }{2}$</p>
 <p><code>注意</code>：是一种稳定的排序算法;时间复杂度$O\left( n^{2}\right)$;在排序过程中仅需要一个元素的辅助空间用于交换，空间复杂度为$O\left( 1\right)$</p>
 <h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。</p>
 <p>具体的做法：</p>
 <p><img src="https://blogimg.nos-eastchina1.126.net/190318/maopao.gif" alt=""></p>
 <p>实现程序：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] bubbleSort(<span class="keyword">int</span>[] arr)&#123;</div><div class="line">    <span class="keyword">int</span> n = arr.length;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n - <span class="number">1</span>;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span> ; j &lt; n - <span class="number">1</span> - i;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])&#123;</div><div class="line">                <span class="keyword">int</span> temp = arr[j+<span class="number">1</span>];</div><div class="line">                arr[j+<span class="number">1</span>] = arr[j];</div><div class="line">                arr[j] = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>冒泡排序在最好情况下（待排序列已按关键码有序），只需要做一趟，元素的比较次数为 n-1 且不需要交换元素。在最坏情况下（元素已经逆序排序），在进行第 j 趟排序时，最大的 j-1 个元素已经排好序，其余的 n-(j-1) 个元素需要进行 n-j 次比较和 n-j 次交换。因此总比较次数为：$\dfrac {n\left( n-1\right) }{2}$ ，总的交换次数为：$\dfrac {n\left( n-1\right) }{2}$</p>
+<p>冒泡排序在最好情况下（待排序列已按关键码有序），只需要做一趟，元素的比较次数为 $n-1$ 且不需要交换元素。在最坏情况下（元素已经逆序排序），在进行第 $j$ 趟排序时，最大的 $j-1$ 个元素已经排好序，其余的 $n-(j-1)$ 个元素需要进行 $n-j$ 次比较和 $n-j$ 次交换。因此总比较次数为：$\dfrac {n\left( n-1\right) }{2}$ ，总的交换次数为：$\dfrac {n\left( n-1\right) }{2}$</p>
 <p><code>注意</code>：稳定的排序方法；时间复杂度$O\left( n^{2}\right)$;在排序过程中仅需要一个元素的辅助空间用于交换，空间复杂度为$O\left( 1\right)$</p>
 <h4 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h4><p>是一种简单直观的排序算法。工作原理：首先在末尾排序序列中找到最小（大）元素，存放到排序序列的其实位置，然后，再从剩下元素中继续寻找最小（最大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
 <p>具体做法：</p>
@@ -567,7 +567,7 @@
         
             <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第2章程序设计语言基础知识/">第2章程序设计语言基础知识</a></li>
         
-            <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/第1章计算机网络概述/">第1章计算机网络概述</a></li>
+            <li><a href="http://swenfang.github.io/2019/03/30/SoftTestTechnique/快速排序原理和实现/">快速排序原理和实现</a></li>
         
     </ul>
     
@@ -691,7 +691,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
