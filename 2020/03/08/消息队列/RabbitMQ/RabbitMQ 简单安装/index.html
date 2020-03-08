@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="RabbitMQ 简单安装">
+<meta name="description" content="tRabbitMQyum安装RabbitMQ进入/etc/yum.repos.d/ 文件夹 创建rabbitmq-erlang.repo 文件 内容如下：">
 <meta name="keywords" content="RabbitMQ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RabbitMQ 简单安装">
+<meta property="og:title" content="yum安装RabbitMQ">
 <meta property="og:url" content="http://swenfang.github.io/2020/03/08/消息队列/RabbitMQ/RabbitMQ 简单安装/index.html">
 <meta property="og:site_name" content="ShenWenFang">
-<meta property="og:description" content="RabbitMQ 简单安装">
-<meta property="og:updated_time" content="2020-03-08T07:40:05.510Z">
+<meta property="og:description" content="tRabbitMQyum安装RabbitMQ进入/etc/yum.repos.d/ 文件夹 创建rabbitmq-erlang.repo 文件 内容如下：">
+<meta property="og:updated_time" content="2020-03-08T11:36:12.338Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RabbitMQ 简单安装">
-<meta name="twitter:description" content="RabbitMQ 简单安装">
+<meta name="twitter:title" content="yum安装RabbitMQ">
+<meta name="twitter:description" content="tRabbitMQyum安装RabbitMQ进入/etc/yum.repos.d/ 文件夹 创建rabbitmq-erlang.repo 文件 内容如下：">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <title>RabbitMQ 简单安装 | ShenWenFang</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>yum安装RabbitMQ | ShenWenFang</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -305,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RabbitMQ 简单安装</h1>
+          <h1 class="post-title" itemprop="name headline">yum安装RabbitMQ</h1>
         
 
         <div class="post-meta">
@@ -357,7 +357,7 @@
 
           
           
-             <span id="/2020/03/08/消息队列/RabbitMQ/RabbitMQ 简单安装/" class="leancloud_visitors" data-flag-title="RabbitMQ 简单安装">
+             <span id="/2020/03/08/消息队列/RabbitMQ/RabbitMQ 简单安装/" class="leancloud_visitors" data-flag-title="yum安装RabbitMQ">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5 字
+                  330 字
                 </span>
               
 
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -419,7 +419,41 @@
       
 
       
-        <h1 id="RabbitMQ-简单安装"><a href="#RabbitMQ-简单安装" class="headerlink" title="RabbitMQ 简单安装"></a>RabbitMQ 简单安装</h1>
+        <h1 id="tRabbitMQ"><a href="#tRabbitMQ" class="headerlink" title="tRabbitMQ"></a>tRabbitMQ</h1><h1 id="yum安装RabbitMQ"><a href="#yum安装RabbitMQ" class="headerlink" title="yum安装RabbitMQ"></a>yum安装RabbitMQ</h1><p>进入/etc/yum.repos.d/ 文件夹</p>
+<p>创建rabbitmq-erlang.repo 文件</p>
+<p>内容如下：</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[rabbitmq-erlang] </div><div class="line">name=rabbitmq-erlang</div><div class="line">baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/7</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc</div><div class="line">repo_gpgcheck=0</div><div class="line">enabled=1</div></pre></td></tr></table></figure>
+<p>创建rabbitmq.repo 文件</p>
+<p>内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[bintray-rabbitmq-server]</div><div class="line">name=bintray-rabbitmq-rpm</div><div class="line">baseurl=https://dl.bintray.com/rabbitmq/rpm/rabbitmq-server/v3.8.x/el/8/</div><div class="line">gpgcheck=0</div><div class="line">repo_gpgcheck=0</div><div class="line">enabled=1</div></pre></td></tr></table></figure>
+<p>安装命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install rabbitmq-server</div></pre></td></tr></table></figure>
+<p>rabbitmq相关命令</p>
+<p>开启</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service rabbitmq-server start</div></pre></td></tr></table></figure>
+<p>关闭</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service rabbitmq-server stop</div></pre></td></tr></table></figure>
+<p>查看状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service rabbitmq-server status</div></pre></td></tr></table></figure>
+<p>重启</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service rabbitmq-server restart</div></pre></td></tr></table></figure>
+<p>启用插件页面管理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rabbitmq-plugins enable rabbitmq_management</div></pre></td></tr></table></figure>
+<p>创建用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rabbitmqctl add_user admin mypassword</div></pre></td></tr></table></figure>
+<p>赋予权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rabbitmqctl set_user_tags admin administrator</div><div class="line">rabbitmqctl set_permissions -p / admin &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;</div></pre></td></tr></table></figure>
+<p>浏览器访问http://机器IP:15672打开管理界面，使用上一步配置好的admin账号登录</p>
+<p>访问不到管理后台的原因</p>
+<p>如果无法访问到界面，那么有可能是服务器防火墙没有关闭的问题，解决这个问题有良好总方式：</p>
+<p>关闭防火墙或者配置15672和5672 端口可以通过</p>
+<p>关闭防火墙：systemctl stop firewalld 或者禁用 systemctl disable firewalld 开发或者测试环境。</p>
+<p>配置防火墙端口：</p>
+<p>15672（ui管理端口）：firewall-cmd –add-port=15672/tcp –permanent</p>
+<p>5672（远程连接端口）：firewall-cmd –add-port=5672/tcp –permanent</p>
+<p>最后 执行 firewall-cmd  –reload</p>
+
       
     </div>
     
@@ -470,7 +504,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://swenfang.github.io/2020/03/08/消息队列/RabbitMQ/RabbitMQ 简单安装/" title="RabbitMQ 简单安装">http://swenfang.github.io/2020/03/08/消息队列/RabbitMQ/RabbitMQ 简单安装/</a>
+    <a href="http://swenfang.github.io/2020/03/08/消息队列/RabbitMQ/RabbitMQ 简单安装/" title="yum安装RabbitMQ">http://swenfang.github.io/2020/03/08/消息队列/RabbitMQ/RabbitMQ 简单安装/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -681,7 +715,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RabbitMQ-简单安装"><span class="nav-number">1.</span> <span class="nav-text">RabbitMQ 简单安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tRabbitMQ"><span class="nav-number">1.</span> <span class="nav-text">tRabbitMQ</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yum安装RabbitMQ"><span class="nav-number">2.</span> <span class="nav-text">yum安装RabbitMQ</span></a></li></ol></div>
             
 
           </div>
